@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>10.0</LangVersion>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<Authors>Michael Coelsch (MyConveno)</Authors>
+	<Description>MyConveno Sales4Pro Toolkit</Description>
+	<Copyright>© 2022 MyConveno. All rights reserved.</Copyright>
+	<PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
+	<PackageIcon>icon.png</PackageIcon>
+	<PackageTags>Sales4Pro, MyConveno</PackageTags>
+	<PackageReleaseNotes>None</PackageReleaseNotes>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<AssemblyVersion>2022.8.30.0</AssemblyVersion>
+	<FileVersion>2022.8.30.0</FileVersion>
+	<IncludeSymbols>False</IncludeSymbols>
+	<Version>2022.8.34.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+    <PackageReference Include="CsvHelper" Version="15.0.5" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.3" />
+    <PackageReference Include="SharpZipLib" Version="1.3.2" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Strings\de\BaseDataUpdateResources.Designer.cs">
+      <DependentUpon>BaseDataUpdateResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Strings\en\BaseDataUpdateResources.Designer.cs">
+      <DependentUpon>BaseDataUpdateResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Strings\de\BaseDataUpdateResources.resx">
+      <LastGenOutput>BaseDataUpdateResources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Strings\en\BaseDataUpdateResources.resx">
+      <LastGenOutput>BaseDataUpdateResources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

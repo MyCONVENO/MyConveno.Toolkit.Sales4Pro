@@ -5,6 +5,14 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate", "Sales4Pro.BaseDataProductImageUpdate\MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate.csproj", "{D5A60499-EF48-4CBA-8FFE-311DF0AE8526}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates", "Sales4Pro.BaseDataUpdates\MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.csproj", "{2E1594C6-9280-4450-865B-94D26F150940}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.ClientData", "Sales4Pro.ClientData\MyConveno.Toolkit.Sales4Pro.Client.ClientData.csproj", "{B8907DFF-0D33-4406-AB33-4AC9B0829366}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces", "Sales4Pro.Common.ClientData.Interfaces\MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces.csproj", "{6A4EEDBE-DD8D-42D0-BB37-8B4F2836E77A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.UserData", "Sales4Pro.UserData\MyConveno.Toolkit.Sales4Pro.Client.UserData.csproj", "{19603ABE-4947-43F3-9C2E-1B03BEA44501}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{D5A60499-EF48-4CBA-8FFE-311DF0AE8526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5A60499-EF48-4CBA-8FFE-311DF0AE8526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5A60499-EF48-4CBA-8FFE-311DF0AE8526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E1594C6-9280-4450-865B-94D26F150940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E1594C6-9280-4450-865B-94D26F150940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E1594C6-9280-4450-865B-94D26F150940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E1594C6-9280-4450-865B-94D26F150940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8907DFF-0D33-4406-AB33-4AC9B0829366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8907DFF-0D33-4406-AB33-4AC9B0829366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8907DFF-0D33-4406-AB33-4AC9B0829366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8907DFF-0D33-4406-AB33-4AC9B0829366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A4EEDBE-DD8D-42D0-BB37-8B4F2836E77A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A4EEDBE-DD8D-42D0-BB37-8B4F2836E77A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A4EEDBE-DD8D-42D0-BB37-8B4F2836E77A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A4EEDBE-DD8D-42D0-BB37-8B4F2836E77A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19603ABE-4947-43F3-9C2E-1B03BEA44501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19603ABE-4947-43F3-9C2E-1B03BEA44501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19603ABE-4947-43F3-9C2E-1B03BEA44501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19603ABE-4947-43F3-9C2E-1B03BEA44501}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

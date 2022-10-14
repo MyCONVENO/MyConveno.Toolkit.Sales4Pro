@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <LangVersion>10.0</LangVersion>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Authors>Michael Coelsch (MyConveno)</Authors>
+	  <Description>MyConveno Sales4Pro Toolkit</Description>
+	  <Copyright>© 2022 MyConveno. All rights reserved.</Copyright>
+	  <PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
+	  <PackageIcon>icon.png</PackageIcon>
+	  <PackageTags>Sales4Pro, MyConveno</PackageTags>
+	  <PackageReleaseNotes>None</PackageReleaseNotes>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <AssemblyVersion>2022.8.30.0</AssemblyVersion>
+	  <FileVersion>2022.8.30.0</FileVersion>
+	  <IncludeSymbols>False</IncludeSymbols>
+	  <Version>2022.9.28.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
