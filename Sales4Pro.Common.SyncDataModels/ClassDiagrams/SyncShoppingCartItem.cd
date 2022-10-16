@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Interface Name="MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces.ISyncMetadataArticle">
+    <Position X="3.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AEAEgEAAIAQAgAAAAIAAAAEAABAAABAAgAAQAAAAAgE=</HashCode>
+      <FileName>Metadata\ShoppingCartItem\Interfaces\ISyncMetadataArticle.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces.ISyncMetadataQuantity">
+    <Position X="8.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QQAAIADAPwxAAAAAADAAAQAEAAIAAAAkAgQQAAAAAAA=</HashCode>
+      <FileName>Metadata\ShoppingCartItem\Interfaces\ISyncMetadataQuantity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ItemSize17" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces.ISyncMetadataColor">
+    <Position X="6" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAAAAEQAAAAAAABIAFAgAgEABiBTAKCACACAg=</HashCode>
+      <FileName>Metadata\ShoppingCartItem\Interfaces\ISyncMetadataColor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.IItemSize">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAgAEAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Metadata\ShoppingCartItem\Interfaces\IItemSize.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces.ISyncShoppingCartItem">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <AssociationLine Name="Article" Type="MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces.ISyncMetadataArticle" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.019" Y="3.401" />
+        <Point X="2.019" Y="4.188" />
+        <Point X="3.5" Y="4.188" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Color" Type="MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces.ISyncMetadataColor" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.625" Y="3.401" />
+        <Point X="1.625" Y="5.125" />
+        <Point X="6" Y="5.125" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Quantity" Type="MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces.ISyncMetadataQuantity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.175" Y="3.401" />
+        <Point X="1.175" Y="6.438" />
+        <Point X="8.5" Y="6.438" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAACgAEAAAAAACUAAAgAAAYAA=</HashCode>
+      <FileName>Metadata\ShoppingCartItem\Interfaces\ISyncShoppingCartItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Article" />
+      <Property Name="Color" />
+      <Property Name="Quantity" />
+    </ShowAsAssociation>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
