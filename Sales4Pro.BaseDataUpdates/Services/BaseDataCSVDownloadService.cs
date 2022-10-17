@@ -24,7 +24,8 @@ public partial class BaseDataCSVDownloadService : ObservableObject, IBaseDataCSV
 
     #region Lifetime Properties
 
-    public IBaseDataDownloadPlugIn InjectedPlugIn { get; set; }
+    [ObservableProperty]
+    public IBaseDataDownloadPlugIn injectedPlugIn;
 
     #endregion
 
@@ -41,7 +42,7 @@ public partial class BaseDataCSVDownloadService : ObservableObject, IBaseDataCSV
     /// Es wird versucht eine initiale Verbindung zum Updateserver aufzubauen
     /// </summary>
     [ObservableProperty]
-    private bool isCheckingForUpdates;
+    public bool isCheckingForUpdates;
 
     #endregion
 
@@ -67,7 +68,9 @@ public partial class BaseDataCSVDownloadService : ObservableObject, IBaseDataCSV
     public string ComputeLastSuccessfulBaseDataUpdateCheckDateTimeString
     {
         get
-        { return string.Format("Letzte Stammdatenprüfung: {0}", InjectedPlugIn.GetLastSuccessfulBaseDataUpdateCheckDateTime().ToString("dd.MM. HH:mm")); }
+        { 
+            return string.Format("Letzte Stammdatenprüfung: {0}", InjectedPlugIn.GetLastSuccessfulBaseDataUpdateCheckDateTime().ToString("dd.MM. HH:mm")); 
+        }
     }
 
     #endregion

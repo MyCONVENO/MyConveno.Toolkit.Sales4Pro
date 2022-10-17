@@ -32,8 +32,7 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
     public IBaseDataImageDownloadPlugIn injectedPlugIn;
 
     [ObservableProperty]
-    private bool isUpdateRunning;
-  
+    public bool isUpdateRunning;
 
     #endregion
 
