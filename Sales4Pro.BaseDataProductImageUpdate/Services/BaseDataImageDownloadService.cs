@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -10,7 +11,7 @@ using System.Web;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
 
-public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataImageDownloadService
+public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataImageDownloadService, INotifyPropertyChanged
 {
     static bool imageUpdateIsRunning;
 

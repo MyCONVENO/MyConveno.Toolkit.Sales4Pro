@@ -2,13 +2,14 @@
 using MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.Strings.de;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Resources;
 using System.Threading.Tasks;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
-public partial class BaseDataCSVDownloadService : ObservableObject, IBaseDataCSVDownloadService
+public partial class BaseDataCSVDownloadService : ObservableObject, IBaseDataCSVDownloadService, INotifyPropertyChanged
 {
     private readonly string baseDataWebServiceHost = string.Empty;
     private bool isInternalUpdateIsRunning = false;
