@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
@@ -8,6 +9,9 @@ public interface IBaseDataCSVDownloadService
     
     void FillInitialProgressItemVMs();
     Task ResetUpdateAsync(bool raiseBaseDataDeleted);
-    Task<bool> UpdateAsync(bool showToast, string currentLoginUserName);
+
+    Task<List<ProgressItem>> CheckForUpdateAsync();
+
+    Task<bool> UpdateAsync(List<ProgressItem> syncTables);
 
 }

@@ -40,18 +40,9 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
         }
     }
 
-    /// <summary>
-    /// Hier wird das eigentliche Update ausgeführt.
-    /// Das LoginToken (z.B. michael.coelsch@outlook.de [Die UserID aus User] wird lokal in den AppSettings gespeichert
-    /// Es wird die lokale Datenbank erstellt und die Tabellen erstellt, wenn nicht schon da.
-    /// </summary>
-    /// <param name="loginUserName">Gibt bei Erfolg true zurück</param>
-    /// <returns></returns>
-    public async Task<bool> UpdateAsync(bool showToast, string currentLoginUserName)
+    public async Task<List<ProgressItem>> CheckForUpdateAsync()
     {
-        bool syncOK = false;
-        bool success = false;
-        ResourceManager rm = new(typeof(BaseDataUpdateResources));
+        List<ProgressItem> syncTables = new();
 
         try
         {
@@ -62,8 +53,6 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
                 isInternalUpdateIsRunning = true;
 
                 // Melde zurück, dass nach Updates gesucht wird (InfoText "... Dauert wenige Sekunden ...")
-
-                //isCheckingForUpdates = true;
 
                 //**********************************************************************************
                 //  XXX      Hole eine Liste mit Änderungen vom WebService
@@ -80,10 +69,10 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
                 // Gehe durch jedes Objekt (UpdateProgressItem einer Tabelle), wenn die Liste
                 // (itemswithchanges) Einträge enthält 
                 //**********************************************************************************
-                List<ProgressItem> syncTables = RefreshUpdateRefreshLocalTablesList.RefreshList(InjectedPlugIn,
-                                                                                                itemswithchanges,
-                                                                                                InjectedPlugIn.RefreshProgressItem);
-                //isCheckingForUpdates = false;
+                syncTables = RefreshUpdateRefreshLocalTablesList.RefreshList(InjectedPlugIn,
+                                                                             itemswithchanges,
+                                                                             InjectedPlugIn.RefreshProgressItem);
+
 
                 // ************************************************************************
                 // ************************************************************************
@@ -92,6 +81,42 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
                 // Jetzt können wir basierend auf dieser Liste die Updates durchführen
                 // ************************************************************************
                 // ************************************************************************
+
+            }
+            return syncTables;
+        }
+        catch (Exception)
+        {
+            return new List<ProgressItem>();
+        }
+        finally
+        {
+            // Es dürfen wieder Aktualisierungen gestartet werden
+            isInternalUpdateIsRunning = false;
+        }
+    }
+
+
+    /// <summary>
+    /// Hier wird das eigentliche Update ausgeführt.
+    /// Das LoginToken (z.B. michael.coelsch@outlook.de [Die UserID aus User] wird lokal in den AppSettings gespeichert
+    /// Es wird die lokale Datenbank erstellt und die Tabellen erstellt, wenn nicht schon da.
+    /// </summary>
+    /// <param name="loginUserName">Gibt bei Erfolg true zurück</param>
+    /// <returns></returns>
+    public async Task<bool> UpdateAsync(List<ProgressItem> syncTables)
+    {
+        bool syncOK = false;
+        bool success = false;
+        ResourceManager rm = new(typeof(BaseDataUpdateResources));
+
+        try
+        {
+            // breche hier ab, wenn bereits ein Update läuft
+            if (isInternalUpdateIsRunning == false || !syncTables.Any())
+            {
+                // Blockiere eventuell neu gestartete Updates
+                isInternalUpdateIsRunning = true;
 
                 success = await InjectedPlugIn.DownloadTablesAsync(syncTables);
 
@@ -156,6 +181,7 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
 
         return success;
     }
+
 
     /// <summary>
     /// In den Settings im Frontend gibt es einen Button zum Zurücksetzen der Stammdaten.
