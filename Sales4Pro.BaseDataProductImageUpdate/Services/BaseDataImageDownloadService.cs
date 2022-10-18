@@ -1,7 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -11,7 +9,7 @@ using System.Web;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
 
-public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataImageDownloadService, INotifyPropertyChanged
+public partial class BaseDataImageDownloadService : IBaseDataImageDownloadService
 {
     static bool imageUpdateIsRunning;
 
@@ -24,20 +22,16 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
     {
         baseDataWebServiceHost = webServiceHost;
         containerName = container;
-        injectedPlugIn = plugIn;
+        InjectedPlugIn = plugIn;
     }
 
     #region Public Properties
-
-    [ObservableProperty]
-    public IBaseDataImageDownloadPlugIn injectedPlugIn;
-
-    [ObservableProperty]
-    public bool isUpdateRunning;
+   
+    public IBaseDataImageDownloadPlugIn InjectedPlugIn { get; set; }
 
     #endregion
 
-    #region Methods, Functions adn Tasks
+    #region Methods, Functions and Tasks
 
     // ***********************************************************************************************
     // Lösche alle lokale Bilder und setze den Wert der letztren aktualisierung zurück
@@ -65,7 +59,7 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
         try
         {
             cancellationTokenSourceDownloadProductImagesTask = new CancellationTokenSource();
-            IsUpdateRunning = true;
+            //IsUpdateRunning = true;
 
             if (imageUpdateIsRunning)
                 success = false;
@@ -80,7 +74,7 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
             success = false;
         }
 
-        IsUpdateRunning = false;
+        //IsUpdateRunning = false;
 
         return success;
     }
