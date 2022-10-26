@@ -17,6 +17,7 @@ public interface ISyncMetadataQuantity
     string Remark02 { get; set; }
     double SalesPrice { get; set; }
     double ShoppingCartItemDiscount { get; set; }
+    bool IsShoppingCartItemDiscountPreallocated { get; set; }
     bool ShoppingCartItemIsIdle { get; set; }
     string SizerunName { get; set; }
     bool IsFreeOfCharge { get; set; }

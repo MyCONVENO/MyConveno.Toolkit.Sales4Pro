@@ -11,6 +11,7 @@ public class SyncMetadataQuantity : ISyncMetadataQuantity
     public string Remark01 { get; set; }
     public string Remark02 { get; set; }
     public double ShoppingCartItemDiscount { get; set; } = 0d;
+    public bool IsShoppingCartItemDiscountPreallocated { get; set; } = true;
     public bool ShoppingCartItemIsIdle { get; set; } = false;
     public DateTime ModifiedDeliveryDateStart { get; set; } = new DateTime(1950, 1, 1);
     public DateTime ModifiedDeliveryDateEnd { get; set; } = new DateTime(2100, 1, 1);
