@@ -1,7 +1,5 @@
-﻿using MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.Strings.de;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
@@ -21,11 +19,8 @@ internal static class RefreshUpdateRefreshLocalTablesList
         // Gehe durch jedes Objekt (UpdateProgressItem einer Tabelle), wenn die Tabelle Einträge enthält 
         //*****************************************************************************************************
 
-        ResourceManager rm = new ResourceManager(typeof(BaseDataUpdateResources));
         List<ProgressItem> syncTables;
 
-        // Hole den übersetzten Text von "UpdatesAvailable"
-        string strUpdatesAvailable = rm != null ? rm.GetString("UpdatesAvailable") : "Updates available";
 
         // Erzeuge bei jedem Update-Aufruf eine neue Instanz der syncTables mit leeren Objekten (UpdateProgressItem)
         // Diese Tabelle wird von dieser Funktion zurückgegeben
@@ -46,7 +41,7 @@ internal static class RefreshUpdateRefreshLocalTablesList
                     item.TotalChanges = syncProgressItem.TotalChanges;
 
                     // Setzte den lokalisierten Text "UpdatesAvailable"
-                    item.ProgressText = strUpdatesAvailable;
+                    item.ProgressText = "Updates verfügbar";
 
                     // Setze CurrentBaseDataUpdateState auf UpdatesAvailable
                     item.CurrentBaseDataUpdateState = ProgressItemViewModel.CurrentBaseDataUpdateStatesEnum.UpdatesAvailable;

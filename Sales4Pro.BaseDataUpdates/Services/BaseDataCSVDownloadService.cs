@@ -1,8 +1,6 @@
-﻿using MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.Strings.de;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 using System.Threading.Tasks;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
@@ -108,8 +106,7 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
     {
         bool syncOK = false;
         bool success = false;
-        ResourceManager rm = new(typeof(BaseDataUpdateResources));
-
+       
         try
         {
             // breche hier ab, wenn bereits ein Update läuft
