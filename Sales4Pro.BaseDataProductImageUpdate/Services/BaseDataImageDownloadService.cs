@@ -97,7 +97,7 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
             System.Collections.Specialized.NameValueCollection createanduploadQuery = HttpUtility.ParseQueryString(createanduploadBuilder.Query);
 
             createanduploadQuery["tableName"] = "ProductImage";
-            createanduploadQuery["syncdatetimeticks"] = InjectedPlugIn.GetImageUpdateDateTimeTicks().ToString();
+            createanduploadQuery["syncdatetimeticks"] = InjectedPlugIn.GetProductImageUpdateDateTimeTicks().ToString();
             createanduploadBuilder.Query = createanduploadQuery.ToString();
             string createanduploadURL = createanduploadBuilder.ToString();
 
