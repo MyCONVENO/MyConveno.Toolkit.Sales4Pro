@@ -38,26 +38,22 @@ public class CheckForImageDownloadsAvailableService : ICheckForImageDownloadsAva
 
         try
         {
-            Dictionary<string, long> syncDateTimes = new Dictionary<string, long>
+            Dictionary<string, long> syncDateTimes = new()
             {
                 // (Default UpdateDateTimeTicks 630822816000000000 ist der 01.01.2000)
                 { "ProductImage", updateDateTimeProductImage }
             };
 
-            //List<BaseDataImageUpdateProgressItem> serjson;
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new())
             {
                 string jsonSyncDateTimes = JsonConvert.SerializeObject(syncDateTimes, Formatting.Indented);
 
 
-                UriBuilder builder = new UriBuilder(baseDataImageWebServiceHost + "/GetChangedBaseDataTablesAsJSONList")
+                UriBuilder builder = new(baseDataImageWebServiceHost + "/GetChangedBaseDataTablesAsJSONList")
                 {
                     Port = -1
                 };
 
-                //UriBuilder builder = new UriBuilder(baseDataImageWebServiceHost + "/GetAvailableChangesBaseData");
-                //UriBuilder builder = new UriBuilder(baseDataImageWebServiceHost + "/GetAvailableChangesBaseData");
-                builder.Port = -1;
                 System.Collections.Specialized.NameValueCollection query = HttpUtility.ParseQueryString(builder.Query);
                 query["jsontablelist"] = jsonSyncDateTimes;
                 //query["userID"] = currentLoginUserName;
@@ -82,8 +78,7 @@ public class CheckForImageDownloadsAvailableService : ICheckForImageDownloadsAva
             BaseDataImageUpdateProgressItem baseDataImageUpdateProgressItem = allTablesWithChanges.FirstOrDefault(s => s.TableName == "ProductImage");
 
             // .. und prüfe den Eintrag TotalChanges
-            if (baseDataImageUpdateProgressItem != null &&
-                baseDataImageUpdateProgressItem.TotalChanges > 0)
+            if (baseDataImageUpdateProgressItem != null && baseDataImageUpdateProgressItem.TotalChanges > 0)
             {
                 return true;
             }

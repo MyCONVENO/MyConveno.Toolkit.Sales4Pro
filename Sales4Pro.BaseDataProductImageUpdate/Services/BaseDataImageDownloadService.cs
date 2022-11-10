@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -9,12 +11,12 @@ using System.Web;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
 
-public partial class BaseDataImageDownloadService : IBaseDataImageDownloadService
+public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataImageDownloadService
 {
+    public event EventHandler<List<BaseDataImageUpdateProgressItem>> UpdateProgressChanged;
+
     static bool imageUpdateIsRunning;
-
     private CancellationTokenSource cancellationTokenSourceDownloadProductImagesTask;
-
     private readonly string baseDataWebServiceHost = string.Empty;
     private readonly string containerName = string.Empty;
 
@@ -26,8 +28,11 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
     }
 
     #region Public Properties
-   
+
     public IBaseDataImageDownloadPlugIn InjectedPlugIn { get; set; }
+
+    [ObservableProperty]
+    private ObservableCollection<string> updatedImagePaths = new();
 
     #endregion
 
@@ -54,12 +59,11 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
     {
         bool success;
 
-        InjectedPlugIn.UpdatedImagePaths.Clear();
+        UpdatedImagePaths.Clear();
 
         try
         {
             cancellationTokenSourceDownloadProductImagesTask = new CancellationTokenSource();
-            //IsUpdateRunning = true;
 
             if (imageUpdateIsRunning)
                 success = false;
@@ -68,14 +72,11 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
         }
         catch (Exception)
         {
-            BaseDataImageUpdateProgressItem updateresult = new BaseDataImageUpdateProgressItem();
+            BaseDataImageUpdateProgressItem updateresult = new();
             updateresult.TotalChanges = updateresult.TotalChanges > 0 ? updateresult.TotalChanges : 1;
-            InjectedPlugIn.RaiseUpdateProgressChanged(new List<BaseDataImageUpdateProgressItem>() { updateresult });
+            UpdateProgressChanged?.Invoke(this, new List<BaseDataImageUpdateProgressItem>() { updateresult });
             success = false;
         }
-
-        //IsUpdateRunning = false;
-
         return success;
     }
 
@@ -87,9 +88,9 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
         int changedItemsCount = -1;
         int result = 0;
 
-        using (HttpClient client = new HttpClient() { Timeout = TimeSpan.FromMinutes(25) })
+        using (HttpClient client = new() { Timeout = TimeSpan.FromMinutes(25) })
         {
-            UriBuilder createanduploadBuilder = new UriBuilder(baseDataWebServiceHost + "/CreateAndUploadZippedCSVPackage")
+            UriBuilder createanduploadBuilder = new(baseDataWebServiceHost + "/CreateAndUploadZippedCSVPackage")
             {
                 Port = -1
             };
@@ -107,18 +108,18 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
                 return false;
 
 
-            DateTime updateDateTime = new DateTime(2000, 1, 1);
+            DateTime updateDateTime = new (2000, 1, 1);
 
             // Ein Container für Results
-            List<KeyValuePair<int, DateTime>> results = new List<KeyValuePair<int, DateTime>>();
+            List<KeyValuePair<int, DateTime>> results = new ();
 
             using (AzureBlobStorageServices azureService = new(containerName))
             {
                 List<ProductImage> productImages = azureService.DownloadFileAndExtractRecords<ProductImage>(filename);
-                results.Add(ProcessProductImageListsAsync(productImages as List<ProductImage>, ct));
+                results.Add(ProcessProductImageListsAsync(productImages, ct));
             }
 
-            KeyValuePair<int, DateTime> tempPair = new KeyValuePair<int, DateTime>(results.Sum(r => r.Key), results.Max(r => r.Value));
+            KeyValuePair<int, DateTime> tempPair = new (results.Sum(r => r.Key), results.Max(r => r.Value));
             result += tempPair.Key;
 
             if (updateDateTime < tempPair.Value)
@@ -136,7 +137,7 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
             // am Server
             //*********************************************************************************
 
-            UriBuilder deleteBuilder = new UriBuilder(baseDataWebServiceHost + "/DeleteZIPFileInBlob")
+            UriBuilder deleteBuilder = new(baseDataWebServiceHost + "/DeleteZIPFileInBlob")
             {
                 Port = -1
             };
@@ -147,9 +148,9 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
 
             HttpResponseMessage deleteData = await client.GetAsync(deleteURL);
             string deleteJSONResponse = await deleteData.Content.ReadAsStringAsync();
-             
+
             changedItemsCount = result;
-}
+        }
         //*********************************************************************************
 
 
@@ -160,23 +161,23 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
 
     private KeyValuePair<int, DateTime> ProcessProductImageListsAsync(List<ProductImage> productImages, CancellationToken ct)
     {
-        DateTime syncDateTime = new DateTime(2000, 1, 1);
+        DateTime syncDateTime = new(2000, 1, 1);
         bool downloadOK = true;
 
         if (productImages == null)
             return new KeyValuePair<int, DateTime>(0, syncDateTime);
 
-        List<ProductImage> alldownloads = new List<ProductImage>();
+        List<ProductImage> alldownloads = new();
         alldownloads.AddRange(productImages.OrderBy(s => s.ImageName));
 
-        using (HttpClient client = new HttpClient())
+        using (HttpClient client = new())
         {
             while (alldownloads.Any())
             {
                 if (ct != null)
                     ct.ThrowIfCancellationRequested();
 
-                BaseDataImageUpdateProgressItem imageSyncItem = new BaseDataImageUpdateProgressItem(typeof(ProductImage))
+                BaseDataImageUpdateProgressItem imageSyncItem = new(typeof(ProductImage))
                 {
                     ImagePath = new List<string>()
                 };
@@ -203,7 +204,7 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
                         imageSyncItem.ImagePath.Add(t.Result);
                     }
 
-                    InjectedPlugIn.RaiseUpdateProgressChanged(new List<BaseDataImageUpdateProgressItem>() { imageSyncItem });
+                    UpdateProgressChanged?.Invoke(this, new List<BaseDataImageUpdateProgressItem>() { imageSyncItem });
                 }
                 else
                 {
@@ -235,9 +236,9 @@ public partial class BaseDataImageDownloadService : IBaseDataImageDownloadServic
 
     private async Task<string> DownloadOneProductImageAsync(ProductImage productImage)
     {
-        using (HttpClient client = new HttpClient())
+        using (HttpClient client = new())
         {
-            using (MemoryStream destination = new MemoryStream())
+            using (MemoryStream destination = new())
             {
                 string webURL = productImage.DownloadUri + "?timestamp='" + DateTime.Now.Ticks.ToString() + "'";
                 Stream imageStream = await client.GetStreamAsync(webURL);

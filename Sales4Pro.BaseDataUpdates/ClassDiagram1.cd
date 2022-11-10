@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.BaseDataCSVDownloadService">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAABAQAAAAAAgSAAAAAEAAAAA=</HashCode>
+      <FileName>Services\BaseDataCSVDownloadService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InjectedPlugIn" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ProcessDbLists">
+    <Position X="10.25" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Services\ProcessDbLists.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.RefreshProgressItem">
+    <Position X="10.25" Y="6.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\RefreshProgressItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ProgressItemVMs" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.RefreshUpdatePrepareLocalTablesList">
+    <Position X="10.25" Y="3" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\RefreshUpdatePrepareLocalTablesList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.RefreshUpdateRefreshLocalTablesList">
+    <Position X="10.25" Y="4.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\RefreshUpdateRefreshLocalTablesList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.UpdateOneTable">
+    <Position X="10.25" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\UpdateOneTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ProgressItemViewModel">
+    <Position X="0.5" Y="3.5" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ProgressItemViewModel.CurrentBaseDataUpdateStatesEnum">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\ProgressItemViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQFAAAAAAQBAEIQAAACQAAUAAEAAEAABAAYAAAiAAAA=</HashCode>
+      <FileName>ViewModels\ProgressItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ProgressItem">
+    <Position X="5.5" Y="4.5" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ProgressItem.UpdateProgressChangedEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\ProgressItem.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABQCAAIAQAAAABAAAAAQAAQgAAAA=</HashCode>
+      <FileName>Models\ProgressItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.IBaseDataDownloadPlugIn">
+    <Position X="5.25" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAADQAAgAABAAAQAAEAABAAAQAAIBAAA=</HashCode>
+      <FileName>Interfaces\IBaseDataDownloadPlugIn.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
