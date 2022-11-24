@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Sales4Pro.Common.Metadata.MetadataCustomer">
+    <Position X="4.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAwAAAAAAAACAAAAgAgAAAAAAA=</HashCode>
+      <FileName>MetadataCustomer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Core" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ContactPersons" />
+      <Property Name="DeliveryAddresses" />
+      <Property Name="InvoiceAddresses" />
+      <Property Name="SpecialDiscounts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Sales4Pro.Common.Metadata.MetadataCustomerContactPerson">
+    <Position X="7" Y="7.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgCAQAMAAAAAAAAIAAAAAAAAAAAAAoAAAAAA=</HashCode>
+      <FileName>MetadataCustomerContactPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sales4Pro.Common.Metadata.MetadataCustomerCore">
+    <Position X="1" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>KCBEAQQQjiIQAIAIAAMAACAECAgAAQCAAwIAqSCIAAA=</HashCode>
+      <FileName>MetadataCustomerCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sales4Pro.Common.Metadata.MetadataCustomerDeliveryAddress">
+    <Position X="3.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAAAgAAQAIAIAAAAAAAAACAAAAAAAAIAoCAAAAA=</HashCode>
+      <FileName>MetadataCustomerDeliveryAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sales4Pro.Common.Metadata.MetadataCustomerInvoiceAddress">
+    <Position X="7.75" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAAAgAAQAIAIAAAAAAAAACAAAAAAAAIAoCAAAAA=</HashCode>
+      <FileName>MetadataCustomerInvoiceAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sales4Pro.Common.Metadata.MetadataCustomerSpecialDiscount">
+    <Position X="0.5" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAEAAAAQAAAAAAgAAAgAAAAAAAAA=</HashCode>
+      <FileName>MetadataCustomerSpecialDiscount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Sales4Pro.Common.Metadata.MetadataArticle">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAgAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MetadataArticle.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Core" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ColorImages" />
+      <Property Name="Prices" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Sales4Pro.Common.Metadata.MetadataArticleProductImage">
+    <Position X="4.5" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MetadataArticleProductImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sales4Pro.Common.Metadata.MetadataArticleCore">
+    <Position X="7.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AABEgEAAIAQAQAAQAoAAAAAAAAAAABAAAAAAAAAACAA=</HashCode>
+      <FileName>MetadataArticleCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sales4Pro.Common.Metadata.MetadataArticlePrice">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAEABAAAAAAAAAAAAEAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>MetadataArticlePrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

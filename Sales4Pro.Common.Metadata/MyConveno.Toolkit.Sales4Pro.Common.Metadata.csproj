@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>10.0</LangVersion>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<PackageIcon>icon.png</PackageIcon>
+	<Version>2022.11.23.0</Version>
+	<Authors>Michael Coelsch (MyConveno)</Authors>
+	<Description>MyConveno Sales4Pro Toolkit</Description>
+	<Copyright>© 2023 MyConveno. All rights reserved.</Copyright>
+	<PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
+	<PackageTags>Sales4Pro, MyConveno</PackageTags>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
