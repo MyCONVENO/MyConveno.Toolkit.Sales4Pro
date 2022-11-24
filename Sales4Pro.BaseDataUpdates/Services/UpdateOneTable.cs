@@ -14,6 +14,7 @@ public static class UpdateOneTable
     // geänderte Datenätze 
     // *********************************************************
     public static async Task<int> UpdateOneTableAsync<T>(Sales4ProDatabaseConnection sales4ProDatabaseConnection,
+                                                         string containerName,
                                                          ProgressItem progressItem,
                                                          IBaseDataDownloadPlugIn plugIn,
                                                          string baseDataWebServiceHost,
@@ -100,7 +101,7 @@ public static class UpdateOneTable
             }
             //await Task.Delay(1000);
 
-            using (AzureBlobStorageServices azureService = new())
+            using (AzureBlobStorageServices azureService = new(containerName))
             {
                 List<T> rawDataList = azureService.DownloadFileAndExtractRecords<T>(filename);
 

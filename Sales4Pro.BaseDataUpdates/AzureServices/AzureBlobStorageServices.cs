@@ -18,11 +18,11 @@ internal class AzureBlobStorageServices : IDisposable
     readonly CloudBlobClient blobClient;
     readonly CloudBlobContainer container;
 
-    public AzureBlobStorageServices()
+    public AzureBlobStorageServices(string containerName)
     {
         storageAccount = CreateAzureStorageAccountFromConnectionString();
         blobClient = storageAccount.CreateCloudBlobClient();
-        container = blobClient.GetContainerReference("syncdata-rohner");
+        container = blobClient.GetContainerReference(containerName);
     }
 
     void IDisposable.Dispose()
