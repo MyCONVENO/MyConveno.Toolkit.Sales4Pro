@@ -1,7 +1,8 @@
 ﻿namespace Sales4Pro.Common.Metadata
 {
-    public class MetadataAssociation
+    public class MetadataCustomerAssociation
     {
+        public string Number { get; set; }
         public string Name1 { get; set; }
         public string Name2 { get; set; }
         public string Name3 { get; set; }
@@ -14,7 +15,7 @@
         public string CountryName { get; set; }
         public string CountryCode { get; set; }
 
-        public MetadataAssociation()
+        public MetadataCustomerAssociation()
         {
 
         }

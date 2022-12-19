@@ -17,6 +17,7 @@ public class SyncShoppingCartItem : ISyncShoppingCartItem
     public string UserID { get; set; }
     public string ShoppingCartID { get; set; }
     public long ShoppingCartItemSort { get; set; }
+    public int StatusID { get; set; }
 
     public string ArticleMetadata { get; set; }
     public string ColorMetadata { get; set; }

@@ -8,6 +8,7 @@ namespace Sales4Pro.Common.Metadata
         public List<MetadataCustomerContactPerson> ContactPersons { get; set; }
         public List<MetadataCustomerDeliveryAddress> DeliveryAddresses { get; set; }
         public List<MetadataCustomerInvoiceAddress> InvoiceAddresses { get; set; }
+        public List<MetadataCustomerAssociation> Associations { get; set; }
         public List<MetadataCustomerSpecialDiscount> SpecialDiscounts { get; set; }
         public List<MetadataCustomerArticleDiscount> ArticleDiscounts { get; set; }
 
@@ -16,6 +17,7 @@ namespace Sales4Pro.Common.Metadata
             Core = new MetadataCustomerCore();
             DeliveryAddresses = new List<MetadataCustomerDeliveryAddress>();
             InvoiceAddresses = new List<MetadataCustomerInvoiceAddress>();
+            Associations = new List<MetadataCustomerAssociation>();
             ContactPersons = new List<MetadataCustomerContactPerson>();
             SpecialDiscounts = new List<MetadataCustomerSpecialDiscount>();
             ArticleDiscounts = new List<MetadataCustomerArticleDiscount>();

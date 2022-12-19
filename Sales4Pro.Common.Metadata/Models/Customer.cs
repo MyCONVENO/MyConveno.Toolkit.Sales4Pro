@@ -23,33 +23,57 @@ namespace Sales4Pro.Common.Metadata.Models
 
         [PrimaryKey, Indexed]
         public string CustomerID { get; set; }
+
         [Indexed]
         public string PricelistID { get; set; }
+
         [Indexed]
         public string AgentNumber { get; set; }
+
         [Indexed]
         public string CustomerNumber { get; set; }
+
         [Indexed]
         public string CustomerName { get; set; }
+
+        [Indexed]
         public string StartsWithFilter01 { get; set; }
+
+        [Indexed]
         public string StartsWithFilter02 { get; set; }
+
+        [Indexed]
         public string StartsWithFilter03 { get; set; }
+
+        [Indexed]
         public string ContainsFilter01 { get; set; }
+
+        [Indexed]
         public string ContainsFilter02 { get; set; }
+
+        [Indexed]
         public string ContainsFilter03 { get; set; }
+
         public double Latitude { get; set; }
+
         public double Longitude { get; set; }
+
         public string Metadata { get; set; }
+
         public string HistoryMetadata { get; set; }
 
         [Ignore]
         public MetadataCustomer MetadataCustomer { get; set; }
+
         [Ignore]
         public List<MetadataCustomerHistory> MetadataHistories { get; set; }
+
         [Ignore]
         public MetadataAssetAgent MetadataAgent { get; set; }
+
         [Ignore]
         public MetadataAssetPricelist MetadataPricelist { get; set; }
+
 
         public void DeserializeMetadata()
         {
