@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Common.Metadata", "Sales4Pro.Common.Metadata\MyConveno.Toolkit.Sales4Pro.Common.Metadata.csproj", "{74DD96FB-FB38-43E6-A182-556CEE626DBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost", "MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost\MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost.csproj", "{3929F4FC-3B82-451E-8B51-763281354334}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{74DD96FB-FB38-43E6-A182-556CEE626DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74DD96FB-FB38-43E6-A182-556CEE626DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74DD96FB-FB38-43E6-A182-556CEE626DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3929F4FC-3B82-451E-8B51-763281354334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3929F4FC-3B82-451E-8B51-763281354334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3929F4FC-3B82-451E-8B51-763281354334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3929F4FC-3B82-451E-8B51-763281354334}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
