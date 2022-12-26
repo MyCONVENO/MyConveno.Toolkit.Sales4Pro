@@ -41,7 +41,8 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             }
             catch (Exception ex)
             {
-                return NotFound();
+                Console.WriteLine(ex.Message);
+                return BadRequest();
             }
         }
 
@@ -66,7 +67,8 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             }
             catch (Exception ex)
             {
-                return NotFound();
+                Console.WriteLine(ex.Message);
+                return  BadRequest();
             }
         }
 
@@ -90,7 +92,8 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             }
             catch (Exception ex)
             {
-                return NotFound();
+                Console.WriteLine(ex.Message);
+                return BadRequest();
             }
         }
 

@@ -12,8 +12,8 @@ internal static class RefreshUpdateRefreshLocalTablesList
     //**********************************************************************************
 
     internal static List<ProgressItem> RefreshList(IBaseDataDownloadPlugIn plugIn, 
-                                                 List<ProgressItem> itemswithchanges, 
-                                                 RefreshProgressItem refreshProgressItem)
+                                                   List<ProgressItem> itemswithchanges, 
+                                                   RefreshProgressItem refreshProgressItem)
     {
         //*****************************************************************************************************
         // Gehe durch jedes Objekt (UpdateProgressItem einer Tabelle), wenn die Tabelle Einträge enthält 
