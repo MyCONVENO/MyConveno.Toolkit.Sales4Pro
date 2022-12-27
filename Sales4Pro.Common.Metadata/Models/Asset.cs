@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Sales4Pro.Common.Metadata.Interfaces;
-using SQLite;
 
 namespace Sales4Pro.Common.Metadata.Models
 {
@@ -13,10 +12,9 @@ namespace Sales4Pro.Common.Metadata.Models
             MetadataAsset = new MetadataAsset();
         }
 
-        [PrimaryKey]
         public string AssetID { get; set; }
         public string Metadata { get; set; }
-        [Ignore]
+        
         public MetadataAsset MetadataAsset { get; set; }
 
         public void DeserializeMetadata()

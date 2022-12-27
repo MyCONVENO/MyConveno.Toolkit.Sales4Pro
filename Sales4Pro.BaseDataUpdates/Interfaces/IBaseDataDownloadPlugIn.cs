@@ -6,7 +6,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
 public interface IBaseDataDownloadPlugIn
 {
-    Task ResetUpdateAsync();
+    void ResetUpdate();
     Dictionary<string, long> GetAllUpdateDateTimeTicks();
     List<ProgressItem> GetAllProgressItemsWithLocalUpdateDateTime();
     long GetTableUpdateDateTimeTicks(string tableName);
@@ -17,6 +17,6 @@ public interface IBaseDataDownloadPlugIn
     void SetLastSuccessfulBaseDataUpdateCheckDateTime(DateTime datetime);
     //RefreshProgressItem RefreshProgressItem { get; set; }
     Task<bool> DownloadTablesAsync(List<ProgressItem> syncTables);
-    Sales4ProDatabaseConnection Sales4ProDatabaseConnection { get; set; }
+    //Sales4ProDatabaseConnection Sales4ProDatabaseConnection { get; set; }
     RefreshProgressItem RefreshProgressItem { get; set; }
 }

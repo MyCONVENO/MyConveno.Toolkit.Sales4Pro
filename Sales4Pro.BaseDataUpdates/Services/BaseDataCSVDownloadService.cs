@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Z.Dapper.Plus;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
@@ -14,6 +15,23 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
     {
         baseDataWebServiceHost = webServiceHost;
         InjectedPlugIn = plugIn;
+
+        // *****************************************************************
+        // Dapper Plus licensing
+        string licenseName = "5529;700-myconveno.de"; // für SQLite !!!!!
+        string licenseKey = "27c20de2-a412-b5bf-7d1a-d086088c0759"; // für SQLite !!!!!
+
+        //string licenseKey = "0228402f-b580-4cfe-68ec-87bebc7f0efd"; // für SQL Server !!!!!
+        // ACHTUNG!! Diese Lizenz gilt nur für Dapper.Plus bis Version 4.0.26 !!!!!!
+        DapperPlusManager.AddLicense(licenseName, licenseKey);
+
+        string licenseErrorMessage;
+        if (!DapperPlusManager.ValidateLicense(out licenseErrorMessage))
+        {
+            throw new Exception(licenseErrorMessage);
+        }
+        // *****************************************************************
+
     }
 
     #region Properties
@@ -106,7 +124,7 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
     {
         bool syncOK = false;
         bool success = false;
-       
+
         try
         {
             // breche hier ab, wenn bereits ein Update läuft
@@ -185,9 +203,9 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
     /// Dieser Button führt diesen Task aus.
     /// </summary>
     /// <returns></returns>
-    public async Task ResetUpdateAsync(bool raiseBaseDataDeleted)
+    public void ResetUpdate(bool raiseBaseDataDeleted)
     {
-        await InjectedPlugIn.ResetUpdateAsync();
+        InjectedPlugIn.ResetUpdate();
         FillInitialProgressItemVMs();
     }
 

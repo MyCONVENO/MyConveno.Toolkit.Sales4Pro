@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -13,7 +14,7 @@ public static class UpdateOneTable
     // evtl. verfügbaren Änderungen (Löschungen, neue und
     // geänderte Datenätze 
     // *********************************************************
-    public static async Task<int> UpdateOneTableAsync<T>(Sales4ProDatabaseConnection sales4ProDatabaseConnection,
+    public static async Task<int> UpdateOneTableAsync<T>(IDbConnection connection,
                                                          string containerName,
                                                          ProgressItem progressItem,
                                                          IBaseDataDownloadPlugIn plugIn,
@@ -118,7 +119,7 @@ public static class UpdateOneTable
                 }
                 await Task.Delay(1000);
 
-                processDbListsResult = await ProcessDbLists.ProcessDbListsAsync<T>(rawDataList, sales4ProDatabaseConnection);
+                processDbListsResult = await ProcessDbLists.ProcessDbListsAsync<T>(rawDataList, connection);
             }
 
             progressItem.Changed = processDbListsResult.Key;

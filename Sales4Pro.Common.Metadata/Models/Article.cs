@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Sales4Pro.Common.Metadata.Interfaces;
-using SQLite;
 
 namespace Sales4Pro.Common.Metadata.Models
 {
@@ -31,16 +30,11 @@ namespace Sales4Pro.Common.Metadata.Models
             MetadataArticle = new MetadataArticle();
         }
 
-        [PrimaryKey]
         public string ArticleID { get; set; }
-        [Indexed]
         public string ArticleNumber { get; set; }
-        [Indexed]
         public string ArticleName { get; set; }
         public string LabelNumber { get; set; }
-        [Indexed]
         public string SeasonNumber { get; set; }
-        [Indexed]
         public string ContainsFilter01 { get; set; }
         public string SingleFilter01 { get; set; }
         public string SingleFilter02 { get; set; }
@@ -50,11 +44,9 @@ namespace Sales4Pro.Common.Metadata.Models
         public string HierarchyFilter03 { get; set; }
         public string HierarchyFilter04 { get; set; }
         public string HierarchyFilter05 { get; set; }
-        [Indexed]
         public bool HasStock { get; set; }
         public string Metadata { get; set; }
 
-        [Ignore]
         public MetadataArticle MetadataArticle { get; set; }
 
         public void DeserializeMetadata()

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Z.Dapper.Plus;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
@@ -16,7 +19,7 @@ internal static class ProcessDbLists
     /// <param name="sales4ProDatabaseConnection"></param>
     /// <returns></returns>
 
-    internal static async Task<KeyValuePair<int, DateTime>> ProcessDbListsAsync<T>(List<T> list, Sales4ProDatabaseConnection sales4ProDatabaseConnection)
+    internal static async Task<KeyValuePair<int, DateTime>> ProcessDbListsAsync<T>(List<T> list, IDbConnection connection)
     {
         // *********************************************************
         // Hole den Tabellenname (z.B. Color)
@@ -86,7 +89,7 @@ internal static class ProcessDbLists
 
         string prodIDCommaString = string.Join(",", iDsToBeDeletedList.Select(p => "'" + p.ToString() + "'"));
         string x = "Delete FROM " + tableName + " WHERE " + tableName + "ID IN (" + prodIDCommaString + ")";
-        await sales4ProDatabaseConnection.ExecuteAsync(x);
+        await connection.ExecuteAsync(x);
         // ****************************************************************************
 
 
@@ -96,7 +99,7 @@ internal static class ProcessDbLists
         // (Geänderte Datensätze wurden ja oben bereits gelöscht
         // ****************************************************************************
         if (insertList.Any())
-            await sales4ProDatabaseConnection.InsertAllAsyncRetry(insertList);
+            connection.BulkInsert<T>(insertList);
         // ****************************************************************************
 
 

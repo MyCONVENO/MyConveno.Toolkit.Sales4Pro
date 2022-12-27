@@ -1,10 +1,7 @@
-﻿using SQLite;
-
-namespace Sales4Pro.Common.Metadata.Models
+﻿namespace Sales4Pro.Common.Metadata.Models
 {
     public class ProductImage : BaseModel
     {
-        [PrimaryKey]
         public string ProductImageID { get; set; }
         public string ImageName { get; set; }
         //public byte[] ImageBlob { get; set; }

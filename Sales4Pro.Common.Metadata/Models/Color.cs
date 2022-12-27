@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Sales4Pro.Common.Metadata.Interfaces;
-using SQLite;
 
 namespace Sales4Pro.Common.Metadata.Models
 {
@@ -22,19 +21,10 @@ namespace Sales4Pro.Common.Metadata.Models
             MetadataColor = new MetadataColor();
         }
 
-        [PrimaryKey]
         public string ColorID { get; set; }
-
-        [Indexed]
         public string SeasonNumber { get; set; }
-
-        [Indexed]
         public string LabelNumber { get; set; }
-        
-        [Indexed]
         public string Category { get; set; }
-        
-        [Indexed]
         public string ArticleNumber { get; set; }
         public string ColorNumber { get; set; }
         public string ColorName { get; set; }
@@ -42,7 +32,6 @@ namespace Sales4Pro.Common.Metadata.Models
         public bool HasImage { get; set; }
         public string Metadata { get; set; }
       
-        [Ignore]
         public MetadataColor MetadataColor { get; set; }
 
         public void DeserializeMetadata()
