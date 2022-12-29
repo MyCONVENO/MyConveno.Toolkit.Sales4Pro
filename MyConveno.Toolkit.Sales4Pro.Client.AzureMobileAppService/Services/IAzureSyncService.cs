@@ -15,6 +15,7 @@ public interface IAzureSyncService
     ////////Task<List<SyncShoppingCart>> GetDeserializedShoppingCartsAsync(List<ShoppingCartsFilterEntryItem> filterList = null);
     //string GetExportFileName(SyncShoppingCart cart, int itemsCount);
     Task<int> GetPendingOrdersCountAsync();
+    Task<List<SyncShoppingCart>> GetShoppingCartsAsync();
     Task<SyncShoppingCart> GetShoppingCartAsync(string shoppingCartID);
     Task<int> GetShoppingCartCountAsync();
     ////////Task<MemoryStream> GetShoppingCartItemCatalogPDFAsync(List<ShoppingCartsFilterEntryItem> filterList, string pricelistID);
