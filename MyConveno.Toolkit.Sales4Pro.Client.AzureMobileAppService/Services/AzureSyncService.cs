@@ -351,6 +351,26 @@ public class AzureSyncService : IAzureSyncService
     }
 
     /// <summary>
+    /// Hole ShoppingCarts
+    /// </summary>
+    /// <param name="filterList"></param>
+    /// <returns></returns>
+    public async Task<List<SyncShoppingCart>> GetShoppingCartsAsync()
+    {
+        await InitializeAsync();
+        syncShoppingCartTable = _client.GetOfflineTable<SyncShoppingCart>();
+
+        IQueryable<SyncShoppingCart> syncShoppingCarts = syncShoppingCartTable.Where(w => w.Sent == false &&
+                                                                                          w.StatusID == 10)
+                                                                              .OrderByDescending(o => o.OrderDate)
+                                                                              .IncludeTotalCount()
+                                                                              .Query;
+
+        return syncShoppingCarts.ToList();
+    }
+
+
+    /// <summary>
     /// Hole ShoppingCarts (mit Berücksichtigung der übergebenen Filterliste)
     /// </summary>
     /// <param name="filterList"></param>
