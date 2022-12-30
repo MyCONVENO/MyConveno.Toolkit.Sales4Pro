@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
@@ -30,6 +31,12 @@ public class AzureSyncService : IAzureSyncService
     /// When set to true, the client and table and both initialized.
     /// </summary>
     private bool _initialized = false;
+
+    /// <summary>
+    /// Used for locking the initialization block to ensure only one initialization happens.
+    /// </summary>
+    private readonly SemaphoreSlim _asyncLock = new(1, 1);
+
 
     /// <summary>
     /// When using authentication, the token requestor to use.
@@ -77,8 +84,70 @@ public class AzureSyncService : IAzureSyncService
     //    syncShoppingCartItemTable = _client.GetSyncTable<SyncShoppingCartItem>();
     //}
 
+
+
+    //private async Task InitializeAsync()
+    //{
+    //    // Short circuit, in case we are already initialized.
+    //    if (_initialized)
+    //    {
+    //        return;
+    //    }
+
+    //    try
+    //    {
+    //        // Wait to get the async initialization lock
+    //        await _asyncLock.WaitAsync();
+    //        if (_initialized)
+    //        {
+    //            // This will also execute the async lock.
+    //            return;
+    //        }
+
+    //        var options = new DatasyncClientOptions
+    //        {
+    //            HttpPipeline = new HttpMessageHandler[] { new LoggingHandler() }
+    //        };
+
+    //        // Initialize the client.
+    //        _client = TokenRequestor == null
+    //            ? new DatasyncClient(Constants.ServiceUri, options)
+    //            : new DatasyncClient(Constants.ServiceUri, new GenericAuthenticationProvider(TokenRequestor), options);
+    //        _table = _client.GetRemoteTable<TodoItem>();
+
+    //        // Set _initialied to true to prevent duplication of locking.
+    //        _initialized = true;
+    //    }
+    //    catch (Exception)
+    //    {
+    //        // Re-throw the exception.
+    //        throw;
+    //    }
+    //    finally
+    //    {
+    //        _asyncLock.Release();
+    //    }
+    //}
+
+
+
+
     public async Task InitializeAsync()
     {
+        // Short circuit, in case we are already initialized.
+        if (_initialized)
+        {
+            return;
+        }
+
+        // Wait to get the async initialization lock
+        await _asyncLock.WaitAsync();
+        if (_initialized)
+        {
+            // This will also execute the async lock.
+            return;
+        }
+
         // Create the offline store definition
         var connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName, Query = "?mode=rwc" }.Uri.ToString();
         var store = new OfflineSQLiteStore(connectionString);
@@ -111,13 +180,13 @@ public class AzureSyncService : IAzureSyncService
 
         // Set _initialized to true to prevent duplication of locking.
         _initialized = true;
+
+        _asyncLock.Release();
     }
 
     public async Task<bool> Synchronize(string userid, bool pullTables = true)
     {
-        //WeakReferenceMessenger.Default.Send(new SyncIconIsSpinning(true));
         bool success = await SyncAllTablesAsync(userid, pullTables);
-        //WeakReferenceMessenger.Default.Send(new SyncIconIsSpinning(false));
 
         UpdatePendingOperationDisplay();
 
@@ -148,9 +217,16 @@ public class AzureSyncService : IAzureSyncService
                 PullOptions pullOptions = new() { };
 
                 await syncCustomerNoteTable.PullItemsAsync();
-                await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserID == userId));
-                await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.UserID == userId && w.StatusID == 10));
-                await syncShoppingCartItemTable.PullItemsAsync(syncShoppingCartItemTable.CreateQuery().Where(w => w.UserID == userId));
+                await syncCustomerFavoriteTable.PullItemsAsync();
+                await syncShoppingCartTable.PullItemsAsync();
+                await syncShoppingCartItemTable.PullItemsAsync();
+
+
+
+                //await syncCustomerNoteTable.PullItemsAsync();
+                //await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserID == userId));
+                //await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.UserID == userId && w.StatusID == 10));
+                //await syncShoppingCartItemTable.PullItemsAsync(syncShoppingCartItemTable.CreateQuery().Where(w => w.UserID == userId));
             }
             else
             {
@@ -313,7 +389,7 @@ public class AzureSyncService : IAzureSyncService
         syncShoppingCartTable = _client.GetOfflineTable<SyncShoppingCart>();
 
         // Serialisiere den Paramater in das neue SyncShoppingCart-Objekt
-      // 29.12.2022 MC >>  syncShoppingCart.SerializeMetadata();
+        // 29.12.2022 MC >>  syncShoppingCart.SerializeMetadata();
 
         if (syncShoppingCart.Id == null) // Es handelt sich um eine neue ShoppingCart
             await syncShoppingCartTable.InsertItemAsync(syncShoppingCart);
@@ -572,13 +648,13 @@ public class AzureSyncService : IAzureSyncService
         // Serialisiere den Paramater in das neue SyncShoppingCart-Objekt
         // 29.12.2022 MC >> syncShoppingCartItem.SerializeMetadata();
 
-      
-            if (syncShoppingCartItem.Id == null)
-                await syncShoppingCartItemTable.InsertItemAsync(syncShoppingCartItem);
-            else
-                await syncShoppingCartItemTable.RefreshItemAsync(syncShoppingCartItem);
 
-            return syncShoppingCartItem.Id.ToString();
+        if (syncShoppingCartItem.Id == null)
+            await syncShoppingCartItemTable.InsertItemAsync(syncShoppingCartItem);
+        else
+            await syncShoppingCartItemTable.RefreshItemAsync(syncShoppingCartItem);
+
+        return syncShoppingCartItem.Id.ToString();
     }
 
     public async Task<bool> DeleteShoppingCartItemAsync(SyncShoppingCartItem syncShoppingCartItem)
@@ -592,10 +668,10 @@ public class AzureSyncService : IAzureSyncService
         // Serialisiere den Paramater in das neue SyncShoppingCart-Objekt
         // 29.12.2022 MC >> syncShoppingCartItem.SerializeMetadata();
 
-            // Lösche die übergebene ShoppingCart (soft delete)
-            await syncShoppingCartItemTable.DeleteItemAsync(syncShoppingCartItem);
-            // und gebe true zurück, wenn OK
-            return true;
+        // Lösche die übergebene ShoppingCart (soft delete)
+        await syncShoppingCartItemTable.DeleteItemAsync(syncShoppingCartItem);
+        // und gebe true zurück, wenn OK
+        return true;
     }
 
     #endregion
