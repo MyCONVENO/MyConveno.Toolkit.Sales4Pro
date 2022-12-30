@@ -190,6 +190,11 @@ public class AzureSyncService : IAzureSyncService
 
     public async Task<bool> Synchronize(string userId, bool pullTables)
     {
+        if (_syncIsRunning)
+        {
+            return false;
+        }
+
         _syncIsRunning = true;
 
          UpdatePendingOperationDisplay();
@@ -214,10 +219,10 @@ public class AzureSyncService : IAzureSyncService
             {
                 PullOptions pullOptions = new() { };
 
-                await syncCustomerNoteTable.PullItemsAsync();
-                await syncCustomerFavoriteTable.PullItemsAsync();
+                //await syncCustomerNoteTable.PullItemsAsync();
+                //await syncCustomerFavoriteTable.PullItemsAsync();
                 await syncShoppingCartTable.PullItemsAsync();
-                await syncShoppingCartItemTable.PullItemsAsync();
+                //await syncShoppingCartItemTable.PullItemsAsync();
 
 
 
