@@ -177,10 +177,10 @@ public class AzureSyncService : IAzureSyncService
 
         // Get a reference to the offline tables.
         //_table = _client.GetOfflineTable<TodoItem>();
-        syncCustomerFavoriteTable = _client.GetOfflineTable<SyncCustomerFavorite>();
-        syncCustomerNoteTable = _client.GetOfflineTable<SyncCustomerNote>();
-        syncShoppingCartTable = _client.GetOfflineTable<SyncShoppingCart>();
-        syncShoppingCartItemTable = _client.GetOfflineTable<SyncShoppingCartItem>();
+        syncCustomerFavoriteTable = _client.GetOfflineTable<SyncCustomerFavorite>("SyncCustomerFavorite");
+        syncCustomerNoteTable = _client.GetOfflineTable<SyncCustomerNote>("SyncCustomerNote");
+        syncShoppingCartTable = _client.GetOfflineTable<SyncShoppingCart>("SyncShoppingCart");
+        syncShoppingCartItemTable = _client.GetOfflineTable<SyncShoppingCartItem>("SyncShoppingCartItem");
 
         // Set _initialized to true to prevent duplication of locking.
         _initialized = true;
