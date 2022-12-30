@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost
 {
-    [Route("tables/todoitem")]
+    [Route("tables/synccustomerfavorite")]
     public class SyncCustomerFavoriteController : TableController<SyncCustomerFavorite>
     {
         public SyncCustomerFavoriteController(AppDbContext context) : base(new EntityTableRepository<SyncCustomerFavorite>(context))
