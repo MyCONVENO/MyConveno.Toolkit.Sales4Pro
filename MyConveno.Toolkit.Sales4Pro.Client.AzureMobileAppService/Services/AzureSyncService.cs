@@ -157,10 +157,10 @@ public class AzureSyncService : IAzureSyncService
         var store = new OfflineSQLiteStore(connectionString);
 
         //store.DefineTable<TodoItem>();
-        store.DefineTable<SyncCustomerFavorite>();
-        store.DefineTable<SyncCustomerNote>();
-        store.DefineTable<SyncShoppingCart>();
-        store.DefineTable<SyncShoppingCartItem>();
+        store.DefineTable<SyncCustomerFavorite>("SyncCustomerFavorite");
+        store.DefineTable<SyncCustomerNote>("SyncCustomerNote");
+        store.DefineTable<SyncShoppingCart>("SyncShoppingCart");
+        store.DefineTable<SyncShoppingCartItem>("SyncShoppingCartItem");
 
         var options = new DatasyncClientOptions
         {
@@ -221,15 +221,15 @@ public class AzureSyncService : IAzureSyncService
 
                 //await syncCustomerNoteTable.PullItemsAsync();
                 //await syncCustomerFavoriteTable.PullItemsAsync();
-                await syncShoppingCartTable.PullItemsAsync();
+                //await syncShoppingCartTable.PullItemsAsync();
                 //await syncShoppingCartItemTable.PullItemsAsync();
 
 
 
-                //await syncCustomerNoteTable.PullItemsAsync();
-                //await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserID == userId));
-                //await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.UserID == userId && w.StatusID == 10));
-                //await syncShoppingCartItemTable.PullItemsAsync(syncShoppingCartItemTable.CreateQuery().Where(w => w.UserID == userId));
+                await syncCustomerNoteTable.PullItemsAsync();
+                await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserID == userId));
+                await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.UserID == userId && w.StatusID == 10));
+                await syncShoppingCartItemTable.PullItemsAsync(syncShoppingCartItemTable.CreateQuery().Where(w => w.UserID == userId));
             }
             else
             {
