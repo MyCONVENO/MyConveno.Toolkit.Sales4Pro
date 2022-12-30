@@ -157,10 +157,10 @@ public class AzureSyncService : IAzureSyncService
         var store = new OfflineSQLiteStore(connectionString);
 
         //store.DefineTable<TodoItem>();
-        store.DefineTable<SyncCustomerFavorite>("SyncCustomerFavorite");
-        store.DefineTable<SyncCustomerNote>("SyncCustomerNote");
-        store.DefineTable<SyncShoppingCart>("SyncShoppingCart");
-        store.DefineTable<SyncShoppingCartItem>("SyncShoppingCartItem");
+        store.DefineTable<SyncCustomerFavorite>();
+        store.DefineTable<SyncCustomerNote>();
+        store.DefineTable<SyncShoppingCart>();
+        store.DefineTable<SyncShoppingCartItem>();
 
         var options = new DatasyncClientOptions
         {
@@ -177,10 +177,10 @@ public class AzureSyncService : IAzureSyncService
 
         // Get a reference to the offline tables.
         //_table = _client.GetOfflineTable<TodoItem>();
-        syncCustomerFavoriteTable = _client.GetOfflineTable<SyncCustomerFavorite>("SyncCustomerFavorite");
-        syncCustomerNoteTable = _client.GetOfflineTable<SyncCustomerNote>("SyncCustomerNote");
-        syncShoppingCartTable = _client.GetOfflineTable<SyncShoppingCart>("SyncShoppingCart");
-        syncShoppingCartItemTable = _client.GetOfflineTable<SyncShoppingCartItem>("SyncShoppingCartItem");
+        syncCustomerFavoriteTable = _client.GetOfflineTable<SyncCustomerFavorite>();
+        syncCustomerNoteTable = _client.GetOfflineTable<SyncCustomerNote>();
+        syncShoppingCartTable = _client.GetOfflineTable<SyncShoppingCart>();
+        syncShoppingCartItemTable = _client.GetOfflineTable<SyncShoppingCartItem>();
 
         // Set _initialized to true to prevent duplication of locking.
         _initialized = true;
@@ -218,13 +218,6 @@ public class AzureSyncService : IAzureSyncService
             if (pullTables && (string.IsNullOrEmpty(userId) == false))
             {
                 PullOptions pullOptions = new() { };
-
-                //await syncCustomerNoteTable.PullItemsAsync();
-                //await syncCustomerFavoriteTable.PullItemsAsync();
-                //await syncShoppingCartTable.PullItemsAsync();
-                //await syncShoppingCartItemTable.PullItemsAsync();
-
-
 
                 await syncCustomerNoteTable.PullItemsAsync();
                 await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserID == userId));

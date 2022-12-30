@@ -8,6 +8,8 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost
     public class SyncCustomerFavoriteController : TableController<SyncCustomerFavorite>
     {
         public SyncCustomerFavoriteController(AppDbContext context) : base(new EntityTableRepository<SyncCustomerFavorite>(context))
-        { }
+        {
+            Options = new TableControllerOptions { EnableSoftDelete = true };
+        }
     }
 }
