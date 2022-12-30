@@ -30,6 +30,5 @@ public interface IAzureSyncService
     Task<string> SaveCustomerNoteAsync(SyncCustomerNote syncCustomerNote);
     Task<string> SaveShoppingCartAsync(SyncShoppingCart syncShoppingCart);
     Task<string> SaveShoppingCartItemAsync(SyncShoppingCartItem syncShoppingCartItem);
-    Task<bool> SyncAllTablesAsync(string userId, bool pullTables);
     Task<bool> Synchronize(string userid, bool pullTables = true);
 }

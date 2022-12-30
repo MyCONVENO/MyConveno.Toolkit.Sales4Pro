@@ -32,6 +32,10 @@ public class AzureSyncService : IAzureSyncService
     /// </summary>
     private bool _initialized = false;
 
+    private bool _syncIsRunning = false;
+
+
+
     /// <summary>
     /// Used for locking the initialization block to ensure only one initialization happens.
     /// </summary>
@@ -184,18 +188,12 @@ public class AzureSyncService : IAzureSyncService
         _asyncLock.Release();
     }
 
-    public async Task<bool> Synchronize(string userid, bool pullTables = true)
+    public async Task<bool> Synchronize(string userId, bool pullTables)
     {
-        bool success = await SyncAllTablesAsync(userid, pullTables);
+        _syncIsRunning = true;
 
-        UpdatePendingOperationDisplay();
-
-        return success;
-    }
-
-    public async Task<bool> SyncAllTablesAsync(string userId, bool pullTables)
-    {
-        ReadOnlyCollection<TableOperationError> syncErrors = null;
+         UpdatePendingOperationDisplay();
+       ReadOnlyCollection<TableOperationError> syncErrors = null;
 
         try
         {
@@ -230,6 +228,7 @@ public class AzureSyncService : IAzureSyncService
             }
             else
             {
+                _syncIsRunning = false;
                 return false;
             }
             UpdatePendingOperationDisplay();
@@ -239,6 +238,8 @@ public class AzureSyncService : IAzureSyncService
             if (exc?.PushResult != null)
             { syncErrors = (ReadOnlyCollection<TableOperationError>?)exc?.PushResult.Errors; }
         }
+
+        _syncIsRunning = false;
         return true;
     }
 
