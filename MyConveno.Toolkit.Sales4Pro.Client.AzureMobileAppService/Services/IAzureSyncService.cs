@@ -1,34 +1,33 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
-
-public interface IAzureSyncService
+namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService
 {
-    string AzureURL { get; set; }
-    string LocalSyncDBName { get; set; }
+    public interface IAzureSyncService
+    {
+        string AzureURL { get; set; }
+        string LocalSyncDBName { get; set; }
 
-    Task<bool> ComputeCustomerIsFavoriteAsync(string userID, string customerNumber);
-    Task<bool> DeleteCustomerFavoriteAsync(string userId, string customerNumber);
-    Task DeleteCustomerNoteAsync(SyncCustomerNote syncCustomerNote);
-    Task<bool> DeleteShoppingCartAsync(SyncShoppingCart syncShoppingCart);
-    Task<bool> DeleteShoppingCartItemAsync(SyncShoppingCartItem syncShoppingCartItem);
-    Task<List<SyncCustomerFavorite>> GetCustomerFavoritesAsync(string userId);
-    Task<List<SyncCustomerNote>> GetCustomerNotesAsync(string customerNumber);
-    ////////Task<List<SyncShoppingCart>> GetDeserializedShoppingCartsAsync(List<ShoppingCartsFilterEntryItem> filterList = null);
-    //string GetExportFileName(SyncShoppingCart cart, int itemsCount);
-    Task<int> GetPendingOrdersCountAsync();
-    Task<List<SyncShoppingCart>> GetShoppingCartsAsync();
-    Task<SyncShoppingCart> GetShoppingCartAsync(string shoppingCartID);
-    Task<int> GetShoppingCartCountAsync();
-    ////////Task<MemoryStream> GetShoppingCartItemCatalogPDFAsync(List<ShoppingCartsFilterEntryItem> filterList, string pricelistID);
-    Task<List<SyncShoppingCartItem>> GetShoppingCartItemsAsync(string shoppingCartID, string searchParameter, bool specialSort = false);
-    Task<int> GetShoppingCartItemsCountAsync(string shoppingCartID);
-    Task InitializeAsync();
-    Task ResetShoppingCartPricesAsync(string ShoppingCartID);
-    Task<string> SaveCustomerFavoriteAsync(SyncCustomerFavorite syncCustomerFavorite);
-    Task<string> SaveCustomerNoteAsync(SyncCustomerNote syncCustomerNote);
-    Task<string> SaveShoppingCartAsync(SyncShoppingCart syncShoppingCart);
-    Task<string> SaveShoppingCartItemAsync(SyncShoppingCartItem syncShoppingCartItem);
-    Task<bool> Synchronize(string userid, bool pullTables = true);
+        Task<bool> DeleteCustomerFavoriteAsync(string userId, string customerNumber);
+        Task<bool> DeleteCustomerNoteAsync(string id);
+        Task<bool> DeleteShoppingCartAsync(string id);
+        Task<bool> DeleteShoppingCartItemAsync(string id);
+        Task<SyncCustomerFavorite> GetCustomerFavoriteAsync(string id);
+        Task<List<SyncCustomerFavorite>> GetCustomerFavoritesAsync(string userId);
+        Task<SyncCustomerNote> GetCustomerNoteAsync(string id);
+        Task<List<SyncCustomerNote>> GetCustomerNotesAsync(string customerNumber);
+        Task<int> GetPendingOrdersCountAsync();
+        Task<SyncShoppingCart> GetShoppingCartAsync(string id);
+        Task<int> GetShoppingCartCountAsync();
+        Task<SyncShoppingCartItem> GetShoppingCartItemAsync(string id);
+        Task<List<SyncShoppingCartItem>> GetShoppingCartItemsAsync(string id, string searchParameter, bool specialSort = false);
+        Task<int> GetShoppingCartItemsCountAsync(string shoppingCartID);
+        Task<List<SyncShoppingCart>> GetShoppingCartsAsync();
+        Task InitializeAsync();
+        Task<string> SaveCustomerFavoriteAsync(SyncCustomerFavorite upsertItem);
+        Task<string> SaveCustomerNoteAsync(SyncCustomerNote upsertItem);
+        Task<string> SaveShoppingCartAsync(SyncShoppingCart upsertItem);
+        Task<string> SaveShoppingCartItemAsync(SyncShoppingCartItem upsertItem);
+        Task<bool> Synchronize(string userId, bool pullTables);
+    }
 }
