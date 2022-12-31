@@ -18,7 +18,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService
         Task<List<SyncCustomerNote>> GetCustomerNotesAsync(string customerNumber);
         Task<int> GetPendingOrdersCountAsync();
         Task<SyncShoppingCart> GetShoppingCartAsync(string id);
-        Task<int> GetShoppingCartCountAsync();
+        Task<int> GetShoppingCartsCountAsync();
         Task<SyncShoppingCartItem> GetShoppingCartItemAsync(string id);
         Task<List<SyncShoppingCartItem>> GetShoppingCartItemsAsync(string id, string searchParameter, bool specialSort = false);
         Task<int> GetShoppingCartItemsCountAsync(string shoppingCartID);

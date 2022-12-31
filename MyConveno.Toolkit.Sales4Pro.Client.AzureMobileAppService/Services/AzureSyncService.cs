@@ -392,7 +392,7 @@ public class AzureSyncService : IAzureSyncService
         return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
     }
 
-    public async Task<int> GetShoppingCartCountAsync()
+    public async Task<int> GetShoppingCartsCountAsync()
     {
         await InitializeAsync();
         syncShoppingCartTable = _client?.GetOfflineTable<SyncShoppingCart>();
@@ -498,7 +498,7 @@ public class AzureSyncService : IAzureSyncService
 
     #region Get Data
 
-    public virtual async Task<int> GetPendingOrdersCountAsync()
+    public async Task<int> GetPendingOrdersCountAsync()
     {
         await InitializeAsync();
         syncShoppingCartTable = _client?.GetOfflineTable<SyncShoppingCart>();
