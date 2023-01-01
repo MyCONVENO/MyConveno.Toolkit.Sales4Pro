@@ -5,8 +5,8 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService
 {
     public interface IAzureSyncService
     {
-        string AzureURL { get; set; }
-        string LocalSyncDBName { get; set; }
+        string AzureURL { get; init; }
+        string LocalSyncDBName { get; init; }
 
         Task<bool> DeleteCustomerFavoriteAsync(string userId, string customerNumber);
         Task<bool> DeleteCustomerNoteAsync(string id);

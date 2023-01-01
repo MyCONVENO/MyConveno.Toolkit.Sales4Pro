@@ -6,18 +6,18 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 
 public class SyncShoppingCartItem : DatasyncClientData, IEquatable<SyncShoppingCartItem>
 {
-    public string UserID { get; set; }
+    public string? UserID { get; set; }
 
     [Required, MinLength(1)]
-    public string ShoppingCartID { get; set; }
+    public string? ShoppingCartID { get; set; }
     public long ShoppingCartItemSort { get; set; }
 
-    public string ArticleMetadata { get; set; }
-    public string ColorMetadata { get; set; }
-    public string QuantityMetadata { get; set; }
-    
-    
-    public bool Equals(SyncShoppingCartItem other)
+    public string? ArticleMetadata { get; set; }
+    public string? ColorMetadata { get; set; }
+    public string? QuantityMetadata { get; set; }
+
+
+    bool IEquatable<SyncShoppingCartItem>.Equals(SyncShoppingCartItem? other)
     => other != null && other.Id == Id && other.UserID == UserID && other.ShoppingCartID == ShoppingCartID;
 
 }

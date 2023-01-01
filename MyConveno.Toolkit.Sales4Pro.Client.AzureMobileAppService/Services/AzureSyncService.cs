@@ -43,8 +43,8 @@ public class AzureSyncService : IAzureSyncService
     /// </summary>
     public Func<Task<AuthenticationToken>>? TokenRequestor;
 
-    public string AzureURL { get; set; }
-    public string LocalSyncDBName { get; set; }
+    public string AzureURL { get; init; }
+    public string LocalSyncDBName { get; init; }
 
     #region Commands
 
