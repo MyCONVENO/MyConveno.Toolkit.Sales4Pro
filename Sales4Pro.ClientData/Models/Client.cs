@@ -1,5 +1,6 @@
 ﻿using MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
@@ -19,18 +20,18 @@ public class Client : IClient
 
     public void SerializeMetadata()
     {
-        Metadata = JsonConvert.SerializeObject((MetadataClientContent)MetadataContent);
+        Metadata = JsonSerializer.Serialize(MetadataContent);
     }
 
     public void DeserializeMetadata()
     {
-        JsonSerializerSettings settings = new JsonSerializerSettings
+        JsonSerializerOptions settings = new()
         {
-            NullValueHandling = NullValueHandling.Ignore
+             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         };
 
         if (!string.IsNullOrEmpty(Metadata.Trim())) // Wichtig!, sonst wird Content auf null gesetzt
-            MetadataContent = JsonConvert.DeserializeObject<MetadataClientContent>(Metadata, settings);
+            MetadataContent = JsonSerializer.Deserialize<MetadataClientContent>(Metadata, settings);
     }
 
 }

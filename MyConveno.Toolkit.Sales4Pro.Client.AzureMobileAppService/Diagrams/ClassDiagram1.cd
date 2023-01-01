@@ -8,5 +8,37 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.SyncCustomerNote">
+    <Position X="9" Y="3" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIACAAAEAAAAAAAAAAAAAAABAAAgAAAA=</HashCode>
+      <FileName>Models\SyncCustomerNote.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.SyncCustomerFavorite">
+    <Position X="9" Y="0.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACACAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SyncCustomerFavorite.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.SyncShoppingCart">
+    <Position X="9" Y="6" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>CIAAgGIAAAQABAIAAIAASAgIABACIAAAgAAQABAAAAA=</HashCode>
+      <FileName>Models\SyncShoppingCart.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.SyncShoppingCartItem">
+    <Position X="9" Y="12.25" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAgAAAAAAAACUgAAAAAAQAA=</HashCode>
+      <FileName>Models\SyncShoppingCartItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
