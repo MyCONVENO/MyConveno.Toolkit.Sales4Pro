@@ -4,7 +4,7 @@ using System;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 
-public abstract class SyncShoppingCartItem : DatasyncClientData, IEquatable<SyncShoppingCartItem>
+public class SyncShoppingCartItem : DatasyncClientData, IEquatable<SyncShoppingCartItem>
 {
     public string? UserID { get; set; }
 

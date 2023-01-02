@@ -3,7 +3,7 @@ using System;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 
-public abstract class SyncCustomerNote : DatasyncClientData, IEquatable<SyncCustomerNote>
+public class SyncCustomerNote : DatasyncClientData, IEquatable<SyncCustomerNote>
 {
     public string CustomerNumber { get; init; }
     public string NoteText { get; set; }
