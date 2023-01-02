@@ -3,7 +3,7 @@ using System;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 
-public class SyncShoppingCart : DatasyncClientData, IEquatable<SyncShoppingCart>
+public abstract class SyncShoppingCart : DatasyncClientData, IEquatable<SyncShoppingCart>
 {
     public string? OrderNumber { get; set; }
     public DateTime OrderDate { get; set; }

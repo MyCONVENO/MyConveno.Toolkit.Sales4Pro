@@ -3,7 +3,7 @@ using System;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 
-public class SyncCustomerFavorite : DatasyncClientData, IEquatable<SyncCustomerFavorite>
+public abstract class SyncCustomerFavorite : DatasyncClientData, IEquatable<SyncCustomerFavorite>
 {
     public string UserID { get; init; }
     public string CustomerNumber { get; init; }
