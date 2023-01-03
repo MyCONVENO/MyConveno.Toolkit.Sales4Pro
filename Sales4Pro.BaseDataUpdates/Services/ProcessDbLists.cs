@@ -1,10 +1,6 @@
 ﻿using Dapper;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using Z.Dapper.Plus;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
@@ -70,7 +66,7 @@ internal static class ProcessDbLists
             // Wenn der Datensatz NICHT als IsDeleted markiert ist,
             // wird er zur Insert-Liste hinzugefügt
             //if (bitem.IsDeleted == false)
-                insertList.Add(item);
+            insertList.Add(item);
         }
         // ****************************************************************************
 

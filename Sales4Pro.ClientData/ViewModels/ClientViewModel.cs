@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces;
-using System;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 

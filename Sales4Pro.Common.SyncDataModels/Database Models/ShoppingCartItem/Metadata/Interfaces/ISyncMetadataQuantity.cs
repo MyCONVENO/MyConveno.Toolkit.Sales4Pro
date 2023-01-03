@@ -51,5 +51,5 @@ public interface ISyncMetadataQuantity
     ItemSize ItemSize28 { get; set; }
     ItemSize ItemSize29 { get; set; }
     ItemSize ItemSize30 { get; set; }
-   
+
 }

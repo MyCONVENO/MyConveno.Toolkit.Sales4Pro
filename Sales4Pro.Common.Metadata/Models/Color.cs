@@ -31,7 +31,7 @@ namespace Sales4Pro.Common.Metadata.Models
         public bool StockArticle { get; set; }
         public bool HasImage { get; set; }
         public string Metadata { get; set; }
-      
+
         public MetadataColor MetadataColor { get; set; }
 
         public void DeserializeMetadata()

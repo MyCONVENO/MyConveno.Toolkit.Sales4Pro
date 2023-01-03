@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-
-namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
 
 public interface IBaseDataImageDownloadPlugIn
 {

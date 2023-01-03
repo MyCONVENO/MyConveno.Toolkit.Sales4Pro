@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces;
+﻿using MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -17,7 +17,7 @@ public class SyncShoppingCart : ISyncShoppingCart
         Conditions = new SyncMetadataConditions();
         Association = new SyncMetadataAssociation();
         Device = new SyncMetadataDevice();
-       
+
         OrderDate = DateTime.Today.Date;
         SentDateTime = new DateTime(1950, 1, 1);
 

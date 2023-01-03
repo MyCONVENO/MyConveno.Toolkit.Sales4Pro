@@ -1,6 +1,5 @@
 ﻿using Microsoft.Datasync.Client;
 using System.ComponentModel.DataAnnotations;
-using System;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 

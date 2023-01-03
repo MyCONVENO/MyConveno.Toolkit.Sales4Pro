@@ -1,12 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
@@ -108,10 +101,10 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
                 return false;
 
 
-            DateTime updateDateTime = new (2000, 1, 1);
+            DateTime updateDateTime = new(2000, 1, 1);
 
             // Ein Container für Results
-            List<KeyValuePair<int, DateTime>> results = new ();
+            List<KeyValuePair<int, DateTime>> results = new();
 
             using (AzureBlobStorageServices azureService = new(containerName))
             {
@@ -119,7 +112,7 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
                 results.Add(ProcessProductImageListsAsync(productImages, ct));
             }
 
-            KeyValuePair<int, DateTime> tempPair = new (results.Sum(r => r.Key), results.Max(r => r.Value));
+            KeyValuePair<int, DateTime> tempPair = new(results.Sum(r => r.Key), results.Max(r => r.Value));
             result += tempPair.Key;
 
             if (updateDateTime < tempPair.Value)

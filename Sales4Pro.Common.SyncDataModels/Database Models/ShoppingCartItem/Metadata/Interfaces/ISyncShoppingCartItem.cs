@@ -13,7 +13,7 @@ public interface ISyncShoppingCartItem
     ISyncMetadataArticle Article { get; set; }
     ISyncMetadataColor Color { get; set; }
     ISyncMetadataQuantity Quantity { get; set; }
-  
+
     void DeserializeMetadata();
     void SerializeMetadata();
 }

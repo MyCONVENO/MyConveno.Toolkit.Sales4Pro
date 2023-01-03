@@ -68,7 +68,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return  BadRequest();
+                return BadRequest();
             }
         }
 

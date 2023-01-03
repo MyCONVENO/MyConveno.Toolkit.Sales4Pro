@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService
 {
     public interface IAzureSyncService
     {

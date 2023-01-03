@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using static MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ProgressItemViewModel;
+﻿using static MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ProgressItemViewModel;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 

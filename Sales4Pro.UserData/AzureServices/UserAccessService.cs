@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
+﻿using System.Net.Http.Json;
 
 //https://www.stevejgordon.co.uk/sending-and-receiving-json-using-httpclient-with-system-net-http-json
 

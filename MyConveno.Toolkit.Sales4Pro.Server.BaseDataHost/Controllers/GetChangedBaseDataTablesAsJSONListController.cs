@@ -20,11 +20,11 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost
         public ActionResult<string> Get(string jsontablelist)
         {
             long initDatetimeTicks = new DateTime(2000, 1, 1).Ticks;
-            CSVBaseDataService service = new (_config);
+            CSVBaseDataService service = new(_config);
 
             Dictionary<string, long> jsonTableDict = JsonConvert.DeserializeObject<Dictionary<string, long>>(jsontablelist);
 
-            List<UpdateProgressItem> results = new ();
+            List<UpdateProgressItem> results = new();
 
             foreach (string key in jsonTableDict.Keys)
             {

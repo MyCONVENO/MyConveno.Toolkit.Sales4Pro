@@ -14,7 +14,7 @@ namespace Sales4Pro.Common.Metadata.Models
 
         public string AssetID { get; set; }
         public string Metadata { get; set; }
-        
+
         public MetadataAsset MetadataAsset { get; set; }
 
         public void DeserializeMetadata()

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MyConveno.Toolkit.Sales4Pro.Client.UserData;
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.UserData;
 
 public class MetadataUserContent : IMetadataUserContent
 {

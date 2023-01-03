@@ -5,7 +5,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels;
 public class SyncMetadataConditionsDiscount : ISyncMetadataConditionsDiscount
 {
     public string Name { get; set; } = string.Empty;
-    public string Id { get; set; }= string.Empty;
+    public string Id { get; set; } = string.Empty;
     public int SignDigit { get; set; } = -1; //Wertart (-1 = Rabatt, +1 = Zuschlag)
     public double DefaultValue { get; set; } = 0.0d;
     public double Value { get; set; } = 0.0d;

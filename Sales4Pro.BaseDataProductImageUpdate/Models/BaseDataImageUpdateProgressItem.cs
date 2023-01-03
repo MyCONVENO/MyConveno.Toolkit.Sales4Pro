@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
 
 public class BaseDataImageUpdateProgressItem
 {

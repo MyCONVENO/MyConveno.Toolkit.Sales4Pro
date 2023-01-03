@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
 public interface IClientAccessService
 {

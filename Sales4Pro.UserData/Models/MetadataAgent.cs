@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace MyConveno.Toolkit.Sales4Pro.Client.UserData;
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.UserData;
 
 public class MetadataAgent
 {

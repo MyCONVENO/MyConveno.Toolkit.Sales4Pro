@@ -30,15 +30,15 @@ public interface ISyncShoppingCart
     DateTime SentDateTime { get; set; }
     int StatusID { get; set; }
     string UserID { get; set; }
-   
-     ISyncMetadataHeader Header { get; set; }
-     ISyncMetadataAgent Agent { get; set; }
-     ISyncMetadataCustomer Customer { get; set; }
-     ISyncMetadataDeliveryAddress DeliveryAddress { get; set; }
-     ISyncMetadataInvoiceAddress InvoiceAddress { get; set; }
-     ISyncMetadataAssociation Association { get; set; }
-     ISyncMetadataConditions Conditions { get; set; }
-     ISyncMetadataDevice Device { get; set; }
-     List<SyncShoppingCartItem> SyncShoppingCartItems { get; set; }
+
+    ISyncMetadataHeader Header { get; set; }
+    ISyncMetadataAgent Agent { get; set; }
+    ISyncMetadataCustomer Customer { get; set; }
+    ISyncMetadataDeliveryAddress DeliveryAddress { get; set; }
+    ISyncMetadataInvoiceAddress InvoiceAddress { get; set; }
+    ISyncMetadataAssociation Association { get; set; }
+    ISyncMetadataConditions Conditions { get; set; }
+    ISyncMetadataDevice Device { get; set; }
+    List<SyncShoppingCartItem> SyncShoppingCartItems { get; set; }
 
 }

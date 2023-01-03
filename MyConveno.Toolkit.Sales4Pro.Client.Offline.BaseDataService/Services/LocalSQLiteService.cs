@@ -265,12 +265,211 @@ public class LocalSQLiteService : ILocalSQLiteService
         sbSelect.Append(string.Format("ArticleNumber = '{0}' ", articlenumber));
         sbSelect.Append("AND ");
         sbSelect.Append(string.Format("ColorNumber = '{0}'", colornumber));
-        
+
         IEnumerable<string> sqliteResultlist = await Connection.QueryAsync<string>(sbSelect.ToString());
 
         if (sqliteResultlist is null) return string.Empty;
-                
+
         return sqliteResultlist.FirstOrDefault() ?? string.Empty;
+    }
+
+    #endregion
+
+
+    #region Hierarchy, Single Filter and Others
+
+    // -----------------------------------------------------------------------
+    // Holt aus den Stammdaten eine kompakte Liste mit nur den Feldern,
+    // die als Basis für unsere Filter benötigt werden.
+    // Somit verkürzt sich die Ladezeit der Filter-ComboBoxen sehr
+    // -----------------------------------------------------------------------
+    // !! Wird nur beim Öffnen (NavigatedTo) der GridPage einmal ausgeführt !!
+    // -----------------------------------------------------------------------
+
+
+    public async Task<List<HierarchyAndSingleFilterResult>> GetFilterFieldslistAsync()
+    {
+        await InitializeAsync();
+
+
+        StringBuilder sbSelect = new();
+        sbSelect.Append("SELECT DISTINCT ");
+        sbSelect.Append("SeasonNumber, ");
+        sbSelect.Append("LabelNumber, ");
+        sbSelect.Append("HierarchyFilter01, ");
+        sbSelect.Append("HierarchyFilter02, ");
+        sbSelect.Append("HierarchyFilter03, ");
+        sbSelect.Append("HierarchyFilter04, ");
+        sbSelect.Append("HierarchyFilter05, ");
+        sbSelect.Append("SingleFilter01 ");
+        sbSelect.Append("FROM Article ");
+
+        IEnumerable<HierarchyAndSingleFilterResult> result = await Connection.QueryAsync<HierarchyAndSingleFilterResult>(sbSelect.ToString());
+
+        return result.ToList() ?? new List<HierarchyAndSingleFilterResult>();
+    }
+
+    /// <summary>
+    // -----------------------------------------------------------------------
+    /// Wir benötigen diese Funktion für das Füllen der Vorschlagsliste der AutoSuggestBox
+    // -----------------------------------------------------------------------
+    public async Task<List<ContainsFilter01Result>> GetContainsFilter01ResultsAsync(List<CatalogFilterEntryItem> selectedFilters, string filterText)
+    {
+        if (string.IsNullOrEmpty(filterText))
+            return new List<ContainsFilter01Result>();
+
+        await InitializeAsync();
+
+        StringBuilder sbSelect = new();
+        sbSelect.Append("SELECT DISTINCT ");
+        sbSelect.Append("ContainsFilter01, ");
+        sbSelect.Append("ArticleNumber ");
+        sbSelect.Append("FROM Article ");
+        sbSelect.Append(string.Format("WHERE (ContainsFilter01 LIKE '%{0}%') AND ", filterText));
+
+        foreach (CatalogFilterEntryItem f in selectedFilters.Where(w => w.FilterGroup == CatalogFilterGroupesEnum.PreFilter)) // Es wurden PreFilter (Saison oder Label) übergeben
+        {
+            switch (f.FilterType)
+            {
+                case CatalogFilterTypesEnum.Catalog: // Ein Filter mit LabelNumber in FilterTextContent ist vorhanden
+                    sbSelect.Append("(LabelNumber = '" + f.FilterTextContent + "') AND ");
+                    break;
+                case CatalogFilterTypesEnum.Season: // Ein Filter mit SaisonNumber in FilterTextContent ist vorhanden
+                    sbSelect.Append("(SeasonNumber = '" + f.FilterTextContent + "') AND ");
+                    break;
+            }
+        }
+
+        // Entferne das letzte "AND" aus dem Select String
+        sbSelect.Remove(sbSelect.Length - 4, 4);
+
+        sbSelect.Append("ORDER BY ArticleNumber ");
+        sbSelect.Append("LIMIT 100 ");
+
+        IEnumerable<ContainsFilter01Result> result = await Connection.QueryAsync<ContainsFilter01Result>(sbSelect.ToString());
+
+        if (!result.Any())
+            result.Append(new ContainsFilter01Result() { ArticleNumber = String.Empty, ContainsFilter01 = "Keine Ergebnisse gefunden" });
+
+        return result.ToList() ?? new List<ContainsFilter01Result>();
+    }
+
+    public async Task<List<ContainsFilter01Result>> GetContainsFilter01ResultsAsync(List<CatalogFilterEntryItem> selectedFilters)
+    {
+        await InitializeAsync();
+
+        StringBuilder sbSelect = new();
+        sbSelect.Append("SELECT DISTINCT ");
+        sbSelect.Append("ContainsFilter01, ");
+        sbSelect.Append("ArticleNumber ");
+        sbSelect.Append("FROM Article ");
+        sbSelect.Append(string.Format("WHERE "));
+
+        foreach (CatalogFilterEntryItem f in selectedFilters.Where(w => w.FilterGroup == CatalogFilterGroupesEnum.PreFilter)) // Es wurden PreFilter (Saison oder Label) übergeben
+        {
+            switch (f.FilterType)
+            {
+                case CatalogFilterTypesEnum.Catalog: // Ein Filter mit LabelNumber in FilterTextContent ist vorhanden
+                    sbSelect.Append("(LabelNumber = '" + f.FilterTextContent + "') AND ");
+                    break;
+                case CatalogFilterTypesEnum.Season: // Ein Filter mit SaisonNumber in FilterTextContent ist vorhanden
+                    sbSelect.Append("(SeasonNumber = '" + f.FilterTextContent + "') AND ");
+                    break;
+            }
+        }
+
+        // Entferne das letzte "AND" aus dem Select String
+        sbSelect.Remove(sbSelect.Length - 4, 4);
+
+        sbSelect.Append("ORDER BY ArticleNumber ");
+
+        IEnumerable<ContainsFilter01Result> result = await Connection.QueryAsync<ContainsFilter01Result>(sbSelect.ToString());
+
+        if (!result.Any())
+            result.Append(new ContainsFilter01Result() { ArticleNumber = String.Empty, ContainsFilter01 = "Keine Ergebnisse gefunden" });
+
+        return result.ToList() ?? new List<ContainsFilter01Result>();
+    }
+
+
+    /// <summary>
+    // -----------------------------------------------------------------------
+    /// ArtikelIds Suchen
+    // -----------------------------------------------------------------------
+    /// Suche in der Color-Tabelle nach den übergebenen Filterkriterien (SelectedFilters)
+    /// Die gefundenen Datensätze werden nach ArticleId gruppiert
+    /// Diese ArticleIds werden dann zurückgegeben
+    /// </summary>
+    /// <param name="filterList"></param>
+    /// <returns></returns> 
+    public async Task<List<ArticleCollection>> GetArticleCollectionAsync(List<CatalogFilterEntryItem> filterList)
+    {
+        // ********************************************************************************************
+        // Überprüfe zuerst, ob die übergebenen Filter den Bedingungen entsprechen
+        // Wenn nicht, gebe eine leere Liste vom Typ ShoppingCartItem zurück
+
+        // Wir haben nur einen einzigen Filter, und der ist NICHT vom Typ (ArticleID oder ColorID oder Single)
+        //  Dann gebe eine leere Liste (ArticleIdModel) zurück
+        //if (!filterList.Any(f => f.FilterType == CatalogFilterTypesEnum.ArticleID ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Contains01 ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Single01 ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Single02 ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Single03 ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Hierarchy01))
+        //    return new List<ArticleCollectionModel>();
+
+        // Wir haben zwei Filtereinträge und einer davon ist der InStock-Filter
+        //if (filterList.Count == 2 && filterList.Any(f => f.FilterType == CatalogFilterTypesEnum.InStock))
+        //    return new List<DBShoppingCartItem>();
+
+        // Wir haben zwei Filtereinträge und sie sind vom Typ Label und Season (keine sonstigen Filter)
+        //if (filterList.Count == 2 && filterList.Any(f => f.FilterType == CatalogFilterTypesEnum.Label) && filterList.Any(f => f.FilterType == CatalogFilterTypesEnum.Season))
+        //    return new List<ArticleCollectionModel>();
+
+        // Es ist ein Filter IsSticky enthalten, der ist aber true  
+        //if (filterList.Any(f => f.FilterIsSticky == false) == false)
+        //    return new List<ArticleCollectionModel>();
+        // ********************************************************************************************
+
+        await InitializeAsync();
+
+        StringBuilder sbSelect = new();
+        sbSelect.Append("SELECT ArticleId, ArticleNumber, HasStock ");
+        sbSelect.Append("FROM Article ");
+        sbSelect.Append("WHERE ");
+
+        bool hasTrailingAND = false;
+
+        foreach (CatalogFilterEntryItem f in filterList) // Es wurden Filter übergeben
+        {
+            switch (f.FilterType)
+            {
+                case CatalogFilterTypesEnum.Catalog: // Ein Filter mit LabelNumber in FilterTextContent ist vorhanden
+                    sbSelect.Append("(LabelNumber = '" + f.FilterTextContent + "') AND ");
+                    break;
+                case CatalogFilterTypesEnum.Season: // Ein Filter mit SaisonNumber in FilterTextContent ist vorhanden
+                    sbSelect.Append("(SeasonNumber = '" + f.FilterTextContent + "') AND ");
+                    break;
+                case CatalogFilterTypesEnum.Contains01:
+                    sbSelect.Append("(ContainsFilter01 LIKE '%" + f.FilterTextContent + "%') AND ");
+                    break;
+                case CatalogFilterTypesEnum.Single01:
+                    if (f.FilterTextContent != "*")
+                        sbSelect.Append("(SingleFilter01 = '" + f.FilterTextContent + "') AND ");
+                    break;
+            }
+            hasTrailingAND = true;
+        }
+
+        if (hasTrailingAND)
+            sbSelect.Remove(sbSelect.Length - 4, 4);  // Entferne ggf. das letzte "AND" aus dem Select String
+        else
+            sbSelect.Remove(sbSelect.Length - 6, 6);  // Entferne ggf. das "WHERE" aus dem Select String
+
+        // Wende den Selectstring an
+        IEnumerable<ArticleCollection> sqliteResultlist = await Connection.QueryAsync<ArticleCollection>(sbSelect.ToString());
+
+        return sqliteResultlist.ToList() ?? new List<ArticleCollection>();
     }
 
     #endregion

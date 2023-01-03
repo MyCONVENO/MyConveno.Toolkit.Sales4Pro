@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Z.Dapper.Plus;
+﻿using Z.Dapper.Plus;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 

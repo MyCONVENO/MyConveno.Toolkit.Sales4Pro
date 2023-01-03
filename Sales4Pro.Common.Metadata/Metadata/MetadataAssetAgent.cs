@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Sales4Pro.Common.Metadata
 {
@@ -26,7 +25,7 @@ namespace Sales4Pro.Common.Metadata
         public string CollectionFilter { get; set; }
         public string DefaultPaymentTermText { get; set; }
         public List<MetadataAssetCatalog> Catalogs { get; set; }
-        
+
         public override string ToString()
         {
             return string.Format("{0} ({1})", Name, Number);

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
 internal static class RefreshUpdateRefreshLocalTablesList
 {
@@ -11,8 +8,8 @@ internal static class RefreshUpdateRefreshLocalTablesList
     // Wichtig ist hier nur der Eintrag [TotalChanges] in den einzelnen Items (Tabellen)
     //**********************************************************************************
 
-    internal static List<ProgressItem> RefreshList(IBaseDataDownloadPlugIn plugIn, 
-                                                   List<ProgressItem> itemswithchanges, 
+    internal static List<ProgressItem> RefreshList(IBaseDataDownloadPlugIn plugIn,
+                                                   List<ProgressItem> itemswithchanges,
                                                    RefreshProgressItem refreshProgressItem)
     {
         //*****************************************************************************************************

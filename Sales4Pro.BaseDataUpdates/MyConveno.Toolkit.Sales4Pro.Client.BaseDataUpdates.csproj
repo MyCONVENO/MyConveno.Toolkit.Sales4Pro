@@ -3,7 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 	<LangVersion>10.0</LangVersion>
-	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<Authors>Michael Coelsch (MyConveno)</Authors>
 	<Description>MyConveno Sales4Pro Toolkit</Description>
 	<Copyright>© 2022 MyConveno. All rights reserved.</Copyright>

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Datasync.Client;
-using System;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 

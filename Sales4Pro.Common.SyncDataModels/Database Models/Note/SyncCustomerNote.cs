@@ -3,7 +3,7 @@ using System;
 
 namespace MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels;
 
-public class SyncCustomerNote: ISyncCustomerNote
+public class SyncCustomerNote : ISyncCustomerNote
 {
     [Newtonsoft.Json.JsonProperty("Id")]
     public string Id { get; set; }

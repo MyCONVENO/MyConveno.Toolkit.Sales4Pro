@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces;
+﻿using MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.Interfaces;
+using Newtonsoft.Json;
 
 namespace MyConveno.Toolkit.Sales4Pro.Common.SyncDataModels;
 
