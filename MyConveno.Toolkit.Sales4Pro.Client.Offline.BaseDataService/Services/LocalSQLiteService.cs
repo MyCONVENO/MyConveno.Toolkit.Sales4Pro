@@ -35,6 +35,12 @@ public class LocalSQLiteService : ILocalSQLiteService
 
     #region Customers
 
+    public async Task<int> GetCustomersCountAsync()
+    {
+        await InitializeAsync();
+        return await Connection.ExecuteScalarAsync<int>("Select Count(*) FROM Customer");
+    }
+
     public virtual async Task<IList<Customer>> GetCustomersAsync(List<CustomersFilterEntryItem> filterList)
     {
         await InitializeAsync();
@@ -273,8 +279,89 @@ public class LocalSQLiteService : ILocalSQLiteService
         return sqliteResultlist.FirstOrDefault() ?? string.Empty;
     }
 
-    #endregion
 
+    /// <summary>
+    // -----------------------------------------------------------------------
+    /// ArtikelIds Suchen
+    // -----------------------------------------------------------------------
+    /// Suche in der Color-Tabelle nach den übergebenen Filterkriterien (SelectedFilters)
+    /// Die gefundenen Datensätze werden nach ArticleId gruppiert
+    /// Diese ArticleIds werden dann zurückgegeben
+    /// </summary>
+    /// <param name="filterList"></param>
+    /// <returns></returns> 
+    public async Task<List<ArticleCollection>> GetArticleCollectionModelsFromArticlesAsync(List<CatalogFilterEntryItem> filterList)
+    {
+        // ********************************************************************************************
+        // Überprüfe zuerst, ob die übergebenen Filter den Bedingungen entsprechen
+        // Wenn nicht, gebe eine leere Liste vom Typ ShoppingCartItem zurück
+
+        // Wir haben nur einen einzigen Filter, und der ist NICHT vom Typ (ArticleID oder ColorID oder Single)
+        //  Dann gebe eine leere Liste (ArticleIdModel) zurück
+        //if (!filterList.Any(f => f.FilterType == CatalogFilterTypesEnum.ArticleID ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Contains01 ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Single01 ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Single02 ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Single03 ||
+        //                         f.FilterType == CatalogFilterTypesEnum.Hierarchy01))
+        //    return new List<ArticleCollectionModel>();
+
+        // Wir haben zwei Filtereinträge und einer davon ist der InStock-Filter
+        //if (filterList.Count == 2 && filterList.Any(f => f.FilterType == CatalogFilterTypesEnum.InStock))
+        //    return new List<DBShoppingCartItem>();
+
+        // Wir haben zwei Filtereinträge und sie sind vom Typ Label und Season (keine sonstigen Filter)
+        //if (filterList.Count == 2 && filterList.Any(f => f.FilterType == CatalogFilterTypesEnum.Label) && filterList.Any(f => f.FilterType == CatalogFilterTypesEnum.Season))
+        //    return new List<ArticleCollectionModel>();
+
+        // Es ist ein Filter IsSticky enthalten, der ist aber true  
+        //if (filterList.Any(f => f.FilterIsSticky == false) == false)
+        //    return new List<ArticleCollectionModel>();
+        // ********************************************************************************************
+
+        await InitializeAsync();
+
+        StringBuilder sbSelect = new();
+        sbSelect.Append("SELECT ArticleId, ArticleNumber, HasStock ");
+        sbSelect.Append("FROM Article ");
+        sbSelect.Append("WHERE ");
+
+
+        bool hasTrailingAND = false;
+
+        foreach (CatalogFilterEntryItem f in filterList) // Es wurden Filter übergeben
+        {
+            switch (f.FilterType)
+            {
+                case CatalogFilterTypesEnum.Catalog: // Ein Filter mit LabelNumber in FilterTextContent ist vorhanden
+                    sbSelect.Append("(LabelNumber = '" + f.FilterTextContent + "') AND ");
+                    break;
+                case CatalogFilterTypesEnum.Season: // Ein Filter mit SaisonNumber in FilterTextContent ist vorhanden
+                    sbSelect.Append("(SeasonNumber = '" + f.FilterTextContent + "') AND ");
+                    break;
+                case CatalogFilterTypesEnum.Contains01:
+                    sbSelect.Append("(ContainsFilter01 LIKE '%" + f.FilterTextContent + "%') AND ");
+                    break;
+                case CatalogFilterTypesEnum.Single01:
+                    if (f.FilterTextContent != "*")
+                        sbSelect.Append("(SingleFilter01 = '" + f.FilterTextContent + "') AND ");
+                    break;
+            }
+            hasTrailingAND = true;
+        }
+
+        if (hasTrailingAND)
+            sbSelect.Remove(sbSelect.Length - 4, 4);  // Entferne ggf. das letzte "AND" aus dem Select String
+        else
+            sbSelect.Remove(sbSelect.Length - 6, 6);  // Entferne ggf. das "WHERE" aus dem Select String
+
+        // Wende den Selectstring an
+        IEnumerable<ArticleCollection> sqliteResultlist = await Connection.QueryAsync<ArticleCollection>(sbSelect.ToString());
+
+        return sqliteResultlist.ToList() ?? new List<ArticleCollection>();
+    }
+
+    #endregion
 
     #region Hierarchy, Single Filter and Others
 
