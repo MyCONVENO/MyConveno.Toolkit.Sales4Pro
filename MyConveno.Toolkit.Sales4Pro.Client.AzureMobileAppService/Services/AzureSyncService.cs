@@ -74,7 +74,12 @@ public class AzureSyncService : IAzureSyncService
         }
 
         // Create the offline store definition
-        var connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName, Query = "?mode=rwc" }.Uri.ToString();
+
+
+
+
+        string connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName}.Uri.ToString();
+        //string connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName, Query = "?mode=rwc" }.Uri.ToString();
         var store = new OfflineSQLiteStore(connectionString);
 
         //store.DefineTable<TodoItem>();
