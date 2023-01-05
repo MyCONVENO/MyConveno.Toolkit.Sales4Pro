@@ -1,5 +1,4 @@
-﻿using System.Data;
-using System.Web;
+﻿using System.Web;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
@@ -10,7 +9,7 @@ public static class UpdateOneTable
     // evtl. verfügbaren Änderungen (Löschungen, neue und
     // geänderte Datenätze 
     // *********************************************************
-    public static async Task<int> UpdateOneTableAsync<T>(IDbConnection connection,
+    public static async Task<int> UpdateOneTableAsync<T>(Microsoft.Data.Sqlite.SqliteConnection connection,
                                                          string containerName,
                                                          ProgressItem progressItem,
                                                          IBaseDataDownloadPlugIn plugIn,

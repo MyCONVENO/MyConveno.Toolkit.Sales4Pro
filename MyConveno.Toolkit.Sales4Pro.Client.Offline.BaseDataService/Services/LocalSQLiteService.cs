@@ -6,22 +6,25 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
 public class LocalSQLiteService : ILocalSQLiteService
 {
-    public SqliteConnection Connection { get; set; } = null;
+    public SqliteConnection Connection { get; set; } 
 
     public LocalSQLiteService(string dbFilename)
     {
+        //(new UriBuilder
+        //{
+        //    Scheme = "file",
+        //    Path = LocalSyncDBName,
+        //    Query = "?mode=rwc"
+        //}.Uri.ToString())
+
+
         Connection = new SqliteConnection("Data Source=" + dbFilename);
     }
-
-    public async Task InitializeAsync()
-    { }
 
     #region Assets
 
     public async Task<Asset> GetAssetAsync()
     {
-        await InitializeAsync();
-
         if (Connection is null)
             return new Asset();
 
@@ -37,14 +40,11 @@ public class LocalSQLiteService : ILocalSQLiteService
 
     public async Task<int> GetCustomersCountAsync()
     {
-        await InitializeAsync();
         return await Connection.ExecuteScalarAsync<int>("Select Count(*) FROM Customer");
     }
 
     public virtual async Task<IList<Customer>> GetCustomersAsync(List<CustomersFilterEntryItem> filterList)
     {
-        await InitializeAsync();
-
         try
         {
             StringBuilder sbSelect = new();
@@ -170,8 +170,6 @@ public class LocalSQLiteService : ILocalSQLiteService
 
     public async Task<Customer> GetCustomerAsync(string customerNumber)
     {
-        await InitializeAsync();
-
         StringBuilder sbSelect = new();
         sbSelect.Append("SELECT ");
         sbSelect.Append("Customer.CustomerID, ");
@@ -203,26 +201,20 @@ public class LocalSQLiteService : ILocalSQLiteService
 
     public async Task<int> GetArticlesCountAsync()
     {
-        await InitializeAsync();
-
         return await Connection.ExecuteScalarAsync<int>("Select Count(ArticleID) FROM Article");
     }
 
     public virtual async Task<Article> GetArticleAsync(string articleId)
     {
-        await InitializeAsync();
-
         Article article = (await Connection.QuerySingleAsync<Article>("SELECT * FROM Article Where ArticleID =" + articleId));
         return article ?? new Article();
     }
 
     public virtual async Task<List<ArticleColor>> GetDBShoppingCartItemsByArticleNumberAsync(string articleNumber,
-                                                                                                   string labelNumber,
-                                                                                                   string category,
-                                                                                                   bool stockOnly)
+                                                                                             string labelNumber,
+                                                                                             string category,
+                                                                                             bool stockOnly)
     {
-        await InitializeAsync();
-
         StringBuilder sbSelect = new();
         sbSelect.Append("SELECT ");
         sbSelect.Append("Article.SeasonNumber, ");
@@ -260,8 +252,6 @@ public class LocalSQLiteService : ILocalSQLiteService
                                                                                     string articlenumber,
                                                                                     string colornumber)
     {
-        await InitializeAsync();
-
         StringBuilder sbSelect = new();
         sbSelect.Append("SELECT ");
         sbSelect.Append("Metadata AS ColorMetadataJSON ");
@@ -319,8 +309,6 @@ public class LocalSQLiteService : ILocalSQLiteService
         //    return new List<ArticleCollectionModel>();
         // ********************************************************************************************
 
-        await InitializeAsync();
-
         StringBuilder sbSelect = new();
         sbSelect.Append("SELECT ArticleId ");
         sbSelect.Append("FROM Article ");
@@ -375,9 +363,6 @@ public class LocalSQLiteService : ILocalSQLiteService
 
     public async Task<List<HierarchyAndSingleFilterResult>> GetFilterFieldslistAsync()
     {
-        await InitializeAsync();
-
-
         StringBuilder sbSelect = new();
         sbSelect.Append("SELECT DISTINCT ");
         sbSelect.Append("SeasonNumber, ");
@@ -403,8 +388,6 @@ public class LocalSQLiteService : ILocalSQLiteService
     {
         if (string.IsNullOrEmpty(filterText))
             return new List<ContainsFilter01Result>();
-
-        await InitializeAsync();
 
         StringBuilder sbSelect = new();
         sbSelect.Append("SELECT DISTINCT ");
@@ -442,8 +425,6 @@ public class LocalSQLiteService : ILocalSQLiteService
 
     public async Task<List<ContainsFilter01Result>> GetContainsFilter01ResultsAsync(List<CatalogFilterEntryItem> selectedFilters)
     {
-        await InitializeAsync();
-
         StringBuilder sbSelect = new();
         sbSelect.Append("SELECT DISTINCT ");
         sbSelect.Append("ContainsFilter01, ");

@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using System.Data;
 using System.Reflection;
 using Z.Dapper.Plus;
 
@@ -15,7 +14,7 @@ internal static class ProcessDbLists
     /// <param name="sales4ProDatabaseConnection"></param>
     /// <returns></returns>
 
-    internal static async Task<KeyValuePair<int, DateTime>> ProcessDbListsAsync<T>(List<T> list, IDbConnection connection)
+    internal static async Task<KeyValuePair<int, DateTime>> ProcessDbListsAsync<T>(List<T> list, Microsoft.Data.Sqlite.SqliteConnection connection)
     {
         // *********************************************************
         // Hole den Tabellenname (z.B. Color)
