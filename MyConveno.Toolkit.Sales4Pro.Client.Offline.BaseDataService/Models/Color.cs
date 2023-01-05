@@ -1,6 +1,6 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public class Color
+public class Color : BaseModel
 {
     public Color()
     {

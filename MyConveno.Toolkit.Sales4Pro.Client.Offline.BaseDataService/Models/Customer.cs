@@ -1,6 +1,6 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public class Customer
+public class Customer : BaseModel
 {
     public Customer()
     {

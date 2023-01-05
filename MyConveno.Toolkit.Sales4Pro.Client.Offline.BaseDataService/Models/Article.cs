@@ -3,7 +3,7 @@
 /// <summary>
 /// Artikel
 /// </summary>
-public class Article
+public class Article : BaseModel
 {
     public Article()
     {
