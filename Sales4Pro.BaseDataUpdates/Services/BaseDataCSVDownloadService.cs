@@ -46,15 +46,15 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
     /// </summary>
     public void FillInitialProgressItemVMs()
     {
-        foreach (ProgressItem syncItem in InjectedPlugIn.GetAllProgressItemsWithLocalUpdateDateTime())
+        foreach (ProgressItem progressItem in InjectedPlugIn.GetAllProgressItemsWithLocalUpdateDateTime())
         {
-            InjectedPlugIn.RefreshProgressItem.RefreshSingleUpdateProgressItem(syncItem);
+            InjectedPlugIn.RefreshProgressItem.RefreshSingleUpdateProgressItem(progressItem);
         }
     }
 
     public async Task<List<ProgressItem>> CheckForUpdateAsync()
     {
-        List<ProgressItem> syncTables = new();
+        List<ProgressItem> downloadTableProgressItems = new();
 
         try
         {
@@ -81,9 +81,9 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
                 // Gehe durch jedes Objekt (UpdateProgressItem einer Tabelle), wenn die Liste
                 // (itemswithchanges) Einträge enthält 
                 //**********************************************************************************
-                syncTables = RefreshUpdateRefreshLocalTablesList.RefreshList(InjectedPlugIn,
-                                                                             itemswithchanges,
-                                                                             InjectedPlugIn.RefreshProgressItem);
+                downloadTableProgressItems = RefreshUpdateRefreshLocalTablesList.RefreshList(InjectedPlugIn,
+                                                                                             itemswithchanges,
+                                                                                             InjectedPlugIn.RefreshProgressItem);
 
 
                 // ************************************************************************
@@ -95,7 +95,7 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
                 // ************************************************************************
 
             }
-            return syncTables;
+            return downloadTableProgressItems;
         }
         catch (Exception)
         {
@@ -118,7 +118,7 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
     /// <returns></returns>
     public async Task<bool> UpdateAsync(List<ProgressItem> syncTables)
     {
-        bool syncOK = false;
+        bool updateOK = false;
         bool success = false;
 
         try
@@ -137,7 +137,7 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
                 // iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
                 if (success && syncTables.Count > 0)
                 {
-                    syncOK = true;
+                    updateOK = true;
 
                     // Das erste DataUpdate wurde durchgeführt
 
@@ -153,7 +153,7 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
                 // ************************************************************************
 
                 // Gebe zurück, ob die Aktualisierung erfolgreich war oder nicht.
-                success = syncOK;
+                success = updateOK;
 
                 if (success)
                     InjectedPlugIn.SetLastSuccessfulBaseDataUpdateCheckDateTime(DateTime.Now);

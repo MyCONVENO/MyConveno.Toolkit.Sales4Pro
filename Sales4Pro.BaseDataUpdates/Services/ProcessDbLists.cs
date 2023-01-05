@@ -6,14 +6,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
 internal static class ProcessDbLists
 {
-    /// <summary>
-    /// Der Parameter 'list' enthält alle seit dem letzten Update geänderte Datensätze
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="list"></param>
-    /// <param name="sales4ProDatabaseConnection"></param>
-    /// <returns></returns>
-
     internal static async Task<KeyValuePair<int, DateTime>> ProcessDbListsAsync<T>(List<T> list, Microsoft.Data.Sqlite.SqliteConnection connection)
     {
         // *********************************************************
@@ -35,7 +27,7 @@ internal static class ProcessDbLists
         List<T> itemsToBeDeletedList = new();
         List<T> insertList = new();
 
-        long latestsyncticks = new DateTime(2000, 1, 1).Ticks;
+        long latestupdateticks = new DateTime(2000, 1, 1).Ticks;
 
         foreach (T item in list)
         {
@@ -54,8 +46,8 @@ internal static class ProcessDbLists
 
             //Type t = item.GetType();
             PropertyInfo prop = item.GetType().GetProperty("SyncDateTimeTicks");
-            long syncticks = (long)prop.GetValue(item);
-            latestsyncticks = syncticks > latestsyncticks ? syncticks : latestsyncticks;
+            long updateticks = (long)prop.GetValue(item);
+            latestupdateticks = updateticks > latestupdateticks ? updateticks : latestupdateticks;
 
 
             // Füge ALLE Datensätze zur Löschliste hinzu
@@ -115,6 +107,6 @@ internal static class ProcessDbLists
         // Wir geben ein KeyValuePair mit Anzahl der verarbeiteten Datensätzen und 
         // des neuesten Zeitstempel aller Datensätze zurück
         // ****************************************************************************
-        return new KeyValuePair<int, DateTime>(list.Count, new DateTime(latestsyncticks));
+        return new KeyValuePair<int, DateTime>(list.Count, new DateTime(latestupdateticks));
     }
 }

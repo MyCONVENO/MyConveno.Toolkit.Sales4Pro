@@ -32,13 +32,13 @@ internal static class RefreshUpdatePrepareLocalTablesList
 
         using (HttpClient client = new HttpClient())
         {
-            string jsonSyncDateTimes = JsonConvert.SerializeObject(syncDateTimes, Formatting.Indented);
+            string jsonUpdateDateTimes = JsonConvert.SerializeObject(syncDateTimes, Formatting.Indented);
             UriBuilder builder = new UriBuilder(baseDataWebServiceHost + "/GetChangedBaseDataTablesAsJSONList")
             {
                 Port = -1
             };
             System.Collections.Specialized.NameValueCollection query = HttpUtility.ParseQueryString(builder.Query);
-            query["jsontablelist"] = jsonSyncDateTimes;
+            query["jsontablelist"] = jsonUpdateDateTimes;
             builder.Query = query.ToString();
             string url = builder.ToString();
 

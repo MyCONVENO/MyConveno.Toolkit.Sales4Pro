@@ -48,8 +48,6 @@ internal class AzureBlobStorageServices : IDisposable
     {
         try
         {
-            // *********************************************************
-
             CloudBlockBlob blob = container.GetBlockBlobReference(filename);
             blob.FetchAttributes(); // wird benötigt, damit blob.Properties.Length gefüllt wird
             byte[] fileContent = new byte[blob.Properties.Length];
@@ -66,9 +64,9 @@ internal class AzureBlobStorageServices : IDisposable
 
     public static string Unzip(byte[] zippedBuffer)
     {
-        using (MemoryStream zippedStream = new MemoryStream(zippedBuffer))
+        using (MemoryStream zippedStream = new(zippedBuffer))
         {
-            using (ZipArchive archive = new ZipArchive(zippedStream))
+            using (ZipArchive archive = new(zippedStream))
             {
                 ZipArchiveEntry entry = archive.Entries.FirstOrDefault();
 
@@ -76,7 +74,7 @@ internal class AzureBlobStorageServices : IDisposable
                 {
                     using (Stream unzippedEntryStream = entry.Open())
                     {
-                        using (MemoryStream ms = new MemoryStream())
+                        using (MemoryStream ms = new())
                         {
                             unzippedEntryStream.CopyTo(ms);
                             byte[] unzippedArray = ms.ToArray();
@@ -94,20 +92,20 @@ internal class AzureBlobStorageServices : IDisposable
     {
         string csvdatastring = DownloadAndUnzipPackageFileAsync(filename);
 
-        List<T> dataList = new List<T>();
+        List<T> dataList = new();
 
         // *********************************************************
         // Extrahiere aus dem string 'csvdatastring' eine Liste mit Datensätzen,
         // die dem Schema T (z.B. Color) entsprechen
         // *********************************************************
-        CsvConfiguration config = new CsvConfiguration(CultureInfo.InvariantCulture)
+        CsvConfiguration config = new(CultureInfo.InvariantCulture)
         {
             Delimiter = "|",
             HeaderValidated = null,
             MissingFieldFound = null
         };
-        using (StringReader reader = new StringReader(csvdatastring))
-        using (CsvReader csvReader = new CsvReader(reader, config, false))
+        using (StringReader reader = new(csvdatastring))
+        using (CsvReader csvReader = new(reader, config, false))
         {
             dataList = csvReader.GetRecords<T>().ToList();
         }

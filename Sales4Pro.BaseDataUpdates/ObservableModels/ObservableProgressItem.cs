@@ -2,11 +2,11 @@
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 
-public partial class ProgressItemViewModel : ObservableObject
+public partial class ObservableProgressItem : ObservableObject
 {
     public enum CurrentBaseDataUpdateStatesEnum { Pending, Unchanged, UpdatesAvailable, Downloading, Updating, Error }
 
-    public ProgressItemViewModel()
+    public ObservableProgressItem()
     { }
 
     #region Observable Properties

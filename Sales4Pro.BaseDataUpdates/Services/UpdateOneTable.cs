@@ -27,9 +27,9 @@ public static class UpdateOneTable
             // seit dem letzten Update in dieser Tabelle (z.B. Agent) verändert wurden  (z.B. 6h4h39wht8433tzh43zth8437z.data)
             // *********************************************************
             progressItem.ProgressText = "Erfrage Aktualisierungen";
-            foreach (ProgressItem syncItem in new List<ProgressItem>() { progressItem })
+            foreach (ProgressItem updateProgressItem in new List<ProgressItem>() { progressItem })
             {
-                refreshProgressItem.RefreshSingleUpdateProgressItem(syncItem);
+                refreshProgressItem.RefreshSingleUpdateProgressItem(updateProgressItem);
             }
             //await Task.Delay(1000);
 
@@ -76,9 +76,9 @@ public static class UpdateOneTable
             //********************************************************************
 
             progressItem.ProgressText = "Aktualisierungen vorhanden";
-            foreach (ProgressItem syncItem in new List<ProgressItem>() { progressItem })
+            foreach (ProgressItem updateProgressItem in new List<ProgressItem>() { progressItem })
             {
-                refreshProgressItem.RefreshSingleUpdateProgressItem(syncItem);
+                refreshProgressItem.RefreshSingleUpdateProgressItem(updateProgressItem);
             }
             //await Task.Delay(1000);
 
@@ -91,9 +91,9 @@ public static class UpdateOneTable
             // Jetzt laden wir die erzeugte Datei mit den aktuellen Datensätzen
             //********************************************************************
             progressItem.ProgressText = "Lade Aktualisierungen";
-            foreach (ProgressItem syncItem in new List<ProgressItem>() { progressItem })
+            foreach (ProgressItem updateProgressItem in new List<ProgressItem>() { progressItem })
             {
-                refreshProgressItem.RefreshSingleUpdateProgressItem(syncItem);
+                refreshProgressItem.RefreshSingleUpdateProgressItem(updateProgressItem);
             }
             //await Task.Delay(1000);
 
@@ -108,9 +108,9 @@ public static class UpdateOneTable
                 // zurück
                 //********************************************************************
                 progressItem.ProgressText = "Wende Aktualisierungen an";
-                foreach (ProgressItem syncItem in new List<ProgressItem>() { progressItem })
+                foreach (ProgressItem updateProgressItem in new List<ProgressItem>() { progressItem })
                 {
-                    refreshProgressItem.RefreshSingleUpdateProgressItem(syncItem);
+                    refreshProgressItem.RefreshSingleUpdateProgressItem(updateProgressItem);
                 }
                 await Task.Delay(1000);
 
@@ -118,9 +118,9 @@ public static class UpdateOneTable
             }
 
             progressItem.Changed = processDbListsResult.Key;
-            foreach (ProgressItem syncItem in new List<ProgressItem>() { progressItem })
+            foreach (ProgressItem updateProgressItem in new List<ProgressItem>() { progressItem })
             {
-                refreshProgressItem.RefreshSingleUpdateProgressItem(syncItem);
+                refreshProgressItem.RefreshSingleUpdateProgressItem(updateProgressItem);
             }
 
             //********************************************************************

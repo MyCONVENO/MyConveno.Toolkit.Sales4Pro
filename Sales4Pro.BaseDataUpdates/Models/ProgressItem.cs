@@ -1,4 +1,4 @@
-﻿using static MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ProgressItemViewModel;
+﻿using static MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.ObservableProgressItem;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates;
 

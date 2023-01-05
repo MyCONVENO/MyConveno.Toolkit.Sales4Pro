@@ -6,13 +6,13 @@ public class RefreshProgressItem
 {
     public RefreshProgressItem()
     {
-        ProgressItemVMs = new ObservableCollection<ProgressItemViewModel>();
+        ProgressItemVMs = new ObservableCollection<ObservableProgressItem>();
     }
 
     /// <summary>
     /// Die DataSource der ListView im Frontend
     /// </summary>
-    public ObservableCollection<ProgressItemViewModel> ProgressItemVMs { get; set; }
+    public ObservableCollection<ObservableProgressItem> ProgressItemVMs { get; set; }
 
     public void RefreshSingleUpdateProgressItem(ProgressItem updatedProgressItem)
     {
@@ -26,7 +26,7 @@ public class RefreshProgressItem
         // *********************************************************
         // *********************************************************
 
-        ProgressItemViewModel progressItemVM;
+        ObservableProgressItem progressItemVM;
 
         // *********************************************************
         // Hole aus der Liste ProgressItemVMs das ProgressItemViewModel mit
@@ -41,7 +41,7 @@ public class RefreshProgressItem
         // *********************************************************
         if (progressItemVM == null)
         {
-            progressItemVM = new ProgressItemViewModel
+            progressItemVM = new ObservableProgressItem
             {
                 TableName = updatedProgressItem.LocalizedTableName
             };
