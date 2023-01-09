@@ -1,8 +1,8 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public record Color : BaseModel
+public record ColorRecord : BaseModelRecord
 {
-    public Color()
+    public ColorRecord()
     {
         ColorID = string.Empty;
         SeasonNumber = string.Empty;

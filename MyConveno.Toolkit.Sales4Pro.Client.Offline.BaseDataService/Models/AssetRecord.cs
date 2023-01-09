@@ -1,8 +1,8 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public record Asset : BaseModel
+public record AssetRecord : BaseModelRecord
 {
-    public Asset()
+    public AssetRecord()
     {
         AssetID = string.Empty;
         Metadata = string.Empty;

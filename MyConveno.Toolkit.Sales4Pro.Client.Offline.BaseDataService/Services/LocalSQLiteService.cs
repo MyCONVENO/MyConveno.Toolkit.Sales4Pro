@@ -10,28 +10,20 @@ public class LocalSQLiteService : ILocalSQLiteService
 
     public LocalSQLiteService(string dbFilename)
     {
-        //(new UriBuilder
-        //{
-        //    Scheme = "file",
-        //    Path = LocalSyncDBName,
-        //    Query = "?mode=rwc"
-        //}.Uri.ToString())
-
-
         Connection = new SqliteConnection("Data Source=" + dbFilename);
     }
 
     #region Assets
 
-    public async Task<Asset> GetAssetAsync()
+    public async Task<AssetRecord> GetAssetAsync()
     {
         if (Connection is null)
-            return new Asset();
+            return new AssetRecord();
 
-        Asset? asset = (await Connection.QueryAsync<Asset>("SELECT * FROM Asset"))
+        AssetRecord? asset = (await Connection.QueryAsync<AssetRecord>("SELECT * FROM Asset"))
                                         .FirstOrDefault();
 
-        return asset is not null ? asset : new Asset();
+        return asset is not null ? asset : new AssetRecord();
     }
 
     #endregion
@@ -43,7 +35,7 @@ public class LocalSQLiteService : ILocalSQLiteService
         return await Connection.ExecuteScalarAsync<int>("Select Count(*) FROM Customer");
     }
 
-    public virtual async Task<IList<Customer>> GetCustomersAsync(List<CustomersFilterEntryItem> filterList)
+    public virtual async Task<IList<CustomerRecord>> GetCustomersAsync(List<CustomersFilterEntryItem> filterList)
     {
         try
         {
@@ -158,17 +150,17 @@ public class LocalSQLiteService : ILocalSQLiteService
 
             string selectstring = sbSelect.ToString();
 
-            IList<Customer> cust = (await Connection.QueryAsync<Customer>(selectstring)).ToList();
+            IList<CustomerRecord> customerRecords = (await Connection.QueryAsync<CustomerRecord>(selectstring)).ToList();
 
-            return cust;
+            return customerRecords;
         }
         catch (Exception)
         {
-            return new List<Customer>();
+            return new List<CustomerRecord>();
         }
     }
 
-    public async Task<Customer> GetCustomerAsync(string customerNumber)
+    public async Task<CustomerRecord> GetCustomerAsync(string customerNumber)
     {
         StringBuilder sbSelect = new();
         sbSelect.Append("SELECT ");
@@ -190,9 +182,9 @@ public class LocalSQLiteService : ILocalSQLiteService
         sbSelect.Append("FROM Customer ");
         sbSelect.Append("WHERE Customer.CustomerNumber = '" + customerNumber + "'");
 
-        Customer? customer = (await Connection.QueryAsync<Customer>(sbSelect.ToString())).FirstOrDefault();
+        CustomerRecord? customer = (await Connection.QueryAsync<CustomerRecord>(sbSelect.ToString())).FirstOrDefault();
 
-        return customer ?? new Customer();
+        return customer ?? new CustomerRecord();
     }
 
     #endregion
@@ -204,10 +196,10 @@ public class LocalSQLiteService : ILocalSQLiteService
         return await Connection.ExecuteScalarAsync<int>("Select Count(ArticleID) FROM Article");
     }
 
-    public virtual async Task<Article> GetArticleAsync(string articleId)
+    public virtual async Task<ArticleRecord> GetArticleAsync(string articleId)
     {
-        Article article = (await Connection.QuerySingleAsync<Article>("SELECT * FROM Article Where ArticleID =" + articleId));
-        return article ?? new Article();
+        ArticleRecord article = (await Connection.QuerySingleAsync<ArticleRecord>("SELECT * FROM Article Where ArticleID =" + articleId));
+        return article ?? new ArticleRecord();
     }
 
     public virtual async Task<List<ArticleColor>> GetDBShoppingCartItemsByArticleNumberAsync(string articleNumber,

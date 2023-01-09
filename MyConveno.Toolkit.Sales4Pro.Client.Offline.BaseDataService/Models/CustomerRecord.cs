@@ -1,8 +1,8 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public record Customer : BaseModel
+public record CustomerRecord : BaseModelRecord
 {
-    public Customer()
+    public CustomerRecord()
     {
         CustomerID = string.Empty;
         PricelistID = string.Empty;
