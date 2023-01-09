@@ -3,7 +3,7 @@
 /// <summary>
 /// Artikel
 /// </summary>
-public class Article : BaseModel
+public record Article : BaseModel
 {
     public Article()
     {
@@ -25,21 +25,21 @@ public class Article : BaseModel
         Metadata = string.Empty;
     }
 
-    public string ArticleID { get; set; }
-    public string ArticleNumber { get; set; }
-    public string ArticleName { get; set; }
-    public string LabelNumber { get; set; }
-    public string SeasonNumber { get; set; }
-    public string ContainsFilter01 { get; set; }
-    public string SingleFilter01 { get; set; }
-    public string SingleFilter02 { get; set; }
-    public string SingleFilter03 { get; set; }
-    public string HierarchyFilter01 { get; set; }
-    public string HierarchyFilter02 { get; set; }
-    public string HierarchyFilter03 { get; set; }
-    public string HierarchyFilter04 { get; set; }
-    public string HierarchyFilter05 { get; set; }
-    public bool HasStock { get; set; }
-    public string Metadata { get; set; }
+    public string ArticleID { get; init; }
+    public string ArticleNumber { get; init; }
+    public string ArticleName { get; init; }
+    public string LabelNumber { get; init; }
+    public string SeasonNumber { get; init; }
+    public string ContainsFilter01 { get; init; }
+    public string SingleFilter01 { get; init; }
+    public string SingleFilter02 { get; init; }
+    public string SingleFilter03 { get; init; }
+    public string HierarchyFilter01 { get; init; }
+    public string HierarchyFilter02 { get; init; }
+    public string HierarchyFilter03 { get; init; }
+    public string HierarchyFilter04 { get; init; }
+    public string HierarchyFilter05 { get; init; }
+    public bool HasStock { get; init; }
+    public string Metadata { get; init; }
 
 }

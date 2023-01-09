@@ -1,6 +1,6 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public class Asset : BaseModel
+public record Asset : BaseModel
 {
     public Asset()
     {
@@ -8,6 +8,6 @@ public class Asset : BaseModel
         Metadata = string.Empty;
     }
 
-    public string AssetID { get; set; }
-    public string Metadata { get; set; }
+    public string AssetID { get; init; }
+    public string Metadata { get; init; }
 }

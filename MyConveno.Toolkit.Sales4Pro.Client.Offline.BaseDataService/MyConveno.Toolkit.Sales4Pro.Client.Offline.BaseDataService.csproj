@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
  	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	<Version>2023.1.5.20</Version>
+	<Version>2023.1.9.1</Version>
 	<Authors>Michael Coelsch (MyConveno)</Authors>
 	<Description>MyConveno Sales4Pro Toolkit</Description>
 	<Copyright>© 2023 MyConveno. All rights reserved.</Copyright>

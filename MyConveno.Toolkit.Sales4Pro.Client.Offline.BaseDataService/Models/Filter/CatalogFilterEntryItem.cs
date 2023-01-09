@@ -6,7 +6,7 @@ public enum CatalogFilterGroupesEnum { PreFilter, PostFilter, SearchFilters }
 
 public enum CatalogFilterIconTypesEnum { Filter, Search }
 
-public class CatalogFilterEntryItem
+public record CatalogFilterEntryItem
 {
     public CatalogFilterEntryItem()
     {
@@ -48,18 +48,18 @@ public class CatalogFilterEntryItem
 
     public string FilterHeader;
 
-    public string FilterEntry { get; set; }
-    public string FilterLongEntry { get; set; }
-    public string FilterTextContent { get; set; }
-    public string FilterImagePath { get; set; }
-    public DateTime FilterDateTimeContent { get; set; }
-    public DateTime filterDateTimeEndContent { get; set; }
-    public bool FilterIsSticky { get; set; }
-    public bool FilterIsVisible { get; set; }
+    public string FilterEntry { get; init; }
+    public string FilterLongEntry { get; init; }
+    public string FilterTextContent { get; init; }
+    public string FilterImagePath { get; init; }
+    public DateTime FilterDateTimeContent { get; init; }
+    public DateTime filterDateTimeEndContent { get; init; }
+    public bool FilterIsSticky { get; init; }
+    public bool FilterIsVisible { get; init; }
 
-    public CatalogFilterTypesEnum FilterType { get; set; }
-    public CatalogFilterGroupesEnum FilterGroup { get; set; }
-    public CatalogFilterIconTypesEnum filterIconType { get; set; }
+    public CatalogFilterTypesEnum FilterType { get; init; }
+    public CatalogFilterGroupesEnum FilterGroup { get; init; }
+    public CatalogFilterIconTypesEnum filterIconType { get; init; }
 
     public override string ToString()
     {

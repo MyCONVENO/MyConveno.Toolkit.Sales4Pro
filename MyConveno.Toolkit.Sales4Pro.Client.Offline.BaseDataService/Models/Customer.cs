@@ -1,6 +1,6 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public class Customer : BaseModel
+public record Customer : BaseModel
 {
     public Customer()
     {
@@ -22,19 +22,19 @@ public class Customer : BaseModel
         HistoryMetadata = string.Empty;
     }
 
-    public string CustomerID { get; set; }
-    public string PricelistID { get; set; }
-    public string AgentNumber { get; set; }
-    public string CustomerNumber { get; set; }
-    public string CustomerName { get; set; }
-    public string StartsWithFilter01 { get; set; }
-    public string StartsWithFilter02 { get; set; }
-    public string StartsWithFilter03 { get; set; }
-    public string ContainsFilter01 { get; set; }
-    public string ContainsFilter02 { get; set; }
-    public string ContainsFilter03 { get; set; }
-    public double Latitude { get; set; }
-    public double Longitude { get; set; }
-    public string Metadata { get; set; }
-    public string HistoryMetadata { get; set; }
+    public string CustomerID { get; init; }
+    public string PricelistID { get; init; }
+    public string AgentNumber { get; init; }
+    public string CustomerNumber { get; init; }
+    public string CustomerName { get; init; }
+    public string StartsWithFilter01 { get; init; }
+    public string StartsWithFilter02 { get; init; }
+    public string StartsWithFilter03 { get; init; }
+    public string ContainsFilter01 { get; init; }
+    public string ContainsFilter02 { get; init; }
+    public string ContainsFilter03 { get; init; }
+    public double Latitude { get; init; }
+    public double Longitude { get; init; }
+    public string Metadata { get; init; }
+    public string HistoryMetadata { get; init; }
 }

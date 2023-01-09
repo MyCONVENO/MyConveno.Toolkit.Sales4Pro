@@ -1,6 +1,6 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public class Color : BaseModel
+public record Color : BaseModel
 {
     public Color()
     {
@@ -16,14 +16,14 @@ public class Color : BaseModel
         Metadata = string.Empty;
     }
 
-    public string ColorID { get; set; }
-    public string SeasonNumber { get; set; }
-    public string LabelNumber { get; set; }
-    public string Category { get; set; }
-    public string ArticleNumber { get; set; }
-    public string ColorNumber { get; set; }
-    public string ColorName { get; set; }
-    public bool StockArticle { get; set; }
-    public bool HasImage { get; set; }
-    public string Metadata { get; set; }
+    public string ColorID { get; init; }
+    public string SeasonNumber { get; init; }
+    public string LabelNumber { get; init; }
+    public string Category { get; init; }
+    public string ArticleNumber { get; init; }
+    public string ColorNumber { get; init; }
+    public string ColorName { get; init; }
+    public bool StockArticle { get; init; }
+    public bool HasImage { get; init; }
+    public string Metadata { get; init; }
 }

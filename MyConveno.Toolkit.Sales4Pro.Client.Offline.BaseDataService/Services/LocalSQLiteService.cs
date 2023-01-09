@@ -175,8 +175,8 @@ public class LocalSQLiteService : ILocalSQLiteService
         sbSelect.Append("Customer.CustomerID, ");
         sbSelect.Append("Customer.PricelistID, ");
         sbSelect.Append("Customer.AgentNumber, ");
-        sbSelect.Append("Customer.Metadata AS CustomerMetadata, ");
-        sbSelect.Append("Customer.HistoryMetadata AS HistoryMetadata, ");
+        sbSelect.Append("Customer.Metadata, ");
+        sbSelect.Append("Customer.HistoryMetadata, ");
         sbSelect.Append("Customer.CustomerName, ");
         sbSelect.Append("Customer.CustomerNumber, ");
         sbSelect.Append("Customer.StartsWithFilter01, ");

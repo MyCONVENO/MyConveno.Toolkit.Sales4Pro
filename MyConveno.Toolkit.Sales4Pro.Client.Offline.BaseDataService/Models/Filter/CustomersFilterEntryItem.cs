@@ -1,6 +1,6 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService;
 
-public class CustomersFilterEntryItem
+public record CustomersFilterEntryItem
 {
     public CustomersFilterEntryItem()
     {
@@ -27,17 +27,17 @@ public class CustomersFilterEntryItem
         this.FilterGroup = group;
     }
 
-    public string FilterHeader { get; set; }
-    public string FilterEntry { get; set; }
-    public string FilterLongEntry { get; set; }
-    public string FilterTextContent { get; set; }
-    public DateTime FilterDateTimeContent { get; set; }
-    public DateTime FilterDateTimeEndContent { get; set; }
-    public bool FilterIsSticky { get; set; }
-    public bool FilterIsVisible { get; set; }
-    public CustomersFilterTypesEnum FilterType { get; set; }
-    public CustomersFilterGroupesEnum FilterGroup { get; set; }
-    public CustomersFilterIconTypesEnum FilterIconType { get; set; }
+    public string FilterHeader { get; init; }
+    public string FilterEntry { get; init; }
+    public string FilterLongEntry { get; init; }
+    public string FilterTextContent { get; init; }
+    public DateTime FilterDateTimeContent { get; init; }
+    public DateTime FilterDateTimeEndContent { get; init; }
+    public bool FilterIsSticky { get; init; }
+    public bool FilterIsVisible { get; init; }
+    public CustomersFilterTypesEnum FilterType { get; init; }
+    public CustomersFilterGroupesEnum FilterGroup { get; init; }
+    public CustomersFilterIconTypesEnum FilterIconType { get; init; }
 
     public override string ToString()
     {
