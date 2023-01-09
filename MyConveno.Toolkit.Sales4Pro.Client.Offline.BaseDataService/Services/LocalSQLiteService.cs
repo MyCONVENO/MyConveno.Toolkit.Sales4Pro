@@ -52,8 +52,8 @@ public class LocalSQLiteService : ILocalSQLiteService
             sbSelect.Append("Customer.CustomerID, ");
             sbSelect.Append("Customer.PricelistID, ");
             sbSelect.Append("Customer.AgentNumber, ");
-            sbSelect.Append("Customer.Metadata AS CustomerMetadata, ");
-            sbSelect.Append("Customer.HistoryMetadata AS HistoryMetadata, ");
+            sbSelect.Append("Customer.Metadata, ");
+            sbSelect.Append("Customer.HistoryMetadata, ");
             sbSelect.Append("Customer.CustomerName, ");
             sbSelect.Append("Customer.CustomerNumber, ");
             sbSelect.Append("Customer.StartsWithFilter01, ");
@@ -219,9 +219,9 @@ public class LocalSQLiteService : ILocalSQLiteService
         sbSelect.Append("SELECT ");
         sbSelect.Append("Article.SeasonNumber, ");
         sbSelect.Append("Article.LabelNumber, ");
-        sbSelect.Append("Article.ArticleID AS ArticleID, ");
-        sbSelect.Append("Article.ArticleNumber AS ArticleNumber, ");
-        sbSelect.Append("Article.ArticleName AS ArticleName, ");
+        sbSelect.Append("Article.ArticleID, ");
+        sbSelect.Append("Article.ArticleNumber, ");
+        sbSelect.Append("Article.ArticleName, ");
         sbSelect.Append("Article.Metadata AS ArticleMetadataJSON, ");
         sbSelect.Append("Color.ColorID, ");
         sbSelect.Append("Color.ColorNumber, ");
