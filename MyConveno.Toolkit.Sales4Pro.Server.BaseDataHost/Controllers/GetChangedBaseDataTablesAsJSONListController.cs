@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost
 {
@@ -22,7 +22,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost
             long initDatetimeTicks = new DateTime(2000, 1, 1).Ticks;
             CSVBaseDataService service = new(_config);
 
-            Dictionary<string, long> jsonTableDict = JsonConvert.DeserializeObject<Dictionary<string, long>>(jsontablelist);
+            Dictionary<string, long> jsonTableDict = JsonSerializer.Deserialize<Dictionary<string, long>>(jsontablelist);
 
             List<UpdateProgressItem> results = new();
 
