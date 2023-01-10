@@ -7,16 +7,16 @@
 	  <ImplicitUsings>enable</ImplicitUsings>
 	  <Authors>Michael Coelsch (MyConveno)</Authors>
 	  <Description>MyConveno Sales4Pro Toolkit</Description>
-	  <Copyright>© 2022 MyConveno. All rights reserved.</Copyright>
+	  <Copyright>© 2023 MyConveno. All rights reserved.</Copyright>
 	  <PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
 	  <PackageIcon>icon.png</PackageIcon>
 	  <PackageTags>Sales4Pro, MyConveno</PackageTags>
 	  <PackageReleaseNotes>None</PackageReleaseNotes>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <AssemblyVersion>2022.8.30.0</AssemblyVersion>
-	  <FileVersion>2022.8.30.0</FileVersion>
-	  <IncludeSymbols>False</IncludeSymbols>
-	  <Version>2022.9.28.0</Version>
+	  <FileVersion>2023.1.10.0</FileVersion>
+	  <IncludeSymbols>True</IncludeSymbols>
+	  <Version>2023.1.30.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
