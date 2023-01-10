@@ -34,7 +34,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost
                     results.Add(new UpdateProgressItem(key, changes));
             }
 
-            return Ok(JsonConvert.SerializeObject(results));
+            return Ok(JsonSerializer.Serialize(results));
         }
     }
 }

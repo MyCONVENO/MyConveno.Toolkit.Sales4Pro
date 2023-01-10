@@ -3,9 +3,9 @@
 /// <summary>
 /// Artikel
 /// </summary>
-public record ArticleRecord : BaseModelRecord
+public class Article : BaseModel
 {
-    public ArticleRecord()
+    public Article()
     {
         ArticleID = string.Empty;
         ArticleName = string.Empty;

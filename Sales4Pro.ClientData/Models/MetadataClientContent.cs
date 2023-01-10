@@ -1,8 +1,6 @@
-﻿using MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces;
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
-namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
-
-public class MetadataClientContent : IMetadataClientContent
+public class MetadataClientContent 
 {
     public MetadataClientContent()
     {
@@ -27,14 +25,14 @@ public class MetadataClientContent : IMetadataClientContent
     public string SupportPersonEmail { get; set; } = string.Empty;
     public string SupportPersonPhone { get; set; } = string.Empty;
 
-    public IClientMetadataPageProperties PageProperties { get; set; }
-    public IClientMetadataCatalog Catalog { get; set; }
-    public IClientMetadataCustomer Customer { get; set; }
-    public IClientMetadataShoppingCart ShoppingCart { get; set; }
-    public IClientMetadataShoppingCartItem ShoppingCartItem { get; set; }
-    public IClientMetadataReports Reports { get; set; }
+    public ClientMetadataPageProperties PageProperties { get; set; }
+    public ClientMetadataCatalog Catalog { get; set; }
+    public ClientMetadataCustomer Customer { get; set; }
+    public ClientMetadataShoppingCart ShoppingCart { get; set; }
+    public ClientMetadataShoppingCartItem ShoppingCartItem { get; set; }
+    public ClientMetadataReports Reports { get; set; }
 
-    public class ClientMetadataPageProperties : IClientMetadataPageProperties
+    public class ClientMetadataPageProperties 
     {
         public string AddressName1 { get; set; } = string.Empty;
         public string AddressName2 { get; set; } = string.Empty;
@@ -77,7 +75,7 @@ public class MetadataClientContent : IMetadataClientContent
         public string AEBRemarkText4 { get; set; } = string.Empty;
     }
 
-    public class ClientMetadataCatalog : IClientMetadataCatalog
+    public class ClientMetadataCatalog 
     {
         public bool IsCatalogMenuSeasonVisible { get; set; } = true;
         public bool IsCatalogMenuFormVisible { get; set; } = true;
@@ -114,7 +112,7 @@ public class MetadataClientContent : IMetadataClientContent
         public string Header10 { get; set; } = string.Empty;
     }
 
-    public class ClientMetadataCustomer : IClientMetadataCustomer
+    public class ClientMetadataCustomer
     {
         public bool IsCustomergroupFilterVisible { get; set; } = false;
         public bool IsCustomerAreaFilterVisible { get; set; } = false;
@@ -122,7 +120,7 @@ public class MetadataClientContent : IMetadataClientContent
         public bool IsCustomerFavoritesSearchDefault { get; set; } = false;
     }
 
-    public class ClientMetadataShoppingCart : IClientMetadataShoppingCart
+    public class ClientMetadataShoppingCart 
     {
         public bool IsShoppingCartStockOrderAvailable { get; set; } = true;
         public bool IsShoppingCartSampleOrderAvailable { get; set; } = false;
@@ -162,7 +160,7 @@ public class MetadataClientContent : IMetadataClientContent
         public SeasonDefaultDeliveryDate[] SeasonDefaultDeliveryDates { get; set; }
     }
 
-    public class ClientMetadataShoppingCartItem : IClientMetadataShoppingCartItem
+    public class ClientMetadataShoppingCartItem 
     {
         public bool IsShopSetFixassortmentQtyToggleButtonVisible { get; set; } = false;
         public bool IsShopMenuFixAssortmentsVisible { get; set; } = false;
@@ -192,7 +190,7 @@ public class MetadataClientContent : IMetadataClientContent
         public int EditSampleItemMaxRemarkTextLength { get; set; } = 999;
     }
 
-    public class ClientMetadataReports : IClientMetadataReports
+    public class ClientMetadataReports 
     {
         public bool IsSeasonValueReportEnabled { get; set; } = false;
         public bool IsSeasonCourseReportEnabled { get; set; } = false;
@@ -200,4 +198,11 @@ public class MetadataClientContent : IMetadataClientContent
         public bool IsOrderListReportEnabled { get; set; } = false;
     }
 
+
+    public class SeasonDefaultDeliveryDate
+    {
+        public string SeasonNumber { get; set; } = string.Empty;
+        public DateTime DeliveryDateStart { get; set; }
+        public DateTime DeliveryDateEnd { get; set; }
+    }
 }

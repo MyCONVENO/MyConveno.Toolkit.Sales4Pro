@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
@@ -19,7 +18,7 @@ public partial class ClientViewModel : ObservableObject
     public string clientName = string.Empty;
 
     [ObservableProperty]
-    public IMetadataClientContent metadataClientContent = new MetadataClientContent();
+    public MetadataClientContent metadataClientContent = new();
 
     #endregion
 

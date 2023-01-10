@@ -1,10 +1,9 @@
-﻿using MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
-public class Client : IClient
+public class Client 
 {
     public Client()
     {
@@ -16,7 +15,7 @@ public class Client : IClient
     public string Metadata { get; set; }
 
     [JsonIgnore]
-    public IMetadataClientContent MetadataContent { get; set; }
+    public MetadataClientContent MetadataContent { get; set; }
 
     public void SerializeMetadata()
     {
