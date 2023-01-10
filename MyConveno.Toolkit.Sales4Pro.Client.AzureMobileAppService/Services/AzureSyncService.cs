@@ -15,10 +15,10 @@ public class AzureSyncService : IAzureSyncService
     private IOfflineTable<SyncShoppingCart>? syncShoppingCartTable;
     private IOfflineTable<SyncShoppingCartItem>? syncShoppingCartItemTable;
 
-    public AzureSyncService(string url, string paraLocalSyncDBName)
+    public AzureSyncService(string url, OfflineSQLiteStore sqliteStore)
     {
         AzureURL = url;
-        LocalSyncDBName = paraLocalSyncDBName;
+        SQLiteStore = sqliteStore;
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class AzureSyncService : IAzureSyncService
     public Func<Task<AuthenticationToken>>? TokenRequestor;
 
     public string AzureURL { get; init; }
-    public string LocalSyncDBName { get; init; }
+    public OfflineSQLiteStore SQLiteStore { get; init; }
 
     #region Commands
 
@@ -78,19 +78,19 @@ public class AzureSyncService : IAzureSyncService
 
 
 
-        string connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName}.Uri.ToString();
+        //string connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName}.Uri.ToString();
         //string connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName, Query = "?mode=rwc" }.Uri.ToString();
-        var store = new OfflineSQLiteStore(connectionString);
+        //var store = new OfflineSQLiteStore(connectionString);
 
         //store.DefineTable<TodoItem>();
-        store.DefineTable<SyncCustomerFavorite>();
-        store.DefineTable<SyncCustomerNote>();
-        store.DefineTable<SyncShoppingCart>();
-        store.DefineTable<SyncShoppingCartItem>();
+        SQLiteStore.DefineTable<SyncCustomerFavorite>();
+        SQLiteStore.DefineTable<SyncCustomerNote>();
+        SQLiteStore.DefineTable<SyncShoppingCart>();
+        SQLiteStore.DefineTable<SyncShoppingCartItem>();
 
         var options = new DatasyncClientOptions
         {
-            OfflineStore = store
+            OfflineStore = SQLiteStore
         };
 
         // Create the datasync client.

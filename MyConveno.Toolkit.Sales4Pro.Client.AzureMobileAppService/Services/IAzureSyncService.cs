@@ -1,9 +1,11 @@
-﻿namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService
+﻿using Microsoft.Datasync.Client.SQLiteStore;
+
+namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService
 {
     public interface IAzureSyncService
     {
         string AzureURL { get; init; }
-        string LocalSyncDBName { get; init; }
+        OfflineSQLiteStore SQLiteStore { get; init; }
 
         Task<bool> DeleteCustomerFavoriteAsync(string userId, string customerNumber);
         Task<bool> DeleteCustomerNoteAsync(string id);
