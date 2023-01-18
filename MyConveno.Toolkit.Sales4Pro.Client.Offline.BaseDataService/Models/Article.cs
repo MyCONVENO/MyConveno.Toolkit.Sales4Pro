@@ -13,9 +13,9 @@ public class Article : BaseModel
         LabelNumber = string.Empty;
         SeasonNumber = string.Empty;
         ContainsFilter01 = string.Empty;
-        SingleFilter01 = string.Empty;
-        SingleFilter02 = string.Empty;
-        SingleFilter03 = string.Empty;
+        StartsWithFilter01 = string.Empty;
+        StartsWithFilter02 = string.Empty;
+        StartsWithFilter03 = string.Empty;
         HierarchyFilter01 = string.Empty;
         HierarchyFilter02 = string.Empty;
         HierarchyFilter03 = string.Empty;
@@ -31,9 +31,9 @@ public class Article : BaseModel
     public string LabelNumber { get; init; }
     public string SeasonNumber { get; init; }
     public string ContainsFilter01 { get; init; }
-    public string SingleFilter01 { get; init; }
-    public string SingleFilter02 { get; init; }
-    public string SingleFilter03 { get; init; }
+    public string StartsWithFilter01 { get; init; }
+    public string StartsWithFilter02 { get; init; }
+    public string StartsWithFilter03 { get; init; }
     public string HierarchyFilter01 { get; init; }
     public string HierarchyFilter02 { get; init; }
     public string HierarchyFilter03 { get; init; }
