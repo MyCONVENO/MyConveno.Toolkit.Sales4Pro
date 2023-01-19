@@ -8,13 +8,13 @@ using System.Text;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.BaseDataProductImageUpdate;
 
-internal class AzureBlobStorageServices : IDisposable
+internal class BaseDataAzureBlobStorageServices : IDisposable
 {
     readonly CloudStorageAccount storageAccount;
     readonly CloudBlobClient blobClient;
     readonly CloudBlobContainer container;
 
-    internal AzureBlobStorageServices(string containerName)
+    internal BaseDataAzureBlobStorageServices(string containerName)
     {
         storageAccount = CreateAzureStorageAccountFromConnectionString();
         blobClient = storageAccount.CreateCloudBlobClient();

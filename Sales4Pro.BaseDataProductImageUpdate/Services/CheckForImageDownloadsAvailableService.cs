@@ -18,15 +18,8 @@ public class CheckForImageDownloadsAvailableService : ICheckForImageDownloadsAva
 
     public async Task CheckIfUpdatedImagesAvailableAsync(long updateDateTimeProductImage, string currentLoginUserName)
     {
-        bool updatesAvailable = await CheckIfUpdatesAvailableAsync(updateDateTimeProductImage, currentLoginUserName);
+        bool updatesAvailable = false;
 
-        ProductImageUpdatesAvailable?.Invoke(this, updatesAvailable);
-
-        return;
-    }
-
-    private async Task<bool> CheckIfUpdatesAvailableAsync(long updateDateTimeProductImage, string currentLoginUserName)
-    {
         // Lade eine temporäre Liste mit Items vom Typ BaseDataImageUpdateProgressItem, die die Anzahl der geänderten Datensätze enthält
         // Wichtig ist hier nur der Eintrag [TotalChanges]
         List<BaseDataImageUpdateProgressItem> allTablesWithChanges;
@@ -75,11 +68,15 @@ public class CheckForImageDownloadsAvailableService : ICheckForImageDownloadsAva
             // .. und prüfe den Eintrag TotalChanges
             if (baseDataImageUpdateProgressItem != null && baseDataImageUpdateProgressItem.TotalChanges > 0)
             {
-                return true;
+                updatesAvailable = true;
             }
         }
 
-        return false;
+        updatesAvailable = false;
+
+        ProductImageUpdatesAvailable?.Invoke(this, updatesAvailable);
+
+        return;
     }
 
     #endregion
