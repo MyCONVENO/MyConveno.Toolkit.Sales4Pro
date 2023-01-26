@@ -12,6 +12,7 @@ public partial class AgentViewModel : ObservableObject
     #region Observable Properties
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public string agentNumber = string.Empty;
 
     [ObservableProperty]
@@ -72,7 +73,7 @@ public partial class AgentViewModel : ObservableObject
     {
         get
         {
-            if (string.IsNullOrEmpty(AgentName))
+            if (string.IsNullOrEmpty(AgentNumber) || string.IsNullOrEmpty(AgentName))
                 return false;
             else
                 return true;
