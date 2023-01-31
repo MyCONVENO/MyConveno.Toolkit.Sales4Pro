@@ -4,7 +4,7 @@ public class MetadataClientContent
 {
     public MetadataClientContent()
     {
-        AppProperties = new ClientMetadataAppProperties();
+        App = new ClientMetadataApp();
         PageProperties = new ClientMetadataPageProperties();
         Catalog = new ClientMetadataCatalog();
         Customer = new ClientMetadataCustomer();
@@ -26,7 +26,7 @@ public class MetadataClientContent
     public string SupportPersonEmail { get; set; } = string.Empty;
     public string SupportPersonPhone { get; set; } = string.Empty;
 
-    public ClientMetadataAppProperties AppProperties { get; set; }
+    public ClientMetadataApp App { get; set; }
     public ClientMetadataPageProperties PageProperties { get; set; }
     public ClientMetadataCatalog Catalog { get; set; }
     public ClientMetadataCustomer Customer { get; set; }
@@ -34,10 +34,9 @@ public class MetadataClientContent
     public ClientMetadataShoppingCartItem ShoppingCartItem { get; set; }
     public ClientMetadataReports Reports { get; set; }
 
-    public class ClientMetadataAppProperties
+    public class ClientMetadataApp
     {
         public string DefaultSeason { get; set; } = string.Empty;
-        
     }
 
     public class ClientMetadataPageProperties 
