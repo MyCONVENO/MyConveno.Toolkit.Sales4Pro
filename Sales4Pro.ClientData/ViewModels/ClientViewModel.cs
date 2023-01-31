@@ -24,29 +24,7 @@ public partial class ClientViewModel : ObservableObject
 
     #region Computed Properties
 
-    public Uri ComputeSupportPersonMailtoAddressURI
-    {
-        get
-        {
-            if (MetadataClientContent.SupportPersonEmail == null)
-                return null;
-
-            Uri address = null;
-            string mailtoUri = "mailto:" + MetadataClientContent.SupportPersonEmail.Trim();
-
-            if (Uri.TryCreate(mailtoUri, UriKind.Absolute, out address))
-                return address;
-            else
-                return null;
-        }
-    }
-
     #endregion
-
-    public void RaiseClientNamePropertyChanged()
-    {
-        OnPropertyChanged(nameof(ClientName));
-    }
 
     public void PasteData(Client client)
     {

@@ -35,29 +35,17 @@ public class ClientAccessService : IClientAccessService
         return client;
     }
 
+    public async Task<bool> UpdateClient(Client agent)
+    {
+        Initialize();
 
+        string parameter = "Clients";
+        HttpResponseMessage response = await httpClient.PutAsJsonAsync(parameter, agent);
 
-
-
-    //public async Task<List<Client>> GetClientById()
-    //{
-    //    Initialize();
-    //    string parameter = string.Format("Clients/GetAll");
-    //    IList<User> users = await httpClient.GetFromJsonAsync<IList<User>>(parameter);
-    //    return (List<User>)users;
-    //}
-
-
-    //public async Task<IClient> GetFirstClient()
-    //{
-    //    Initialize();
-
-    //    IList<Client> clientlist = await httpClient.GetFromJsonAsync<IList<Client>>("api/Clients");
-
-    //    if (clientlist != null && clientlist.Any())
-    //        return clientlist.FirstOrDefault();
-    //    else
-    //        return new Client();
-    //}
+        if (response.IsSuccessStatusCode)
+            return true;
+        else
+            return false;
+    }
 
 }

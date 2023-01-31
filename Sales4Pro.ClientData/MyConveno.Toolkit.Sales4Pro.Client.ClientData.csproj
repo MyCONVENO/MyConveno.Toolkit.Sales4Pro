@@ -16,7 +16,7 @@
 	<AssemblyVersion>2022.8.30.0</AssemblyVersion>
 	<FileVersion>2022.8.30.0</FileVersion>
 	<IncludeSymbols>True</IncludeSymbols>
-	<Version>2023.1.31.2</Version>
+	<Version>2023.1.31.4</Version>
   </PropertyGroup>
 
   <ItemGroup>

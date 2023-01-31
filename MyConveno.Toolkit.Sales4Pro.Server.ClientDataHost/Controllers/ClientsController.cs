@@ -44,5 +44,31 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 return BadRequest();
             }
         }
+
+
+        [HttpPut]
+        public ActionResult UpdateClient(Client client)
+        {
+            using IDbConnection connection = new SqlConnection(_config.GetConnectionString("SQLAZURECONNSTR_ClientDB"));
+
+            try
+            {
+                StringBuilder sbUpdate = new();
+                sbUpdate.Append("UPDATE [Client] SET ");
+                sbUpdate.Append("ClientName = @ClientName, ");
+                sbUpdate.Append("Metadata = @Metadata ");
+                sbUpdate.Append("WHERE (ClientName = @ClientName)");
+
+                int rowsAffected = connection.Execute(sbUpdate.ToString(), client);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return BadRequest();
+            }
+        }
+
+
     }
 }

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
-public class Client 
+public class Client : IClient
 {
     public Client()
     {

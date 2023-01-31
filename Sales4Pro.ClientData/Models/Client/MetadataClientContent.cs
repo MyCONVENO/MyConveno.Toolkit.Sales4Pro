@@ -1,6 +1,6 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
-public class MetadataClientContent 
+public class MetadataClientContent : IMetadataClientContent
 {
     public MetadataClientContent()
     {
@@ -39,7 +39,7 @@ public class MetadataClientContent
         public string DefaultSeason { get; set; } = string.Empty;
     }
 
-    public class ClientMetadataPageProperties 
+    public class ClientMetadataPageProperties
     {
         public string AddressName1 { get; set; } = string.Empty;
         public string AddressName2 { get; set; } = string.Empty;
@@ -82,7 +82,7 @@ public class MetadataClientContent
         public string AEBRemarkText4 { get; set; } = string.Empty;
     }
 
-    public class ClientMetadataCatalog 
+    public class ClientMetadataCatalog
     {
         public bool IsCatalogMenuSeasonVisible { get; set; } = true;
         public bool IsCatalogMenuFormVisible { get; set; } = true;
@@ -127,7 +127,7 @@ public class MetadataClientContent
         public bool IsCustomerFavoritesSearchDefault { get; set; } = false;
     }
 
-    public class ClientMetadataShoppingCart 
+    public class ClientMetadataShoppingCart
     {
         public bool IsShoppingCartStockOrderAvailable { get; set; } = true;
         public bool IsShoppingCartSampleOrderAvailable { get; set; } = false;
@@ -167,7 +167,7 @@ public class MetadataClientContent
         public SeasonDefaultDeliveryDate[] SeasonDefaultDeliveryDates { get; set; }
     }
 
-    public class ClientMetadataShoppingCartItem 
+    public class ClientMetadataShoppingCartItem
     {
         public bool IsShopSetFixassortmentQtyToggleButtonVisible { get; set; } = false;
         public bool IsShopMenuFixAssortmentsVisible { get; set; } = false;
@@ -197,7 +197,7 @@ public class MetadataClientContent
         public int EditSampleItemMaxRemarkTextLength { get; set; } = 999;
     }
 
-    public class ClientMetadataReports 
+    public class ClientMetadataReports
     {
         public bool IsSeasonValueReportEnabled { get; set; } = false;
         public bool IsSeasonCourseReportEnabled { get; set; } = false;

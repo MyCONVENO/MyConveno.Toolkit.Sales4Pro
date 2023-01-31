@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace MyConveno.Toolkit.Sales4Pro.Client.UserData;
+namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
 public partial class AgentViewModel : ObservableObject
 {
