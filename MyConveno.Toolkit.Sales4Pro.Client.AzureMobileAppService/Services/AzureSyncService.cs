@@ -194,7 +194,7 @@ public class AzureSyncService : IAzureSyncService
         if (upsertItem.Id is null)
             await syncCustomerFavoriteTable.InsertItemAsync(upsertItem);
         else
-            await syncCustomerFavoriteTable.RefreshItemAsync(upsertItem);
+            await syncCustomerFavoriteTable.ReplaceItemAsync(upsertItem);
 
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
@@ -266,7 +266,7 @@ public class AzureSyncService : IAzureSyncService
         if (upsertItem.Id is null)
             await syncCustomerNoteTable.InsertItemAsync(upsertItem);
         else
-            await syncCustomerNoteTable.RefreshItemAsync(upsertItem);
+            await syncCustomerNoteTable.ReplaceItemAsync(upsertItem);
 
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
@@ -339,7 +339,7 @@ public class AzureSyncService : IAzureSyncService
         if (upsertItem.Id is null)
             await syncShoppingCartTable.InsertItemAsync(upsertItem);
         else
-            await syncShoppingCartTable.RefreshItemAsync(upsertItem);
+            await syncShoppingCartTable.ReplaceItemAsync(upsertItem);
 
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
@@ -425,7 +425,7 @@ public class AzureSyncService : IAzureSyncService
         if (upsertItem.Id is null)
             await syncShoppingCartItemTable.InsertItemAsync(upsertItem);
         else
-            await syncShoppingCartItemTable.RefreshItemAsync(upsertItem);
+            await syncShoppingCartItemTable.ReplaceItemAsync(upsertItem);
 
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
