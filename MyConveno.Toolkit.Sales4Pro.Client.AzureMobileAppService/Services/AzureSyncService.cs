@@ -191,7 +191,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncCustomerFavoriteTable is null) return string.Empty;
 
-        if (upsertItem.Id == null)
+        if (upsertItem.Id is null)
             await syncCustomerFavoriteTable.InsertItemAsync(upsertItem);
         else
             await syncCustomerFavoriteTable.RefreshItemAsync(upsertItem);
@@ -263,7 +263,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncCustomerNoteTable is null) return string.Empty;
 
-        if (upsertItem.Id is not null)
+        if (upsertItem.Id is null)
             await syncCustomerNoteTable.InsertItemAsync(upsertItem);
         else
             await syncCustomerNoteTable.RefreshItemAsync(upsertItem);
@@ -336,7 +336,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartTable is null) return string.Empty;
 
-        if (upsertItem.Id == null)
+        if (upsertItem.Id is null)
             await syncShoppingCartTable.InsertItemAsync(upsertItem);
         else
             await syncShoppingCartTable.RefreshItemAsync(upsertItem);
@@ -352,8 +352,8 @@ public class AzureSyncService : IAzureSyncService
         if (syncShoppingCartTable is null) return false;
 
         SyncShoppingCart? itemToDelete = await syncShoppingCartTable.Where(w => w.Id == id)
-                                                                   .ToAsyncEnumerable()
-                                                                   .FirstOrDefaultAsync();
+                                                                    .ToAsyncEnumerable()
+                                                                    .FirstOrDefaultAsync();
 
         if (itemToDelete is null) return false;
 
@@ -422,7 +422,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartItemTable is null) return string.Empty;
 
-        if (upsertItem.Id == null)
+        if (upsertItem.Id is null)
             await syncShoppingCartItemTable.InsertItemAsync(upsertItem);
         else
             await syncShoppingCartItemTable.RefreshItemAsync(upsertItem);
@@ -438,8 +438,8 @@ public class AzureSyncService : IAzureSyncService
         if (syncShoppingCartItemTable is null) return false;
 
         SyncShoppingCartItem? itemToDelete = await syncShoppingCartItemTable.Where(w => w.Id == id)
-                                                                           .ToAsyncEnumerable()
-                                                                           .FirstOrDefaultAsync();
+                                                                            .ToAsyncEnumerable()
+                                                                            .FirstOrDefaultAsync();
 
         if (itemToDelete is null) return false;
 
