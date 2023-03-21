@@ -18,7 +18,7 @@ public partial class ClientViewModel : ObservableObject
     public string clientName = string.Empty;
 
     [ObservableProperty]
-    public MetadataClientContent metadataClientContent = new();
+    public MetadataClientContent clientContent = new();
 
     #endregion
 
@@ -33,7 +33,7 @@ public partial class ClientViewModel : ObservableObject
             ClientId = string.Empty;
             ClientName = string.Empty;
 
-            MetadataClientContent = new MetadataClientContent();
+            ClientContent = new MetadataClientContent();
         }
         else
         {
@@ -42,7 +42,7 @@ public partial class ClientViewModel : ObservableObject
 
             Client tempClient = new() { Metadata = client.Metadata };
             tempClient.DeserializeMetadata();
-            MetadataClientContent = tempClient.MetadataContent;
+            ClientContent = tempClient.MetadataContent;
         }
     }
 
@@ -53,7 +53,7 @@ public partial class ClientViewModel : ObservableObject
             ClientId = ClientId,
             ClientName = ClientName,
 
-            MetadataContent = MetadataClientContent
+            MetadataContent = ClientContent
         };
         model.SerializeMetadata();
         return model;

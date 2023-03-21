@@ -4,6 +4,12 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
 public partial class AgentViewModel : ObservableObject
 {
+    public AgentViewModel()
+    {
+        AgentNumber = string.Empty;
+        AgentContent = new MetadataAgentContent();
+    }
+
     public override string ToString()
     {
         return AgentNumber;
@@ -13,11 +19,11 @@ public partial class AgentViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string agentNumber = string.Empty;
+    public string agentNumber;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public MetadataAgentContent metadataAgentContent = new();
+    public MetadataAgentContent agentContent;
 
     #endregion
 
@@ -28,13 +34,13 @@ public partial class AgentViewModel : ObservableObject
         get
         {
             if (string.IsNullOrEmpty(AgentNumber) ||
-                string.IsNullOrEmpty(MetadataAgentContent.Displayname) ||
-                string.IsNullOrEmpty(MetadataAgentContent.Street) ||
-                string.IsNullOrEmpty(MetadataAgentContent.ZIP) ||
-                string.IsNullOrEmpty(MetadataAgentContent.City) ||
-                string.IsNullOrEmpty(MetadataAgentContent.Country) ||
-                string.IsNullOrEmpty(MetadataAgentContent.Email) ||
-                string.IsNullOrEmpty(MetadataAgentContent.DefaultPricelistNumber))
+                string.IsNullOrEmpty(AgentContent.Displayname) ||
+                string.IsNullOrEmpty(AgentContent.Street) ||
+                string.IsNullOrEmpty(AgentContent.ZIP) ||
+                string.IsNullOrEmpty(AgentContent.City) ||
+                string.IsNullOrEmpty(AgentContent.Country) ||
+                string.IsNullOrEmpty(AgentContent.Email) ||
+                string.IsNullOrEmpty(AgentContent.DefaultPricelistNumber))
                 return false;
             else
                 return true;
@@ -48,15 +54,15 @@ public partial class AgentViewModel : ObservableObject
         if (agent == null)
         {
             AgentNumber = string.Empty;
-         
-            MetadataAgentContent = new();
+
+            AgentContent = new();
         }
         else
         {
             AgentNumber = agent.AgentNumber;
             Agent tempAgent = new() { Metadata = agent.Metadata };
             tempAgent.DeserializeMetadata();
-            MetadataAgentContent = tempAgent.MetadataContent;
+            AgentContent = tempAgent.MetadataContent;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
@@ -66,7 +72,7 @@ public partial class AgentViewModel : ObservableObject
         Agent model = new()
         {
             AgentNumber = AgentNumber,
-            MetadataContent = MetadataAgentContent
+            MetadataContent = AgentContent
         };
         model.SerializeMetadata();
         return model;

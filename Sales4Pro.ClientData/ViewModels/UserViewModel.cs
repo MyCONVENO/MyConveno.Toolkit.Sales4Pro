@@ -27,7 +27,7 @@ public partial class UserViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(ComputeIsUser))]
     [NotifyPropertyChangedFor(nameof(ComputeIsUserOrAdmin))]
     [NotifyPropertyChangedFor(nameof(ComputeIsB2B))]
-    public MetadataUserContent metadataUserContent = new();
+    public MetadataUserContent userContent = new();
 
     #endregion
 
@@ -35,37 +35,37 @@ public partial class UserViewModel : ObservableObject
 
     public bool ComputeIsAdmin
     {
-        get { return MetadataUserContent.Role.ToLower() == "admin"; }
+        get { return UserContent.Role.ToLower() == "admin"; }
     }
 
     public bool ComputeIsUser
     {
         get
-        { return MetadataUserContent.Role.ToLower() == "user"; }
+        { return UserContent.Role.ToLower() == "user"; }
     }
 
     public bool ComputeIsUserOrAdmin
     {
         get
         {
-            return MetadataUserContent.Role.ToLower() == "user" ||
-                   MetadataUserContent.Role.ToLower() == "admin";
+            return UserContent.Role.ToLower() == "user" ||
+                   UserContent.Role.ToLower() == "admin";
         }
     }
 
     public bool ComputeIsB2B
     {
-        get { return MetadataUserContent.Role.ToLower() == "b2b"; }
+        get { return UserContent.Role.ToLower() == "b2b"; }
     }
 
     public string ComputeDisplayname
     {
-        get { return MetadataUserContent.Displayname; }
+        get { return UserContent.Displayname; }
     }
 
     public string ComputeDisplaynameAndRole
     {
-        get { return string.Format("{0} ({1})", MetadataUserContent.Displayname, MetadataUserContent.Role); }
+        get { return string.Format("{0} ({1})", UserContent.Displayname, UserContent.Role); }
     }
 
     public bool ComputeIsPrimaryButtonEnabled
@@ -89,7 +89,7 @@ public partial class UserViewModel : ObservableObject
             UserName = string.Empty;
             Password = string.Empty;
 
-            MetadataUserContent = new MetadataUserContent();
+            UserContent = new MetadataUserContent();
         }
         else
         {
@@ -99,7 +99,7 @@ public partial class UserViewModel : ObservableObject
 
             User tempUser = new() { Metadata = user.Metadata };
             tempUser.DeserializeMetadata();
-            MetadataUserContent = tempUser.MetadataContent;
+            UserContent = tempUser.MetadataContent;
         }
         OnPropertyChanged(nameof(ComputeIsAdmin));
         OnPropertyChanged(nameof(ComputeIsUser));
@@ -116,7 +116,7 @@ public partial class UserViewModel : ObservableObject
             UserId = userId,
             UserName = userName,
             Password = password,
-            MetadataContent = MetadataUserContent
+            MetadataContent = UserContent
         };
         model.SerializeMetadata();
         return model;
