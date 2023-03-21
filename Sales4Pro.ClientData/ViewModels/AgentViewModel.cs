@@ -6,7 +6,7 @@ public partial class AgentViewModel : ObservableObject
 {
     public override string ToString()
     {
-        return AgentName;
+        return AgentNumber;
     }
 
     #region Observable Properties
@@ -14,10 +14,6 @@ public partial class AgentViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public string agentNumber = string.Empty;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string agentName = string.Empty;
 
     [ObservableProperty]
     public MetadataAgentContent metadataAgentContent = new();
@@ -30,7 +26,14 @@ public partial class AgentViewModel : ObservableObject
     {
         get
         {
-            if (string.IsNullOrEmpty(AgentNumber) || string.IsNullOrEmpty(AgentName))
+            if (string.IsNullOrEmpty(AgentNumber) ||
+                string.IsNullOrEmpty(MetadataAgentContent.Displayname) ||
+                string.IsNullOrEmpty(MetadataAgentContent.Street) ||
+                string.IsNullOrEmpty(MetadataAgentContent.ZIP) ||
+                string.IsNullOrEmpty(MetadataAgentContent.City) ||
+                string.IsNullOrEmpty(MetadataAgentContent.Country) ||
+                string.IsNullOrEmpty(MetadataAgentContent.Email) ||
+                string.IsNullOrEmpty(MetadataAgentContent.DefaultPricelistNumber))
                 return false;
             else
                 return true;
@@ -44,35 +47,23 @@ public partial class AgentViewModel : ObservableObject
         if (agent == null)
         {
             AgentNumber = string.Empty;
-            AgentName = string.Empty;
-            //Password = string.Empty;
-
+         
             MetadataAgentContent = new();
         }
         else
         {
             AgentNumber = agent.AgentNumber;
-            AgentName = agent.AgentName;
-            //Password = user.Password;
-
             Agent tempAgent = new() { Metadata = agent.Metadata };
             tempAgent.DeserializeMetadata();
             MetadataAgentContent = tempAgent.MetadataContent;
         }
-        //OnPropertyChanged(nameof(ComputeIsAdmin));
-        //OnPropertyChanged(nameof(ComputeIsUser));
-        //OnPropertyChanged(nameof(ComputeIsUserOrAdmin));
-        //OnPropertyChanged(nameof(ComputeIsB2B));
-        //OnPropertyChanged(nameof(ComputeDisplayname));
-        //OnPropertyChanged(nameof(ComputeDisplaynameAndRole));
     }
 
     public Agent GetModel()
     {
         Agent model = new()
         {
-            AgentNumber = agentNumber,
-            AgentName = agentName,
+            AgentNumber = AgentNumber,
             MetadataContent = MetadataAgentContent
         };
         model.SerializeMetadata();
