@@ -1,8 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
-namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
-
-public partial class MetadataAgentContent : ObservableObject, IMetadataAgentContent
+public class MetadataAgentContent : IMetadataAgentContent
 {
     public MetadataAgentContent()
     {
@@ -19,26 +17,15 @@ public partial class MetadataAgentContent : ObservableObject, IMetadataAgentCont
         ProcessOrders = false;
     }
 
-    [ObservableProperty]
-    public string displayname;
-    [ObservableProperty]
-    public string street;
-    [ObservableProperty]
-    public string zIP;
-    [ObservableProperty]
-    public string city;
-    [ObservableProperty]
-    public string country;
-    [ObservableProperty]
-    public string mobile;
-    [ObservableProperty]
-    public string phone;
-    [ObservableProperty]
-    public string email;
-    [ObservableProperty]
-    public string defaultPricelistNumber;
-    [ObservableProperty]
-    public bool isPriceOnConfirmVisible;
-    [ObservableProperty]
-    public bool processOrders;
+    public string Displayname { get; set; }
+    public string Street { get; set; }
+    public string ZIP { get; set; }
+    public string City { get; set; }
+    public string Country { get; set; }
+    public string Mobile { get; set; }
+    public string Phone { get; set; }
+    public string Email { get; set; }
+    public string DefaultPricelistNumber { get; set; }
+    public bool IsPriceOnConfirmVisible { get; set; } = true;
+    public bool ProcessOrders { get; set; } = false;
 }

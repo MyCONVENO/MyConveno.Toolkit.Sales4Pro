@@ -7,7 +7,6 @@ public partial class AgentViewModel : ObservableObject
     public AgentViewModel()
     {
         AgentNumber = string.Empty;
-        AgentContent = new MetadataAgentContent();
     }
 
     public override string ToString()
@@ -23,7 +22,47 @@ public partial class AgentViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public MetadataAgentContent agentContent;
+    public string displayname;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string street;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string zIP;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string city;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string country;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string mobile;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string phone;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string email;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string defaultPricelistNumber;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public bool isPriceOnConfirmVisible;
+  
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public bool processOrders;
 
     #endregion
 
@@ -34,13 +73,13 @@ public partial class AgentViewModel : ObservableObject
         get
         {
             if (string.IsNullOrEmpty(AgentNumber) ||
-                string.IsNullOrEmpty(AgentContent.Displayname) ||
-                string.IsNullOrEmpty(AgentContent.Street) ||
-                string.IsNullOrEmpty(AgentContent.ZIP) ||
-                string.IsNullOrEmpty(AgentContent.City) ||
-                string.IsNullOrEmpty(AgentContent.Country) ||
-                string.IsNullOrEmpty(AgentContent.Email) ||
-                string.IsNullOrEmpty(AgentContent.DefaultPricelistNumber))
+                string.IsNullOrEmpty(Displayname) ||
+                string.IsNullOrEmpty(Street) ||
+                string.IsNullOrEmpty(ZIP) ||
+                string.IsNullOrEmpty(City) ||
+                string.IsNullOrEmpty(Country) ||
+                string.IsNullOrEmpty(Email) ||
+                string.IsNullOrEmpty(DefaultPricelistNumber))
                 return false;
             else
                 return true;
@@ -54,15 +93,34 @@ public partial class AgentViewModel : ObservableObject
         if (agent == null)
         {
             AgentNumber = string.Empty;
-
-            AgentContent = new();
+            Displayname = string.Empty;
+            Street = string.Empty;
+            ZIP = string.Empty;
+            City = string.Empty;
+            Country = string.Empty;
+            Mobile = string.Empty;
+            Phone = string.Empty;
+            Email = string.Empty;
+            DefaultPricelistNumber = "-";
+            IsPriceOnConfirmVisible = true;
+            ProcessOrders = false;
         }
         else
         {
             AgentNumber = agent.AgentNumber;
-            Agent tempAgent = new() { Metadata = agent.Metadata };
-            tempAgent.DeserializeMetadata();
-            AgentContent = tempAgent.MetadataContent;
+            
+            agent.DeserializeMetadata();
+            Displayname = agent.MetadataContent.Displayname;
+            Street = agent.MetadataContent.Street;
+            ZIP = agent.MetadataContent.ZIP;
+            City = agent.MetadataContent.City;
+            Country = agent.MetadataContent.Country;
+            Mobile = agent.MetadataContent.Mobile;
+            Phone = agent.MetadataContent.Phone;
+            Email = agent.MetadataContent.Email;
+            DefaultPricelistNumber = agent.MetadataContent.DefaultPricelistNumber;
+            IsPriceOnConfirmVisible = agent.MetadataContent.IsPriceOnConfirmVisible;
+            ProcessOrders = agent.MetadataContent.ProcessOrders;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
@@ -72,8 +130,20 @@ public partial class AgentViewModel : ObservableObject
         Agent model = new()
         {
             AgentNumber = AgentNumber,
-            MetadataContent = AgentContent
         };
+
+        model.MetadataContent.Displayname = Displayname;
+        model.MetadataContent.Street = Street;
+        model.MetadataContent.ZIP = ZIP;
+        model.MetadataContent.City = City;
+        model.MetadataContent.Country = Country;
+        model.MetadataContent.Mobile = Mobile;
+        model.MetadataContent.Phone = Phone;
+        model.MetadataContent.Email = Email;
+        model.MetadataContent.DefaultPricelistNumber = DefaultPricelistNumber;
+        model.MetadataContent.IsPriceOnConfirmVisible = IsPriceOnConfirmVisible;
+        model.MetadataContent.ProcessOrders = ProcessOrders;
+
         model.SerializeMetadata();
         return model;
     }
