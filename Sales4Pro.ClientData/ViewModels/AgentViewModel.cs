@@ -16,6 +16,7 @@ public partial class AgentViewModel : ObservableObject
     public string agentNumber = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public MetadataAgentContent metadataAgentContent = new();
 
     #endregion
@@ -57,6 +58,7 @@ public partial class AgentViewModel : ObservableObject
             tempAgent.DeserializeMetadata();
             MetadataAgentContent = tempAgent.MetadataContent;
         }
+        OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
 
     public Agent GetModel()
