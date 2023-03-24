@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.SpecialDiscountViewModel">
+    <Position X="0.5" Y="3.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAAIAAAACAAIAEACBAAAAIAAAAAIAAAARAAAIAAAA=</HashCode>
+      <FileName>ViewModels\SpecialDiscountViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.MetadataSpecialDiscountContent">
+    <Position X="4.25" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAFgAAAAAAAAAAAAAAgQAAAAAAAAgAAAEAAQAA=</HashCode>
+      <FileName>Models\SpecialDiscount\MetadataSpecialDiscountContent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.SpecialDiscount">
+    <Position X="0.5" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAEAAAAgAAAEIAA=</HashCode>
+      <FileName>Models\SpecialDiscount\SpecialDiscount.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
