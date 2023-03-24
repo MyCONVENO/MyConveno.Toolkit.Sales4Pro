@@ -12,6 +12,7 @@ public class MetadataAgentContent : IMetadataAgentContent
         Mobile = string.Empty;
         Phone = string.Empty;
         Email = string.Empty;
+        ConfirmationEmail = string.Empty;
         DefaultPricelistNumber = "-";
         IsPriceOnConfirmVisible = true;
         ProcessOrders = false;
@@ -25,6 +26,7 @@ public class MetadataAgentContent : IMetadataAgentContent
     public string Mobile { get; set; }
     public string Phone { get; set; }
     public string Email { get; set; }
+    public string ConfirmationEmail { get; set; }
     public string DefaultPricelistNumber { get; set; }
     public bool IsPriceOnConfirmVisible { get; set; } = true;
     public bool ProcessOrders { get; set; } = false;

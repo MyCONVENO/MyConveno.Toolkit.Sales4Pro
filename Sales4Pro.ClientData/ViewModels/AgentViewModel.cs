@@ -54,6 +54,10 @@ public partial class AgentViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string confirmationEmail;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public string defaultPricelistNumber;
 
     [ObservableProperty]
@@ -74,11 +78,6 @@ public partial class AgentViewModel : ObservableObject
         {
             if (string.IsNullOrEmpty(AgentNumber) ||
                 string.IsNullOrEmpty(Displayname) ||
-                string.IsNullOrEmpty(Street) ||
-                string.IsNullOrEmpty(ZIP) ||
-                string.IsNullOrEmpty(City) ||
-                string.IsNullOrEmpty(Country) ||
-                string.IsNullOrEmpty(Email) ||
                 string.IsNullOrEmpty(DefaultPricelistNumber))
                 return false;
             else
@@ -101,6 +100,7 @@ public partial class AgentViewModel : ObservableObject
             Mobile = string.Empty;
             Phone = string.Empty;
             Email = string.Empty;
+            ConfirmationEmail = string.Empty;
             DefaultPricelistNumber = "-";
             IsPriceOnConfirmVisible = true;
             ProcessOrders = false;
@@ -118,6 +118,7 @@ public partial class AgentViewModel : ObservableObject
             Mobile = agent.MetadataContent.Mobile;
             Phone = agent.MetadataContent.Phone;
             Email = agent.MetadataContent.Email;
+            ConfirmationEmail = agent.MetadataContent.ConfirmationEmail;
             DefaultPricelistNumber = agent.MetadataContent.DefaultPricelistNumber;
             IsPriceOnConfirmVisible = agent.MetadataContent.IsPriceOnConfirmVisible;
             ProcessOrders = agent.MetadataContent.ProcessOrders;
@@ -140,6 +141,7 @@ public partial class AgentViewModel : ObservableObject
         model.MetadataContent.Mobile = Mobile;
         model.MetadataContent.Phone = Phone;
         model.MetadataContent.Email = Email;
+        model.MetadataContent.ConfirmationEmail = ConfirmationEmail;
         model.MetadataContent.DefaultPricelistNumber = DefaultPricelistNumber;
         model.MetadataContent.IsPriceOnConfirmVisible = IsPriceOnConfirmVisible;
         model.MetadataContent.ProcessOrders = ProcessOrders;
