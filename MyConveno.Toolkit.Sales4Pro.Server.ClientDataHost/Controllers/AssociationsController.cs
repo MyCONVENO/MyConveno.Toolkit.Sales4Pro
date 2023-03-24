@@ -105,7 +105,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             {
                 StringBuilder sbUpdate = new();
                 sbUpdate.Append("UPDATE [Association] SET ");
-                sbUpdate.Append("AssociationName = @AssociationName, ");
+                sbUpdate.Append("AssociationName = @AssociationName ");
                 sbUpdate.Append("WHERE (AssociationId = @AssociationId)");
 
                 int rowsAffected = connection.Execute(sbUpdate.ToString(), association);
