@@ -7,6 +7,7 @@ public partial class SpecialDiscountViewModel : ObservableObject
     public SpecialDiscountViewModel()
     {
         SpecialDiscountId = string.Empty;
+        PasteData(new SpecialDiscount());
     }
 
     public override string ToString()
