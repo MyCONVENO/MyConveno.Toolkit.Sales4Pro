@@ -7,6 +7,7 @@ public class SpecialDiscount : ISpecialDiscount
 {
     public SpecialDiscount()
     {
+        Metadata = string.Empty;
         MetadataContent = new MetadataSpecialDiscountContent();
     }
 
