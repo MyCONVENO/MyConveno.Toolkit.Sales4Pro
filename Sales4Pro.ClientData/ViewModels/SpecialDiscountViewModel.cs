@@ -54,6 +54,18 @@ public partial class SpecialDiscountViewModel : ObservableObject
 
     #endregion
 
+    public DateTimeOffset StartDateDateTimeOffset
+    {
+        get { return StartDate; }
+        set { StartDate = value.Date; }
+    }
+
+    public DateTimeOffset EndDateDateTimeOffset
+    {
+        get { return EndDate; }
+        set { EndDate = value.Date; }
+    }
+
     #region Computed Properties
 
     public bool ComputeIsPrimaryButtonEnabled
