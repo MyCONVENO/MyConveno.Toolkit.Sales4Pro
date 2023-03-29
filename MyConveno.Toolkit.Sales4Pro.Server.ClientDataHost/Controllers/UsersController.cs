@@ -86,7 +86,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 IEnumerable<User> users = (IEnumerable<User>)connection.Query<User>(sbSelect.ToString(), null, null, true, 0);
 
                 if (users == null || !users.Any())
-                    return NotFound();
+                    return Ok(new List<User>());
                 else
                     return Ok(users);
             }

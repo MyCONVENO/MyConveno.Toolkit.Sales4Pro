@@ -59,7 +59,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 IEnumerable<Agent> agents = (IEnumerable<Agent>)connection.Query<Agent>(sbSelect.ToString(), null, null, true, 0);
 
                 if (agents == null || !agents.Any())
-                    return NotFound();
+                    return Ok(new List<Agent>());
                 else
                     return Ok(agents);
             }

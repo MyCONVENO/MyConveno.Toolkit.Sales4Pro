@@ -59,7 +59,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 IEnumerable<Association> associations = (IEnumerable<Association>)connection.Query<Association>(sbSelect.ToString(), null, null, true, 0);
 
                 if (associations == null || !associations.Any())
-                    return NotFound();
+                    return Ok(new List<Association>());
                 else
                     return Ok(associations);
             }

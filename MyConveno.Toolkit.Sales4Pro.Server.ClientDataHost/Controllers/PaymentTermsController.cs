@@ -34,7 +34,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 IEnumerable<PaymentTerm> PaymentTerms = (List<PaymentTerm>)connection.Query<PaymentTerm>(sbSelect.ToString(), null, null, true, 0);
 
                 if (PaymentTerms == null || !PaymentTerms.Any())
-                    return NotFound();
+                    return Ok(new List<PaymentTerm>());
                 else
                     return Ok(PaymentTerms.FirstOrDefault());
             }
