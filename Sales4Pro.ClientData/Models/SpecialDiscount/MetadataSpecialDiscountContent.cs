@@ -10,8 +10,8 @@ public class MetadataSpecialDiscountContent : IMetadataSpecialDiscountContent
         Discount = 0.0d;
         QtyStart = 0;
         WhiteList = string.Empty;
-        SmallInterval = 0.0001d;
-        BigInterval = 0.001d;
+        SmallInterval = 0.001d;
+        BigInterval = 0.01d;
     }
 
     public DateTime StartDate { get; set; }
