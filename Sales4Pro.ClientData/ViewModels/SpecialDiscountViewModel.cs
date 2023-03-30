@@ -58,13 +58,23 @@ public partial class SpecialDiscountViewModel : ObservableObject
     public DateTimeOffset StartDateDateTimeOffset
     {
         get { return StartDate; }
-        set { StartDate = value.Date; }
+        set
+        {
+            StartDate = value.Date;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(EndDateDateTimeOffset));
+        }
     }
 
     public DateTimeOffset EndDateDateTimeOffset
     {
         get { return EndDate; }
-        set { EndDate = value.Date; }
+        set
+        {
+            EndDate = value.Date;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(StartDateDateTimeOffset));
+        }
     }
 
     #region Computed Properties
