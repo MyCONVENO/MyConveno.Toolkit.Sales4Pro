@@ -18,6 +18,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
     <RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro/tree/master/Sales4Pro.WinUI.CustomControls</RepositoryUrl>
+    <NeutralLanguage>de-DE</NeutralLanguage>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="icon.png" />
