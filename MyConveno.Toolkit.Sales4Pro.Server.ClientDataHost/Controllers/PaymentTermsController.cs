@@ -138,7 +138,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             }
         }
 
-        [HttpDelete("{DeleteAll}")]
+        [HttpDelete()]
         public ActionResult DeleteAllPaymentTerms()
         {
             using IDbConnection connection = new SqlConnection(_config.GetConnectionString("SQLAZURECONNSTR_ClientDB"));

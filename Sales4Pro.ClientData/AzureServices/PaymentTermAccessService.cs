@@ -78,7 +78,7 @@ public class PaymentTermAccessService : IPaymentTermAccessService
     {
         Initialize();
 
-        string parameter = string.Format("PaymentTerms/DeleteAll");
+        string parameter = string.Format("PaymentTerms");
         HttpResponseMessage response = await httpClient.DeleteAsync(parameter);
 
         if (response.IsSuccessStatusCode)

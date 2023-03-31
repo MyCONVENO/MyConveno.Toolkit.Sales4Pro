@@ -10,3 +10,7 @@ GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/Agents/GetAll
 
 
 ###
+
+
+DELETE https://sales4pro-solidus-clientdatahost.azurewebsites.net/PaymentTerms
+###
