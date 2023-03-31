@@ -13,8 +13,6 @@
 	<PackageTags>Sales4Pro, MyConveno</PackageTags>
 	<PackageReleaseNotes>None</PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<AssemblyVersion>2023.3.30.3</AssemblyVersion>
-	<FileVersion>2023.3.30.3</FileVersion>
 	<IncludeSymbols>True</IncludeSymbols>
 	<Version>2023.3.30.3</Version>
   </PropertyGroup>
