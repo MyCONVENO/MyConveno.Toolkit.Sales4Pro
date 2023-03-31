@@ -74,4 +74,17 @@ public class PaymentTermAccessService : IPaymentTermAccessService
             return false;
     }
 
+    public async Task<bool> DeleteAllPaymentTerms(string paymentTermid)
+    {
+        Initialize();
+
+        string parameter = string.Format("PaymentTerms/DeleteAll");
+        HttpResponseMessage response = await httpClient.DeleteAsync(parameter);
+
+        if (response.IsSuccessStatusCode)
+            return true;
+        else
+            return false;
+    }
+
 }
