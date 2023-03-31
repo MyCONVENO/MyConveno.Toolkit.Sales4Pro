@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows10.0.22621.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>Sales4Pro.WinUI.CustomControls</RootNamespace>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+    <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>2023.3.31.1</Version>
+    <Authors>Michael Coelsch (MyConveno)</Authors>
+    <Description>MyConveno Sales4Pro Toolkit</Description>
+    <Copyright>© 2023 MyConveno. All rights reserved.</Copyright>
+    <PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>Sales4Pro, MyConveno</PackageTags>
+    <PackageReleaseNotes>None</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IncludeSymbols>True</IncludeSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+      <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
+      <PackageReference Include="CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.2" />
+      <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.Media" Version="7.1.2" />
+      <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
+      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+      <PackageReference Include="Syncfusion.Core.WinUI" Version="20.4.0.38" />
+      <PackageReference Include="Syncfusion.Grid.WinUI" Version="20.4.0.38" />
+      <PackageReference Include="Syncfusion.GridCommon.WinUI" Version="20.4.0.38" />
+  </ItemGroup>
+</Project>

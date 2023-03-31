@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:menu="using:Sales4Pro.WinUI.CustomControls.Menu">
+
+    <Style TargetType="menu:TabContainer">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="menu:TabContainer">
+                    <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ContentPresenter x:Name="PART_AppBarContentPresenter"
+                                          Grid.Row="0"
+                                          Height="48"
+                                          BorderBrush="White"
+                                          BorderThickness="0,1.5,0,0"
+                                          Content="{TemplateBinding AppBarContent}" />
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Grid.Row="1"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          Foreground="{TemplateBinding Foreground}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="menu:SubMenuShadowAppBar">
+        <Setter Property="Height" Value="48" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="Padding" Value="16,0,6,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="menu:SubMenuShadowAppBar">
+                    <Grid>
+                        <Border x:Name="PART_ShadowElement" />
+                        <Grid Background="{TemplateBinding Background}">
+                            <Border x:Name="ContentBorder"
+                                    Padding="{TemplateBinding Padding}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter x:Name="PART_ContentPresenter"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}">
+                                    <ContentPresenter.ContentTransitions>
+                                        <TransitionCollection />
+                                    </ContentPresenter.ContentTransitions>
+                                </ContentPresenter>
+                            </Border>
+                            <!--<Image x:Name="ClientImage"
+                                   Margin="12,8"
+                                   HorizontalAlignment="Right"
+                                   Source="{TemplateBinding ClientImageSource}"
+                                   Stretch="Uniform" />-->
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
