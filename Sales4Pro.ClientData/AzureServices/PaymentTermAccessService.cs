@@ -74,7 +74,7 @@ public class PaymentTermAccessService : IPaymentTermAccessService
             return false;
     }
 
-    public async Task<bool> DeleteAllPaymentTerms(string paymentTermid)
+    public async Task<bool> DeleteAllPaymentTerms()
     {
         Initialize();
 
