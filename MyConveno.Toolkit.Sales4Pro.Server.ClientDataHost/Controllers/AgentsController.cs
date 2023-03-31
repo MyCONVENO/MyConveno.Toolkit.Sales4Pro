@@ -97,7 +97,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             }
         }
 
-
         [HttpPut]
         public ActionResult UpdateAgent(Agent agent)
         {
@@ -122,7 +121,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 return BadRequest();
             }
         }
-
 
         [HttpDelete("{agentnumber}")]
         public ActionResult DeleteAgent(string agentnumber)

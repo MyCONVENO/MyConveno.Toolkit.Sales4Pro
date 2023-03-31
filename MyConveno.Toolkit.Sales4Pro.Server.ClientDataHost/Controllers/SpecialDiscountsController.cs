@@ -34,7 +34,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 IEnumerable<SpecialDiscount> specialDiscounts = (List<SpecialDiscount>)connection.Query<SpecialDiscount>(sbSelect.ToString(), null, null, true, 0);
 
                 if (specialDiscounts == null || !specialDiscounts.Any())
-                    return Ok(new List<SpecialDiscount>());
+                    return NotFound();
                 else
                     return Ok(specialDiscounts.FirstOrDefault());
             }
@@ -59,7 +59,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 IEnumerable<SpecialDiscount> specialDiscounts = (IEnumerable<SpecialDiscount>)connection.Query<SpecialDiscount>(sbSelect.ToString(), null, null, true, 0);
 
                 if (specialDiscounts == null || !specialDiscounts.Any())
-                    return NotFound();
+                    return Ok(new List<SpecialDiscount>());
                 else
                     return Ok(specialDiscounts);
             }

@@ -34,7 +34,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 IEnumerable<Client> clients = await connection.QueryAsync<Client>(sbSelect.ToString());
 
                 if (clients == null || !clients.Any())
-                    return Ok(new List<Client>());
+                    return NotFound();
                 else
                     return Ok(clients.FirstOrDefault());
             }

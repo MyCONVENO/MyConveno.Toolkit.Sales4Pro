@@ -126,7 +126,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             }
         }
 
-
         [HttpPut]
         public ActionResult UpdateUser(User user)
         {
@@ -151,7 +150,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 return BadRequest();
             }
         }
-
 
         [HttpDelete("{userid}")]
         public ActionResult DeleteUser(string userid)
