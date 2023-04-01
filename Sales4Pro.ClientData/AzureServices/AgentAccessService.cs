@@ -7,6 +7,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 public class AgentAccessService : IAgentAccessService
 {
     private readonly string azureURL = string.Empty;
+
     private HttpClient httpClient { get; set; }
 
     public AgentAccessService(string url)

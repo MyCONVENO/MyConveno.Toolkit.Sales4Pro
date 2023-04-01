@@ -7,6 +7,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 public class UserAccessService : IUserAccessService
 {
     private readonly string azureURL = string.Empty;
+
     private HttpClient httpClient { get; set; }
 
     public UserAccessService(string url)

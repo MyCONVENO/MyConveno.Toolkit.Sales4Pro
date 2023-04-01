@@ -19,6 +19,31 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             _logger = logger;
         }
 
+        [HttpGet("GetAll")]
+        //.../Clients/GetAll
+        public ActionResult<IEnumerable<Client>> Get()
+        {
+            using IDbConnection connection = new SqlConnection(_config.GetConnectionString("SQLAZURECONNSTR_ClientDB"));
+
+            try
+            {
+                StringBuilder sbSelect = new();
+                sbSelect.Append("SELECT * FROM dbo.[Client]");
+
+                IEnumerable<Client> Clients = (IEnumerable<Client>)connection.Query<Client>(sbSelect.ToString(), null, null, true, 0);
+
+                if (Clients == null || !Clients.Any())
+                    return Ok(new List<Client>());
+                else
+                    return Ok(Clients);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return BadRequest();
+            }
+        }
+
         [HttpGet("GetById")]
         //.../Clients/GetById?id=1
         public async Task<ActionResult<Client>> Get(string clientId = "")

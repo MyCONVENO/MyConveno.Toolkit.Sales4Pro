@@ -7,6 +7,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 public class ClientAccessService : IClientAccessService
 {
     string azureURL = string.Empty;
+
     private HttpClient httpClient { get; set; }
 
     public ClientAccessService(string url)
@@ -25,6 +26,14 @@ public class ClientAccessService : IClientAccessService
         };
         httpClient.DefaultRequestHeaders.Accept.Clear();
         httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+    }
+
+    public async Task<List<Client>> GetAllClientsAsync()
+    {
+        Initialize();
+        string parameter = string.Format("Clients/GetAll");
+        IList<Client> clients = await httpClient.GetFromJsonAsync<IList<Client>>(parameter);
+        return (List<Client>)clients;
     }
 
     public async Task<Client> GetClientByIdAsync(string clientid)
