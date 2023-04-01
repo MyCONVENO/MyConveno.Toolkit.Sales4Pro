@@ -24,6 +24,14 @@ public partial class ClientViewModel : ObservableObject
 
     #region Computed Properties
 
+    public string ComputeZIPCity
+    {
+        get
+        {
+            return string.Format("{0} {1}", ClientContent.Reports.AddressZip, ClientContent.Reports.AddressCity);
+        }
+    }
+
     #endregion
 
     public void PasteData(Client client)
