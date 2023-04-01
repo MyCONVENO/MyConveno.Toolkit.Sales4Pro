@@ -2,6 +2,7 @@
 
 public interface IClientAccessService
 {
+    Task<List<Client>> GetAllClientsAsync();
     Task<Client> GetClientByIdAsync(string clientid);
     Task<bool> UpdateClient(Client client);
 }
