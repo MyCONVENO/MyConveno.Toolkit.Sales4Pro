@@ -21,7 +21,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
 
         [HttpGet("GetById")]
         //.../Clients/GetById?id=1
-        public async Task<ActionResult<Client>> Get(string clientid = "")
+        public async Task<ActionResult<Client>> Get(string clientId = "")
         {
             using IDbConnection connection = new SqlConnection(_config.GetConnectionString("SQLAZURECONNSTR_ClientDB"));
 
@@ -29,7 +29,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             {
                 StringBuilder sbSelect = new();
                 sbSelect.Append("SELECT * FROM dbo.[Client] ");
-                sbSelect.Append("WHERE (ClientId = '" + clientid + "')");
+                sbSelect.Append("WHERE (ClientId = '" + clientId + "')");
 
                 IEnumerable<Client> clients = await connection.QueryAsync<Client>(sbSelect.ToString());
 
@@ -45,7 +45,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             }
         }
 
-
         [HttpPut]
         public ActionResult UpdateClient(Client client)
         {
@@ -57,7 +56,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 sbUpdate.Append("UPDATE [Client] SET ");
                 sbUpdate.Append("ClientName = @ClientName, ");
                 sbUpdate.Append("Metadata = @Metadata ");
-                sbUpdate.Append("WHERE (ClientName = @ClientName)");
+                sbUpdate.Append("WHERE (ClientId = @ClientId)");
 
                 int rowsAffected = connection.Execute(sbUpdate.ToString(), client);
                 return Ok();
@@ -68,7 +67,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 return BadRequest();
             }
         }
-
 
     }
 }

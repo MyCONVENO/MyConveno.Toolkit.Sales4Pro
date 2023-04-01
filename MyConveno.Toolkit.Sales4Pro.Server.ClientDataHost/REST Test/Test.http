@@ -3,14 +3,16 @@
 
 GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/Clients/GetById?clientid=1
 
-
 ###
 
 GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/Agents/GetAll
 
+###
+
+GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/Clients/GetById?clientId=1
 
 ###
 
-
 DELETE https://sales4pro-solidus-clientdatahost.azurewebsites.net/PaymentTerms
+
 ###
