@@ -259,7 +259,6 @@ public partial class ClientViewModel : ObservableObject
         }
     }
 
-
     public string ComputeZIPCity
     {
         get
@@ -329,13 +328,13 @@ public partial class ClientViewModel : ObservableObject
             AEBRemarkText2 = string.Empty;
             AEBRemarkText3 = string.Empty;
             AEBRemarkText4 = string.Empty;
-
-            ClientContent = new MetadataClientContent();
         }
         else
         {
             ClientId = client.ClientId;
             ClientName = client.ClientName;
+
+            client.DeserializeMetadata();
 
             DefaultSeason = client.MetadataContent.App.DefaultSeason;
             SupportPersonName = client.MetadataContent.App.SupportPersonName;
@@ -389,10 +388,6 @@ public partial class ClientViewModel : ObservableObject
             AEBRemarkText2 = client.MetadataContent.Reports.AEBRemarkText2;
             AEBRemarkText3 = client.MetadataContent.Reports.AEBRemarkText3;
             AEBRemarkText4 = client.MetadataContent.Reports.AEBRemarkText4;
-
-            Client tempClient = new() { Metadata = client.Metadata };
-            tempClient.DeserializeMetadata();
-            ClientContent = tempClient.MetadataContent;
         }
     }
 
@@ -402,8 +397,62 @@ public partial class ClientViewModel : ObservableObject
         {
             ClientId = ClientId,
             ClientName = ClientName,
-
-            MetadataContent = ClientContent
+            MetadataContent = new()
+            {
+                App = new()
+                {
+                    DefaultSeason = DefaultSeason,
+                    SupportPersonName = SupportPersonName,
+                    SupportPersonEmail = SupportPersonEmail,
+                    SupportPersonPhone = SupportPersonPhone,
+                    ImagePathString = ImagePathString,
+                    AccentColorString = AccentColorString,
+                    AccentColorLight1String = AccentColorLight1String,
+                    AccentColorLight2String = AccentColorLight2String,
+                    AccentColorLight3String = AccentColorLight3String,
+                    AccentColorDark1String = AccentColorDark1String,
+                    AccentColorDark2String = AccentColorDark2String,
+                    AccentColorDark3String = AccentColorDark3String,
+                },
+                Reports = new()
+                {
+                    AddressName1 = AddressName1,
+                    AddressName2 = AddressName2,
+                    AddressStreet = AddressStreet,
+                    AddressZip = AddressZip,
+                    AddressCity = AddressCity,
+                    AddressCountryName = AddressCountryName,
+                    AddressCountryCode = AddressCountryCode,
+                    AddressLine1 = AddressLine1,
+                    AddressLine2 = AddressLine2,
+                    AddressLine3 = AddressLine3,
+                    AddressLine4 = AddressLine4,
+                    AddressLine5 = AddressLine5,
+                    FooterLeftHeader = FooterLeftHeader,
+                    FooterLeftLine1 = FooterLeftLine1,
+                    FooterLeftLine2 = FooterLeftLine2,
+                    FooterLeftLine3 = FooterLeftLine3,
+                    FooterLeftLine4 = FooterLeftLine4,
+                    FooterLeftLine5 = FooterLeftLine5,
+                    FooterCenterHeader = FooterCenterHeader,
+                    FooterCenterLine1 = FooterCenterLine1,
+                    FooterCenterLine2 = FooterCenterLine2,
+                    FooterCenterLine3 = FooterCenterLine3,
+                    FooterCenterLine4 = FooterCenterLine4,
+                    FooterCenterLine5 = FooterCenterLine5,
+                    FooterRightHeader = FooterRightHeader,
+                    FooterRightLine1 = FooterRightLine1,
+                    FooterRightLine2 = FooterRightLine2,
+                    FooterRightLine3 = FooterRightLine3,
+                    FooterRightLine4 = FooterRightLine4,
+                    FooterRightLine5 = FooterRightLine5,
+                    Addressline = Addressline,
+                    AEBRemarkText1 = AEBRemarkText1,
+                    AEBRemarkText2 = AEBRemarkText2,
+                    AEBRemarkText3 = AEBRemarkText3,
+                    AEBRemarkText4 = AEBRemarkText4
+                }
+            }
         };
         model.SerializeMetadata();
         return model;

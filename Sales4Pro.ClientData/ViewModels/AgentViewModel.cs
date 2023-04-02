@@ -131,20 +131,22 @@ public partial class AgentViewModel : ObservableObject
         Agent model = new()
         {
             AgentNumber = AgentNumber,
+            MetadataContent = new()
+            {
+                Displayname = Displayname,
+                Street = Street,
+                ZIP = ZIP,
+                City = City,
+                Country = Country,
+                Mobile = Mobile,
+                Phone = Phone,
+                Email = Email,
+                ConfirmationEmail = ConfirmationEmail,
+                DefaultPricelistNumber = DefaultPricelistNumber,
+                IsPriceOnConfirmVisible = IsPriceOnConfirmVisible,
+                ProcessOrders = ProcessOrders
+            }
         };
-
-        model.MetadataContent.Displayname = Displayname;
-        model.MetadataContent.Street = Street;
-        model.MetadataContent.ZIP = ZIP;
-        model.MetadataContent.City = City;
-        model.MetadataContent.Country = Country;
-        model.MetadataContent.Mobile = Mobile;
-        model.MetadataContent.Phone = Phone;
-        model.MetadataContent.Email = Email;
-        model.MetadataContent.ConfirmationEmail = ConfirmationEmail;
-        model.MetadataContent.DefaultPricelistNumber = DefaultPricelistNumber;
-        model.MetadataContent.IsPriceOnConfirmVisible = IsPriceOnConfirmVisible;
-        model.MetadataContent.ProcessOrders = ProcessOrders;
 
         model.SerializeMetadata();
         return model;
