@@ -14,7 +14,7 @@
 	<PackageReleaseNotes>None</PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<IncludeSymbols>True</IncludeSymbols>
-	<Version>2023.4.2.4</Version>
+	<Version>2023.4.2.5</Version>
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro/tree/master/Sales4Pro.ClientData</RepositoryUrl>
   </PropertyGroup>

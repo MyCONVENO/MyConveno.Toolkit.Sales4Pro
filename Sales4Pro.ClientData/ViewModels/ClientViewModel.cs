@@ -100,10 +100,12 @@ public partial class ClientViewModel : ObservableObject
     public string addressCity = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeCountryCodeAndName))]
     [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressCountryCode = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeCountryCodeAndName))]
     [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressCountryName = string.Empty;
 
@@ -264,6 +266,14 @@ public partial class ClientViewModel : ObservableObject
         get
         {
             return string.Format("{0} {1}", AddressZip, AddressCity);
+        }
+    }
+
+    public string ComputeCountryCodeAndName
+    {
+        get
+        {
+            return string.Format("{0} {1}", AddressCountryCode, AddressCountryName);
         }
     }
 
