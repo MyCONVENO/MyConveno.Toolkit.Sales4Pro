@@ -90,10 +90,12 @@ public partial class ClientViewModel : ObservableObject
     public string addressStreet = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeZIPCity))]
     [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressZip = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeZIPCity))]
     [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressCity = string.Empty;
 
