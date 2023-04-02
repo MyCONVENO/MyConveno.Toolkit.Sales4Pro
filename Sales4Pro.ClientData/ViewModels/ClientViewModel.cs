@@ -12,9 +12,15 @@ public partial class ClientViewModel : ObservableObject
     #region Observable Properties
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string clientId = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string clientName = string.Empty;
 
     [ObservableProperty]
@@ -23,118 +29,155 @@ public partial class ClientViewModel : ObservableObject
 
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string defaultSeason = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string supportPersonName = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string supportPersonEmail = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string supportPersonPhone = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string imagePathString = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorString = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorLight1String = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorLight2String = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorLight3String = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorDark1String = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorDark2String = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorDark3String = string.Empty;
 
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressName1 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressName2 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressStreet = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressZip = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressCity = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressCountryCode = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressCountryName = string.Empty;
 
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressline = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressLine1 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressLine2 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressLine3 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressLine4 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressLine5 = string.Empty;
 
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerLeftHeader = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerLeftLine1 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerLeftLine2 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerLeftLine3 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerLeftLine4 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerLeftLine5 = string.Empty;
 
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerCenterHeader = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerCenterLine1 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerCenterLine2 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerCenterLine3 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerCenterLine4 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerCenterLine5 = string.Empty;
 
 
@@ -173,7 +216,24 @@ public partial class ClientViewModel : ObservableObject
 
     #region Computed Properties
 
-    public bool ComputeIsPrimaryButtonEnabled
+    public bool ComputeIsMainDataPrimaryButtonEnabled
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(ClientId) ||
+                string.IsNullOrEmpty(ClientName) ||
+                string.IsNullOrEmpty(AddressName1) ||
+                string.IsNullOrEmpty(AddressStreet) ||
+                string.IsNullOrEmpty(AddressCity) ||
+                string.IsNullOrEmpty(AddressCountryCode) ||
+                string.IsNullOrEmpty(AddressCountryName))
+                return false;
+            else
+                return true;
+        }
+    }
+
+    public bool ComputeIsAppPrimaryButtonEnabled
     {
         get
         {
@@ -184,6 +244,19 @@ public partial class ClientViewModel : ObservableObject
                 return true;
         }
     }
+
+    public bool ComputeIsReportsPrimaryButtonEnabled
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(ClientId) ||
+                string.IsNullOrEmpty(ClientName))
+                return false;
+            else
+                return true;
+        }
+    }
+
 
     public string ComputeZIPCity
     {
