@@ -23,8 +23,8 @@ public partial class ClientViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string clientName = string.Empty;
 
-    [ObservableProperty]
-    public MetadataClientContent clientContent = new();
+    //[ObservableProperty]
+    //public MetadataClientContent clientContent = new();
 
 
 
