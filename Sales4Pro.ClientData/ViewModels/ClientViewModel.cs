@@ -273,18 +273,17 @@ public partial class ClientViewModel : ObservableObject
         }
     }
 
-
     public bool ComputeHasFooterLeft
     {
         get
         {
             if (
-                !string.IsNullOrEmpty(FooterLeftHeader) &&
-                !string.IsNullOrEmpty(FooterLeftLine1) &&
-                !string.IsNullOrEmpty(FooterLeftLine2) &&
-                !string.IsNullOrEmpty(FooterLeftLine3) &&
-                !string.IsNullOrEmpty(FooterLeftLine4) &&
-                !string.IsNullOrEmpty(FooterLeftLine5)
+                string.IsNullOrEmpty(FooterLeftHeader) &&
+                string.IsNullOrEmpty(FooterLeftLine1) &&
+                string.IsNullOrEmpty(FooterLeftLine2) &&
+                string.IsNullOrEmpty(FooterLeftLine3) &&
+                string.IsNullOrEmpty(FooterLeftLine4) &&
+                string.IsNullOrEmpty(FooterLeftLine5)
                 )
                 return false;
             else
@@ -297,12 +296,12 @@ public partial class ClientViewModel : ObservableObject
         get
         {
             if (
-                !string.IsNullOrEmpty(FooterCenterHeader) &&
-                !string.IsNullOrEmpty(FooterCenterLine1) &&
-                !string.IsNullOrEmpty(FooterCenterLine2) &&
-                !string.IsNullOrEmpty(FooterCenterLine3) &&
-                !string.IsNullOrEmpty(FooterCenterLine4) &&
-                !string.IsNullOrEmpty(FooterCenterLine5)
+                string.IsNullOrEmpty(FooterCenterHeader) &&
+                string.IsNullOrEmpty(FooterCenterLine1) &&
+                string.IsNullOrEmpty(FooterCenterLine2) &&
+                string.IsNullOrEmpty(FooterCenterLine3) &&
+                string.IsNullOrEmpty(FooterCenterLine4) &&
+                string.IsNullOrEmpty(FooterCenterLine5)
                 )
                 return false;
             else
@@ -315,12 +314,12 @@ public partial class ClientViewModel : ObservableObject
         get
         {
             if (
-                !string.IsNullOrEmpty(FooterRightHeader) &&
-                !string.IsNullOrEmpty(FooterRightLine1) &&
-                !string.IsNullOrEmpty(FooterRightLine2) &&
-                !string.IsNullOrEmpty(FooterRightLine3) &&
-                !string.IsNullOrEmpty(FooterRightLine4) &&
-                !string.IsNullOrEmpty(FooterRightLine5)
+                string.IsNullOrEmpty(FooterRightHeader) &&
+                string.IsNullOrEmpty(FooterRightLine1) &&
+                string.IsNullOrEmpty(FooterRightLine2) &&
+                string.IsNullOrEmpty(FooterRightLine3) &&
+                string.IsNullOrEmpty(FooterRightLine4) &&
+                string.IsNullOrEmpty(FooterRightLine5)
                 )
                 return false;
             else
@@ -333,12 +332,12 @@ public partial class ClientViewModel : ObservableObject
         get
         {
             if (
-                !string.IsNullOrEmpty(AddresslineHeader) &&
-                !string.IsNullOrEmpty(Addressline1) &&
-                !string.IsNullOrEmpty(Addressline2) &&
-                !string.IsNullOrEmpty(Addressline3) &&
-                !string.IsNullOrEmpty(Addressline4) &&
-                !string.IsNullOrEmpty(Addressline5)
+                string.IsNullOrEmpty(AddresslineHeader) &&
+                string.IsNullOrEmpty(Addressline1) &&
+                string.IsNullOrEmpty(Addressline2) &&
+                string.IsNullOrEmpty(Addressline3) &&
+                string.IsNullOrEmpty(Addressline4) &&
+                string.IsNullOrEmpty(Addressline5)
                 )
                 return false;
             else
@@ -351,10 +350,10 @@ public partial class ClientViewModel : ObservableObject
         get
         {
             if (
-                !string.IsNullOrEmpty(AEBRemarkText1) &&
-                !string.IsNullOrEmpty(AEBRemarkText2) &&
-                !string.IsNullOrEmpty(AEBRemarkText3) &&
-                !string.IsNullOrEmpty(AEBRemarkText4)
+                string.IsNullOrEmpty(AEBRemarkText1) &&
+                string.IsNullOrEmpty(AEBRemarkText2) &&
+                string.IsNullOrEmpty(AEBRemarkText3) &&
+                string.IsNullOrEmpty(AEBRemarkText4)
                 )
                 return false;
             else
