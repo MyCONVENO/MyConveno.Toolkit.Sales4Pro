@@ -37,12 +37,7 @@ public class MetadataClientContent : IMetadataClientContent
         public string AddressCity { get; set; } = string.Empty;
         public string AddressCountryName { get; set; } = string.Empty;
         public string AddressCountryCode { get; set; } = string.Empty;
-        public string AddressLine1 { get; set; } = string.Empty;
-        public string AddressLine2 { get; set; } = string.Empty;
-        public string AddressLine3 { get; set; } = string.Empty;
-        public string AddressLine4 { get; set; } = string.Empty;
-        public string AddressLine5 { get; set; } = string.Empty;
-
+      
         public string FooterLeftHeader { get; set; } = string.Empty;
         public string FooterLeftLine1 { get; set; } = string.Empty;
         public string FooterLeftLine2 { get; set; } = string.Empty;
@@ -63,7 +58,13 @@ public class MetadataClientContent : IMetadataClientContent
         public string FooterRightLine3 { get; set; } = string.Empty;
         public string FooterRightLine4 { get; set; } = string.Empty;
         public string FooterRightLine5 { get; set; } = string.Empty;
-        public string Addressline { get; set; } = string.Empty;
+       
+        public string AddresslineHeader { get; set; } = string.Empty;
+        public string Addressline1 { get; set; } = string.Empty;
+        public string Addressline2 { get; set; } = string.Empty;
+        public string Addressline3 { get; set; } = string.Empty;
+        public string Addressline4 { get; set; } = string.Empty;
+        public string Addressline5 { get; set; } = string.Empty;
 
         public string AEBRemarkText1 { get; set; } = string.Empty;
         public string AEBRemarkText2 { get; set; } = string.Empty;

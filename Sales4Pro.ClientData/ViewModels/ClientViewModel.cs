@@ -23,57 +23,46 @@ public partial class ClientViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string clientName = string.Empty;
 
-    //[ObservableProperty]
-    //public MetadataClientContent clientContent = new();
-
-
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string defaultSeason = string.Empty;
 
+
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeIsSupportPrimaryButtonEnabled))]
     public string supportPersonName = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeIsSupportPrimaryButtonEnabled))]
     public string supportPersonEmail = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeIsSupportPrimaryButtonEnabled))]
     public string supportPersonPhone = string.Empty;
 
+
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string imagePathString = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorString = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorLight1String = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorLight2String = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorLight3String = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorDark1String = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorDark2String = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAppPrimaryButtonEnabled))]
     public string accentColorDark3String = string.Empty;
 
 
@@ -111,109 +100,120 @@ public partial class ClientViewModel : ObservableObject
 
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
-    public string addressline = string.Empty;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
-    public string addressLine1 = string.Empty;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
-    public string addressLine2 = string.Empty;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
-    public string addressLine3 = string.Empty;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
-    public string addressLine4 = string.Empty;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
-    public string addressLine5 = string.Empty;
-
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterLeft))]
     public string footerLeftHeader = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterLeft))]
     public string footerLeftLine1 = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterLeft))]
     public string footerLeftLine2 = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterLeft))]
     public string footerLeftLine3 = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterLeft))]
     public string footerLeftLine4 = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterLeft))]
     public string footerLeftLine5 = string.Empty;
 
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterCenter))]
     public string footerCenterHeader = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterCenter))]
     public string footerCenterLine1 = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterCenter))]
     public string footerCenterLine2 = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterCenter))]
     public string footerCenterLine3 = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterCenter))]
     public string footerCenterLine4 = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterCenter))]
     public string footerCenterLine5 = string.Empty;
 
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterRight))]
     public string footerRightHeader = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterRight))]
+    [NotifyPropertyChangedFor(nameof(ComputeIsReportsPrimaryButtonEnabled))]
     public string footerRightLine1 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterRight))]
     public string footerRightLine2 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterRight))]
     public string footerRightLine3 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterRight))]
     public string footerRightLine4 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasFooterRight))]
     public string footerRightLine5 = string.Empty;
 
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAddressline))]
+    public string addresslineHeader = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAddressline))]
+    public string addressline1 = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAddressline))]
+    public string addressline2 = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAddressline))]
+    public string addressline3 = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAddressline))]
+    public string addressline4 = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAddressline))]
+    public string addressline5 = string.Empty;
+
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAEBRemark))]
     public string aEBRemarkText1 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAEBRemark))]
     public string aEBRemarkText2 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAEBRemark))]
     public string aEBRemarkText3 = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeHasAEBRemark))]
     public string aEBRemarkText4 = string.Empty;
 
     #endregion
@@ -255,6 +255,107 @@ public partial class ClientViewModel : ObservableObject
         {
             if (string.IsNullOrEmpty(ClientId) ||
                 string.IsNullOrEmpty(ClientName))
+                return false;
+            else
+                return true;
+        }
+    }
+
+    public bool ComputeIsSupportPrimaryButtonEnabled
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(ClientId) ||
+                string.IsNullOrEmpty(ClientName))
+                return false;
+            else
+                return true;
+        }
+    }
+
+
+    public bool ComputeHasFooterLeft
+    {
+        get
+        {
+            if (
+                !string.IsNullOrEmpty(FooterLeftHeader) &&
+                !string.IsNullOrEmpty(FooterLeftLine1) &&
+                !string.IsNullOrEmpty(FooterLeftLine2) &&
+                !string.IsNullOrEmpty(FooterLeftLine3) &&
+                !string.IsNullOrEmpty(FooterLeftLine4) &&
+                !string.IsNullOrEmpty(FooterLeftLine5)
+                )
+                return false;
+            else
+                return true;
+        }
+    }
+
+    public bool ComputeHasFooterCenter
+    {
+        get
+        {
+            if (
+                !string.IsNullOrEmpty(FooterCenterHeader) &&
+                !string.IsNullOrEmpty(FooterCenterLine1) &&
+                !string.IsNullOrEmpty(FooterCenterLine2) &&
+                !string.IsNullOrEmpty(FooterCenterLine3) &&
+                !string.IsNullOrEmpty(FooterCenterLine4) &&
+                !string.IsNullOrEmpty(FooterCenterLine5)
+                )
+                return false;
+            else
+                return true;
+        }
+    }
+
+    public bool ComputeHasFooterRight
+    {
+        get
+        {
+            if (
+                !string.IsNullOrEmpty(FooterRightHeader) &&
+                !string.IsNullOrEmpty(FooterRightLine1) &&
+                !string.IsNullOrEmpty(FooterRightLine2) &&
+                !string.IsNullOrEmpty(FooterRightLine3) &&
+                !string.IsNullOrEmpty(FooterRightLine4) &&
+                !string.IsNullOrEmpty(FooterRightLine5)
+                )
+                return false;
+            else
+                return true;
+        }
+    }
+
+    public bool ComputeHasAddressline
+    {
+        get
+        {
+            if (
+                !string.IsNullOrEmpty(AddresslineHeader) &&
+                !string.IsNullOrEmpty(Addressline1) &&
+                !string.IsNullOrEmpty(Addressline2) &&
+                !string.IsNullOrEmpty(Addressline3) &&
+                !string.IsNullOrEmpty(Addressline4) &&
+                !string.IsNullOrEmpty(Addressline5)
+                )
+                return false;
+            else
+                return true;
+        }
+    }
+
+    public bool ComputeHasAEBRemark
+    {
+        get
+        {
+            if (
+                !string.IsNullOrEmpty(AEBRemarkText1) &&
+                !string.IsNullOrEmpty(AEBRemarkText2) &&
+                !string.IsNullOrEmpty(AEBRemarkText3) &&
+                !string.IsNullOrEmpty(AEBRemarkText4)
+                )
                 return false;
             else
                 return true;
@@ -306,11 +407,6 @@ public partial class ClientViewModel : ObservableObject
             AddressCity = string.Empty;
             AddressCountryName = string.Empty;
             AddressCountryCode = string.Empty;
-            AddressLine1 = string.Empty;
-            AddressLine2 = string.Empty;
-            AddressLine3 = string.Empty;
-            AddressLine4 = string.Empty;
-            AddressLine5 = string.Empty;
 
             FooterLeftHeader = string.Empty;
             FooterLeftLine1 = string.Empty;
@@ -333,7 +429,13 @@ public partial class ClientViewModel : ObservableObject
             FooterRightLine4 = string.Empty;
             FooterRightLine5 = string.Empty;
 
-            Addressline = string.Empty;
+            AddresslineHeader = string.Empty;
+            Addressline1 = string.Empty;
+            Addressline2 = string.Empty;
+            Addressline3 = string.Empty;
+            Addressline4 = string.Empty;
+            Addressline5 = string.Empty;
+
             AEBRemarkText1 = string.Empty;
             AEBRemarkText2 = string.Empty;
             AEBRemarkText3 = string.Empty;
@@ -366,11 +468,6 @@ public partial class ClientViewModel : ObservableObject
             AddressCity = client.MetadataContent.Reports.AddressCity;
             AddressCountryName = client.MetadataContent.Reports.AddressCountryName;
             AddressCountryCode = client.MetadataContent.Reports.AddressCountryCode;
-            AddressLine1 = client.MetadataContent.Reports.AddressLine1;
-            AddressLine2 = client.MetadataContent.Reports.AddressLine2;
-            AddressLine3 = client.MetadataContent.Reports.AddressLine3;
-            AddressLine4 = client.MetadataContent.Reports.AddressLine4;
-            AddressLine5 = client.MetadataContent.Reports.AddressLine5;
 
             FooterLeftHeader = client.MetadataContent.Reports.FooterLeftHeader;
             FooterLeftLine1 = client.MetadataContent.Reports.FooterLeftLine1;
@@ -393,7 +490,13 @@ public partial class ClientViewModel : ObservableObject
             FooterRightLine4 = client.MetadataContent.Reports.FooterRightLine4;
             FooterRightLine5 = client.MetadataContent.Reports.FooterRightLine5;
 
-            Addressline = client.MetadataContent.Reports.Addressline;
+            AddresslineHeader = client.MetadataContent.Reports.AddresslineHeader;
+            Addressline1 = client.MetadataContent.Reports.Addressline1;
+            Addressline2 = client.MetadataContent.Reports.Addressline2;
+            Addressline3 = client.MetadataContent.Reports.Addressline3;
+            Addressline4 = client.MetadataContent.Reports.Addressline4;
+            Addressline5 = client.MetadataContent.Reports.Addressline5;
+
             AEBRemarkText1 = client.MetadataContent.Reports.AEBRemarkText1;
             AEBRemarkText2 = client.MetadataContent.Reports.AEBRemarkText2;
             AEBRemarkText3 = client.MetadataContent.Reports.AEBRemarkText3;
@@ -433,11 +536,6 @@ public partial class ClientViewModel : ObservableObject
                     AddressCity = AddressCity,
                     AddressCountryName = AddressCountryName,
                     AddressCountryCode = AddressCountryCode,
-                    AddressLine1 = AddressLine1,
-                    AddressLine2 = AddressLine2,
-                    AddressLine3 = AddressLine3,
-                    AddressLine4 = AddressLine4,
-                    AddressLine5 = AddressLine5,
                     FooterLeftHeader = FooterLeftHeader,
                     FooterLeftLine1 = FooterLeftLine1,
                     FooterLeftLine2 = FooterLeftLine2,
@@ -456,7 +554,14 @@ public partial class ClientViewModel : ObservableObject
                     FooterRightLine3 = FooterRightLine3,
                     FooterRightLine4 = FooterRightLine4,
                     FooterRightLine5 = FooterRightLine5,
-                    Addressline = Addressline,
+
+                    AddresslineHeader = AddresslineHeader,
+                    Addressline1 = Addressline1,
+                    Addressline2 = Addressline2,
+                    Addressline3 = Addressline3,
+                    Addressline4 = Addressline4,
+                    Addressline5 = Addressline5,
+
                     AEBRemarkText1 = AEBRemarkText1,
                     AEBRemarkText2 = AEBRemarkText2,
                     AEBRemarkText3 = AEBRemarkText3,
