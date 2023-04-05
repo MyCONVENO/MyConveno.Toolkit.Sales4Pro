@@ -2,7 +2,7 @@
 
 public interface IMetadataAgentContent
 {
-    string Displayname { get; set; }
+    string DisplayName { get; set; }
     string Street { get; set; }
     string ZIP { get; set; }
     string City { get; set; }
@@ -11,6 +11,5 @@ public interface IMetadataAgentContent
     string Mobile { get; set; }
     string Email { get; set; }
     string DefaultPricelistNumber { get; set; }
-    bool IsPriceOnConfirmVisible { get; set; }
-    bool ProcessOrders { get; set; }
+    bool IsPriceOnConfirmVisible { get; set; }   
 }

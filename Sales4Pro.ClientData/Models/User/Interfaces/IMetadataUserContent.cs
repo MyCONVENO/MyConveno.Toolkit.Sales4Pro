@@ -2,12 +2,15 @@
 
 public interface IMetadataUserContent
 {
-    string City { get; set; }
-    string Email { get; set; }
+    string DisplayName { get; set; }
+    string Role { get; set; }
     bool IsPriceOnConfirmVisible { get; set; }
-    string Mobile { get; set; }
-    string Phone { get; set; }
     bool ProcessOrders { get; set; }
-    string Street { get; set; }
-    string ZIP { get; set; }
+    string DefaultPricelistNumber { get; set; }
+    string Email { get; set; }
+    List<MetadataAgent> Agents { get; set; }
+    List<string> CustomerNumbers { get; set; }
+
+    // List<MetadataPricelist> Pricelists { get; set; }
+
 }

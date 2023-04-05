@@ -23,11 +23,28 @@ public partial class UserViewModel : ObservableObject
     public string password = string.Empty;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsAdmin))]
-    [NotifyPropertyChangedFor(nameof(ComputeIsUser))]
-    [NotifyPropertyChangedFor(nameof(ComputeIsUserOrAdmin))]
-    [NotifyPropertyChangedFor(nameof(ComputeIsB2B))]
-    public MetadataUserContent userContent = new();
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string displayName = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string role = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public bool isPriceOnConfirmVisible;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public bool processOrders;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string defaultPricelistNumber = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string email = string.Empty;
 
     #endregion
 
@@ -35,44 +52,46 @@ public partial class UserViewModel : ObservableObject
 
     public bool ComputeIsAdmin
     {
-        get { return UserContent.Role.ToLower() == "admin"; }
+        get { return Role.ToLower() == "admin"; }
     }
 
     public bool ComputeIsUser
     {
         get
-        { return UserContent.Role.ToLower() == "user"; }
+        { return Role.ToLower() == "user"; }
     }
 
     public bool ComputeIsUserOrAdmin
     {
         get
         {
-            return UserContent.Role.ToLower() == "user" ||
-                   UserContent.Role.ToLower() == "admin";
+            return Role.ToLower() == "user" ||
+                   Role.ToLower() == "admin";
         }
     }
 
     public bool ComputeIsB2B
     {
-        get { return UserContent.Role.ToLower() == "b2b"; }
+        get { return Role.ToLower() == "b2b"; }
     }
 
-    public string ComputeDisplayname
+    public string ComputeDisplayName
     {
-        get { return UserContent.Displayname; }
+        get { return DisplayName; }
     }
 
-    public string ComputeDisplaynameAndRole
+    public string ComputeDisplayNameAndRole
     {
-        get { return string.Format("{0} ({1})", UserContent.Displayname, UserContent.Role); }
+        get { return string.Format("{0} ({1})", DisplayName, Role); }
     }
 
     public bool ComputeIsPrimaryButtonEnabled
     {
         get
         {
-            if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(UserName) ||
+                string.IsNullOrEmpty(Password) ||
+                string.IsNullOrEmpty(DisplayName))
                 return false;
             else
                 return true;
@@ -89,7 +108,12 @@ public partial class UserViewModel : ObservableObject
             UserName = string.Empty;
             Password = string.Empty;
 
-            UserContent = new MetadataUserContent();
+            Role = string.Empty;
+            DefaultPricelistNumber = string.Empty;
+            DisplayName = string.Empty;
+            IsPriceOnConfirmVisible = false;
+            ProcessOrders = false;
+            Email = string.Empty;
         }
         else
         {
@@ -97,26 +121,40 @@ public partial class UserViewModel : ObservableObject
             UserName = user.UserName;
             Password = user.Password;
 
-            User tempUser = new() { Metadata = user.Metadata };
-            tempUser.DeserializeMetadata();
-            UserContent = tempUser.MetadataContent;
+            user.DeserializeMetadata();
+
+            Role = user.MetadataContent.Role;
+            DefaultPricelistNumber = user.MetadataContent.DefaultPricelistNumber;
+            DisplayName = user.MetadataContent.DisplayName;
+            IsPriceOnConfirmVisible = user.MetadataContent.IsPriceOnConfirmVisible;
+            ProcessOrders = user.MetadataContent.ProcessOrders;
+            Email = user.MetadataContent.Email;
         }
+        OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
         OnPropertyChanged(nameof(ComputeIsAdmin));
         OnPropertyChanged(nameof(ComputeIsUser));
         OnPropertyChanged(nameof(ComputeIsUserOrAdmin));
         OnPropertyChanged(nameof(ComputeIsB2B));
-        OnPropertyChanged(nameof(ComputeDisplayname));
-        OnPropertyChanged(nameof(ComputeDisplaynameAndRole));
+        OnPropertyChanged(nameof(ComputeDisplayName));
+        OnPropertyChanged(nameof(ComputeDisplayNameAndRole));
     }
 
     public User GetModel()
     {
         User model = new()
         {
-            UserId = userId,
-            UserName = userName,
-            Password = password,
-            MetadataContent = UserContent
+            UserId = UserId,
+            UserName = UserName,
+            Password = Password,
+            MetadataContent = new()
+            {
+                Role = Role,
+                DefaultPricelistNumber = DefaultPricelistNumber,
+                DisplayName = DisplayName,
+                IsPriceOnConfirmVisible = IsPriceOnConfirmVisible,
+                ProcessOrders = ProcessOrders,
+                Email = Email
+            }
         };
         model.SerializeMetadata();
         return model;

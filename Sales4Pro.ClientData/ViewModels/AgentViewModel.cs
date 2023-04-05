@@ -22,7 +22,7 @@ public partial class AgentViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string displayname;
+    public string displayName;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -77,7 +77,7 @@ public partial class AgentViewModel : ObservableObject
         get
         {
             if (string.IsNullOrEmpty(AgentNumber) ||
-                string.IsNullOrEmpty(Displayname) ||
+                string.IsNullOrEmpty(DisplayName) ||
                 string.IsNullOrEmpty(DefaultPricelistNumber))
                 return false;
             else
@@ -92,7 +92,7 @@ public partial class AgentViewModel : ObservableObject
         if (agent == null)
         {
             AgentNumber = string.Empty;
-            Displayname = string.Empty;
+            DisplayName = string.Empty;
             Street = string.Empty;
             ZIP = string.Empty;
             City = string.Empty;
@@ -103,14 +103,14 @@ public partial class AgentViewModel : ObservableObject
             ConfirmationEmail = string.Empty;
             DefaultPricelistNumber = "-";
             IsPriceOnConfirmVisible = true;
-            ProcessOrders = false;
         }
         else
         {
             AgentNumber = agent.AgentNumber;
             
             agent.DeserializeMetadata();
-            Displayname = agent.MetadataContent.Displayname;
+           
+            DisplayName = agent.MetadataContent.DisplayName;
             Street = agent.MetadataContent.Street;
             ZIP = agent.MetadataContent.ZIP;
             City = agent.MetadataContent.City;
@@ -121,7 +121,6 @@ public partial class AgentViewModel : ObservableObject
             ConfirmationEmail = agent.MetadataContent.ConfirmationEmail;
             DefaultPricelistNumber = agent.MetadataContent.DefaultPricelistNumber;
             IsPriceOnConfirmVisible = agent.MetadataContent.IsPriceOnConfirmVisible;
-            ProcessOrders = agent.MetadataContent.ProcessOrders;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
@@ -133,7 +132,7 @@ public partial class AgentViewModel : ObservableObject
             AgentNumber = AgentNumber,
             MetadataContent = new()
             {
-                Displayname = Displayname,
+                DisplayName = DisplayName,
                 Street = Street,
                 ZIP = ZIP,
                 City = City,
@@ -143,8 +142,7 @@ public partial class AgentViewModel : ObservableObject
                 Email = Email,
                 ConfirmationEmail = ConfirmationEmail,
                 DefaultPricelistNumber = DefaultPricelistNumber,
-                IsPriceOnConfirmVisible = IsPriceOnConfirmVisible,
-                ProcessOrders = ProcessOrders
+                IsPriceOnConfirmVisible = IsPriceOnConfirmVisible
             }
         };
 

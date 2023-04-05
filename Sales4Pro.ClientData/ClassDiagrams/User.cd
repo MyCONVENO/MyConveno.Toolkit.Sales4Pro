@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.UserViewModel">
+    <Position X="0.5" Y="3.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>EAEAAKAAABCAAAAkCAAAABAAAAAAAIAAgCDQAgEAAAg=</HashCode>
+      <FileName>ViewModels\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.MetadataUserContent">
+    <Position X="4.25" Y="3.5" Width="3.25" />
+    <AssociationLine Name="Agents" Type="MyConveno.Toolkit.Sales4Pro.Client.ClientData.MetadataAgent" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.938" Y="3.5" />
+        <Point X="6.938" Y="1.662" />
+        <Point X="7.75" Y="1.662" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIAEAAAACAAAACAEAEAAAAAAAAAAUAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User\MetadataUserContent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Agents" />
+      <Property Name="CustomerNumbers" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.User">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACgAAAAAAAECAQAAAAAEIAA=</HashCode>
+      <FileName>Models\User\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.MetadataAgent">
+    <Position X="7.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAAIAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Agent\MetadataAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.String">
+    <Position X="8" Y="6.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
