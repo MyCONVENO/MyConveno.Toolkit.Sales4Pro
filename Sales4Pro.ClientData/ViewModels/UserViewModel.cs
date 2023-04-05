@@ -12,23 +12,23 @@ public partial class UserViewModel : ObservableObject
     #region Observable Properties
 
     [ObservableProperty]
-    public string userId = string.Empty;
+    public string userId ;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string userName = string.Empty;
+    public string userName;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string password = string.Empty;
+    public string password ;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string displayName = string.Empty;
+    public string displayName;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string role = string.Empty;
+    public string role;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -40,11 +40,19 @@ public partial class UserViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string defaultPricelistNumber = string.Empty;
+    public string defaultPricelistNumber;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string email = string.Empty;
+    public string email;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public List<MetadataAgent> agents;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public List<string> customerNumbers;
 
     #endregion
 
@@ -114,6 +122,9 @@ public partial class UserViewModel : ObservableObject
             IsPriceOnConfirmVisible = false;
             ProcessOrders = false;
             Email = string.Empty;
+
+            Agents = new List<MetadataAgent>();
+            CustomerNumbers = new List<string>();
         }
         else
         {
@@ -129,6 +140,9 @@ public partial class UserViewModel : ObservableObject
             IsPriceOnConfirmVisible = user.MetadataContent.IsPriceOnConfirmVisible;
             ProcessOrders = user.MetadataContent.ProcessOrders;
             Email = user.MetadataContent.Email;
+
+            Agents = user.MetadataContent.Agents;
+            CustomerNumbers = user.MetadataContent.CustomerNumbers;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
         OnPropertyChanged(nameof(ComputeIsAdmin));
@@ -153,7 +167,9 @@ public partial class UserViewModel : ObservableObject
                 DisplayName = DisplayName,
                 IsPriceOnConfirmVisible = IsPriceOnConfirmVisible,
                 ProcessOrders = ProcessOrders,
-                Email = Email
+                Email = Email,
+                Agents = Agents,
+                CustomerNumbers = CustomerNumbers
             }
         };
         model.SerializeMetadata();

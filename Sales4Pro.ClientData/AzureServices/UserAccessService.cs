@@ -28,39 +28,6 @@ public class UserAccessService : IUserAccessService
         httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
     }
 
-    public async Task<List<User>> GetAllUsersAsync()
-    {
-        Initialize();
-        string parameter = string.Format("Users/GetAll");
-        IList<User> users = await httpClient.GetFromJsonAsync<IList<User>>(parameter);
-        return (List<User>)users;
-    }
-
-    public async Task<User> GetUserByCredentialsAsync(string username, string password)
-    {
-        Initialize();
-        string parameter = string.Format("Users/GetByCredentials?username={0}&password={1}", username, password);
-
-        try
-        {
-            User user = await httpClient.GetFromJsonAsync<User>(parameter);
-            return user;
-        }
-        catch (Exception)
-        {
-            return null;
-        }
-    }
-
-    public async Task<User> GetUserByUserNameAsync(string username)
-    {
-        Initialize();
-        string parameter = string.Format("Users/GetByUserName?username={0}", username);
-        User user = await httpClient.GetFromJsonAsync<User>(parameter);
-        return user;
-    }
-
-
     public async Task<bool> AddUser(User user)
     {
         Initialize();
@@ -99,5 +66,38 @@ public class UserAccessService : IUserAccessService
         else
             return false;
     }
+
+    public async Task<List<User>> GetAllUsersAsync()
+    {
+        Initialize();
+        string parameter = string.Format("Users/GetAll");
+        IList<User> users = await httpClient.GetFromJsonAsync<IList<User>>(parameter);
+        return (List<User>)users;
+    }
+
+    public async Task<User> GetUserByCredentialsAsync(string username, string password)
+    {
+        Initialize();
+        string parameter = string.Format("Users/GetByCredentials?username={0}&password={1}", username, password);
+
+        try
+        {
+            User user = await httpClient.GetFromJsonAsync<User>(parameter);
+            return user;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    public async Task<User> GetUserByUserNameAsync(string username)
+    {
+        Initialize();
+        string parameter = string.Format("Users/GetByUserName?username={0}", username);
+        User user = await httpClient.GetFromJsonAsync<User>(parameter);
+        return user;
+    }
+
 
 }

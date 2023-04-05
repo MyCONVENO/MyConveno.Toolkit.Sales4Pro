@@ -28,14 +28,6 @@ public class AgentAccessService : IAgentAccessService
         httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
     }
 
-    public async Task<List<Agent>> GetAllAgentsAsync()
-    {
-        Initialize();
-        string parameter = string.Format("Agents/GetAll");
-        IList<Agent> agents = await httpClient.GetFromJsonAsync<IList<Agent>>(parameter);
-        return (List<Agent>)agents;
-    }
-
     public async Task<bool> AddAgent(Agent agent)
     {
         Initialize();
@@ -73,6 +65,14 @@ public class AgentAccessService : IAgentAccessService
             return true;
         else
             return false;
+    }
+
+    public async Task<List<Agent>> GetAllAgentsAsync()
+    {
+        Initialize();
+        string parameter = string.Format("Agents/GetAll");
+        IList<Agent> agents = await httpClient.GetFromJsonAsync<IList<Agent>>(parameter);
+        return (List<Agent>)agents;
     }
 
 }
