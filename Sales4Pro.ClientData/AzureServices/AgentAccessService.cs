@@ -36,31 +36,6 @@ public class AgentAccessService : IAgentAccessService
         return (List<Agent>)agents;
     }
 
-    //public async Task<User> GetUserByCredentialsAsync(string username, string password)
-    //{
-    //    Initialize();
-    //    string parameter = string.Format("Users/GetByCredentials?username={0}&password={1}", username, password);
-
-    //    try
-    //    {
-    //        User user = await httpClient.GetFromJsonAsync<User>(parameter);
-    //        return user;
-    //    }
-    //    catch (Exception)
-    //    {
-    //        return null;
-    //    }
-    //}
-
-    //public async Task<User> GetUserByUserNameAsync(string username)
-    //{
-    //    Initialize();
-    //    string parameter = string.Format("Users/GetByUserName?username={0}", username);
-    //    User user = await httpClient.GetFromJsonAsync<User>(parameter);
-    //    return user;
-    //}
-
-
     public async Task<bool> AddAgent(Agent agent)
     {
         Initialize();

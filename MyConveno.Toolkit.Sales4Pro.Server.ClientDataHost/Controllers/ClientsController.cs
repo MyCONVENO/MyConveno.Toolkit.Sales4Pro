@@ -30,12 +30,12 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 StringBuilder sbSelect = new();
                 sbSelect.Append("SELECT * FROM dbo.[Client]");
 
-                IEnumerable<Client> Clients = (IEnumerable<Client>)connection.Query<Client>(sbSelect.ToString(), null, null, true, 0);
+                IEnumerable<Client> clients = (IEnumerable<Client>)connection.Query<Client>(sbSelect.ToString(), null, null, true, 0);
 
-                if (Clients == null || !Clients.Any())
+                if (clients == null || !clients.Any())
                     return Ok(new List<Client>());
                 else
-                    return Ok(Clients);
+                    return Ok(clients);
             }
             catch (Exception ex)
             {
