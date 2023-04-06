@@ -4,6 +4,15 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
 public partial class UserViewModel : ObservableObject
 {
+
+    public UserViewModel()
+    {
+        UserId = Guid.NewGuid().ToString();
+        Role = "User";
+        Agents = new List<MetadataAgent>();
+        CustomerNumbers = new List<string>();
+    }
+
     public override string ToString()
     {
         return UserName;
@@ -12,7 +21,7 @@ public partial class UserViewModel : ObservableObject
     #region Observable Properties
 
     [ObservableProperty]
-    public string userId ;
+    public string userId;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -20,7 +29,7 @@ public partial class UserViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string password ;
+    public string password;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
