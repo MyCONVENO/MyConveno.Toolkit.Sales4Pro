@@ -166,7 +166,6 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="2" />
         <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="RequestedTheme" Value="Light" />
         <Setter Property="UseSystemFocusVisuals" Value="False" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -269,7 +268,6 @@
         <Setter Property="BorderBrush" Value="White" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="RequestedTheme" Value="Light" />
         <Setter Property="MinHeight" Value="20" />
         <Setter Property="MinWidth" Value="60" />
         <Setter Property="Template">
@@ -456,7 +454,6 @@
 
     <Style TargetType="local:CurtainControl">
         <Setter Property="Background" Value="{ThemeResource AcrylicInAppFillColorDefaultBrush}" />
-        <Setter Property="RequestedTheme" Value="Light" />
         <Setter Property="HeaderHeight" Value="40" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -1211,11 +1208,7 @@
                                         <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundChromeBlackHighBrush}" />
                                         </ObjectAnimationUsingKeyFrames>-->
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement"
-                                                                       Storyboard.TargetProperty="RequestedTheme">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="Light" />
-                                        </ObjectAnimationUsingKeyFrames>
+                                       
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -1287,7 +1280,6 @@
         <Setter Property="Height" Value="32" />
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Padding" Value="8" />
-        <Setter Property="RequestedTheme" Value="Light" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:SpinButton">
@@ -1363,7 +1355,6 @@
 
     <Style TargetType="local:StatusBarSpinIcon">
         <Setter Property="UseSystemFocusVisuals" Value="False" />
-        <Setter Property="RequestedTheme" Value="Light" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:StatusBarSpinIcon">

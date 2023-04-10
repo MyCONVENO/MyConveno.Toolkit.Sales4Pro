@@ -217,7 +217,6 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="RequestedTheme" Value="Light" />
         <Setter Property="MinHeight" Value="48" />
         <Setter Property="MinWidth" Value="60" />
         <Setter Property="Margin" Value="0,0,0,2" />
