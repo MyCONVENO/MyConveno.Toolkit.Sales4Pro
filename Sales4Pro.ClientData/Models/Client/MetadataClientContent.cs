@@ -20,12 +20,6 @@ public class MetadataClientContent : IMetadataClientContent
         public string ImagePathString { get; set; } = string.Empty;
         
         public string AccentColorString { get; set; } = string.Empty;
-        public string AccentColorLight1String { get; set; } = string.Empty;
-        public string AccentColorLight2String { get; set; } = string.Empty;
-        public string AccentColorLight3String { get; set; } = string.Empty;
-        public string AccentColorDark1String { get; set; } = string.Empty;
-        public string AccentColorDark2String { get; set; } = string.Empty;
-        public string AccentColorDark3String { get; set; } = string.Empty;
     }
 
     public class ClientMetadataReports

@@ -2,12 +2,6 @@
 
 public interface IMetadataClientContent
 {
-    string AccentColorDark1String { get; set; }
-    string AccentColorDark2String { get; set; }
-    string AccentColorDark3String { get; set; }
-    string AccentColorLight1String { get; set; }
-    string AccentColorLight2String { get; set; }
-    string AccentColorLight3String { get; set; }
     string AccentColorString { get; set; }
     IClientMetadataCatalog Catalog { get; set; }
     IClientMetadataCustomer Customer { get; set; }
