@@ -14,7 +14,6 @@ public class MetadataAgentContent : IMetadataAgentContent
         Email = string.Empty;
         ConfirmationEmail = string.Empty;
         DefaultPricelistNumber = "-";
-        IsPriceOnConfirmVisible = true;
     }
 
     public string DisplayName { get; set; }
@@ -27,5 +26,4 @@ public class MetadataAgentContent : IMetadataAgentContent
     public string Email { get; set; }
     public string ConfirmationEmail { get; set; }
     public string DefaultPricelistNumber { get; set; }
-    public bool IsPriceOnConfirmVisible { get; set; } = true;
 }

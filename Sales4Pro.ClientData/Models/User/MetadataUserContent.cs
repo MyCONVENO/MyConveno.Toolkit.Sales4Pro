@@ -19,7 +19,7 @@ public class MetadataUserContent : IMetadataUserContent
 
     public string DisplayName { get; set; }
     public string Role { get; set; }
-    public bool IsPriceOnConfirmVisible { get; set; } = true;
+    public bool IsPriceOnConfirmVisible { get; set; }
     public bool ProcessOrders { get; set; } = false;
     public string DefaultPricelistNumber { get; set; }
     public string Email { get; set; }

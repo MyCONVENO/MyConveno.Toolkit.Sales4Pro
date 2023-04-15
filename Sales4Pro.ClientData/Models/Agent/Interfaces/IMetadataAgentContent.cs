@@ -11,5 +11,4 @@ public interface IMetadataAgentContent
     string Mobile { get; set; }
     string Email { get; set; }
     string DefaultPricelistNumber { get; set; }
-    bool IsPriceOnConfirmVisible { get; set; }   
 }

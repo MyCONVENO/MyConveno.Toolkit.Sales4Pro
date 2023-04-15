@@ -62,10 +62,6 @@ public partial class AgentViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public bool isPriceOnConfirmVisible;
-  
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public bool processOrders;
 
     #endregion
@@ -102,7 +98,6 @@ public partial class AgentViewModel : ObservableObject
             Email = string.Empty;
             ConfirmationEmail = string.Empty;
             DefaultPricelistNumber = "-";
-            IsPriceOnConfirmVisible = true;
         }
         else
         {
@@ -120,7 +115,6 @@ public partial class AgentViewModel : ObservableObject
             Email = agent.MetadataContent.Email;
             ConfirmationEmail = agent.MetadataContent.ConfirmationEmail;
             DefaultPricelistNumber = agent.MetadataContent.DefaultPricelistNumber;
-            IsPriceOnConfirmVisible = agent.MetadataContent.IsPriceOnConfirmVisible;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
@@ -142,7 +136,6 @@ public partial class AgentViewModel : ObservableObject
                 Email = Email,
                 ConfirmationEmail = ConfirmationEmail,
                 DefaultPricelistNumber = DefaultPricelistNumber,
-                IsPriceOnConfirmVisible = IsPriceOnConfirmVisible
             }
         };
 
