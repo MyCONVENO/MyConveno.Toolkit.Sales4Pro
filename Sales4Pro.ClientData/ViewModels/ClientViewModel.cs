@@ -48,25 +48,6 @@ public partial class ClientViewModel : ObservableObject
     public string accentColorString = string.Empty;
 
     [ObservableProperty]
-    public string accentColorLight1String = string.Empty;
-
-    [ObservableProperty]
-    public string accentColorLight2String = string.Empty;
-
-    [ObservableProperty]
-    public string accentColorLight3String = string.Empty;
-
-    [ObservableProperty]
-    public string accentColorDark1String = string.Empty;
-
-    [ObservableProperty]
-    public string accentColorDark2String = string.Empty;
-
-    [ObservableProperty]
-    public string accentColorDark3String = string.Empty;
-
-
-    [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsMainDataPrimaryButtonEnabled))]
     public string addressName1 = string.Empty;
 
@@ -392,12 +373,6 @@ public partial class ClientViewModel : ObservableObject
             SupportPersonPhone = string.Empty;
             ImagePathString = string.Empty;
             AccentColorString = string.Empty;
-            AccentColorLight1String = string.Empty;
-            AccentColorLight2String = string.Empty;
-            AccentColorLight3String = string.Empty;
-            AccentColorDark1String = string.Empty;
-            AccentColorDark2String = string.Empty;
-            AccentColorDark3String = string.Empty;
 
             AddressName1 = string.Empty;
             AddressName2 = string.Empty;
@@ -453,13 +428,7 @@ public partial class ClientViewModel : ObservableObject
             SupportPersonPhone = client.MetadataContent.App.SupportPersonPhone;
             ImagePathString = client.MetadataContent.App.ImagePathString;
             AccentColorString = client.MetadataContent.App.AccentColorString;
-            AccentColorLight1String = client.MetadataContent.App.AccentColorLight1String;
-            AccentColorLight2String = client.MetadataContent.App.AccentColorLight2String;
-            AccentColorLight3String = client.MetadataContent.App.AccentColorLight3String;
-            AccentColorDark1String = client.MetadataContent.App.AccentColorDark1String;
-            AccentColorDark2String = client.MetadataContent.App.AccentColorDark2String;
-            AccentColorDark3String = client.MetadataContent.App.AccentColorDark3String;
-
+         
             AddressName1 = client.MetadataContent.Reports.AddressName1;
             AddressName2 = client.MetadataContent.Reports.AddressName2;
             AddressStreet = client.MetadataContent.Reports.AddressStreet;
@@ -518,13 +487,7 @@ public partial class ClientViewModel : ObservableObject
                     SupportPersonEmail = SupportPersonEmail,
                     SupportPersonPhone = SupportPersonPhone,
                     ImagePathString = ImagePathString,
-                    AccentColorString = AccentColorString,
-                    AccentColorLight1String = AccentColorLight1String,
-                    AccentColorLight2String = AccentColorLight2String,
-                    AccentColorLight3String = AccentColorLight3String,
-                    AccentColorDark1String = AccentColorDark1String,
-                    AccentColorDark2String = AccentColorDark2String,
-                    AccentColorDark3String = AccentColorDark3String,
+                    AccentColorString = AccentColorString
                 },
                 Reports = new()
                 {
