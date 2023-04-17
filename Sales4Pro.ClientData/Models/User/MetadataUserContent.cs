@@ -12,9 +12,9 @@ public class MetadataUserContent : IMetadataUserContent
         Email = string.Empty;
 
         Agents = new List<MetadataAgent>();
+        Pricelists = new List<MetadataPricelist>();
         CustomerNumbers = new List<string>();
-      
-        //Pricelists = new List<MetadataPricelist>();
+       
     }
 
     public string DisplayName { get; set; }
@@ -24,7 +24,7 @@ public class MetadataUserContent : IMetadataUserContent
     public string DefaultPricelistNumber { get; set; }
     public string Email { get; set; }
     public List<MetadataAgent> Agents { get; set; }
+    public List<MetadataPricelist> Pricelists { get; set; }
     public List<string> CustomerNumbers { get; set; }
-    
-    //public List<MetadataPricelist> Pricelists { get; set; }
+   
 }
