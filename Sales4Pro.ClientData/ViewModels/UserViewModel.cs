@@ -200,6 +200,12 @@ public partial class UserViewModel : ObservableObject
         OnPropertyChanged(nameof(ComputeIsB2B));
         OnPropertyChanged(nameof(ComputeDisplayName));
         OnPropertyChanged(nameof(ComputeDisplayNameAndRole));
+        OnPropertyChanged(nameof(ComputeHasAgents));
+        OnPropertyChanged(nameof(ComputeHasPricelists));
+        OnPropertyChanged(nameof(ComputeHasCustomerNumbers));
+        OnPropertyChanged(nameof(ComputeAgentsCount));
+        OnPropertyChanged(nameof(ComputePricelistsCount));
+        OnPropertyChanged(nameof(ComputeCustomerNumbersCount));
     }
 
     public User GetModel()
