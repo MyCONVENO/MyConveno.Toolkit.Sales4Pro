@@ -1,4 +1,6 @@
-﻿namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
+﻿using System.Collections.ObjectModel;
+
+namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
 public interface IMetadataUserContent
 {
@@ -8,9 +10,9 @@ public interface IMetadataUserContent
     bool ProcessOrders { get; set; }
     string DefaultPricelistNumber { get; set; }
     string Email { get; set; }
-    List<MetadataAgent> Agents { get; set; }
-    List<string> CustomerNumbers { get; set; }
+    ObservableCollection<MetadataAgent> Agents { get; set; }
+    ObservableCollection<MetadataPricelist> Pricelists { get; set; }
+    ObservableCollection<string> CustomerNumbers { get; set; }
 
-    // List<MetadataPricelist> Pricelists { get; set; }
 
 }

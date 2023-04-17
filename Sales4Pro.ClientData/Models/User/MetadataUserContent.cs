@@ -1,4 +1,6 @@
-﻿namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
+﻿using System.Collections.ObjectModel;
+
+namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
 public class MetadataUserContent : IMetadataUserContent
 {
@@ -11,9 +13,9 @@ public class MetadataUserContent : IMetadataUserContent
         ProcessOrders = false;
         Email = string.Empty;
 
-        Agents = new List<MetadataAgent>();
-        Pricelists = new List<MetadataPricelist>();
-        CustomerNumbers = new List<string>();
+        Agents = new ObservableCollection<MetadataAgent>();
+        Pricelists = new ObservableCollection<MetadataPricelist>();
+        CustomerNumbers = new ObservableCollection<string>();
     }
 
     public string DisplayName { get; set; }
@@ -22,8 +24,8 @@ public class MetadataUserContent : IMetadataUserContent
     public bool ProcessOrders { get; set; } = false;
     public string DefaultPricelistNumber { get; set; }
     public string Email { get; set; }
-    public List<MetadataAgent> Agents { get; set; }
-    public List<MetadataPricelist> Pricelists { get; set; }
-    public List<string> CustomerNumbers { get; set; }
+    public ObservableCollection<MetadataAgent> Agents { get; set; }
+    public ObservableCollection<MetadataPricelist> Pricelists { get; set; }
+    public ObservableCollection<string> CustomerNumbers { get; set; }
    
 }

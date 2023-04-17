@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
@@ -8,9 +9,9 @@ public partial class UserViewModel : ObservableObject
     {
         UserId = Guid.NewGuid().ToString();
         Role = "User";
-        Agents = new List<MetadataAgent>();
-        Pricelists = new List<MetadataPricelist>();
-        CustomerNumbers = new List<string>();
+        Agents = new ObservableCollection<MetadataAgent>();
+        Pricelists = new ObservableCollection<MetadataPricelist>();
+        CustomerNumbers = new ObservableCollection<string>();
     }
 
     public override string ToString()
@@ -57,15 +58,18 @@ public partial class UserViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public List<MetadataAgent> agents;
+    [NotifyPropertyChangedFor(nameof(ComputeHasAgents))]
+    public ObservableCollection<MetadataAgent> agents;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public List<MetadataPricelist> pricelists;
+    [NotifyPropertyChangedFor(nameof(ComputeHasPricelists))]
+    public ObservableCollection<MetadataPricelist> pricelists;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public List<string> customerNumbers;
+    [NotifyPropertyChangedFor(nameof(ComputeHasCustomerNumbers))]
+    public ObservableCollection<string> customerNumbers;
 
     #endregion
 
@@ -106,6 +110,36 @@ public partial class UserViewModel : ObservableObject
         get { return string.Format("{0} ({1})", DisplayName, Role); }
     }
 
+    public bool ComputeHasAgents
+    {
+        get { return Agents.Count > 0; }
+    }
+
+    public bool ComputeHasPricelists
+    {
+        get { return Pricelists.Count > 0; }
+    }
+
+    public bool ComputeHasCustomerNumbers
+    {
+        get { return CustomerNumbers.Count > 0; }
+    }
+
+    public int ComputeAgentsCount
+    {
+        get { return Agents.Count; }
+    }
+
+    public int ComputePricelistsCount
+    {
+        get { return Pricelists.Count; }
+    }
+
+    public int ComputeCustomerNumbersCount
+    {
+        get { return CustomerNumbers.Count; }
+    }
+
     public bool ComputeIsPrimaryButtonEnabled
     {
         get
@@ -136,9 +170,9 @@ public partial class UserViewModel : ObservableObject
             ProcessOrders = false;
             Email = string.Empty;
 
-            Agents = new List<MetadataAgent>();
-            Pricelists = new List<MetadataPricelist>();
-            CustomerNumbers = new List<string>();
+            Agents = new ObservableCollection<MetadataAgent>();
+            Pricelists = new ObservableCollection<MetadataPricelist>();
+            CustomerNumbers = new ObservableCollection<string>();
         }
         else
         {
