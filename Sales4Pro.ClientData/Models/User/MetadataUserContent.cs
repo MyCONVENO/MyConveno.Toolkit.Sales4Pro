@@ -14,7 +14,6 @@ public class MetadataUserContent : IMetadataUserContent
         Agents = new List<MetadataAgent>();
         Pricelists = new List<MetadataPricelist>();
         CustomerNumbers = new List<string>();
-       
     }
 
     public string DisplayName { get; set; }

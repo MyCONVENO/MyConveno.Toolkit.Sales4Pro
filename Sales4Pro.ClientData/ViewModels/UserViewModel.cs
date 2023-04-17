@@ -4,12 +4,12 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
 public partial class UserViewModel : ObservableObject
 {
-
     public UserViewModel()
     {
         UserId = Guid.NewGuid().ToString();
         Role = "User";
         Agents = new List<MetadataAgent>();
+        Pricelists = new List<MetadataPricelist>();
         CustomerNumbers = new List<string>();
     }
 
@@ -58,6 +58,10 @@ public partial class UserViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public List<MetadataAgent> agents;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public List<MetadataPricelist> pricelists;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -133,6 +137,7 @@ public partial class UserViewModel : ObservableObject
             Email = string.Empty;
 
             Agents = new List<MetadataAgent>();
+            Pricelists = new List<MetadataPricelist>();
             CustomerNumbers = new List<string>();
         }
         else
@@ -151,6 +156,7 @@ public partial class UserViewModel : ObservableObject
             Email = user.MetadataContent.Email;
 
             Agents = user.MetadataContent.Agents;
+            Pricelists = user.MetadataContent.Pricelists;
             CustomerNumbers = user.MetadataContent.CustomerNumbers;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
@@ -178,6 +184,7 @@ public partial class UserViewModel : ObservableObject
                 ProcessOrders = ProcessOrders,
                 Email = Email,
                 Agents = Agents,
+                Pricelists = Pricelists,
                 CustomerNumbers = CustomerNumbers
             }
         };
