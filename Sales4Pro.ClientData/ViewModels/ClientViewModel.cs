@@ -9,7 +9,7 @@ public partial class ClientViewModel : ObservableObject
         
     }
 
-    public ClientViewModel(Client client)
+    public ClientViewModel(Client client) : this()
     {
         PasteData(client);
     }

@@ -9,7 +9,7 @@ public partial class AgentViewModel : ObservableObject
         AgentNumber = string.Empty;
     }
 
-    public AgentViewModel(Agent agent)
+    public AgentViewModel(Agent agent) : this()
     {
         PasteData(agent);
     }
@@ -107,9 +107,9 @@ public partial class AgentViewModel : ObservableObject
         else
         {
             AgentNumber = agent.AgentNumber;
-            
+
             agent.DeserializeMetadata();
-           
+
             DisplayName = agent.MetadataContent.DisplayName;
             Street = agent.MetadataContent.Street;
             ZIP = agent.MetadataContent.ZIP;

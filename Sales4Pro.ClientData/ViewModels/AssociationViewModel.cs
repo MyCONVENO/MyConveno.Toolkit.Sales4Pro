@@ -10,7 +10,7 @@ public partial class AssociationViewModel : ObservableObject
         AssociationName = string.Empty;
     }
 
-    public AssociationViewModel(Association association) : base() 
+    public AssociationViewModel(Association association) : this()
     {
         PasteData(association);
     }

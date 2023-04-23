@@ -14,7 +14,7 @@ public partial class UserViewModel : ObservableObject
         CustomerNumbers = new ObservableCollection<string>();
     }
 
-    public UserViewModel(User user) : base()
+    public UserViewModel(User user) : this()
     {
         PasteData(user);
     }

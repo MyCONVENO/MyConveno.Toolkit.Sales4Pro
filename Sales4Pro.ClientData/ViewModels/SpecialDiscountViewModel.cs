@@ -10,7 +10,7 @@ public partial class SpecialDiscountViewModel : ObservableObject
         PasteData(new SpecialDiscount());
     }
 
-    public SpecialDiscountViewModel(SpecialDiscount specialDiscount) : base() 
+    public SpecialDiscountViewModel(SpecialDiscount specialDiscount) : this()
     {
         PasteData(specialDiscount);
     }
