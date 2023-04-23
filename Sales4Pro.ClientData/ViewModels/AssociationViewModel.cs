@@ -10,6 +10,11 @@ public partial class AssociationViewModel : ObservableObject
         AssociationName = string.Empty;
     }
 
+    public AssociationViewModel(Association association) : base() 
+    {
+        PasteData(association);
+    }
+
     public override string ToString()
     {
         return AssociationName;

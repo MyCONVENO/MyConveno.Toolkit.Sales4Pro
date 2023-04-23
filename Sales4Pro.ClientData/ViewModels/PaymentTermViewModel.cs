@@ -10,6 +10,11 @@ public partial class PaymentTermViewModel : ObservableObject
         PaymentTermName = string.Empty;
     }
 
+    public PaymentTermViewModel(PaymentTerm paymentTerm) :base() 
+    {
+       PasteData(paymentTerm);
+    }
+
     public override string ToString()
     {
         return PaymentTermName;

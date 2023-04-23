@@ -10,8 +10,8 @@ public interface IMetadataUserContent
     bool ProcessOrders { get; set; }
     string DefaultPricelistNumber { get; set; }
     string Email { get; set; }
-    ObservableCollection<MetadataAgent> Agents { get; set; }
-    ObservableCollection<MetadataPricelist> Pricelists { get; set; }
+    ObservableCollection<Agent> Agents { get; set; }
+    ObservableCollection<Pricelist> Pricelists { get; set; }
     ObservableCollection<string> CustomerNumbers { get; set; }
 
 

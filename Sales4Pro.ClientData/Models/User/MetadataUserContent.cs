@@ -13,8 +13,8 @@ public class MetadataUserContent : IMetadataUserContent
         ProcessOrders = false;
         Email = string.Empty;
 
-        Agents = new ObservableCollection<MetadataAgent>();
-        Pricelists = new ObservableCollection<MetadataPricelist>();
+        Agents = new ObservableCollection<Agent>();
+        Pricelists = new ObservableCollection<Pricelist>();
         CustomerNumbers = new ObservableCollection<string>();
     }
 
@@ -24,8 +24,8 @@ public class MetadataUserContent : IMetadataUserContent
     public bool ProcessOrders { get; set; } = false;
     public string DefaultPricelistNumber { get; set; }
     public string Email { get; set; }
-    public ObservableCollection<MetadataAgent> Agents { get; set; }
-    public ObservableCollection<MetadataPricelist> Pricelists { get; set; }
+    public ObservableCollection<Agent> Agents { get; set; }
+    public ObservableCollection<Pricelist> Pricelists { get; set; }
     public ObservableCollection<string> CustomerNumbers { get; set; }
    
 }

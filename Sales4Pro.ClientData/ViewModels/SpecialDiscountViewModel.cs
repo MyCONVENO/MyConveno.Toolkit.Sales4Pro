@@ -10,6 +10,11 @@ public partial class SpecialDiscountViewModel : ObservableObject
         PasteData(new SpecialDiscount());
     }
 
+    public SpecialDiscountViewModel(SpecialDiscount specialDiscount) : base() 
+    {
+        PasteData(specialDiscount);
+    }
+
     public override string ToString()
     {
         return SpecialDiscountId;

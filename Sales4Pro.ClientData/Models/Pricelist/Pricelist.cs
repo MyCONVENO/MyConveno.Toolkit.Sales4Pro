@@ -1,8 +1,8 @@
 ﻿namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
-public class MetadataPricelist : IMetadataPricelist
+public class Pricelist : IPricelist
 {
-    public MetadataPricelist()
+    public Pricelist()
     { }
 
     public string Number { get; set; }

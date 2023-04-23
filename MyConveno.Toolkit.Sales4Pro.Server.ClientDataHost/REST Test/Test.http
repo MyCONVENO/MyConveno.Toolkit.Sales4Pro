@@ -16,3 +16,7 @@ GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/Clients/GetById?c
 DELETE https://sales4pro-solidus-clientdatahost.azurewebsites.net/PaymentTerms
 
 ###
+
+GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/Users/GetByUserName?username=michael.coelsch@outlook.de
+
+###

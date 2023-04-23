@@ -9,6 +9,11 @@ public partial class AgentViewModel : ObservableObject
         AgentNumber = string.Empty;
     }
 
+    public AgentViewModel(Agent agent)
+    {
+        PasteData(agent);
+    }
+
     public override string ToString()
     {
         return AgentNumber;

@@ -9,9 +9,14 @@ public partial class UserViewModel : ObservableObject
     {
         UserId = Guid.NewGuid().ToString();
         Role = "User";
-        Agents = new ObservableCollection<MetadataAgent>();
-        Pricelists = new ObservableCollection<MetadataPricelist>();
+        Agents = new ObservableCollection<Agent>();
+        Pricelists = new ObservableCollection<Pricelist>();
         CustomerNumbers = new ObservableCollection<string>();
+    }
+
+    public UserViewModel(User user) : base()
+    {
+        PasteData(user);
     }
 
     public override string ToString()
@@ -59,12 +64,12 @@ public partial class UserViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     [NotifyPropertyChangedFor(nameof(ComputeHasAgents))]
-    public ObservableCollection<MetadataAgent> agents;
+    public ObservableCollection<Agent> agents;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     [NotifyPropertyChangedFor(nameof(ComputeHasPricelists))]
-    public ObservableCollection<MetadataPricelist> pricelists;
+    public ObservableCollection<Pricelist> pricelists;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -155,6 +160,11 @@ public partial class UserViewModel : ObservableObject
 
     #endregion
 
+    public Agent GetAgent(string agentNumber)
+    {
+        return Agents.FirstOrDefault(a => a.AgentNumber == agentNumber);
+    }
+
     public void PasteData(User user)
     {
         if (user == null)
@@ -170,8 +180,8 @@ public partial class UserViewModel : ObservableObject
             ProcessOrders = false;
             Email = string.Empty;
 
-            Agents = new ObservableCollection<MetadataAgent>();
-            Pricelists = new ObservableCollection<MetadataPricelist>();
+            Agents = new ObservableCollection<Agent>();
+            Pricelists = new ObservableCollection<Pricelist>();
             CustomerNumbers = new ObservableCollection<string>();
         }
         else
