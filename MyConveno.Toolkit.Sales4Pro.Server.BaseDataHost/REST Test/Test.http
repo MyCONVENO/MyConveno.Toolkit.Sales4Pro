@@ -1,0 +1,22 @@
+﻿
+###
+
+GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/GetChangedBaseDataTablesAsJSONList?jsontablelist={"Asset":636504149210000000,"Customer":636504149210000000,"Article":636504149210000000,"ProductImage":636504149210000000}
+
+###
+
+GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=Asset&syncDateTimeTicks=638154389210000000 
+
+###
+
+GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=Customer&syncDateTimeTicks=636504149210000000 
+
+###
+
+GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=Article&syncDateTimeTicks=636504149210000000 
+
+###
+
+GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=ProductImage&syncDateTimeTicks=636504149210000000 
+
+###
