@@ -50,6 +50,10 @@ public sealed class PageEntryTextControl : Control
             else
                 textTextBlock.TextLineBounds = TextLineBounds.Full;
 
+            // TextWrapping
+            textTextBlock.TextWrapping = TextWrapping;
+
+
             // Mache den Content fett, wenn es gewünscht ist
             if (IsBoldContentText)
                 textTextBlock.Style = (Style)Application.Current.Resources["TitleTextBlockStyle"];
