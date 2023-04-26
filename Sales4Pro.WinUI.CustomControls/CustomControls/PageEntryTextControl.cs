@@ -177,6 +177,23 @@ public sealed class PageEntryTextControl : Control
         DependencyProperty.Register("PreventHidingWhenEmpty", typeof(bool), typeof(PageEntryTextControl), new PropertyMetadata(false));
 
 
+    public TextWrapping TextWrapping
+    {
+        get { return (TextWrapping)GetValue(TextWrappingProperty); }
+        set { SetValue(TextWrappingProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for BlurRadius.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty TextWrappingProperty =
+        DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(PageEntryTextControl), new PropertyMetadata(TextWrapping.Wrap, OnTextWrappingChanged));
+
+
+    private static void OnTextWrappingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        PageEntryTextControl target = (PageEntryTextControl)d;
+        if (target.textTextBlock is not null)
+            target.textTextBlock.TextWrapping = (TextWrapping)e.NewValue;
+    }
 
 
     public bool IsIdle
