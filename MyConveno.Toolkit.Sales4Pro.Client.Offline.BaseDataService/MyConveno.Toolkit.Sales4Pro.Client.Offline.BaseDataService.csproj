@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
  	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	<Version>2023.1.18.1</Version>
+	<Version>2023.4.26.1</Version>
 	<Authors>Michael Coelsch (MyConveno)</Authors>
 	<Description>MyConveno Sales4Pro Toolkit</Description>
 	<Copyright>© 2023 MyConveno. All rights reserved.</Copyright>
@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.5" />
   </ItemGroup>
 
   <ItemGroup>
