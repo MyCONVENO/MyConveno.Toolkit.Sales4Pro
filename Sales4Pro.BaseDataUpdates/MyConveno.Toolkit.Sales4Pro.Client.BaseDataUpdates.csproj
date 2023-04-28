@@ -14,7 +14,7 @@
 	<PackageReleaseNotes>None</PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<IncludeSymbols>True</IncludeSymbols>
-	<Version>2023.4.26.1</Version>
+	<Version>2023.4.28.1</Version>
 	<RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro.git</RepositoryUrl>
 	<RepositoryType></RepositoryType>
   </PropertyGroup>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
     <PackageReference Include="CsvHelper" Version="15.0.5" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.3" />

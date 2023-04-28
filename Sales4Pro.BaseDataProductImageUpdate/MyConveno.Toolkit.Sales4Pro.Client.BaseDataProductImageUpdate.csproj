@@ -13,10 +13,8 @@
 	<PackageTags>Sales4Pro, MyConveno</PackageTags>
 	<PackageReleaseNotes>None</PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<AssemblyVersion>2022.8.30.0</AssemblyVersion>
-	<FileVersion>2023.1.19.1</FileVersion>
 	<IncludeSymbols>True</IncludeSymbols>
-	<Version>2023.1.19.1</Version>
+	<Version>2023.4.28.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.14.1" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
     <PackageReference Include="CsvHelper" Version="15.0.5" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.3" />
   </ItemGroup>
