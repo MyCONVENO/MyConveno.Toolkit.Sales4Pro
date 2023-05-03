@@ -17,16 +17,6 @@ public interface ISyncMetadataCustomer
     double DistanceToCurrentLocation { get; set; }
     string EMail { get; set; }
     string Fax { get; set; }
-    string Header01 { get; set; }
-    string Header02 { get; set; }
-    string Header03 { get; set; }
-    string Header04 { get; set; }
-    string Header05 { get; set; }
-    string Header06 { get; set; }
-    string Header07 { get; set; }
-    string Header08 { get; set; }
-    string Header09 { get; set; }
-    string Header10 { get; set; }
     double Lat { get; set; }
     double Lon { get; set; }
     string Mobile { get; set; }
@@ -43,19 +33,31 @@ public interface ISyncMetadataCustomer
     string PricelistNumber { get; set; }
     string Street { get; set; }
     string TaxID { get; set; }
-    string Text01 { get; set; }
-    string Text02 { get; set; }
-    string Text03 { get; set; }
-    string Text04 { get; set; }
-    string Text05 { get; set; }
-    string Text06 { get; set; }
-    string Text07 { get; set; }
-    string Text08 { get; set; }
-    string Text09 { get; set; }
-    string Text10 { get; set; }
     int Valuta { get; set; }
     string ZIP { get; set; }
     string ShippingTypeName { get; set; }
     string ShippingTypeNumber { get; set; }
+    
+    bool HasInvoiceAddress { get; set; }
+     string InvoiceAddressNumber { get; set; }
+     string InvoiceAddressName { get; set; }
+     string InvoiceAddressCity { get; set; }
+     string InvoiceAddressZIP { get; set; }
+     string InvoiceAddressStreet { get; set; }
+     string InvoiceAddressCountryName { get; set; }
+     string InvoiceAddressCountryCode { get; set; }
+     string InvoiceAddressPhone { get; set; }
+     string InvoiceAddressEMail { get; set; }
+
+     bool HasDeliveryAddress { get; set; }
+     string DeliveryAddressNumber { get; set; }
+     string DeliveryAddressName { get; set; }
+     string DeliveryAddressCity { get; set; }
+     string DeliveryAddressZIP { get; set; }
+     string DeliveryAddressStreet { get; set; }
+     string DeliveryAddressCountryName { get; set; }
+     string DeliveryAddressCountryCode { get; set; }
+     string DeliveryAddressPhone { get; set; }
+     string DeliveryAddressEMail { get; set; }
 
 }

@@ -12,8 +12,6 @@ public class SyncShoppingCart : ISyncShoppingCart
         Agent = new SyncMetadataAgent();
         Header = new SyncMetadataHeader();
         Customer = new SyncMetadataCustomer();
-        DeliveryAddress = new SyncMetadataDeliveryAddress();
-        InvoiceAddress = new SyncMetadataInvoiceAddress();
         Conditions = new SyncMetadataConditions();
         Association = new SyncMetadataAssociation();
         Device = new SyncMetadataDevice();
@@ -119,13 +117,7 @@ public class SyncShoppingCart : ISyncShoppingCart
 
         if (!string.IsNullOrEmpty(CustomerMetadata.Trim())) // Wichtig!, sonst wird Customer auf null gesetzt
             Customer = JsonConvert.DeserializeObject<SyncMetadataCustomer>(CustomerMetadata, settings);
-
-        if (!string.IsNullOrEmpty(DeliveryAddressMetadata.Trim())) // Wichtig!, sonst wird DeliveryAddress auf null gesetzt
-            DeliveryAddress = JsonConvert.DeserializeObject<SyncMetadataDeliveryAddress>(DeliveryAddressMetadata, settings);
-
-        if (!string.IsNullOrEmpty(InvoiceAddressMetadata.Trim())) // Wichtig!, sonst wird InvoiceAddress auf null gesetzt
-            InvoiceAddress = JsonConvert.DeserializeObject<SyncMetadataInvoiceAddress>(InvoiceAddressMetadata, settings);
-
+            
         if (!string.IsNullOrEmpty(AssociationMetadata.Trim())) // Wichtig!, sonst wird Association auf null gesetzt
             Association = JsonConvert.DeserializeObject<SyncMetadataAssociation>(AssociationMetadata, settings);
 

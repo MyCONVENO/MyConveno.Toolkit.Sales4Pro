@@ -37,27 +37,30 @@ public class SyncMetadataCustomer : ISyncMetadataCustomer
     public double Lon { get; set; }
     public double DistanceToCurrentLocation { get; set; }
     public double OpenReceivables { get; set; }
-    public string Text01 { get; set; }
-    public string Text02 { get; set; }
-    public string Text03 { get; set; }
-    public string Text04 { get; set; }
-    public string Text05 { get; set; }
-    public string Text06 { get; set; }
-    public string Text07 { get; set; }
-    public string Text08 { get; set; }
-    public string Text09 { get; set; }
-    public string Text10 { get; set; }
-    public string Header01 { get; set; }
-    public string Header02 { get; set; }
-    public string Header03 { get; set; }
-    public string Header04 { get; set; }
-    public string Header05 { get; set; }
-    public string Header06 { get; set; }
-    public string Header07 { get; set; }
-    public string Header08 { get; set; }
-    public string Header09 { get; set; }
-    public string Header10 { get; set; }
+   
     public string ShippingTypeName { get; set; }
     public string ShippingTypeNumber { get; set; }
+
+    public bool HasInvoiceAddress { get; set; }
+    public string InvoiceAddressNumber { get; set; }
+    public string InvoiceAddressName { get; set; }
+     public string InvoiceAddressCity { get; set; }
+    public string InvoiceAddressZIP { get; set; }
+    public string InvoiceAddressStreet { get; set; }
+    public string InvoiceAddressCountryName { get; set; }
+    public string InvoiceAddressCountryCode { get; set; }
+    public string InvoiceAddressPhone { get; set; }
+    public string InvoiceAddressEMail { get; set; }
+
+    public bool HasDeliveryAddress { get; set; }
+    public string DeliveryAddressNumber { get; set; }
+    public string DeliveryAddressName { get; set; }
+    public string DeliveryAddressCity { get; set; }
+    public string DeliveryAddressZIP { get; set; }
+    public string DeliveryAddressStreet { get; set; }
+    public string DeliveryAddressCountryName { get; set; }
+    public string DeliveryAddressCountryCode { get; set; }
+    public string DeliveryAddressPhone { get; set; }
+    public string DeliveryAddressEMail { get; set; }
 
 }

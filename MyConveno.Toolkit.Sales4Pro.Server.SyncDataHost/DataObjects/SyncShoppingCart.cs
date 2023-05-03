@@ -22,8 +22,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost
         public string HeaderMetadata { get; set; }
         public string AgentMetadata { get; set; }
         public string CustomerMetadata { get; set; }
-        public string DeliveryAddressMetadata { get; set; }
-        public string InvoiceAddressMetadata { get; set; }
         public string AssociationMetadata { get; set; }
         public string ConditionsMetadata { get; set; }
         public string DeviceMetadata { get; set; }

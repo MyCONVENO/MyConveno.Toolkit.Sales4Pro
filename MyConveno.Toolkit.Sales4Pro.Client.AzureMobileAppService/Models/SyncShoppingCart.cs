@@ -24,8 +24,6 @@ public class SyncShoppingCart : DatasyncClientData, IEquatable<SyncShoppingCart>
         HeaderMetadata = string.Empty;
         AgentMetadata = string.Empty;
         CustomerMetadata = string.Empty;
-        DeliveryAddressMetadata = string.Empty;
-        InvoiceAddressMetadata = string.Empty;
         AssociationMetadata = string.Empty;
         ConditionsMetadata = string.Empty;
         DeviceMetadata = string.Empty;
@@ -49,8 +47,6 @@ public class SyncShoppingCart : DatasyncClientData, IEquatable<SyncShoppingCart>
     public string HeaderMetadata { get; set; }
     public string AgentMetadata { get; set; }
     public string CustomerMetadata { get; set; }
-    public string DeliveryAddressMetadata { get; set; }
-    public string InvoiceAddressMetadata { get; set; }
     public string AssociationMetadata { get; set; }
     public string ConditionsMetadata { get; set; }
     public string DeviceMetadata { get; set; }
