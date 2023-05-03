@@ -53,7 +53,7 @@
                      Color="Transparent" />
 
     <x:Double x:Key="ContentDialogMaxWidth">900</x:Double>
-    <x:Double x:Key="ContentDialogMaxHeight">640</x:Double>
+    <x:Double x:Key="ContentDialogMaxHeight">900</x:Double>
 
     <!--#region STYLES-->
 
