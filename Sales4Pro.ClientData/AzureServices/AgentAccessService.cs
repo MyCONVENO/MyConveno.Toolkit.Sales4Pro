@@ -67,6 +67,19 @@ public class AgentAccessService : IAgentAccessService
             return false;
     }
 
+    public async Task<bool> DeleteAllAgents()
+    {
+        Initialize();
+
+        string parameter = string.Format("Agents");
+        HttpResponseMessage response = await httpClient.DeleteAsync(parameter);
+
+        if (response.IsSuccessStatusCode)
+            return true;
+        else
+            return false;
+    }
+
     public async Task<List<Agent>> GetAllAgentsAsync()
     {
         Initialize();
