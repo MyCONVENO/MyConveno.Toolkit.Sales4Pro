@@ -142,5 +142,23 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
                 return BadRequest();
             }
         }
+
+        [HttpDelete()]
+        public ActionResult DeleteAllAgents()
+        {
+            using IDbConnection connection = new SqlConnection(_config.GetConnectionString("SQLAZURECONNSTR_ClientDB"));
+
+            try
+            {
+                connection.Execute("TRUNCATE TABLE [Agent]");
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return BadRequest();
+            }
+        }
+
     }
 }
