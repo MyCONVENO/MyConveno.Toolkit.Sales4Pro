@@ -1,4 +1,6 @@
-﻿namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
+﻿using System.Collections.ObjectModel;
+
+namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
 public interface IMetadataAgentContent
 {
@@ -10,5 +12,5 @@ public interface IMetadataAgentContent
     string Phone { get; set; }
     string Mobile { get; set; }
     string Email { get; set; }
-    string DefaultPricelistNumber { get; set; }
+    ObservableCollection<Pricelist> Pricelists { get; set; }
 }

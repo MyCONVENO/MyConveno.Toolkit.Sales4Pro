@@ -69,6 +69,7 @@ public partial class UserViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     [NotifyPropertyChangedFor(nameof(ComputeHasPricelists))]
+    [NotifyPropertyChangedFor(nameof(ComputePricelistsCount))]
     public ObservableCollection<Pricelist> pricelists;
 
     [ObservableProperty]

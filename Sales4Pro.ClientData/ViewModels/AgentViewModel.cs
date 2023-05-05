@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 
@@ -7,6 +8,8 @@ public partial class AgentViewModel : ObservableObject
     public AgentViewModel()
     {
         AgentNumber = string.Empty;
+        Pricelists = new ObservableCollection<Pricelist>();
+
     }
 
     public AgentViewModel(Agent agent) : this()
@@ -63,11 +66,13 @@ public partial class AgentViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string defaultPricelistNumber;
+    public bool processOrders;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public bool processOrders;
+    [NotifyPropertyChangedFor(nameof(ComputeHasPricelists))]
+    [NotifyPropertyChangedFor(nameof(ComputePricelistsCount))]
+    public ObservableCollection<Pricelist> pricelists;
 
     #endregion
 
@@ -78,12 +83,21 @@ public partial class AgentViewModel : ObservableObject
         get
         {
             if (string.IsNullOrEmpty(AgentNumber) ||
-                string.IsNullOrEmpty(DisplayName) ||
-                string.IsNullOrEmpty(DefaultPricelistNumber))
+                string.IsNullOrEmpty(DisplayName))
                 return false;
             else
                 return true;
         }
+    }
+
+    public bool ComputeHasPricelists
+    {
+        get { return Pricelists.Count > 0; }
+    }
+
+    public int ComputePricelistsCount
+    {
+        get { return Pricelists.Count; }
     }
 
     #endregion
@@ -102,7 +116,7 @@ public partial class AgentViewModel : ObservableObject
             Phone = string.Empty;
             Email = string.Empty;
             ConfirmationEmail = string.Empty;
-            DefaultPricelistNumber = "-";
+            Pricelists = new ObservableCollection<Pricelist>();
         }
         else
         {
@@ -119,7 +133,7 @@ public partial class AgentViewModel : ObservableObject
             Phone = agent.MetadataContent.Phone;
             Email = agent.MetadataContent.Email;
             ConfirmationEmail = agent.MetadataContent.ConfirmationEmail;
-            DefaultPricelistNumber = agent.MetadataContent.DefaultPricelistNumber;
+            Pricelists = new ObservableCollection<Pricelist>();
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
@@ -140,9 +154,9 @@ public partial class AgentViewModel : ObservableObject
                 Phone = Phone,
                 Email = Email,
                 ConfirmationEmail = ConfirmationEmail,
-                DefaultPricelistNumber = DefaultPricelistNumber,
-            }
-        };
+                Pricelists = new ObservableCollection<Pricelist>()
+    }
+};
 
         model.SerializeMetadata();
         return model;
