@@ -133,7 +133,7 @@ public partial class AgentViewModel : ObservableObject
             Phone = agent.MetadataContent.Phone;
             Email = agent.MetadataContent.Email;
             ConfirmationEmail = agent.MetadataContent.ConfirmationEmail;
-            Pricelists = new ObservableCollection<Pricelist>();
+            Pricelists = agent.MetadataContent.Pricelists;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
@@ -154,8 +154,8 @@ public partial class AgentViewModel : ObservableObject
                 Phone = Phone,
                 Email = Email,
                 ConfirmationEmail = ConfirmationEmail,
-                Pricelists = new ObservableCollection<Pricelist>()
-    }
+                Pricelists = Pricelists
+            }
 };
 
         model.SerializeMetadata();
