@@ -54,10 +54,6 @@ public partial class UserViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string defaultPricelistNumber;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public string email;
 
     [ObservableProperty]
@@ -163,7 +159,6 @@ public partial class UserViewModel : ObservableObject
             Password = string.Empty;
             
             Role = string.Empty;
-            DefaultPricelistNumber = string.Empty;
             DisplayName = string.Empty;
             IsPriceOnConfirmVisible = false;
             ProcessOrders = false;
@@ -186,7 +181,6 @@ public partial class UserViewModel : ObservableObject
             ProcessOrders = user.MetadataContent.ProcessOrders;
             Email = user.MetadataContent.Email;
             Agents = user.MetadataContent.Agents;
-            DefaultPricelistNumber = user.MetadataContent.DefaultAgentNumber;
             DefaultAgentNumber = user.MetadataContent.DefaultAgentNumber;
             CustomerNumbers = user.MetadataContent.CustomerNumbers;
         }
