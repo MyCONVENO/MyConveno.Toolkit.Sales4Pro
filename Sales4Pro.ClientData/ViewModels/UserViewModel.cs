@@ -136,7 +136,8 @@ public partial class UserViewModel : ObservableObject
             if (string.IsNullOrEmpty(UserName) ||
                 string.IsNullOrEmpty(Password) ||
                 string.IsNullOrEmpty(DisplayName) ||
-                string.IsNullOrEmpty(DefaultAgentNumber))
+                (Role.ToLower() == "user" && 
+                 string.IsNullOrEmpty(DefaultAgentNumber)))
                 return false;
             else
                 return true;
