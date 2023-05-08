@@ -10,7 +10,6 @@ public partial class UserViewModel : ObservableObject
         UserId = Guid.NewGuid().ToString();
         Role = "User";
         Agents = new ObservableCollection<Agent>();
-        Pricelists = new ObservableCollection<Pricelist>();
         CustomerNumbers = new ObservableCollection<string>();
     }
 
@@ -68,9 +67,7 @@ public partial class UserViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    [NotifyPropertyChangedFor(nameof(ComputeHasPricelists))]
-    [NotifyPropertyChangedFor(nameof(ComputePricelistsCount))]
-    public ObservableCollection<Pricelist> pricelists;
+    public string defaultAgentNumber;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -121,11 +118,6 @@ public partial class UserViewModel : ObservableObject
         get { return Agents.Count > 0; }
     }
 
-    public bool ComputeHasPricelists
-    {
-        get { return Pricelists.Count > 0; }
-    }
-
     public bool ComputeHasCustomerNumbers
     {
         get { return CustomerNumbers.Count > 0; }
@@ -134,11 +126,6 @@ public partial class UserViewModel : ObservableObject
     public int ComputeAgentsCount
     {
         get { return Agents.Count; }
-    }
-
-    public int ComputePricelistsCount
-    {
-        get { return Pricelists.Count; }
     }
 
     public int ComputeCustomerNumbersCount
@@ -152,7 +139,8 @@ public partial class UserViewModel : ObservableObject
         {
             if (string.IsNullOrEmpty(UserName) ||
                 string.IsNullOrEmpty(Password) ||
-                string.IsNullOrEmpty(DisplayName))
+                string.IsNullOrEmpty(DisplayName) ||
+                string.IsNullOrEmpty(DefaultAgentNumber))
                 return false;
             else
                 return true;
@@ -173,16 +161,15 @@ public partial class UserViewModel : ObservableObject
             UserId = string.Empty;
             UserName = string.Empty;
             Password = string.Empty;
-
+            
             Role = string.Empty;
             DefaultPricelistNumber = string.Empty;
             DisplayName = string.Empty;
             IsPriceOnConfirmVisible = false;
             ProcessOrders = false;
             Email = string.Empty;
-
             Agents = new ObservableCollection<Agent>();
-            Pricelists = new ObservableCollection<Pricelist>();
+            DefaultAgentNumber = string.Empty;
             CustomerNumbers = new ObservableCollection<string>();
         }
         else
@@ -194,14 +181,13 @@ public partial class UserViewModel : ObservableObject
             user.DeserializeMetadata();
 
             Role = user.MetadataContent.Role;
-            DefaultPricelistNumber = user.MetadataContent.DefaultPricelistNumber;
             DisplayName = user.MetadataContent.DisplayName;
             IsPriceOnConfirmVisible = user.MetadataContent.IsPriceOnConfirmVisible;
             ProcessOrders = user.MetadataContent.ProcessOrders;
             Email = user.MetadataContent.Email;
-
             Agents = user.MetadataContent.Agents;
-            Pricelists = user.MetadataContent.Pricelists;
+            DefaultPricelistNumber = user.MetadataContent.DefaultAgentNumber;
+            DefaultAgentNumber = user.MetadataContent.DefaultAgentNumber;
             CustomerNumbers = user.MetadataContent.CustomerNumbers;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
@@ -212,10 +198,8 @@ public partial class UserViewModel : ObservableObject
         OnPropertyChanged(nameof(ComputeDisplayName));
         OnPropertyChanged(nameof(ComputeDisplayNameAndRole));
         OnPropertyChanged(nameof(ComputeHasAgents));
-        OnPropertyChanged(nameof(ComputeHasPricelists));
         OnPropertyChanged(nameof(ComputeHasCustomerNumbers));
         OnPropertyChanged(nameof(ComputeAgentsCount));
-        OnPropertyChanged(nameof(ComputePricelistsCount));
         OnPropertyChanged(nameof(ComputeCustomerNumbersCount));
     }
 
@@ -229,13 +213,12 @@ public partial class UserViewModel : ObservableObject
             MetadataContent = new()
             {
                 Role = Role,
-                DefaultPricelistNumber = DefaultPricelistNumber,
                 DisplayName = DisplayName,
                 IsPriceOnConfirmVisible = IsPriceOnConfirmVisible,
                 ProcessOrders = ProcessOrders,
                 Email = Email,
                 Agents = Agents,
-                Pricelists = Pricelists,
+                DefaultAgentNumber = DefaultAgentNumber,
                 CustomerNumbers = CustomerNumbers
             }
         };
