@@ -66,6 +66,10 @@ public partial class AgentViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string defaultPricelistNumber;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public bool processOrders;
 
     [ObservableProperty]
@@ -83,7 +87,8 @@ public partial class AgentViewModel : ObservableObject
         get
         {
             if (string.IsNullOrEmpty(AgentNumber) ||
-                string.IsNullOrEmpty(DisplayName))
+                string.IsNullOrEmpty(DisplayName) ||
+                string.IsNullOrEmpty(DefaultPricelistNumber))
                 return false;
             else
                 return true;
@@ -116,6 +121,7 @@ public partial class AgentViewModel : ObservableObject
             Phone = string.Empty;
             Email = string.Empty;
             ConfirmationEmail = string.Empty;
+            DefaultPricelistNumber = string.Empty;
             Pricelists = new ObservableCollection<Pricelist>();
         }
         else
@@ -133,6 +139,7 @@ public partial class AgentViewModel : ObservableObject
             Phone = agent.MetadataContent.Phone;
             Email = agent.MetadataContent.Email;
             ConfirmationEmail = agent.MetadataContent.ConfirmationEmail;
+            DefaultPricelistNumber = agent.MetadataContent.DefaultPricelistNumber;
             Pricelists = agent.MetadataContent.Pricelists;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
@@ -154,6 +161,7 @@ public partial class AgentViewModel : ObservableObject
                 Phone = Phone,
                 Email = Email,
                 ConfirmationEmail = ConfirmationEmail,
+                DefaultPricelistNumber = DefaultPricelistNumber,
                 Pricelists = Pricelists
             }
 };

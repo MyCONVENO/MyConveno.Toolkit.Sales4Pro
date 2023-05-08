@@ -12,5 +12,7 @@ public interface IMetadataAgentContent
     string Phone { get; set; }
     string Mobile { get; set; }
     string Email { get; set; }
+    string ConfirmationEmail { get; set; }
+    string DefaultPricelistNumber { get; set; }
     ObservableCollection<Pricelist> Pricelists { get; set; }
 }

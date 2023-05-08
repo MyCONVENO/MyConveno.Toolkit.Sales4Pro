@@ -15,6 +15,7 @@ public class MetadataAgentContent : IMetadataAgentContent
         Phone = string.Empty;
         Email = string.Empty;
         ConfirmationEmail = string.Empty;
+        DefaultPricelistNumber = string.Empty;
         Pricelists = new ObservableCollection<Pricelist>();
     }
 
@@ -27,6 +28,7 @@ public class MetadataAgentContent : IMetadataAgentContent
     public string Phone { get; set; }
     public string Email { get; set; }
     public string ConfirmationEmail { get; set; }
+    public string DefaultPricelistNumber { get; set; }
     public ObservableCollection<Pricelist> Pricelists { get; set; }
 
 }
