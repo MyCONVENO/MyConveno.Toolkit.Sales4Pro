@@ -8,8 +8,19 @@ public partial class UserViewModel : ObservableObject
     public UserViewModel()
     {
         UserId = Guid.NewGuid().ToString();
+        UserName = string.Empty;
+        Password = string.Empty;
+
         Role = "User";
+        DisplayName = string.Empty;
+        IsPriceOnConfirmVisible = false;
+        ProcessOrders = false;
+        Email = string.Empty;
+        Phone = string.Empty;
+        Mobile = string.Empty;
+        ConfirmationEmail = string.Empty;
         Agents = new ObservableCollection<Agent>();
+        DefaultAgentNumber = string.Empty;
         CustomerNumbers = new ObservableCollection<string>();
     }
 
@@ -55,6 +66,18 @@ public partial class UserViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public string email;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string phone;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string mobile;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public string confirmationEmail;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -136,7 +159,7 @@ public partial class UserViewModel : ObservableObject
             if (string.IsNullOrEmpty(UserName) ||
                 string.IsNullOrEmpty(Password) ||
                 string.IsNullOrEmpty(DisplayName) ||
-                (Role.ToLower() == "user" && 
+                (Role.ToLower() == "user" &&
                  string.IsNullOrEmpty(DefaultAgentNumber)))
                 return false;
             else
@@ -158,12 +181,15 @@ public partial class UserViewModel : ObservableObject
             UserId = string.Empty;
             UserName = string.Empty;
             Password = string.Empty;
-            
+
             Role = string.Empty;
             DisplayName = string.Empty;
             IsPriceOnConfirmVisible = false;
             ProcessOrders = false;
             Email = string.Empty;
+            Phone = string.Empty;
+            Mobile = string.Empty;
+            ConfirmationEmail = string.Empty;
             Agents = new ObservableCollection<Agent>();
             DefaultAgentNumber = string.Empty;
             CustomerNumbers = new ObservableCollection<string>();
@@ -181,6 +207,9 @@ public partial class UserViewModel : ObservableObject
             IsPriceOnConfirmVisible = user.MetadataContent.IsPriceOnConfirmVisible;
             ProcessOrders = user.MetadataContent.ProcessOrders;
             Email = user.MetadataContent.Email;
+            Phone = user.MetadataContent.Phone;
+            Mobile = user.MetadataContent.Mobile;
+            ConfirmationEmail = user.MetadataContent.ConfirmationEmail;
             Agents = user.MetadataContent.Agents;
             DefaultAgentNumber = user.MetadataContent.DefaultAgentNumber;
             CustomerNumbers = user.MetadataContent.CustomerNumbers;
@@ -212,6 +241,9 @@ public partial class UserViewModel : ObservableObject
                 IsPriceOnConfirmVisible = IsPriceOnConfirmVisible,
                 ProcessOrders = ProcessOrders,
                 Email = Email,
+                Phone = Phone,
+                Mobile = Mobile,
+                ConfirmationEmail = ConfirmationEmail,
                 Agents = Agents,
                 DefaultAgentNumber = DefaultAgentNumber,
                 CustomerNumbers = CustomerNumbers

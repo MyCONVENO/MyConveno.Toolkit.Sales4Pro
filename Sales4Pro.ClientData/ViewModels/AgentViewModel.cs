@@ -8,8 +8,14 @@ public partial class AgentViewModel : ObservableObject
     public AgentViewModel()
     {
         AgentNumber = string.Empty;
-        Pricelists = new ObservableCollection<Pricelist>();
 
+        DisplayName = string.Empty;
+        Mobile = string.Empty;
+        Phone = string.Empty;
+        Email = string.Empty;
+        ConfirmationEmail = string.Empty;
+        DefaultPricelistNumber = string.Empty;
+        Pricelists = new ObservableCollection<Pricelist>();
     }
 
     public AgentViewModel(Agent agent) : this()
@@ -19,7 +25,7 @@ public partial class AgentViewModel : ObservableObject
 
     public override string ToString()
     {
-        return AgentNumber;
+        return string.Format("{0} ({1})", AgentNumber, DisplayName);
     }
 
     #region Observable Properties
@@ -31,22 +37,6 @@ public partial class AgentViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public string displayName;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string street;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string zIP;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string city;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public string country;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -67,10 +57,6 @@ public partial class AgentViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public string defaultPricelistNumber;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
-    public bool processOrders;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
@@ -105,6 +91,11 @@ public partial class AgentViewModel : ObservableObject
         get { return Pricelists.Count; }
     }
 
+    public string ComputeNumberName
+    {
+        get { return string.Format("{0} ({1})", AgentNumber, DisplayName); }
+    }
+
     #endregion
 
     public void PasteData(Agent agent)
@@ -113,10 +104,6 @@ public partial class AgentViewModel : ObservableObject
         {
             AgentNumber = string.Empty;
             DisplayName = string.Empty;
-            Street = string.Empty;
-            ZIP = string.Empty;
-            City = string.Empty;
-            Country = string.Empty;
             Mobile = string.Empty;
             Phone = string.Empty;
             Email = string.Empty;
@@ -131,10 +118,6 @@ public partial class AgentViewModel : ObservableObject
             agent.DeserializeMetadata();
 
             DisplayName = agent.MetadataContent.DisplayName;
-            Street = agent.MetadataContent.Street;
-            ZIP = agent.MetadataContent.ZIP;
-            City = agent.MetadataContent.City;
-            Country = agent.MetadataContent.Country;
             Mobile = agent.MetadataContent.Mobile;
             Phone = agent.MetadataContent.Phone;
             Email = agent.MetadataContent.Email;
@@ -153,10 +136,6 @@ public partial class AgentViewModel : ObservableObject
             MetadataContent = new()
             {
                 DisplayName = DisplayName,
-                Street = Street,
-                ZIP = ZIP,
-                City = City,
-                Country = Country,
                 Mobile = Mobile,
                 Phone = Phone,
                 Email = Email,

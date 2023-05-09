@@ -5,9 +5,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.ClientData;
 public partial class ClientViewModel : ObservableObject
 {
     public ClientViewModel()
-    {
-        
-    }
+    {    }
 
     public ClientViewModel(Client client) : this()
     {
