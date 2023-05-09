@@ -25,7 +25,7 @@ public partial class AgentViewModel : ObservableObject
 
     public override string ToString()
     {
-        return string.Format("{0} ({1})", AgentNumber, DisplayName);
+        return string.Format("{0} ({1})", DisplayName, AgentNumber);
     }
 
     #region Observable Properties
@@ -93,7 +93,7 @@ public partial class AgentViewModel : ObservableObject
 
     public string ComputeNumberName
     {
-        get { return string.Format("{0} ({1})", AgentNumber, DisplayName); }
+        get { return string.Format("{0} ({1})", DisplayName, AgentNumber); }
     }
 
     #endregion
@@ -143,7 +143,7 @@ public partial class AgentViewModel : ObservableObject
                 DefaultPricelistNumber = DefaultPricelistNumber,
                 Pricelists = Pricelists
             }
-};
+        };
 
         model.SerializeMetadata();
         return model;
