@@ -64,6 +64,13 @@ public partial class AgentViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(ComputePricelistsCount))]
     public ObservableCollection<Pricelist> pricelists;
 
+    #region Temporary
+
+    [ObservableProperty]
+    public int customersCount;
+
+    #endregion
+
     #endregion
 
     #region Computed Properties
