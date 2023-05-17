@@ -11,4 +11,6 @@ public interface IMetadataAgentContent
     string ConfirmationEmail { get; set; }
     string DefaultPricelistNumber { get; set; }
     ObservableCollection<Pricelist> Pricelists { get; set; }
+    bool IsDeletable { get; set; }
+
 }

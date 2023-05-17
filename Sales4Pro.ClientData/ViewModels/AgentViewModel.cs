@@ -16,6 +16,7 @@ public partial class AgentViewModel : ObservableObject
         ConfirmationEmail = string.Empty;
         DefaultPricelistNumber = string.Empty;
         Pricelists = new ObservableCollection<Pricelist>();
+        IsDeletable = true;
     }
 
     public AgentViewModel(Agent agent) : this()
@@ -63,6 +64,9 @@ public partial class AgentViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(ComputeHasPricelists))]
     [NotifyPropertyChangedFor(nameof(ComputePricelistsCount))]
     public ObservableCollection<Pricelist> pricelists;
+
+    [ObservableProperty]
+    public bool isDeletable;
 
     #region Temporary
 
@@ -117,6 +121,7 @@ public partial class AgentViewModel : ObservableObject
             ConfirmationEmail = string.Empty;
             DefaultPricelistNumber = string.Empty;
             Pricelists = new ObservableCollection<Pricelist>();
+            IsDeletable = true;
         }
         else
         {
@@ -131,6 +136,7 @@ public partial class AgentViewModel : ObservableObject
             ConfirmationEmail = agent.MetadataContent.ConfirmationEmail;
             DefaultPricelistNumber = agent.MetadataContent.DefaultPricelistNumber;
             Pricelists = agent.MetadataContent.Pricelists;
+            IsDeletable = agent.MetadataContent.IsDeletable;
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
@@ -148,7 +154,8 @@ public partial class AgentViewModel : ObservableObject
                 Email = Email,
                 ConfirmationEmail = ConfirmationEmail,
                 DefaultPricelistNumber = DefaultPricelistNumber,
-                Pricelists = Pricelists
+                Pricelists = Pricelists,
+                IsDeletable = IsDeletable
             }
         };
 

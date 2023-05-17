@@ -13,6 +13,7 @@ public class MetadataAgentContent : IMetadataAgentContent
         ConfirmationEmail = string.Empty;
         DefaultPricelistNumber = string.Empty;
         Pricelists = new ObservableCollection<Pricelist>();
+        IsDeletable = true;
     }
 
     public string DisplayName { get; set; }
@@ -22,5 +23,6 @@ public class MetadataAgentContent : IMetadataAgentContent
     public string ConfirmationEmail { get; set; }
     public string DefaultPricelistNumber { get; set; }
     public ObservableCollection<Pricelist> Pricelists { get; set; }
+    public bool IsDeletable { get; set; }
 
 }
