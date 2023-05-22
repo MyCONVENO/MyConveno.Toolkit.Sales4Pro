@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces", "Sales4Pro.Common.ClientData.Interfaces\MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces.csproj", "{6A4EEDBE-DD8D-42D0-BB37-8B4F2836E77A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObsoleteMyConveno.Toolkit.Sales4Pro.Common.SyncDataModels", "Sales4Pro.Common.SyncDataModels\ObsoleteMyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.csproj", "{7803286D-0F41-4807-9CA5-375A7D7315CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XXXXXXXXObsoleteMyConveno.Toolkit.Sales4Pro.Common.SyncDataModels", "Sales4Pro.Common.SyncDataModels\XXXXXXXXObsoleteMyConveno.Toolkit.Sales4Pro.Common.SyncDataModels.csproj", "{7803286D-0F41-4807-9CA5-375A7D7315CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Common.Metadata", "Sales4Pro.Common.Metadata\MyConveno.Toolkit.Sales4Pro.Common.Metadata.csproj", "{74DD96FB-FB38-43E6-A182-556CEE626DBB}"
 EndProject

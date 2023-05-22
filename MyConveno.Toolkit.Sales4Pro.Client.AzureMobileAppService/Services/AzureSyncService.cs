@@ -384,7 +384,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartTable is null) return new List<SyncShoppingCart>();
 
-        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.Sent == false &&
+        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000,1,1) &&
                                                                                           w.StatusID == 10)
                                                                               .OrderByDescending(o => o.OrderDate)
                                                                               .IncludeTotalCount()
@@ -401,7 +401,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartTable is null) return 0;
 
-        return await syncShoppingCartTable.Where(w => w.Sent == false &&
+        return await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
                                                       w.StatusID == 10)
                                           .ToAsyncEnumerable()
                                           .CountAsync();
@@ -507,7 +507,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartTable is null) return 0;
 
-        return await syncShoppingCartTable.Where(w => w.Sent == false &&
+        return await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
                                                       w.StatusID < 10)
                                           .IncludeTotalCount()
                                           .ToAsyncEnumerable()
