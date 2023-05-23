@@ -153,7 +153,7 @@ public class AzureSyncService : IAzureSyncService
                     await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserID == userId));
 
                 if (syncShoppingCartTable is not null)
-                    await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.UserID == userId && w.StatusID == 10));
+                    await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.User == userId && w.Status == 10));
 
                 if (syncShoppingCartItemTable is not null)
                     await syncShoppingCartItemTable.PullItemsAsync(syncShoppingCartItemTable.CreateQuery().Where(w => w.UserID == userId));
@@ -176,7 +176,6 @@ public class AzureSyncService : IAzureSyncService
     }
 
     #endregion
-
 
 
     #region CustomerFavorites
@@ -385,7 +384,7 @@ public class AzureSyncService : IAzureSyncService
         if (syncShoppingCartTable is null) return new List<SyncShoppingCart>();
 
         List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000,1,1) &&
-                                                                                          w.StatusID == 10)
+                                                                                          w.Status == 10)
                                                                               .OrderByDescending(o => o.OrderDate)
                                                                               .IncludeTotalCount()
                                                                               .ToAsyncEnumerable()
@@ -402,7 +401,7 @@ public class AzureSyncService : IAzureSyncService
         if (syncShoppingCartTable is null) return 0;
 
         return await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
-                                                      w.StatusID == 10)
+                                                      w.Status == 10)
                                           .ToAsyncEnumerable()
                                           .CountAsync();
     }
@@ -508,7 +507,7 @@ public class AzureSyncService : IAzureSyncService
         if (syncShoppingCartTable is null) return 0;
 
         return await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
-                                                      w.StatusID < 10)
+                                                      w.Status < 10)
                                           .IncludeTotalCount()
                                           .ToAsyncEnumerable()
                                           .CountAsync();
