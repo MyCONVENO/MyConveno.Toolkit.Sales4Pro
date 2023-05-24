@@ -26,7 +26,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAACACAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAACACAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Models\SyncCustomerFavorite.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -49,7 +49,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAABAAAgAAAAAAAACUgAAAAAAQAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAACUwAAAAAAQAA=</HashCode>
       <FileName>Models\SyncShoppingCartItem.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

@@ -5,7 +5,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost
 {
     public class SyncShoppingCartItem : EntityTableData
     {
-        public string UserID { get; set; }
+        public string UserName { get; set; }
 
         [Required, MinLength(1)]
         public string ShoppingCartID { get; set; }

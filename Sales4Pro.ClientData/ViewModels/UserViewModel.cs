@@ -7,7 +7,6 @@ public partial class UserViewModel : ObservableObject
 {
     public UserViewModel()
     {
-        UserId = Guid.NewGuid().ToString();
         UserName = string.Empty;
         Password = string.Empty;
 
@@ -35,9 +34,6 @@ public partial class UserViewModel : ObservableObject
     }
 
     #region Observable Properties
-
-    [ObservableProperty]
-    public string userId;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]

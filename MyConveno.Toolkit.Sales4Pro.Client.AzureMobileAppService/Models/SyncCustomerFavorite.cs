@@ -6,14 +6,14 @@ public class SyncCustomerFavorite : DatasyncClientData, IEquatable<SyncCustomerF
 {
     public SyncCustomerFavorite()
     {
-        UserID = string.Empty;
+        UserName = string.Empty;
         CustomerNumber = string.Empty;
     }
 
-    public string UserID { get; init; }
+    public string UserName { get; init; }
     public string CustomerNumber { get; init; }
 
     bool IEquatable<SyncCustomerFavorite>.Equals(SyncCustomerFavorite? other)
-     => other != null && other.Id == Id && other.UserID == UserID && other.CustomerNumber == CustomerNumber;
+     => other != null && other.Id == Id && other.UserName == UserName && other.CustomerNumber == CustomerNumber;
 
 }

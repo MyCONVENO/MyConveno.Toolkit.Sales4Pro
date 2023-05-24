@@ -7,7 +7,7 @@ public class SyncShoppingCartItem : DatasyncClientData, IEquatable<SyncShoppingC
 {
     public SyncShoppingCartItem()
     {
-        UserID = string.Empty;
+        UserName = string.Empty;
         ShoppingCartID = string.Empty;
         ShoppingCartItemSort = 0L;
         ArticleMetadata = string.Empty;
@@ -15,7 +15,7 @@ public class SyncShoppingCartItem : DatasyncClientData, IEquatable<SyncShoppingC
         QuantityMetadata = string.Empty;
     }
 
-    public string UserID { get; set; }
+    public string UserName { get; set; }
 
     [Required, MinLength(1)]
     public string ShoppingCartID { get; set; }
@@ -26,6 +26,6 @@ public class SyncShoppingCartItem : DatasyncClientData, IEquatable<SyncShoppingC
     public string QuantityMetadata { get; set; }
 
     bool IEquatable<SyncShoppingCartItem>.Equals(SyncShoppingCartItem? other)
-    => other != null && other.Id == Id && other.UserID == UserID && other.ShoppingCartID == ShoppingCartID;
+    => other != null && other.Id == Id && other.UserName == UserName && other.ShoppingCartID == ShoppingCartID;
 
 }

@@ -114,7 +114,7 @@ public class AzureSyncService : IAzureSyncService
         _asyncLock.Release();
     }
 
-    public async Task<bool> Synchronize(string userId, bool pullTables)
+    public async Task<bool> Synchronize(string userName, bool pullTables)
     {
         if (_syncIsRunning)
         { return false; }
@@ -144,19 +144,19 @@ public class AzureSyncService : IAzureSyncService
 
             //////await Task.Delay(1000);
 
-            if (pullTables && (string.IsNullOrEmpty(userId) == false))
+            if (pullTables && (string.IsNullOrEmpty(userName) == false))
             {
                 if (syncCustomerNoteTable is not null)
                     await syncCustomerNoteTable.PullItemsAsync();
 
                 if (syncCustomerFavoriteTable is not null)
-                    await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserID == userId));
+                    await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserName == userName));
 
                 if (syncShoppingCartTable is not null)
-                    await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.User == userId && w.Status == 10));
+                    await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.User == userName && w.Status == 10));
 
                 if (syncShoppingCartItemTable is not null)
-                    await syncShoppingCartItemTable.PullItemsAsync(syncShoppingCartItemTable.CreateQuery().Where(w => w.UserID == userId));
+                    await syncShoppingCartItemTable.PullItemsAsync(syncShoppingCartItemTable.CreateQuery().Where(w => w.UserName == userName));
             }
             else
             {
@@ -198,14 +198,14 @@ public class AzureSyncService : IAzureSyncService
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
 
-    public async Task<bool> DeleteCustomerFavoriteAsync(string userId, string customerNumber)
+    public async Task<bool> DeleteCustomerFavoriteAsync(string userName, string customerNumber)
     {
         await InitializeAsync();
         syncCustomerFavoriteTable = _client?.GetOfflineTable<SyncCustomerFavorite>();
 
         if (syncCustomerFavoriteTable is null) return false;
 
-        SyncCustomerFavorite? itemToDelete = await syncCustomerFavoriteTable.Where(w => w.UserID == userId &&
+        SyncCustomerFavorite? itemToDelete = await syncCustomerFavoriteTable.Where(w => w.UserName == userName &&
                                                                                         w.CustomerNumber == customerNumber)
                                                                             .ToAsyncEnumerable()
                                                                             .FirstOrDefaultAsync();
@@ -232,7 +232,7 @@ public class AzureSyncService : IAzureSyncService
 
     #region Get Data
 
-    public async Task<List<SyncCustomerFavorite>> GetCustomerFavoritesAsync(string userId)
+    public async Task<List<SyncCustomerFavorite>> GetCustomerFavoritesAsync(string userName)
     {
         await InitializeAsync();
 
@@ -240,7 +240,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncCustomerFavoriteTable is null) return new List<SyncCustomerFavorite>();
 
-        List<SyncCustomerFavorite> syncCustomerFavorites = await syncCustomerFavoriteTable.Where(w => w.UserID == userId)
+        List<SyncCustomerFavorite> syncCustomerFavorites = await syncCustomerFavoriteTable.Where(w => w.UserName == userName)
                                                                                           .IncludeTotalCount()
                                                                                           .ToAsyncEnumerable()
                                                                                           .ToListAsync();
