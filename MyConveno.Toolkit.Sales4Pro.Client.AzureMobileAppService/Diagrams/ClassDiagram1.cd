@@ -3,7 +3,7 @@
   <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.AzureSyncService">
     <Position X="0.5" Y="0.5" Width="7.75" />
     <TypeIdentifier>
-      <HashCode>EhCwAAoAACAAMEACCiAEIAAABEADYAAAICKAAQBQAAI=</HashCode>
+      <HashCode>EhCwAAoAACAAMEgCCiAEIAAABEADYAAAICIAAQBQAAI=</HashCode>
       <FileName>Services\AzureSyncService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -18,6 +18,13 @@
   </Class>
   <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.SyncCustomerFavorite">
     <Position X="9" Y="0.5" Width="5" />
+    <InheritanceLine Type="Microsoft.Datasync.Client.DatasyncClientData" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.562" Y="4.75" />
+        <Point X="15.562" Y="1.625" />
+        <Point X="14" Y="1.625" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACACAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\SyncCustomerFavorite.cs</FileName>
@@ -27,18 +34,29 @@
   <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.SyncShoppingCart">
     <Position X="9" Y="6" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>CIAAgGIAAAQABAIAAIAASAgIABACIAAAgAAQABAAAAA=</HashCode>
+      <HashCode>CAABEAIEEQAAAAIAAgEACAAAAAACAAAAAAAAQAAQAAA=</HashCode>
       <FileName>Models\SyncShoppingCart.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.SyncShoppingCartItem">
-    <Position X="9" Y="12.25" Width="5.25" />
+    <Position X="9" Y="10.75" Width="5.25" />
+    <InheritanceLine Type="Microsoft.Datasync.Client.DatasyncClientData" FixedToPoint="true">
+      <Path>
+        <Point X="15.625" Y="6.882" />
+        <Point X="15.625" Y="11.938" />
+        <Point X="14.25" Y="11.938" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAgAAAAAAAACUgAAAAAAQAA=</HashCode>
       <FileName>Models\SyncShoppingCartItem.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Datasync.Client.DatasyncClientData">
+    <Position X="14.25" Y="4.75" Width="2.75" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

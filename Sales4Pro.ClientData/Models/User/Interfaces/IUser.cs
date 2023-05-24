@@ -2,7 +2,6 @@
 
 public interface IUser
 {
-    string UserId { get; set; }
     string UserName { get; set; }
     string Password { get; set; }
     string Metadata { get; set; }
