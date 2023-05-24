@@ -178,7 +178,6 @@ public partial class UserViewModel : ObservableObject
     {
         if (user == null)
         {
-            UserId = string.Empty;
             UserName = string.Empty;
             Password = string.Empty;
 
@@ -196,7 +195,6 @@ public partial class UserViewModel : ObservableObject
         }
         else
         {
-            UserId = user.UserId;
             UserName = user.UserName;
             Password = user.Password;
 
@@ -231,7 +229,6 @@ public partial class UserViewModel : ObservableObject
     {
         User model = new()
         {
-            UserId = UserId,
             UserName = UserName,
             Password = Password,
             MetadataContent = new()

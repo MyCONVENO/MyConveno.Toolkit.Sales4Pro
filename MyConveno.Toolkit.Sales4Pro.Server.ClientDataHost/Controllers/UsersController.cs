@@ -106,12 +106,10 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             {
                 StringBuilder sbInsert = new();
                 sbInsert.Append("INSERT INTO [User] (");
-                sbInsert.Append("UserId, ");
                 sbInsert.Append("UserName, ");
                 sbInsert.Append("Password, ");
                 sbInsert.Append("Metadata) ");
                 sbInsert.Append("VALUES (");
-                sbInsert.Append("@UserId, ");
                 sbInsert.Append("@UserName, ");
                 sbInsert.Append("@Password, ");
                 sbInsert.Append("@Metadata) ");
@@ -135,11 +133,10 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             {
                 StringBuilder sbUpdate = new();
                 sbUpdate.Append("UPDATE [User] SET ");
-                sbUpdate.Append("UserId = @UserId, ");
                 sbUpdate.Append("UserName = @UserName, ");
                 sbUpdate.Append("Password = @Password, ");
                 sbUpdate.Append("Metadata = @Metadata ");
-                sbUpdate.Append("WHERE (UserId = @UserId)");
+                sbUpdate.Append("WHERE (UserName = @UserName)");
 
                 int rowsAffected = connection.Execute(sbUpdate.ToString(), user);
                 return Ok();
@@ -151,8 +148,8 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             }
         }
 
-        [HttpDelete("{userid}")]
-        public ActionResult DeleteUser(string userid)
+        [HttpDelete("{userName}")]
+        public ActionResult DeleteUser(string userName)
         {
             using IDbConnection connection = new SqlConnection(_config.GetConnectionString("SQLAZURECONNSTR_ClientDB"));
 
@@ -160,7 +157,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost
             {
                 StringBuilder sbDelete = new();
                 sbDelete.Append("DELETE FROM [User] ");
-                sbDelete.Append(string.Format("WHERE (UserId = '{0}')", userid));
+                sbDelete.Append(string.Format("WHERE (UserName = '{0}')", userName));
 
                 int rowsAffected = connection.Execute(sbDelete.ToString());
                 return Ok();
