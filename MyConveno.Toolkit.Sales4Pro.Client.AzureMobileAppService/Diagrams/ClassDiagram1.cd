@@ -34,7 +34,7 @@
   <Class Name="MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.SyncShoppingCart">
     <Position X="9" Y="6" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>CAABEAIEEQAAAAIAAgEACAAAAAACAAAAAAAAQAAQAAA=</HashCode>
+      <HashCode>CAABEAIEEQAAAAIAAgEACAAAAAACAAQAAAAAQAAQAAA=</HashCode>
       <FileName>Models\SyncShoppingCart.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

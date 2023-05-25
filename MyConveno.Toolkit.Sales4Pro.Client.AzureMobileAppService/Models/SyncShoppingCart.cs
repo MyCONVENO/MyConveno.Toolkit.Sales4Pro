@@ -17,6 +17,8 @@ public class SyncShoppingCart : DatasyncClientData, IEquatable<SyncShoppingCart>
         ConfirmationStatus = 0;
         SentDateTime = new DateTime(1900, 1, 1);
 
+        JsonMetadataCart = string.Empty;
+
         JsonMetadataHeader = string.Empty;
         JsonMetadataCustomer = string.Empty;
         JsonMetadataConditions = string.Empty;
@@ -32,7 +34,10 @@ public class SyncShoppingCart : DatasyncClientData, IEquatable<SyncShoppingCart>
     public string Agent { get; set; }
     public int ConfirmationStatus { get; set; }
     public DateTime SentDateTime { get; set; }
+     
     
+    public string JsonMetadataCart { get; set; }
+   
     public string JsonMetadataHeader { get; set; }
     public string JsonMetadataCustomer { get; set; }
     public string JsonMetadataConditions { get; set; }
