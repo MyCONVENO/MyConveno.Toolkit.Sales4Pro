@@ -14,10 +14,7 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost
         public string Agent { get; set; }
         public int ConfirmationStatus { get; set; }
         public DateTime SentDateTime { get; set; }
-
-        public string JsonMetadataHeader { get; set; }
-        public string JsonMetadataCustomer { get; set; }
-        public string JsonMetadataConditions { get; set; }
-
+        public string JsonMetadata { get; set; }
+    
     }
 }
