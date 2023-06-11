@@ -408,6 +408,12 @@
                             </StackPanel>
                         </local:NeumorphCard>
 
+                        <ProgressRing Grid.Row="1"
+                                      Background="LightGray"
+                                      Foreground="{StaticResource SystemControlForegroundAccentBrush}"
+                                      IsActive="{TemplateBinding IsBusy}"
+                                      IsHitTestVisible="False" />
+
                     </Grid>
 
                 </ControlTemplate>
@@ -1208,7 +1214,7 @@
                                         <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundChromeBlackHighBrush}" />
                                         </ObjectAnimationUsingKeyFrames>-->
-                                       
+
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>

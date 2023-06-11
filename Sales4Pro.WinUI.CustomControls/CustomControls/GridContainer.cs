@@ -43,6 +43,17 @@ public sealed class GridContainer : ContentControl
         DependencyProperty.Register("HeaderImageSource", typeof(ImageSource), typeof(GridContainer), new PropertyMetadata(null));
 
 
+    public bool IsBusy
+    {
+        get { return (bool)GetValue(IsBusyProperty); }
+        set { SetValue(IsBusyProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for IsSpinning.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty IsBusyProperty =
+        DependencyProperty.Register("IsBusy", typeof(bool), typeof(GridContainer), new PropertyMetadata(false));
+      
+
     #region NoContentPanel
 
     public string NoContentTitle
