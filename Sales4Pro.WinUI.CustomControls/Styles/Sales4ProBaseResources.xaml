@@ -398,11 +398,12 @@
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{ThemeResource ToolTipContentThemeFontSize}" />
         <Setter Property="Padding" Value="8" />
+        <Setter Property="MaxWidth" Value="800" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToolTip">
                     <ContentPresenter x:Name="LayoutRoot"
-                                      MaxWidth="600"
+                                      MaxWidth="{TemplateBinding MaxWidth}"
                                       Padding="{TemplateBinding Padding}"
                                       Background="{TemplateBinding Background}"
                                       BorderBrush="{TemplateBinding BorderBrush}"
