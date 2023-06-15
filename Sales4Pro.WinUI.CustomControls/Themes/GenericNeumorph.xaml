@@ -296,7 +296,7 @@
                                                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AccentOverlayBackground"
                                                                                                        Storyboard.TargetProperty="Fill">
                                                                             <DiscreteObjectKeyFrame KeyTime="0"
-                                                                                                    Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
+                                                                                                    Value="{ThemeResource SystemControlHighlightListLowRevealBackgroundBrush}" />
                                                                         </ObjectAnimationUsingKeyFrames>
                                                                     </Storyboard>
                                                                 </VisualState>
@@ -358,7 +358,7 @@
                                 </Button>
 
                                 <TextBlock Grid.Column="1"
-                                           Margin="22,0,0,0"
+                                           Margin="24,0,0,0"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontWeight="SemiBold"
@@ -623,7 +623,6 @@
 
                                         <ContentControl Grid.Row="0"
                                                         Margin="20,0"
-                                                        Background="WhiteSmoke"
                                                         Style="{StaticResource NeumorphInlayStyle}">
 
                                             <ScrollViewer x:Name="ContentScrollViewer"

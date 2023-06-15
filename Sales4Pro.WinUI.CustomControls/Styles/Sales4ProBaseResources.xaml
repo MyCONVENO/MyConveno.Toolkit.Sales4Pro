@@ -210,7 +210,7 @@
 
     <Style x:Key="NeumorphInlayStyle"
            TargetType="ContentControl">
-        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="Background" Value="#E8E8E8" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="DarkGray" />
         <Setter Property="CornerRadius" Value="4" />
