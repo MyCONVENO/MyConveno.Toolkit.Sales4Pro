@@ -8,6 +8,8 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost
     public class SyncShoppingCartController : TableController<SyncShoppingCart>
     {
         public SyncShoppingCartController(AppDbContext context) : base(new EntityTableRepository<SyncShoppingCart>(context))
-        { }
+        {
+            Options = new TableControllerOptions { EnableSoftDelete = true };
+        }
     }
 }
