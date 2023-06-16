@@ -73,6 +73,29 @@
         </Setter>
     </Style>
 
+    <Style TargetType="local:PageHeaderTextControl">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="#19000000" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PageHeaderTextControl">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <TextBlock Margin="20,6,0,8"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Text="{TemplateBinding Title}"
+                                   TextWrapping="NoWrap" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="local:PageEntryContentControl">
         <Setter Property="CaptionMinWidth" Value="140" />
         <Setter Property="FontSize" Value="14" />
