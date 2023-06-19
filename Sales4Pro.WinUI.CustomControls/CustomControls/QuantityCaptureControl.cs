@@ -139,7 +139,8 @@ public sealed class QuantityCaptureControl : TextBox
 
         if (e.Key == VirtualKey.Enter)
         {
-            FocusManager.TryMoveFocus(FocusNavigationDirection.Next);
+            FocusManager.TryMoveFocus(FocusNavigationDirection.Next,
+            new FindNextElementOptions { SearchRoot = this.XamlRoot.Content });
 
             // Make sure to set the Handled to true, otherwise the RoutedEvent might fire twice
             e.Handled = true;
@@ -156,7 +157,10 @@ public sealed class QuantityCaptureControl : TextBox
                  e.Key == VirtualKey.Number9 || e.Key == VirtualKey.NumberPad9)
         {
             if (Text.Length >= MaxLength)
-                FocusManager.TryMoveFocus(FocusNavigationDirection.Next);
+            {
+                FocusManager.TryMoveFocus(FocusNavigationDirection.Next,
+                new FindNextElementOptions { SearchRoot = this.XamlRoot.Content });
+            }
         }
     }
 
