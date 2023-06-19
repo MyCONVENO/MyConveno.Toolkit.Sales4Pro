@@ -95,7 +95,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style TargetType="local:PageSmallHeaderTextControl">
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
@@ -1083,7 +1083,7 @@
         <Setter Property="BorderBrush" Value="#FFD2D2D2" />
         <Setter Property="BorderThickness" Value="0,0,0.5,0.5" />
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundChromeBlackHighBrush}" />
         <Setter Property="MinHeight" Value="32" />
@@ -1125,11 +1125,10 @@
                                           x:DeferLoadStrategy="Lazy"
                                           Content="{TemplateBinding Header}"
                                           ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                          FontSize="13"
                                           FontWeight="SemiLight"
                                           Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
                                           IsHitTestVisible="False"
-                                          Opacity="1"
+                                          Opacity="0.5"
                                           Visibility="Collapsed" />
                         <ScrollViewer x:Name="ContentElement"
                                       Grid.Row="1"
@@ -1174,7 +1173,6 @@
                             <TextBlock x:Name="PART_StockQuantityTextBlock"
                                        Margin="0,4"
                                        VerticalAlignment="Center"
-                                       FontSize="13"
                                        Foreground="Green"
                                        Opacity="1"
                                        TextAlignment="Center"
