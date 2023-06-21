@@ -421,7 +421,7 @@
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           ContentTransitions="{TemplateBinding ContentTransitions}" />
 
-                        <!--  Das Hinweisschild für 'kein Content'  -->
+                        <!--  Das Hinweisschild fï¿½r 'kein Content'  -->
                         <local:NeumorphCard Grid.Row="1"
                                             Padding="40,24,40,32"
                                             HorizontalAlignment="Center"
@@ -1444,4 +1444,18 @@
         </Setter>
     </Style>
 
+
+    <!--<Style TargetType="local2:PercentNumberBox" xmlns:local2="using:Sales4Pro.WinUI.CustomControls.CustomControls">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local2:PercentNumberBox">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
 </ResourceDictionary>
