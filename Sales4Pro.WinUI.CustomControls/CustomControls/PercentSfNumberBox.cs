@@ -1,7 +1,7 @@
 using Syncfusion.UI.Xaml.Editors;
 using Windows.Globalization.NumberFormatting;
 
-namespace Sales4Pro.WinUI.CustomControls.CustomControls
+namespace Sales4Pro.WinUI.CustomControls
 {
     public sealed class PercentSfNumberBox : SfNumberBox
     {
