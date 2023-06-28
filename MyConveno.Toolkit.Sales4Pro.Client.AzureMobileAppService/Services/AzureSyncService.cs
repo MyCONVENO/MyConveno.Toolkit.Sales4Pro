@@ -154,13 +154,14 @@ public class AzureSyncService : IAzureSyncService
                 if (syncShoppingCartTable is not null)
                     await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.User == userName && w.Status == 10));
 
+                UpdatePendingOperationDisplay();
             }
             else
             {
                 _syncIsRunning = false;
+                UpdatePendingOperationDisplay();
                 return false;
             }
-            UpdatePendingOperationDisplay();
         }
         catch (PushFailedException exc)
         {
