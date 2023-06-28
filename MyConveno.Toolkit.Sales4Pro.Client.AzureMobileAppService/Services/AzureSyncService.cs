@@ -3,6 +3,7 @@ using Microsoft.Datasync.Client.Offline;
 using Microsoft.Datasync.Client.Offline.Queue;
 using Microsoft.Datasync.Client.SQLiteStore;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 
@@ -130,18 +131,9 @@ public class AzureSyncService : IAzureSyncService
         {
             await InitializeAsync();
 
-            //////await Task.Delay(1000);
-
-            if (syncCustomerNoteTable is not null)
-                await syncCustomerNoteTable.PushItemsAsync();
-
-            if (syncCustomerFavoriteTable is not null)
-                await syncCustomerFavoriteTable.PushItemsAsync();
-
-            if (syncShoppingCartTable is not null)
-                await syncShoppingCartTable.PushItemsAsync();
-
-            //////await Task.Delay(1000);
+            await Task.Delay(1000);
+            await _client.PushTablesAsync();
+            await Task.Delay(1000);
 
             if (pullTables && (string.IsNullOrEmpty(userName) == false))
             {
@@ -166,7 +158,28 @@ public class AzureSyncService : IAzureSyncService
         catch (PushFailedException exc)
         {
             if (exc?.PushResult != null)
-            { syncErrors = (ReadOnlyCollection<TableOperationError>?)exc.PushResult.Errors; }
+            {
+                syncErrors = (ReadOnlyCollection<TableOperationError>?)exc.PushResult.Errors;
+            }
+        }
+
+        if (syncErrors != null)
+        {
+            foreach (var error in syncErrors)
+            {
+                if (error.OperationKind == TableOperationKind.Update && error.Result != null)
+                {
+                    //Update failed, reverting to server's copy.
+                    await error.CancelAndUpdateItemAsync(error.Result);
+                }
+                else
+                {
+                    // Discard local change.
+                    await error.CancelAndDiscardItemAsync();
+                }
+
+                Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
+            }
         }
 
         _syncIsRunning = false;
