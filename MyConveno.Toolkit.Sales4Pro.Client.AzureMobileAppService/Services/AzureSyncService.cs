@@ -14,7 +14,7 @@ public class AzureSyncService : IAzureSyncService
     private IOfflineTable<SyncCustomerNote>? syncCustomerNoteTable;
     private IOfflineTable<SyncShoppingCart>? syncShoppingCartTable;
 
-    public event EventHandler PendingOperationsChanged;
+    public event EventHandler<long?> PendingOperationsChanged;
 
     public AzureSyncService(string url, OfflineSQLiteStore sqliteStore)
     {
@@ -61,7 +61,7 @@ public class AzureSyncService : IAzureSyncService
         // Update Pending Operations
         // ****************************************************************************
         long? pendingOperations = _client == null ? 0 : _client.PendingOperations;
-        PendingOperationsChanged?.Invoke(this, EventArgs.Empty);
+        PendingOperationsChanged?.Invoke(this, pendingOperations);
         // ****************************************************************************
     }
 
