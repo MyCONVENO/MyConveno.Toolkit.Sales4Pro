@@ -8,16 +8,29 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 
 public class AzureSyncService : IAzureSyncService
 {
-    private DatasyncClient? _client;
+    private DatasyncClient _client;
 
     private IOfflineTable<SyncCustomerFavorite>? syncCustomerFavoriteTable;
     private IOfflineTable<SyncCustomerNote>? syncCustomerNoteTable;
     private IOfflineTable<SyncShoppingCart>? syncShoppingCartTable;
 
+    public event EventHandler PendingOperationsChanged;
+
     public AzureSyncService(string url, OfflineSQLiteStore sqliteStore)
     {
         AzureURL = url;
         SQLiteStore = sqliteStore;
+
+
+        var options = new DatasyncClientOptions
+        {
+            OfflineStore = SQLiteStore
+        };
+
+        // Create the datasync client.
+        _client = TokenRequestor == null
+            ? new DatasyncClient(AzureURL, options)
+            : new DatasyncClient(AzureURL, new GenericAuthenticationProvider(TokenRequestor), options);
     }
 
     /// <summary>
@@ -48,7 +61,7 @@ public class AzureSyncService : IAzureSyncService
         // Update Pending Operations
         // ****************************************************************************
         long? pendingOperations = _client == null ? 0 : _client.PendingOperations;
-        //WeakReferenceMessenger.Default.Send(new PendingOperationsChanged(pendingOperations));
+        PendingOperationsChanged?.Invoke(this, EventArgs.Empty);
         // ****************************************************************************
     }
 
@@ -60,17 +73,12 @@ public class AzureSyncService : IAzureSyncService
     {
         // Short circuit, in case we are already initialized.
         if (_initialized)
-        {
-            return;
-        }
+        { return; }
 
         // Wait to get the async initialization lock
         await _asyncLock.WaitAsync();
         if (_initialized)
-        {
-            // This will also execute the async lock.
-            return;
-        }
+        { return; } // This will also execute the async lock.
 
         // Create the offline store definition
 
@@ -83,15 +91,15 @@ public class AzureSyncService : IAzureSyncService
         SQLiteStore.DefineTable<SyncCustomerNote>();
         SQLiteStore.DefineTable<SyncShoppingCart>();
 
-        var options = new DatasyncClientOptions
-        {
-            OfflineStore = SQLiteStore
-        };
+        //var options = new DatasyncClientOptions
+        //{
+        //    OfflineStore = SQLiteStore
+        //};
 
-        // Create the datasync client.
-        _client = TokenRequestor == null
-            ? new DatasyncClient(AzureURL, options)
-            : new DatasyncClient(AzureURL, new GenericAuthenticationProvider(TokenRequestor), options);
+        //// Create the datasync client.
+        //_client = TokenRequestor == null
+        //    ? new DatasyncClient(AzureURL, options)
+        //    : new DatasyncClient(AzureURL, new GenericAuthenticationProvider(TokenRequestor), options);
 
         // Initialize the database
         await _client.InitializeOfflineStoreAsync();
@@ -184,6 +192,8 @@ public class AzureSyncService : IAzureSyncService
         else
             await syncCustomerFavoriteTable.ReplaceItemAsync(upsertItem);
 
+        UpdatePendingOperationDisplay();
+
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
 
@@ -202,6 +212,9 @@ public class AzureSyncService : IAzureSyncService
         if (itemToDelete is null) return false;
 
         await syncCustomerFavoriteTable.DeleteItemAsync(itemToDelete);
+
+        UpdatePendingOperationDisplay();
+
         return true;
     }
 
@@ -256,6 +269,8 @@ public class AzureSyncService : IAzureSyncService
         else
             await syncCustomerNoteTable.ReplaceItemAsync(upsertItem);
 
+        UpdatePendingOperationDisplay();
+
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
 
@@ -273,6 +288,9 @@ public class AzureSyncService : IAzureSyncService
         if (itemToDelete is null) return false;
 
         await syncCustomerNoteTable.DeleteItemAsync(itemToDelete);
+
+        UpdatePendingOperationDisplay();
+
         return true;
 
     }
@@ -329,6 +347,8 @@ public class AzureSyncService : IAzureSyncService
         else
             await syncShoppingCartTable.ReplaceItemAsync(upsertItem);
 
+        UpdatePendingOperationDisplay();
+
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
 
@@ -346,6 +366,9 @@ public class AzureSyncService : IAzureSyncService
         if (itemToDelete is null) return false;
 
         await syncShoppingCartTable.DeleteItemAsync(itemToDelete);
+
+        UpdatePendingOperationDisplay();
+
         return true;
     }
 
@@ -372,7 +395,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartTable is null) return new List<SyncShoppingCart>();
 
-        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000,1,1) &&
+        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
                                                                                           w.Status == 10)
                                                                               .OrderByDescending(o => o.OrderDate)
                                                                               .IncludeTotalCount()
