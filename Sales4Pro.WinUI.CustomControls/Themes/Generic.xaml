@@ -455,6 +455,8 @@
                         </local:NeumorphCard>
 
                         <ProgressRing Grid.Row="1"
+                                      Width="100"
+                                      Height="100"
                                       Background="LightGray"
                                       Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                       IsActive="{TemplateBinding IsBusy}"
@@ -1443,5 +1445,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-   
+
 </ResourceDictionary>
