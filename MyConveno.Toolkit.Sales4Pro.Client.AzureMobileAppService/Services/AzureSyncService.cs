@@ -9,13 +9,13 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService;
 
 public class AzureSyncService : IAzureSyncService
 {
-    private DatasyncClient _client;
+    private readonly DatasyncClient _client;
 
     private IOfflineTable<SyncCustomerFavorite>? syncCustomerFavoriteTable;
     private IOfflineTable<SyncCustomerNote>? syncCustomerNoteTable;
     private IOfflineTable<SyncShoppingCart>? syncShoppingCartTable;
 
-    public event EventHandler<long?> PendingOperationsChanged;
+    public event EventHandler<long?>? PendingOperationsChanged;
 
     public AzureSyncService(string url, OfflineSQLiteStore sqliteStore)
     {
@@ -119,12 +119,16 @@ public class AzureSyncService : IAzureSyncService
 
     public async Task<bool> Synchronize(string userName, bool pullTables)
     {
-        if (_syncIsRunning)
-        { return false; }
-
-        _syncIsRunning = true;
+        bool success = false;
 
         UpdatePendingOperationDisplay();
+
+        if (_syncIsRunning)
+        {
+            return success;  // false
+        }
+        _syncIsRunning = true;
+
         ReadOnlyCollection<TableOperationError>? syncErrors = null;
 
         try
@@ -145,15 +149,9 @@ public class AzureSyncService : IAzureSyncService
 
                 if (syncShoppingCartTable is not null)
                     await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.User == userName && w.Status == 10));
+            }
 
-                UpdatePendingOperationDisplay();
-            }
-            else
-            {
-                _syncIsRunning = false;
-                UpdatePendingOperationDisplay();
-                return false;
-            }
+            success = true;
         }
         catch (PushFailedException exc)
         {
@@ -179,15 +177,17 @@ public class AzureSyncService : IAzureSyncService
                 }
 
                 Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
+
+                success = false;
             }
         }
 
+        UpdatePendingOperationDisplay();
         _syncIsRunning = false;
-        return true;
+        return success;
     }
 
     #endregion
-
 
     #region CustomerFavorites
 
