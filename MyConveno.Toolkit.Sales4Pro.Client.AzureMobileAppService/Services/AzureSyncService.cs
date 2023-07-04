@@ -61,7 +61,7 @@ public class AzureSyncService : IAzureSyncService
         // ****************************************************************************
         // Update Pending Operations
         // ****************************************************************************
-        long? pendingOperations = _client == null ? 0 : _client.PendingOperations;
+        long? pendingOperations = _client.PendingOperations == null ? 0 : _client.PendingOperations;
         PendingOperationsChanged?.Invoke(this, pendingOperations);
         // ****************************************************************************
     }
