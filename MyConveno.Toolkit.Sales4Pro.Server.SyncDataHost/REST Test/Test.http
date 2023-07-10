@@ -1,0 +1,22 @@
+﻿
+###
+
+GET https://sales4pro-berkemann-syncdatahost.azurewebsites.net/tables/syncshoppingcart?ZUMO-API-VERSION=2.0.0
+
+###
+
+GET https://sales4pro-solidus-syncdatahost.azurewebsites.net/tables/syncshoppingcart?ZUMO-API-VERSION=2.0.0
+
+###
+
+GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=Customer&syncDateTimeTicks=636504149210000000 
+
+###
+
+GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=Article&syncDateTimeTicks=636504149210000000 
+
+###
+
+GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=ProductImage&syncDateTimeTicks=636504149210000000 
+
+###

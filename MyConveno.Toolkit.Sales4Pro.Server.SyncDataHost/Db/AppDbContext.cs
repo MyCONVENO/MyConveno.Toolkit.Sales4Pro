@@ -16,7 +16,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost
         public DbSet<SyncCustomerFavorite> SyncCustomerFavorites => Set<SyncCustomerFavorite>();
         public DbSet<SyncCustomerNote> SyncCustomerNotes => Set<SyncCustomerNote>();
         public DbSet<SyncShoppingCart> SyncShoppingCarts => Set<SyncShoppingCart>();
-        public DbSet<SyncShoppingCartItem> SyncShoppingCartItems => Set<SyncShoppingCartItem>();
 
         /// <summary>
         /// Do any database initialization required.

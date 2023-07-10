@@ -78,35 +78,16 @@ public class AzureSyncService : IAzureSyncService
 
         // Wait to get the async initialization lock
         await _asyncLock.WaitAsync();
-        if (_initialized)
-        { return; } // This will also execute the async lock.
-
-        // Create the offline store definition
-
-        //string connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName}.Uri.ToString();
-        //string connectionString = new UriBuilder { Scheme = "file", Path = LocalSyncDBName, Query = "?mode=rwc" }.Uri.ToString();
-        //var store = new OfflineSQLiteStore(connectionString);
-
+      
         //store.DefineTable<TodoItem>();
         SQLiteStore.DefineTable<SyncCustomerFavorite>();
         SQLiteStore.DefineTable<SyncCustomerNote>();
         SQLiteStore.DefineTable<SyncShoppingCart>();
 
-        //var options = new DatasyncClientOptions
-        //{
-        //    OfflineStore = SQLiteStore
-        //};
-
-        //// Create the datasync client.
-        //_client = TokenRequestor == null
-        //    ? new DatasyncClient(AzureURL, options)
-        //    : new DatasyncClient(AzureURL, new GenericAuthenticationProvider(TokenRequestor), options);
-
         // Initialize the database
         await _client.InitializeOfflineStoreAsync();
 
         // Get a reference to the offline tables.
-        //_table = _client.GetOfflineTable<TodoItem>();
         syncCustomerFavoriteTable = _client.GetOfflineTable<SyncCustomerFavorite>();
         syncCustomerNoteTable = _client.GetOfflineTable<SyncCustomerNote>();
         syncShoppingCartTable = _client.GetOfflineTable<SyncShoppingCart>();
@@ -135,9 +116,17 @@ public class AzureSyncService : IAzureSyncService
         {
             await InitializeAsync();
 
-            await Task.Delay(1000);
-            await _client.PushTablesAsync();
-            await Task.Delay(1000);
+
+            if (syncCustomerNoteTable is not null)
+                await syncCustomerNoteTable.PushItemsAsync();
+
+            if (syncCustomerFavoriteTable is not null)
+                await syncCustomerFavoriteTable.PushItemsAsync();
+
+            if (syncShoppingCartTable is not null)
+                await syncShoppingCartTable.PushItemsAsync();
+
+
 
             if (pullTables && (string.IsNullOrEmpty(userName) == false))
             {
@@ -347,12 +336,54 @@ public class AzureSyncService : IAzureSyncService
 
     #region ShoppingCarts
 
+    #region Get Data
+
+    public async Task<List<SyncShoppingCart>> GetShoppingCartsAsync()
+    {
+        await InitializeAsync();
+
+        if (syncShoppingCartTable is null) return new List<SyncShoppingCart>();
+
+        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
+                                                                                          w.Status == 10)
+                                                                              .OrderByDescending(o => o.OrderDate)
+                                                                              .IncludeTotalCount()
+                                                                              .ToAsyncEnumerable()
+                                                                              .ToListAsync();
+
+        return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
+    }
+
+    public async Task<SyncShoppingCart> GetShoppingCartAsync(string id)
+    {
+        await InitializeAsync();
+
+        if (syncShoppingCartTable is null) return new SyncShoppingCart();
+
+        SyncShoppingCart? syncShoppingcart = await syncShoppingCartTable.GetItemAsync(id);
+
+        return syncShoppingcart is not null ? syncShoppingcart : new SyncShoppingCart();
+    }
+  
+    public async Task<int> GetShoppingCartsCountAsync()
+    {
+        await InitializeAsync();
+
+        if (syncShoppingCartTable is null) return 0;
+
+        return await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
+                                                      w.Status == 10)
+                                          .ToAsyncEnumerable()
+                                          .CountAsync();
+    }
+
+    #endregion
+
     #region Base CRUD
 
     public async Task<string> SaveShoppingCartAsync(SyncShoppingCart upsertItem)
     {
         await InitializeAsync();
-        syncShoppingCartTable = _client?.GetOfflineTable<SyncShoppingCart>();
 
         if (syncShoppingCartTable is null) return string.Empty;
 
@@ -366,10 +397,26 @@ public class AzureSyncService : IAzureSyncService
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
 
+
+    //public async Task<string> SaveShoppingCartAsync(SyncShoppingCart upsertItem)
+    //{
+    //    await InitializeAsync();
+
+    //    if (syncShoppingCartTable is null) return string.Empty;
+
+    //    if (upsertItem.Id is null)
+    //        await syncShoppingCartTable.InsertItemAsync(upsertItem);
+    //    else
+    //        await syncShoppingCartTable.ReplaceItemAsync(upsertItem);
+
+    //    UpdatePendingOperationDisplay();
+
+    //    return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
+    //}
+
     public async Task<bool> DeleteShoppingCartAsync(string id)
     {
         await InitializeAsync();
-        syncShoppingCartTable = _client?.GetOfflineTable<SyncShoppingCart>();
 
         if (syncShoppingCartTable is null) return false;
 
@@ -386,51 +433,6 @@ public class AzureSyncService : IAzureSyncService
         return true;
     }
 
-    public async Task<SyncShoppingCart> GetShoppingCartAsync(string id)
-    {
-        await InitializeAsync();
-        syncShoppingCartTable = _client?.GetOfflineTable<SyncShoppingCart>();
-
-        if (syncShoppingCartTable is null) return new SyncShoppingCart();
-
-        SyncShoppingCart? syncShoppingcart = await syncShoppingCartTable.GetItemAsync(id);
-
-        return syncShoppingcart is not null ? syncShoppingcart : new SyncShoppingCart();
-    }
-
-    #endregion
-
-    #region Get Data
-
-    public async Task<List<SyncShoppingCart>> GetShoppingCartsAsync()
-    {
-        await InitializeAsync();
-        syncShoppingCartTable = _client?.GetOfflineTable<SyncShoppingCart>();
-
-        if (syncShoppingCartTable is null) return new List<SyncShoppingCart>();
-
-        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
-                                                                                          w.Status == 10)
-                                                                              .OrderByDescending(o => o.OrderDate)
-                                                                              .IncludeTotalCount()
-                                                                              .ToAsyncEnumerable()
-                                                                              .ToListAsync();
-
-        return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
-    }
-
-    public async Task<int> GetShoppingCartsCountAsync()
-    {
-        await InitializeAsync();
-        syncShoppingCartTable = _client?.GetOfflineTable<SyncShoppingCart>();
-
-        if (syncShoppingCartTable is null) return 0;
-
-        return await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
-                                                      w.Status == 10)
-                                          .ToAsyncEnumerable()
-                                          .CountAsync();
-    }
 
     #endregion
 
@@ -443,7 +445,6 @@ public class AzureSyncService : IAzureSyncService
     public async Task<int> GetPendingOrdersCountAsync()
     {
         await InitializeAsync();
-        syncShoppingCartTable = _client?.GetOfflineTable<SyncShoppingCart>();
 
         if (syncShoppingCartTable is null) return 0;
 
