@@ -397,23 +397,6 @@ public class AzureSyncService : IAzureSyncService
         return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
     }
 
-
-    //public async Task<string> SaveShoppingCartAsync(SyncShoppingCart upsertItem)
-    //{
-    //    await InitializeAsync();
-
-    //    if (syncShoppingCartTable is null) return string.Empty;
-
-    //    if (upsertItem.Id is null)
-    //        await syncShoppingCartTable.InsertItemAsync(upsertItem);
-    //    else
-    //        await syncShoppingCartTable.ReplaceItemAsync(upsertItem);
-
-    //    UpdatePendingOperationDisplay();
-
-    //    return upsertItem.Id is not null ? upsertItem.Id.ToString() : string.Empty;
-    //}
-
     public async Task<bool> DeleteShoppingCartAsync(string id)
     {
         await InitializeAsync();
@@ -432,7 +415,6 @@ public class AzureSyncService : IAzureSyncService
 
         return true;
     }
-
 
     #endregion
 

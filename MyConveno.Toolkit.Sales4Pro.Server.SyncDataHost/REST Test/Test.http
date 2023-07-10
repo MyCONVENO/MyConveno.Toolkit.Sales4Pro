@@ -9,14 +9,3 @@ GET https://sales4pro-solidus-syncdatahost.azurewebsites.net/tables/syncshopping
 
 ###
 
-GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=Customer&syncDateTimeTicks=636504149210000000 
-
-###
-
-GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=Article&syncDateTimeTicks=636504149210000000 
-
-###
-
-GET https://sales4pro-berkemann-basedatahost.azurewebsites.net/CreateAndUploadZippedCSVPackage?tableName=ProductImage&syncDateTimeTicks=636504149210000000 
-
-###
