@@ -215,7 +215,6 @@
     <Style TargetType="local:NeumorphHeaderedMainContainer">
         <Setter Property="Background" Value="{ThemeResource AcrylicInAppFillColorDefaultBrush}" />
 
-        <!--<Setter Property="Background" Value="{ThemeResource AcrylicInAppFillColorDefaultBrush}" />-->
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="BorderThickness" Value="0,1.5,0,0" />
@@ -260,6 +259,25 @@
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  IsHitTestVisible="False">
+                                <FontIcon FontSize="200"
+                                          Foreground="White"
+                                          Glyph="{TemplateBinding CenterGlyph}"
+                                          RenderTransformOrigin="0.5,0.5">
+                                    <FontIcon.RenderTransform>
+                                        <CompositeTransform TranslateX="1.0"
+                                                            TranslateY="1.0" />
+                                    </FontIcon.RenderTransform>
+                                </FontIcon>
+                                <FontIcon FontSize="200"
+                                          Foreground="#33000000"
+                                          Glyph="{TemplateBinding CenterGlyph}" />
+                            </Grid>
+
 
                             <!--  Back Button TopLeft  -->
                             <!--  Close Button TopRight  -->

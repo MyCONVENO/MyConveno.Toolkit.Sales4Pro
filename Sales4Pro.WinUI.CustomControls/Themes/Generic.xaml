@@ -455,8 +455,8 @@
                         </local:NeumorphCard>
 
                         <ProgressRing Grid.Row="1"
-                                      Width="100"
-                                      Height="100"
+                                      Width="80"
+                                      Height="80"
                                       Background="LightGray"
                                       Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                       IsActive="{TemplateBinding IsBusy}"
