@@ -144,7 +144,7 @@ namespace Sales4Pro.WinUI.CustomControls
             set { SetValue(CenterGlyphProperty, value); }
         }
         public static readonly DependencyProperty CenterGlyphProperty =
-            DependencyProperty.Register("CenterGlyph", typeof(string), typeof(NeumorphHeaderedMainContainer), new PropertyMetadata("\xE719"));
+            DependencyProperty.Register("CenterGlyph", typeof(string), typeof(NeumorphHeaderedMainContainer), new PropertyMetadata("\uF16A"));
 
 
         #endregion
