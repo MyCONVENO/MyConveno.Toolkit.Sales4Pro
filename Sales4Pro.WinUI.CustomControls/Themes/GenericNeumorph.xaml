@@ -32,7 +32,7 @@
                 <ControlTemplate TargetType="local:NeumorphCurtainControl">
                     <Grid x:Name="MainContent"
                           Background="{TemplateBinding Background}"
-                          BorderThickness="1,0,1,0"
+                          BorderThickness="1,1,1,0"
                           CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid.BorderBrush>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.5">
