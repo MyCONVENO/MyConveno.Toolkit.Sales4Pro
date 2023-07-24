@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Michael Coelsch (MyConveno)</Authors>
+    <Description>MyConveno Sales4Pro Toolkit</Description>
+    <Copyright>© 2023 MyConveno. All rights reserved.</Copyright>
+    <PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <Version>2023.7.24.1</Version>
+	<RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro/tree/master/Sales4Pro.ClientDataNET</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Sales4Pro, MyConveno</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IncludeSymbols>True</IncludeSymbols>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+</Project>
