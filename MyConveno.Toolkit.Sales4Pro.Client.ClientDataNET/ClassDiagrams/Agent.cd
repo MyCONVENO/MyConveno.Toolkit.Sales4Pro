@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.AgentViewModel">
+    <Position X="0.5" Y="3.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAAoAAABCAAAAkAAAACAAAAAAAAoAiAADAkAAAAAA=</HashCode>
+      <FileName>ViewModels\AgentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.MetadataAgentContent">
+    <Position X="4.25" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIAEAAAACAAAAAIAAAAAAAAAAIAAQCAEAIAICAAAAA=</HashCode>
+      <FileName>Models\Agent\MetadataAgentContent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.MetadataAgent">
+    <Position X="7.5" Y="0.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAAIAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Agent\MetadataAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.MetadataAgentCatalog">
+    <Position X="7.5" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Agent\MetadataAgentCatalog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyConveno.Toolkit.Sales4Pro.Client.ClientData.Agent">
+    <Position X="0.5" Y="0.5" Width="3.75" />
+    <AssociationLine Name="MetadataContent" Type="MyConveno.Toolkit.Sales4Pro.Client.ClientData.MetadataAgentContent" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="1.662" />
+        <Point X="6.938" Y="1.662" />
+        <Point X="6.938" Y="3.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.092" Y="1.328" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAIAAAAAAAAAACAAAAAAAAEAAAAAAAAEIAA=</HashCode>
+      <FileName>Models\Agent\Agent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MetadataContent" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
