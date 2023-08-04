@@ -319,96 +319,88 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:FilterHeaderLine">
-                    <Grid Padding="0"
-                          Background="{TemplateBinding Background}"
-                          BorderBrush="{TemplateBinding BorderBrush}"
-                          BorderThickness="{TemplateBinding BorderThickness}">
+                    <Grid x:Name="PART_TopInfo"
+                            Padding="16,2,16,4"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
 
-                        <Grid x:Name="PART_TopInfo"
-                              Padding="16,2,16,4"
-                              Background="{TemplateBinding Background}"
-                              BorderBrush="{TemplateBinding BorderBrush}"
-                              BorderThickness="{TemplateBinding BorderThickness}">
-
-                            <StackPanel Grid.Column="1"
+                        <StackPanel Grid.Column="1"
                                         VerticalAlignment="Center">
 
-                                <Grid x:Name="TopInfoLine1"
+                            <Grid x:Name="TopInfoLine1"
                                       ColumnSpacing="4">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid x:Name="FiltersText"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid x:Name="FiltersText"
                                           Grid.Column="0"
                                           Background="Transparent"
                                           ColumnSpacing="4"
                                           Tapped="FiltersText_Tapped">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock x:Uid="TextBlockFilterBy"
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock x:Uid="TextBlockFilterBy"
                                                    Style="{StaticResource CaptionTextBlockStyle}"
                                                    Text="Gefiltert nach" />
-                                        <TextBlock Grid.Column="1"
+                                    <TextBlock Grid.Column="1"
                                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                                    Style="{StaticResource BaseTextBlockStyle}"
                                                    Text="{TemplateBinding TopInfoFilterByText}"
                                                    TextWrapping="WrapWholeWords" />
-                                    </Grid>
-                                    <Grid x:Name="TotalsText"
+                                </Grid>
+                                <Grid x:Name="TotalsText"
                                           Grid.Column="1"
                                           Margin="4,0,4,0"
                                           HorizontalAlignment="Right"
                                           ColumnSpacing="4"
                                           Visibility="{TemplateBinding TopInfoTotalsVisibilty}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0"
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
                                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                                    Style="{StaticResource BaseTextBlockStyle}"
                                                    Text="{TemplateBinding TopInfoSearchHitsCountText}" />
-                                        <TextBlock Grid.Column="1"
+                                    <TextBlock Grid.Column="1"
                                                    Style="{StaticResource CaptionTextBlockStyle}"
                                                    Text="Treffer bei" />
-                                        <TextBlock Grid.Column="2"
+                                    <TextBlock Grid.Column="2"
                                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                                    Style="{StaticResource BaseTextBlockStyle}"
                                                    Text="{TemplateBinding TopInfoTotalCountText}" />
-                                        <TextBlock Grid.Column="3"
+                                    <TextBlock Grid.Column="3"
                                                    Style="{StaticResource CaptionTextBlockStyle}"
                                                    Text="{TemplateBinding TopInfoItemText}" />
-                                    </Grid>
                                 </Grid>
+                            </Grid>
 
-                                <Grid x:Name="TopInfoLine2"
+                            <Grid x:Name="TopInfoLine2"
                                       ColumnSpacing="4"
                                       Visibility="{TemplateBinding TopInfoSortingVisibilty}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock x:Uid="TextBlockSortBy"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Uid="TextBlockSortBy"
                                                FontSize="13"
                                                Text="Sortieren nach" />
-                                    <TextBlock Grid.Column="1"
+                                <TextBlock Grid.Column="1"
                                                FontSize="13"
                                                Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                                Text="{TemplateBinding TopInfoSortByText}"
                                                TextWrapping="WrapWholeWords" />
-                                </Grid>
+                            </Grid>
 
-                            </StackPanel>
-
-                        </Grid>
+                        </StackPanel>
 
                     </Grid>
-
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
