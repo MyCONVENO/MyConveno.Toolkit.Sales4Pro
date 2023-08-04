@@ -325,14 +325,14 @@
                           BorderThickness="{TemplateBinding BorderThickness}">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="48" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <!--  PageHeader  -->
 
                         <Grid x:Name="PART_TopInfo"
-                              Padding="16,8"
+                              Padding="16,2,16,4"
                               Background="Transparent"
                               BorderBrush="#C0C0C0"
                               BorderThickness="0,0,0,.5">
