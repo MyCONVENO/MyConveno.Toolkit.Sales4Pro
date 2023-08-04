@@ -306,36 +306,29 @@
 
     <!--#endregion-->
 
-    <Style TargetType="local:GridContainer">
+    <Style TargetType="local:FilterHeaderLine">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="BorderBrush" Value="White" />
+        <Setter Property="BorderThickness" Value="0,0,0,.5" />
+        <Setter Property="BorderBrush" Value="#C0C0C0" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="MinHeight" Value="20" />
         <Setter Property="MinWidth" Value="60" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:GridContainer">
+                <ControlTemplate TargetType="local:FilterHeaderLine">
                     <Grid Padding="0"
                           Background="{TemplateBinding Background}"
                           BorderBrush="{TemplateBinding BorderBrush}"
                           BorderThickness="{TemplateBinding BorderThickness}">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                        <!--  PageHeader  -->
-
                         <Grid x:Name="PART_TopInfo"
                               Padding="16,2,16,4"
-                              Background="Transparent"
-                              BorderBrush="#C0C0C0"
-                              BorderThickness="0,0,0,.5">
+                              Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}">
 
                             <StackPanel Grid.Column="1"
                                         VerticalAlignment="Center">
@@ -414,16 +407,39 @@
 
                         </Grid>
 
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:GridContainer">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="White" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="MinHeight" Value="20" />
+        <Setter Property="MinWidth" Value="60" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:GridContainer">
+                    <Grid Padding="0"
+                          Background="{TemplateBinding Background}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}">
+
                         <!--  Content  -->
                         <ContentPresenter x:Name="MainScrollViewer"
-                                          Grid.Row="1"
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           ContentTransitions="{TemplateBinding ContentTransitions}" />
 
-                        <!--  Das Hinweisschild f�r 'kein Content'  -->
-                        <local:NeumorphCard Grid.Row="1"
-                                            Padding="40,24,40,32"
+                        <!--  Das Hinweisschild für 'kein Content'  -->
+                        <local:NeumorphCard Padding="40,24,40,32"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             HorizontalContentAlignment="Center"
@@ -454,14 +470,12 @@
                             </StackPanel>
                         </local:NeumorphCard>
 
-                        <ProgressRing Grid.Row="1"
-                                      Width="80"
+                        <ProgressRing Width="80"
                                       Height="80"
                                       Background="LightGray"
                                       Foreground="{StaticResource SystemControlForegroundAccentBrush}"
                                       IsActive="{TemplateBinding IsBusy}"
                                       IsHitTestVisible="False" />
-
                     </Grid>
 
                 </ControlTemplate>
