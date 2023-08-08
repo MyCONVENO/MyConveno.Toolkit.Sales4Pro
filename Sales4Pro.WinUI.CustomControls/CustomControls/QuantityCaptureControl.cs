@@ -40,6 +40,9 @@ public sealed class QuantityCaptureControl : TextBox
     {
         this.TextChanging -= QuantityCaptureControl_TextChanging;
         this.TextChanging += QuantityCaptureControl_TextChanging;
+
+        this.TextChanged -= QuantityCaptureControl_TextChanged;
+        this.TextChanged += QuantityCaptureControl_TextChanged;
     }
 
     protected override void OnApplyTemplate()
@@ -174,32 +177,32 @@ public sealed class QuantityCaptureControl : TextBox
     protected override void OnLostFocus(RoutedEventArgs e)
     {
         base.OnLostFocus(e);
-        int newQuantity = 0;
+        //int newQuantity = 0;
 
-        if (Text == oldText)
-            return;
+        //if (Text == oldText)
+        //    return;
 
-        if (Text == string.Empty || Text == "0" || Text == "00" || Text == "000")
-        {
-            Text = string.Empty;
-        }
-        else
-        {
-            if (Text.StartsWith("0"))
-            {
-                char[] c = new char[] { '0' };
-                Text = Text.TrimStart(c);
-            }
-            newQuantity = Convert.ToInt32(Text);
-        }
+        //if (Text == string.Empty || Text == "0" || Text == "00" || Text == "000")
+        //{
+        //    Text = string.Empty;
+        //}
+        //else
+        //{
+        //    if (Text.StartsWith("0"))
+        //    {
+        //        char[] c = new char[] { '0' };
+        //        Text = Text.TrimStart(c);
+        //    }
+        //    newQuantity = Convert.ToInt32(Text);
+        //}
 
-        if (newQuantity > MaxQuantity)
-            newQuantity = MaxQuantity;
+        //if (newQuantity > MaxQuantity)
+        //    newQuantity = MaxQuantity;
 
-        Quantity = newQuantity;
-        QuantityChanged?.Invoke(this, newQuantity);
+        //Quantity = newQuantity;
+        //QuantityChanged?.Invoke(this, newQuantity);
 
-        WriteText(newQuantity);
+        //WriteText(newQuantity);
     }
 
     #endregion
@@ -385,6 +388,36 @@ public sealed class QuantityCaptureControl : TextBox
         //    sender.Text = sender.Text.Remove(pos, 1);
         //    sender.SelectionStart = pos;
         //}
+    }
+
+    private void QuantityCaptureControl_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        int newQuantity = 0;
+
+        if (Text == oldText)
+            return;
+
+        if (Text == string.Empty || Text == "0" || Text == "00" || Text == "000")
+        {
+            Text = string.Empty;
+        }
+        else
+        {
+            if (Text.StartsWith("0"))
+            {
+                char[] c = new char[] { '0' };
+                Text = Text.TrimStart(c);
+            }
+            newQuantity = Convert.ToInt32(Text);
+        }
+
+        if (newQuantity > MaxQuantity)
+            newQuantity = MaxQuantity;
+
+        Quantity = newQuantity;
+        QuantityChanged?.Invoke(this, newQuantity);
+
+        WriteText(newQuantity);
     }
 
     #endregion
