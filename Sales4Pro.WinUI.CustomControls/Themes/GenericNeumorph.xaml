@@ -653,8 +653,25 @@
                                                         <RowDefinition Height="0" />
                                                         <RowDefinition Height="*" />
                                                     </Grid.RowDefinitions>
+
                                                     <ContentControl x:Name="Title" />
+
+                                                    <Border BorderBrush="Silver"
+                                                         BorderThickness="1,1,0,0"
+                                                         CornerRadius="8"
+                                                         IsHitTestVisible="False"
+                                                         Grid.Row="1"
+                                                         Opacity="0.8" />
+
+                                                    <Border BorderBrush="White"
+                                                         BorderThickness="0,0,1,1"
+                                                         CornerRadius="8"
+                                                         Grid.Row="1"
+                                                         IsHitTestVisible="False"
+                                                         Opacity="0.8" />
+
                                                     <ContentPresenter x:Name="Content"
+                                                                      Margin="1"
                                                                       Grid.Row="1"
                                                                       Content="{TemplateBinding Content}"
                                                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -662,7 +679,9 @@
                                                                       FontSize="{StaticResource ControlContentThemeFontSize}"
                                                                       Foreground="{TemplateBinding Foreground}"
                                                                       TextWrapping="Wrap" />
+
                                                 </Grid>
+
                                             </ScrollViewer>
 
                                         </ContentControl>
