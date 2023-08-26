@@ -508,6 +508,7 @@
                     <Grid CornerRadius="{TemplateBinding CornerRadius}">
 
                         <Border x:Name="ShadowTarget"
+                                Visibility="{TemplateBinding ShadowVisibility}"
                                 BorderBrush="#A8A8A8"
                                 BorderThickness="12,12,12,0"
                                 CornerRadius="1,1,1,1"

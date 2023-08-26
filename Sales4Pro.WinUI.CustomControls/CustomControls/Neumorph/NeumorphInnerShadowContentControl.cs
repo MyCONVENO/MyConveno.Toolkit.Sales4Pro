@@ -27,6 +27,17 @@ public sealed class NeumorphInnerShadowContentControl : ContentControl
         }
     }
 
+    public Visibility ShadowVisibility
+    {
+        get { return (Visibility)GetValue(ShadowVisibilityProperty); }
+        set { SetValue(ShadowVisibilityProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty ShadowVisibilityProperty =
+        DependencyProperty.Register("ShadowVisibility", typeof(Visibility), typeof(NeumorphInnerShadowContentControl), new PropertyMetadata(Visibility.Visible));
+
+
     public CornerRadius DarkCornerRadius
     {
         get { return (CornerRadius)GetValue(DarkCornerRadiusProperty); }
