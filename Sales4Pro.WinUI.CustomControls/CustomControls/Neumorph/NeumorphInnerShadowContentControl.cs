@@ -1,34 +1,52 @@
-﻿using Microsoft.UI.Xaml;
+﻿using CommunityToolkit.WinUI.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Sales4Pro.WinUI.CustomControls;
 
 public sealed class NeumorphInnerShadowContentControl : ContentControl
 {
+    private Border shadowTarget;
+    private AttachedDropShadow attachedDropShadow;
+
     public NeumorphInnerShadowContentControl()
     {
         DefaultStyleKey = typeof(NeumorphInnerShadowContentControl);
     }
 
-    //public string Title
-    //{
-    //    get { return (string)GetValue(TitleProperty); }
-    //    set { SetValue(TitleProperty, value); }
-    //}
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
 
-    //// Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
-    //public static readonly DependencyProperty TitleProperty =
-    //    DependencyProperty.Register("Title", typeof(string), typeof(PageEntryContentControl), new PropertyMetadata("Titletext"));
+        shadowTarget = (Border)GetTemplateChild("ShadowTarget");
+        attachedDropShadow = (AttachedDropShadow)GetTemplateChild("AttachedDropShadow1");
+
+        if (attachedDropShadow is not null)
+        {
+            attachedDropShadow.CastTo = shadowTarget;
+        }
+    }
+
+    public CornerRadius DarkCornerRadius
+    {
+        get { return (CornerRadius)GetValue(DarkCornerRadiusProperty); }
+        set { SetValue(DarkCornerRadiusProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty DarkCornerRadiusProperty =
+        DependencyProperty.Register("DarkCornerRadius", typeof(CornerRadius), typeof(NeumorphInnerShadowContentControl), new PropertyMetadata(new Thickness(4,4,4,4)));
 
 
-    //public double CaptionMinWidth
-    //{
-    //    get { return (double)GetValue(CaptionMinWidthProperty); }
-    //    set { SetValue(CaptionMinWidthProperty, value); }
-    //}
+    public CornerRadius LightCornerRadius
+    {
+        get { return (CornerRadius)GetValue(LightCornerRadiusProperty); }
+        set { SetValue(LightCornerRadiusProperty, value); }
+    }
 
-    //// Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
-    //public static readonly DependencyProperty CaptionMinWidthProperty =
-    //    DependencyProperty.Register("CaptionMinWidth", typeof(double), typeof(PageEntryContentControl), new PropertyMetadata(140.0));
+    // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty LightCornerRadiusProperty =
+        DependencyProperty.Register("LightCornerRadius", typeof(CornerRadius), typeof(NeumorphInnerShadowContentControl), new PropertyMetadata(new Thickness(4, 4, 4, 4)));
+
 
 }
