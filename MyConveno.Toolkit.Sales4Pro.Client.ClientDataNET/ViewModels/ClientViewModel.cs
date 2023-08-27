@@ -209,6 +209,19 @@ public partial class ClientViewModel : ObservableObject
 
     #region Computed Properties
 
+    public Uri? ComputeSupportPersonMailtoAddressURI
+    {
+        get
+        {
+            string mailtoUri = "mailto:" + SupportPersonEmail.Trim();
+
+            if (Uri.TryCreate(mailtoUri, UriKind.Absolute, out Uri? address))
+                return address;
+            else
+                return null;
+        }
+    }
+
     public bool ComputeIsMainDataPrimaryButtonEnabled
     {
         get
