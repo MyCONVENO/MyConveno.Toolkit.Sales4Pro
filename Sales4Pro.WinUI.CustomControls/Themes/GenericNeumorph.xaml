@@ -492,6 +492,67 @@
         </Setter>
     </Style>
 
+    <Style TargetType="local:NeumorphInnerShadowContentControl">
+        <Setter Property="Background" Value="#E6E6E6" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="MinHeight" Value="48" />
+        <Setter Property="MinWidth" Value="60" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NeumorphInnerShadowContentControl">
+
+                    <Grid CornerRadius="{TemplateBinding CornerRadius}">
+
+                        <Border x:Name="ShadowTarget"
+                                Visibility="{TemplateBinding ShadowVisibility}"
+                                BorderBrush="#A8A8A8"
+                                BorderThickness="12,12,12,0"
+                                CornerRadius="1,1,1,1"
+                                IsHitTestVisible="False">
+                            <Rectangle Margin="-8"
+                                       Fill="#E6E6E6">
+                                <ui:Effects.Shadow>
+                                    <ui:AttachedDropShadow x:Name="AttachedDropShadow1"
+                                                           BlurRadius="8"
+                                                           CornerRadius="0"
+                                                           Opacity="1"
+                                                           Color="#E6E6E6" />
+                                </ui:Effects.Shadow>
+                            </Rectangle>
+                        </Border>
+
+                        <Border BorderBrush="DarkGray"
+                                BorderThickness="1,1,0,0"
+                                CornerRadius="{TemplateBinding DarkCornerRadius}"
+                                IsHitTestVisible="False"
+                                Opacity="0.8" />
+
+                        <Border BorderBrush="White"
+                                BorderThickness="0,0,1,1"
+                                CornerRadius="{TemplateBinding LightCornerRadius}"
+                                IsHitTestVisible="False"
+                                Opacity="0.5" />
+
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Margin="1"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          CornerRadius="{TemplateBinding CornerRadius}" />
+
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--  https://github.com/microsoft/microsoft-ui-xaml/issues/3486  -->
     <Style BasedOn="{StaticResource DefaultContentDialogStyle}"
            TargetType="local:NeumorphContentDialog">
@@ -656,23 +717,9 @@
 
                                                     <ContentControl x:Name="Title" />
 
-                                                    <Border BorderBrush="Silver"
-                                                            BorderThickness="1,1,0,0"
-                                                            CornerRadius="8"
-                                                            IsHitTestVisible="False"
-                                                            Grid.Row="1"
-                                                            Opacity="0.8" />
-
-                                                    <Border BorderBrush="White"
-                                                            BorderThickness="0,0,1,1"
-                                                            CornerRadius="8"
-                                                            Grid.Row="1"
-                                                            IsHitTestVisible="False"
-                                                            Opacity="0.8" />
-
                                                     <ContentPresenter x:Name="Content"
-                                                                      Margin="1"
                                                                       Grid.Row="1"
+                                                                      Margin="0"
                                                                       Content="{TemplateBinding Content}"
                                                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                                                       FontFamily="{StaticResource ContentControlThemeFontFamily}"
@@ -727,6 +774,7 @@
                                                     IsTabStop="False"
                                                     Style="{TemplateBinding CloseButtonStyle}" />
                                         </Grid>
+
                                     </Grid>
 
                                 </Grid>
