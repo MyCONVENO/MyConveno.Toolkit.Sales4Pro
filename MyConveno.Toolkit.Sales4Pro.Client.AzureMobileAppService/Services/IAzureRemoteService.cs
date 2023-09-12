@@ -6,7 +6,6 @@
 
         Task InitializeAsync();
         Task<List<SyncShoppingCart>> GetOrdersAsync();
-        Task<SyncShoppingCart> GetOrderAsync(string id);
         Task<int> GetOrdersCountAsync();
         Task<string> SaveOrderAsync(SyncShoppingCart upsertItem);
         Task<bool> DeleteOrderAsync(string id);

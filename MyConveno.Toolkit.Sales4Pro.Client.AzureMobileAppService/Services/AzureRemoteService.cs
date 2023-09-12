@@ -74,8 +74,7 @@ public class AzureRemoteService : IAzureRemoteService
 
         if (remoteShoppingCartTable is null) return new List<SyncShoppingCart>();
 
-        List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.SentDateTime > new DateTime(2000, 1, 1) && 
-                                                                                            w.Status < 10)
+        List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10)
                                                                                 .OrderByDescending(o => o.OrderDate)
                                                                                 .IncludeTotalCount()
                                                                                 .ToAsyncEnumerable()
@@ -84,25 +83,13 @@ public class AzureRemoteService : IAzureRemoteService
         return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
     }
 
-    public async Task<SyncShoppingCart> GetOrderAsync(string id)
-    {
-        await InitializeAsync();
-
-        if (remoteShoppingCartTable is null) return new SyncShoppingCart();
-
-        SyncShoppingCart? syncShoppingcart = await remoteShoppingCartTable.GetItemAsync(id);
-
-        return syncShoppingcart is not null ? syncShoppingcart : new SyncShoppingCart();
-    }
-
     public async Task<int> GetOrdersCountAsync()
     {
         await InitializeAsync();
 
         if (remoteShoppingCartTable is null) return 0;
 
-        return await remoteShoppingCartTable.Where(w => w.SentDateTime > new DateTime(2000, 1, 1) &&
-                                                        w.Status < 10)
+        return await remoteShoppingCartTable.Where(w => w.Status < 10)
                                             .ToAsyncEnumerable()
                                             .CountAsync();
     }
