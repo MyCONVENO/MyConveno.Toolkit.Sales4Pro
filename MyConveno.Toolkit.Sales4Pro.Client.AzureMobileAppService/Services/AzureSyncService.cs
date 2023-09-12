@@ -78,7 +78,7 @@ public class AzureSyncService : IAzureSyncService
 
         // Wait to get the async initialization lock
         await _asyncLock.WaitAsync();
-      
+
         //store.DefineTable<TodoItem>();
         SQLiteStore.DefineTable<SyncCustomerFavorite>();
         SQLiteStore.DefineTable<SyncCustomerNote>();
@@ -96,6 +96,22 @@ public class AzureSyncService : IAzureSyncService
         _initialized = true;
 
         _asyncLock.Release();
+    }
+
+    public async Task PurgeAllTables()
+    {
+        await InitializeAsync();
+
+        if (syncCustomerNoteTable is not null)
+            await syncCustomerNoteTable.PurgeItemsAsync("", new PurgeOptions { DiscardPendingOperations = true });
+
+        if (syncCustomerFavoriteTable is not null)
+            await syncCustomerFavoriteTable.PurgeItemsAsync("", new PurgeOptions { DiscardPendingOperations = true });
+
+        if (syncShoppingCartTable is not null)
+            await syncShoppingCartTable.PurgeItemsAsync("", new PurgeOptions { DiscardPendingOperations = true });
+
+        UpdatePendingOperationDisplay();
     }
 
     public async Task<bool> Synchronize(string userName, bool pullTables)
@@ -364,7 +380,7 @@ public class AzureSyncService : IAzureSyncService
 
         return syncShoppingcart is not null ? syncShoppingcart : new SyncShoppingCart();
     }
-  
+
     public async Task<int> GetShoppingCartsCountAsync()
     {
         await InitializeAsync();
