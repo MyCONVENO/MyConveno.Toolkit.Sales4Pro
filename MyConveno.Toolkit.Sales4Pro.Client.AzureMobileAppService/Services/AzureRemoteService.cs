@@ -68,13 +68,31 @@ public class AzureRemoteService : IAzureRemoteService
 
     #region Get Data
 
-    public async Task<List<SyncShoppingCart>> GetOrdersAsync()
+    public async Task<List<SyncShoppingCart>> GetOrdersAsync(string userName, DateTime fromDate)
     {
         await InitializeAsync();
 
         if (remoteShoppingCartTable is null) return new List<SyncShoppingCart>();
 
-        List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10)
+        List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10 &&
+                                                                                            w.User == userName &&
+                                                                                            w.OrderDate >= fromDate)
+                                                                                .OrderByDescending(o => o.OrderDate)
+                                                                                .IncludeTotalCount()
+                                                                                .ToAsyncEnumerable()
+                                                                                .ToListAsync();
+
+        return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
+    }
+
+    public async Task<List<SyncShoppingCart>> GetOrdersAsync(DateTime fromDate)
+    {
+        await InitializeAsync();
+
+        if (remoteShoppingCartTable is null) return new List<SyncShoppingCart>();
+
+        List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10 &&
+                                                                                            w.OrderDate >= fromDate)
                                                                                 .OrderByDescending(o => o.OrderDate)
                                                                                 .IncludeTotalCount()
                                                                                 .ToAsyncEnumerable()
