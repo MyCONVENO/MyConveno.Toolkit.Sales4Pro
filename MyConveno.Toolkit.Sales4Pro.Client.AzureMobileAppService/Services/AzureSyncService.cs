@@ -446,8 +446,7 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartTable is null) return 0;
 
-        return await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
-                                                      w.Status < 10)
+        return await syncShoppingCartTable.Where(w => w.Status == 1)
                                           .IncludeTotalCount()
                                           .ToAsyncEnumerable()
                                           .CountAsync();
