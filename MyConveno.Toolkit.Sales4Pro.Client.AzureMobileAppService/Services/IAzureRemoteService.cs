@@ -10,7 +10,7 @@
         Task<int> GetOrdersCountAsync(string userName, DateTime fromDate);
         Task<string> SaveOrderAsync(SyncShoppingCart upsertItem);
         Task<bool> DeleteOrderAsync(string id);
-        Task<int> GetPendingOrdersCountAsync();
+        Task<int> GetPendingOrdersCountAsync(string userName);
 
     }
 }
