@@ -14,7 +14,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService
         Task<List<SyncCustomerFavorite>> GetCustomerFavoritesAsync(string userId);
         Task<SyncCustomerNote> GetCustomerNoteAsync(string id);
         Task<List<SyncCustomerNote>> GetCustomerNotesAsync(string customerNumber);
-        Task<int> GetPendingOrdersCountAsync();
         Task<SyncShoppingCart> GetShoppingCartAsync(string id);
         Task<int> GetShoppingCartsCountAsync();
         Task<List<SyncShoppingCart>> GetShoppingCartsAsync();

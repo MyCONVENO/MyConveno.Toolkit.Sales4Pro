@@ -435,26 +435,6 @@ public class AzureSyncService : IAzureSyncService
     #endregion
 
     #endregion
-
-    #region Orders
-
-    #region Get Data
-
-    public async Task<int> GetPendingOrdersCountAsync()
-    {
-        await InitializeAsync();
-
-        if (syncShoppingCartTable is null) return 0;
-
-        return await syncShoppingCartTable.Where(w => w.Status == 1)
-                                          .IncludeTotalCount()
-                                          .ToAsyncEnumerable()
-                                          .CountAsync();
-    }
-
-    #endregion
-
-    #endregion
-
+      
 }
 

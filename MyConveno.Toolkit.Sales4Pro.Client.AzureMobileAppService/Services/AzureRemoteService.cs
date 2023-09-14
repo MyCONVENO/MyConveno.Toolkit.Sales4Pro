@@ -122,6 +122,18 @@ public class AzureRemoteService : IAzureRemoteService
                                             .CountAsync();
     }
 
+    public async Task<int> GetPendingOrdersCountAsync()
+    {
+        await InitializeAsync();
+
+        if (remoteShoppingCartTable is null) return 0;
+
+        return await remoteShoppingCartTable.Where(w => w.Status == 1)
+                                            .IncludeTotalCount()
+                                            .ToAsyncEnumerable()
+                                            .CountAsync();
+    }
+
     public async Task<string> SaveOrderAsync(SyncShoppingCart upsertItem)
     {
         await InitializeAsync();
