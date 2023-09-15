@@ -153,8 +153,7 @@ public class AzureSyncService : IAzureSyncService
                     await syncCustomerFavoriteTable.PullItemsAsync(syncCustomerFavoriteTable.CreateQuery().Where(w => w.UserName == userName));
 
                 if (syncShoppingCartTable is not null)
-                    await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.User == userName && 
-                                                                                                              w.Status > -5));
+                    await syncShoppingCartTable.PullItemsAsync(syncShoppingCartTable.CreateQuery().Where(w => w.User == userName));
             }
 
             success = true;
