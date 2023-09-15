@@ -360,8 +360,22 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartTable is null) return new List<SyncShoppingCart>();
 
-        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
-                                                                                          w.Status == 10)
+        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.Status == 10)
+                                                                              .OrderByDescending(o => o.OrderDate)
+                                                                              .IncludeTotalCount()
+                                                                              .ToAsyncEnumerable()
+                                                                              .ToListAsync();
+
+        return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
+    }
+
+    public async Task<List<SyncShoppingCart>> GetPendingShoppingCartsAsync()
+    {
+        await InitializeAsync();
+
+        if (syncShoppingCartTable is null) return new List<SyncShoppingCart>();
+
+        List<SyncShoppingCart> syncShoppingCarts = await syncShoppingCartTable.Where(w => w.Status == 1)
                                                                               .OrderByDescending(o => o.OrderDate)
                                                                               .IncludeTotalCount()
                                                                               .ToAsyncEnumerable()
