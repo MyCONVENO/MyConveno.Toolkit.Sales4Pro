@@ -401,8 +401,18 @@ public class AzureSyncService : IAzureSyncService
 
         if (syncShoppingCartTable is null) return 0;
 
-        return await syncShoppingCartTable.Where(w => w.SentDateTime <= new DateTime(2000, 1, 1) &&
-                                                      w.Status == 10)
+        return await syncShoppingCartTable.Where(w => w.Status == 10)
+                                          .ToAsyncEnumerable()
+                                          .CountAsync();
+    }
+
+    public async Task<int> GetPendingShoppingCartsCountAsync()
+    {
+        await InitializeAsync();
+
+        if (syncShoppingCartTable is null) return 0;
+
+        return await syncShoppingCartTable.Where(w => w.Status == 1)
                                           .ToAsyncEnumerable()
                                           .CountAsync();
     }
@@ -449,6 +459,6 @@ public class AzureSyncService : IAzureSyncService
     #endregion
 
     #endregion
-      
+
 }
 

@@ -82,21 +82,6 @@ public class AzureRemoteService : IAzureRemoteService
         return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
     }
 
-    public async Task<List<SyncShoppingCart>> GetOrdersAsync(DateTime fromDate)
-    {
-        await InitializeAsync();
-
-        if (remoteShoppingCartTable is null) return new List<SyncShoppingCart>();
-
-        List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10 &&
-                                                                                            w.OrderDate >= fromDate)
-                                                                                .IncludeTotalCount()
-                                                                                .ToAsyncEnumerable()
-                                                                                .ToListAsync();
-
-        return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
-    }
-
     public async Task<int> GetOrdersCountAsync(string userName, DateTime fromDate)
     {
         await InitializeAsync();
@@ -106,31 +91,6 @@ public class AzureRemoteService : IAzureRemoteService
         return await remoteShoppingCartTable.Where(w => w.Status < 10 &&
                                                         w.User == userName &&
                                                         w.OrderDate >= fromDate)
-                                            .ToAsyncEnumerable()
-                                            .CountAsync();
-    }
-
-    public async Task<int> GetOrdersCountAsync(DateTime fromDate)
-    {
-        await InitializeAsync();
-
-        if (remoteShoppingCartTable is null) return 0;
-
-        return await remoteShoppingCartTable.Where(w => w.Status < 10 &&
-                                                        w.OrderDate >= fromDate)
-                                            .ToAsyncEnumerable()
-                                            .CountAsync();
-    }
-
-    public async Task<int> GetPendingOrdersCountAsync(string userName)
-    {
-        await InitializeAsync();
-
-        if (remoteShoppingCartTable is null) return 0;
-
-        return await remoteShoppingCartTable.Where(w => w.Status == 1 &&
-                                                   w.User == userName)
-                                            .IncludeTotalCount()
                                             .ToAsyncEnumerable()
                                             .CountAsync();
     }
