@@ -82,6 +82,21 @@ public class AzureRemoteService : IAzureRemoteService
         return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
     }
 
+    public async Task<List<SyncShoppingCart>> GetPendingOrdersAsync()
+    {
+        await InitializeAsync();
+
+        if (remoteShoppingCartTable is null) return new List<SyncShoppingCart>();
+
+        List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status == 1)
+                                                                                .OrderByDescending(o => o.OrderDate)
+                                                                                .IncludeTotalCount()
+                                                                                .ToAsyncEnumerable()
+                                                                                .ToListAsync();
+
+        return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
+    }
+
     public async Task<int> GetOrdersCountAsync(string userName, DateTime fromDate)
     {
         await InitializeAsync();
@@ -93,6 +108,17 @@ public class AzureRemoteService : IAzureRemoteService
                                                         w.OrderDate >= fromDate)
                                             .ToAsyncEnumerable()
                                             .CountAsync();
+    }
+
+    public async Task<SyncShoppingCart> GetOrderAsync(string id)
+    {
+        await InitializeAsync();
+
+        if (remoteShoppingCartTable is null) return new SyncShoppingCart();
+
+        SyncShoppingCart? syncShoppingcart = await remoteShoppingCartTable.GetItemAsync(id);
+
+        return syncShoppingcart is not null ? syncShoppingcart : new SyncShoppingCart();
     }
 
     public async Task<string> SaveOrderAsync(SyncShoppingCart upsertItem)
