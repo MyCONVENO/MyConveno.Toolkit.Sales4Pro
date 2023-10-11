@@ -99,6 +99,30 @@ public sealed class FilterHeaderLine : Control
     public static readonly DependencyProperty TopInfoSortingVisibiltyProperty =
         DependencyProperty.Register("TopInfoSortingVisibilty", typeof(Visibility), typeof(FilterHeaderLine), new PropertyMetadata(Visibility.Visible));
 
+    public string TopInfoItemSortByText
+    {
+        get { return (string)GetValue(TopInfoItemSortByTextProperty); }
+        set { SetValue(TopInfoItemSortByTextProperty, value); }
+    }
+    public static readonly DependencyProperty TopInfoItemSortByTextProperty =
+        DependencyProperty.Register("TopInfoItemSortByText", typeof(string), typeof(FilterHeaderLine), new PropertyMetadata("Sortieren nach"));
+
+    public string TopInfoItemHitsAtText
+    {
+        get { return (string)GetValue(TopInfoItemHitsAtTextProperty); }
+        set { SetValue(TopInfoItemHitsAtTextProperty, value); }
+    }
+    public static readonly DependencyProperty TopInfoItemHitsAtTextProperty =
+        DependencyProperty.Register("TopInfoItemHitsAtText", typeof(string), typeof(FilterHeaderLine), new PropertyMetadata("Treffer bei"));
+
+    public string TopInfoItemFilterByText
+    {
+        get { return (string)GetValue(TopInfoItemFilterByTextProperty); }
+        set { SetValue(TopInfoItemFilterByTextProperty, value); }
+    }
+    public static readonly DependencyProperty TopInfoItemFilterByTextProperty =
+        DependencyProperty.Register("TopInfoItemFilterByText", typeof(string), typeof(FilterHeaderLine), new PropertyMetadata("Gefiltert nach"));
+
     #endregion
 
     #endregion
