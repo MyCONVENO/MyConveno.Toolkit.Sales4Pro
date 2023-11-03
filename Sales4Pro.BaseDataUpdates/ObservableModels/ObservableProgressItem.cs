@@ -39,7 +39,6 @@ public partial class ObservableProgressItem : ObservableObject
     private string progressText;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(LastUpdateText))]
     [NotifyPropertyChangedFor(nameof(DataProvidedOpacity))]
     private DateTime lastUpdate;
 
@@ -51,24 +50,12 @@ public partial class ObservableProgressItem : ObservableObject
     {
         get { return Changed > 0 ? Changed.ToString() : string.Empty; }
     }
-
-    public string LastUpdateText
-    {
-        get
-        {
-            if (lastUpdate > new DateTime(2000, 01, 01))
-                return "Letzte Serveraktualisierung: " + lastUpdate.ToString("dd.MM.yy HH:mm");
-            else
-                return "Noch keine Daten bereitgestellt";
-
-        }
-    }
-
+       
     public double DataProvidedOpacity
     {
         get
         {
-            if (lastUpdate > new DateTime(2000, 01, 01))
+            if (LastUpdate > new DateTime(2000, 01, 01))
                 return 1.0;
             else
                 return 0.4;
@@ -77,39 +64,39 @@ public partial class ObservableProgressItem : ObservableObject
 
     public bool IsPendingStatusVisible
     {
-        get { return currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Pending; }
+        get { return CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Pending; }
     }
 
     public bool IsErrorStatusVisible
     {
-        get { return currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Error; }
+        get { return CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Error; }
     }
 
     public bool IsDownloadingStatusVisible
     {
-        get { return currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Downloading; }
+        get { return CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Downloading; }
     }
 
     public bool IsUnchangedStatusVisible
     {
-        get { return currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Unchanged; }
+        get { return CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Unchanged; }
     }
 
     public bool IsUpdatesAvailableStatusVisible
     {
-        get { return currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.UpdatesAvailable; }
+        get { return CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.UpdatesAvailable; }
     }
 
     public bool IsUpdatingStatusVisible
     {
-        get { return currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Updating; }
+        get { return CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Updating; }
     }
 
     public bool IsProgressActive
     {
         get
         {
-            switch (currentBaseDataUpdateState)
+            switch (CurrentBaseDataUpdateState)
             {
                 case CurrentBaseDataUpdateStatesEnum.Downloading:
                     return true;
@@ -131,8 +118,8 @@ public partial class ObservableProgressItem : ObservableObject
     {
         get
         {
-            return currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Pending ||
-                   currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Unchanged;
+            return CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Pending ||
+                   CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Unchanged;
         }
     }
 
@@ -140,9 +127,9 @@ public partial class ObservableProgressItem : ObservableObject
     {
         get
         {
-            return totalChanges > 0 &&
-                   (currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.UpdatesAvailable ||
-                    currentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Downloading);
+            return TotalChanges > 0 &&
+                   (CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.UpdatesAvailable ||
+                    CurrentBaseDataUpdateState == CurrentBaseDataUpdateStatesEnum.Downloading);
         }
     }
 
