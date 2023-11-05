@@ -118,12 +118,8 @@ public class AzureSyncService : IAzureSyncService
     {
         bool success = false;
 
-        UpdatePendingOperationDisplay();
+        if (_syncIsRunning) return false;
 
-        if (_syncIsRunning)
-        {
-            return success;  // false
-        }
         _syncIsRunning = true;
 
         ReadOnlyCollection<TableOperationError>? syncErrors = null;
@@ -132,6 +128,7 @@ public class AzureSyncService : IAzureSyncService
         {
             await InitializeAsync();
 
+            UpdatePendingOperationDisplay();
 
             if (syncCustomerNoteTable is not null)
                 await syncCustomerNoteTable.PushItemsAsync();
