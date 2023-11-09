@@ -1460,7 +1460,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:TouchDoubleUpDownPresenterControl">
-                    <Grid Margin="{TemplateBinding Padding}">
+                    <Grid Margin="{TemplateBinding Padding}" RowSpacing="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
@@ -1473,9 +1473,9 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <TextBlock FontSize="13"
+                        <TextBlock FontSize="15"
                                    FontWeight="SemiLight"
-                                   Opacity="0.5"
+                                   Opacity="1"
                                    OpticalMarginAlignment="TrimSideBearings"
                                    Text="{TemplateBinding Header}"
                                    TextLineBounds="TrimToBaseline"
@@ -1490,7 +1490,7 @@
                                    TextLineBounds="TrimToBaseline"
                                    TextWrapping="Wrap" />
                         <RepeatButton x:Name="PART_SubtractRepeatButton"
-                                      Grid.RowSpan="2"
+                                      Grid.Row="2"
                                       Grid.Column="1"
                                       Background="Transparent"
                                       RequestedTheme="Light">
@@ -1559,7 +1559,7 @@
                             </RepeatButton.Style>
                         </RepeatButton>
                         <RepeatButton x:Name="PART_AddRepeatButton"
-                                      Grid.RowSpan="2"
+                                      Grid.Row="2"
                                       Grid.Column="2"
                                       Background="Transparent"
                                       RequestedTheme="Light">
@@ -1628,7 +1628,7 @@
                             </RepeatButton.Style>
                         </RepeatButton>
                         <RepeatButton x:Name="PART_AddBigStepRepeatButton"
-                                      Grid.RowSpan="2"
+                                      Grid.Row="2"
                                       Grid.Column="3"
                                       Background="Transparent"
                                       RequestedTheme="Light">
@@ -1697,7 +1697,7 @@
                             </RepeatButton.Style>
                         </RepeatButton>
                         <Button x:Name="PART_ResetButton"
-                                Grid.RowSpan="2"
+                                Grid.Row="2"
                                 Grid.Column="4"
                                 Background="Transparent"
                                 RequestedTheme="Light">
