@@ -1459,7 +1459,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:TouchDoubleUpDownPresenterControl">
                     <Grid Margin="{TemplateBinding Padding}"
-                          RowSpacing="10">
+                          RowSpacing="16">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
