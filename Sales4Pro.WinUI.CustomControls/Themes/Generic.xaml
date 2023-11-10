@@ -1467,7 +1467,7 @@
                                  IsReadOnly="True" />
 
                         <Grid Grid.Column="1"
-                              Margin="0,24,0,0"
+                              Margin="0,26,0,0"
                               VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
