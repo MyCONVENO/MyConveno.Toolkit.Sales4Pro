@@ -1467,7 +1467,7 @@
                                  IsReadOnly="True" />
 
                         <Grid Grid.Column="1"
-                              Margin="0,26,0,0"
+                              Margin="0,28,0,0"
                               VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
@@ -1551,7 +1551,7 @@
                                         <Setter Property="UseSystemFocusVisuals" Value="True" />
                                         <Setter Property="VerticalAlignment" Value="Stretch" />
                                         <Setter Property="VerticalContentAlignment" Value="Center" />
-                                        <Setter Property="Width" Value="40" />
+                                        <Setter Property="Width" Value="24" />
                                     </Style>
                                 </RepeatButton.Style>
                             </RepeatButton>
@@ -1630,7 +1630,7 @@
                                         <Setter Property="UseSystemFocusVisuals" Value="True" />
                                         <Setter Property="VerticalAlignment" Value="Stretch" />
                                         <Setter Property="VerticalContentAlignment" Value="Center" />
-                                        <Setter Property="Width" Value="40" />
+                                        <Setter Property="Width" Value="24" />
                                     </Style>
                                 </RepeatButton.Style>
                             </RepeatButton>
@@ -1710,7 +1710,7 @@
                                         <Setter Property="UseSystemFocusVisuals" Value="True" />
                                         <Setter Property="VerticalAlignment" Value="Stretch" />
                                         <Setter Property="VerticalContentAlignment" Value="Center" />
-                                        <Setter Property="Width" Value="40" />
+                                        <Setter Property="Width" Value="24" />
                                     </Style>
                                 </RepeatButton.Style>
                             </RepeatButton>
@@ -1789,7 +1789,7 @@
                                         <Setter Property="UseSystemFocusVisuals" Value="True" />
                                         <Setter Property="VerticalAlignment" Value="Stretch" />
                                         <Setter Property="VerticalContentAlignment" Value="Center" />
-                                        <Setter Property="Width" Value="40" />
+                                        <Setter Property="Width" Value="24" />
                                     </Style>
                                 </Button.Style>
                             </Button>
