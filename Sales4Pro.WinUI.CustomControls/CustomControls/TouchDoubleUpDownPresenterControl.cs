@@ -12,7 +12,7 @@ namespace Sales4Pro.WinUI.CustomControls;
 [TemplatePart(Name = "PART_SubtractRepeatButton", Type = typeof(RepeatButton))]
 [TemplatePart(Name = "PART_ResetButton", Type = typeof(Button))]
 [TemplatePart(Name = "PART_HamburgerFontIcon", Type = typeof(FontIcon))]
-[TemplatePart(Name = "PART_ValueTextBlock", Type = typeof(TextBlock))]
+[TemplatePart(Name = "PART_ValueTextBox", Type = typeof(TextBox))]
 public sealed class TouchDoubleUpDownPresenterControl : Control
 {
     private RepeatButton addRepeatButton;
@@ -20,7 +20,7 @@ public sealed class TouchDoubleUpDownPresenterControl : Control
     private RepeatButton subtractRepeatButton;
     private Button resetButton;
     private FontIcon hamburgerFontIcon;
-    private TextBlock valueTextBlock;
+    private TextBox valueTextBox;
     private bool isInEditMode = false;
 
     public event EventHandler LostFocusWithChanges;
@@ -42,7 +42,7 @@ public sealed class TouchDoubleUpDownPresenterControl : Control
         subtractRepeatButton = (RepeatButton)GetTemplateChild("PART_SubtractRepeatButton");
         resetButton = (Button)GetTemplateChild("PART_ResetButton");
         hamburgerFontIcon = (FontIcon)GetTemplateChild("PART_HamburgerFontIcon");
-        valueTextBlock = (TextBlock)GetTemplateChild("PART_ValueTextBlock");
+        valueTextBox = (TextBox)GetTemplateChild("PART_ValueTextBox");
 
         if (hamburgerFontIcon != null)
             hamburgerFontIcon.Visibility = HamburgerIconVisibility;
@@ -80,7 +80,7 @@ public sealed class TouchDoubleUpDownPresenterControl : Control
 
     private void TouchDoubleUpDownPresenterControl_Loaded(object sender, RoutedEventArgs e)
     {
-        UpdateValueTextBlock();
+        UpdateValueTextBox();
     }
 
     protected override void OnLostFocus(RoutedEventArgs e)
@@ -128,20 +128,20 @@ public sealed class TouchDoubleUpDownPresenterControl : Control
         }
     }
 
-    private void UpdateValueTextBlock()
+    private void UpdateValueTextBox()
     {
-        if (valueTextBlock != null)
+        if (valueTextBox != null)
         {
             switch (Digits)
             {
                 case digitsEnum.D0:
-                    valueTextBlock.Text = (String.Format(CultureInfo.InvariantCulture, IsPercentFormat ? "{0:0%}" : "{0:0}", Value));
+                    valueTextBox.Text = (String.Format(CultureInfo.InvariantCulture, IsPercentFormat ? "{0:0%}" : "{0:0}", Value));
                     break;
                 case digitsEnum.D1:
-                    valueTextBlock.Text = (String.Format(CultureInfo.InvariantCulture, IsPercentFormat ? "{0:0.0%}" : "{0:0.0}", Value));
+                    valueTextBox.Text = (String.Format(CultureInfo.InvariantCulture, IsPercentFormat ? "{0:0.0%}" : "{0:0.0}", Value));
                     break;
                 case digitsEnum.D2:
-                    valueTextBlock.Text = (String.Format(CultureInfo.InvariantCulture, IsPercentFormat ? "{0:0.00%}" : "{0:0.00}", Value));
+                    valueTextBox.Text = (String.Format(CultureInfo.InvariantCulture, IsPercentFormat ? "{0:0.00%}" : "{0:0.00}", Value));
                     break;
                 default:
                     break;
@@ -174,7 +174,7 @@ public sealed class TouchDoubleUpDownPresenterControl : Control
     private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         TouchDoubleUpDownPresenterControl target = (TouchDoubleUpDownPresenterControl)d;
-        target.UpdateValueTextBlock();
+        target.UpdateValueTextBox();
         target.ValueChanged?.Invoke(target, new EventArgs());
     }
 
@@ -192,7 +192,7 @@ public sealed class TouchDoubleUpDownPresenterControl : Control
     private static void OnDigitsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         TouchDoubleUpDownPresenterControl target = (TouchDoubleUpDownPresenterControl)d;
-        target.UpdateValueTextBlock();
+        target.UpdateValueTextBox();
     }
 
     public double Step
@@ -259,7 +259,7 @@ public sealed class TouchDoubleUpDownPresenterControl : Control
     private static void IsPercentFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         TouchDoubleUpDownPresenterControl target = (TouchDoubleUpDownPresenterControl)d;
-        target.UpdateValueTextBlock();
+        target.UpdateValueTextBox();
     }
 
     public Visibility HamburgerIconVisibility
