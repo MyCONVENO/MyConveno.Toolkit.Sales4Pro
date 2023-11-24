@@ -6,6 +6,7 @@ public partial class SpecialDiscountViewModel : ObservableObject
 {
     public SpecialDiscountViewModel()
     {
+        WhiteList = string.Empty;
         SpecialDiscountId = string.Empty;
         PasteData(new SpecialDiscount());
     }
@@ -58,6 +59,14 @@ public partial class SpecialDiscountViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
     public double bigInterval;
 
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public bool isStandardOrderScope;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ComputeIsPrimaryButtonEnabled))]
+    public bool isStockOrderScope;
+      
     #endregion
 
     public DateTimeOffset StartDateDateTimeOffset
@@ -109,6 +118,8 @@ public partial class SpecialDiscountViewModel : ObservableObject
             WhiteList = string.Empty;
             SmallInterval = 0.1d;
             BigInterval = 0.1d;
+            IsStandardOrderScope = true;
+            IsStockOrderScope = true;
         }
         else
         {
@@ -123,6 +134,9 @@ public partial class SpecialDiscountViewModel : ObservableObject
             WhiteList = specialDiscount.MetadataContent.WhiteList;
             SmallInterval = specialDiscount.MetadataContent.SmallInterval;
             BigInterval = specialDiscount.MetadataContent.BigInterval;
+            IsStandardOrderScope = specialDiscount.MetadataContent.IsStandardOrderScope;
+            IsStockOrderScope = specialDiscount.MetadataContent.IsStockOrderScope;
+
         }
         OnPropertyChanged(nameof(ComputeIsPrimaryButtonEnabled));
     }
@@ -141,6 +155,8 @@ public partial class SpecialDiscountViewModel : ObservableObject
         model.MetadataContent.WhiteList = WhiteList;
         model.MetadataContent.SmallInterval = SmallInterval;
         model.MetadataContent.BigInterval = BigInterval;
+        model.MetadataContent.IsStandardOrderScope = IsStandardOrderScope;
+        model.MetadataContent.IsStockOrderScope = IsStockOrderScope;
 
         model.SerializeMetadata();
         return model;
