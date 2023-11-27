@@ -137,16 +137,6 @@ namespace Sales4Pro.WinUI.CustomControls
         public static readonly DependencyProperty HeaderImageSourceProperty =
             DependencyProperty.Register("HeaderImageSource", typeof(ImageSource), typeof(NeumorphHeaderedMainContainer), new PropertyMetadata(null));
 
-
-        public string CenterGlyph
-        {
-            get { return (string)GetValue(CenterGlyphProperty); }
-            set { SetValue(CenterGlyphProperty, value); }
-        }
-        public static readonly DependencyProperty CenterGlyphProperty =
-            DependencyProperty.Register("CenterGlyph", typeof(string), typeof(NeumorphHeaderedMainContainer), new PropertyMetadata("\uF16A"));
-
-
         #endregion
 
         #region EventHandler

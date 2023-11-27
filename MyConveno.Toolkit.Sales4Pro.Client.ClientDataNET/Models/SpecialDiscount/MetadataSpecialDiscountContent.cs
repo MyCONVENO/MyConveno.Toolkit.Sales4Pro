@@ -12,6 +12,8 @@ public class MetadataSpecialDiscountContent : IMetadataSpecialDiscountContent
         WhiteList = string.Empty;
         SmallInterval = 0.01d;
         BigInterval = 0.01d;
+        IsStandardOrderScope = true;
+        IsStockOrderScope = true;
     }
 
     public DateTime StartDate { get; set; }
@@ -22,4 +24,6 @@ public class MetadataSpecialDiscountContent : IMetadataSpecialDiscountContent
     public string WhiteList { get; set; }
     public double SmallInterval { get; set; }
     public double BigInterval { get; set; }
+    public bool IsStandardOrderScope { get; set; }
+    public bool IsStockOrderScope { get; set; }
 }
