@@ -10,7 +10,7 @@
     <Copyright>© 2024 MyConveno. All rights reserved.</Copyright>
     <PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>2023.11.27.2</Version>
+    <Version>2023.11.27.3</Version>
 	<RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro/tree/master/Sales4Pro.ClientDataNET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Sales4Pro, MyConveno</PackageTags>

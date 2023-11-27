@@ -16,3 +16,7 @@ GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/Clients/GetById?c
 GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/Users/GetByUserName?username=michael.coelsch@outlook.de
 
 ###
+
+GET https://sales4pro-solidus-clientdatahost.azurewebsites.net/StockCatalogs/GetAll
+
+###
