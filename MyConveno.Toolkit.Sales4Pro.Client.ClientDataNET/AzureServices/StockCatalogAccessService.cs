@@ -32,17 +32,8 @@ public class StockCatalogAccessService : IStockCatalogAccessService
     {
         Initialize();
         string parameter = string.Format("StockCatalogs/GetAll");
-
-        try
-        {
-            IList<StockCatalog> stockCatalogs = await httpClient.GetFromJsonAsync<IList<StockCatalog>>(parameter);
-            return (List<StockCatalog>)stockCatalogs;
-        }
-        catch (Exception ex)
-        {
-            //throw;
-        }
-        return new List<StockCatalog>();
+        IList<StockCatalog> stockCatalogs = await httpClient.GetFromJsonAsync<IList<StockCatalog>>(parameter);
+        return (List<StockCatalog>)stockCatalogs;
     }
 
     public async Task<bool> AddStockCatalog(StockCatalog StockCatalog)
