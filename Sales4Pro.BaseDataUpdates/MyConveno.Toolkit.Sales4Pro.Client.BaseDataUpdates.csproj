@@ -7,17 +7,17 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<Authors>Michael Coelsch (MyConveno)</Authors>
 	<Description>MyConveno Sales4Pro Toolkit</Description>
-	<Copyright>© 2023 MyConveno. All rights reserved.</Copyright>
+	<Copyright>© 2024 MyConveno. All rights reserved.</Copyright>
 	<PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
 	<PackageIcon>icon.png</PackageIcon>
 	<PackageTags>Sales4Pro, MyConveno</PackageTags>
-	<PackageReleaseNotes>None</PackageReleaseNotes>
+	<Version>2024.2.19.1</Version>
+	<RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageTags>Sales4Pro, MyConveno</PackageTags>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<IncludeSymbols>True</IncludeSymbols>
-	<Version>2023.4.28.1</Version>
-	<RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro.git</RepositoryUrl>
-	<RepositoryType></RepositoryType>
-  </PropertyGroup>
+ 	<IncludeSymbols>True</IncludeSymbols>
+ </PropertyGroup>
 
   <ItemGroup>
     <Content Include="icon.png" />

@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+ 	<Version>2024.2.19.1</Version>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -10,10 +11,9 @@
     <Copyright>© 2024 MyConveno. All rights reserved.</Copyright>
     <PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>2024.2.19.1</Version>
+    <PackageTags>Sales4Pro, MyConveno</PackageTags>
 	<RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Sales4Pro, MyConveno</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>

@@ -1,18 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Version>2024.2.19.1</Version>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>2023.11.15.1</Version>
     <Authors>Michael Coelsch (MyConveno)</Authors>
     <Description>MyConveno Sales4Pro Toolkit</Description>
-    <Copyright>© 2023 MyConveno. All rights reserved.</Copyright>
+    <Copyright>© 2024 MyConveno. All rights reserved.</Copyright>
     <PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>Sales4Pro, MyConveno</PackageTags>
-    <PackageReleaseNotes>None</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
