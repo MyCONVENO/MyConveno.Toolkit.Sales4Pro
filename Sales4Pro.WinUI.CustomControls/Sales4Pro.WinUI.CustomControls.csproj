@@ -7,7 +7,7 @@
     <UseWinUI>true</UseWinUI>
     <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>2024.2.19.1</Version>
+    <Version>2024.2.19.2</Version>
     <Authors>Michael Coelsch (MyConveno)</Authors>
     <Description>MyConveno Sales4Pro Toolkit</Description>
     <Copyright>© 2024 MyConveno. All rights reserved.</Copyright>
@@ -17,7 +17,7 @@
     <PackageReleaseNotes>None</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
-    <RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro/tree/master/Sales4Pro.WinUI.CustomControls</RepositoryUrl>
+    <RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro</RepositoryUrl>
     <NeutralLanguage>de-DE</NeutralLanguage>
     <RepositoryType>git</RepositoryType>
     <Title>MyConveno Custom Controls</Title>
