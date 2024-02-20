@@ -12,7 +12,7 @@
     <PackageProjectUrl>http://www.myconveno.de</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>Sales4Pro, MyConveno</PackageTags>
-    <RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro</RepositoryUrl>
+    <RepositoryUrl>https://github.com/BAUERFEINDAG/BF.S4P.Shared</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
