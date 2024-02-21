@@ -16,11 +16,12 @@ public class CheckForImageDownloadsAvailableService : ICheckForImageDownloadsAva
 
     #region Tasks
 
-    public async Task CheckIfUpdatedImagesAvailableAsync(long updateDateTimeProductImage, string currentLoginUserName)
+    public async Task CheckIfUpdatedImagesAvailableAsync(long lastUpdateProductImageTicks, string currentLoginUserName)
     {
         bool updatesAvailable = false;
 
-        // Lade eine temporäre Liste mit Items vom Typ BaseDataImageUpdateProgressItem, die die Anzahl der geänderten Datensätze enthält
+        // Lade eine temporäre Liste mit Items vom Typ BaseDataImageUpdateProgressItem,
+        // die die Anzahl der geänderten Datensätze enthält
         // Wichtig ist hier nur der Eintrag [TotalChanges]
         List<BaseDataImageUpdateProgressItem> allTablesWithChanges;
 
@@ -29,7 +30,7 @@ public class CheckForImageDownloadsAvailableService : ICheckForImageDownloadsAva
             Dictionary<string, long> syncDateTimes = new()
             {
                 // (Default UpdateDateTimeTicks 630822816000000000 ist der 01.01.2000)
-                { "ProductImage", updateDateTimeProductImage }
+                { "ProductImage", lastUpdateProductImageTicks }
             };
 
             using (HttpClient client = new())
@@ -67,12 +68,10 @@ public class CheckForImageDownloadsAvailableService : ICheckForImageDownloadsAva
 
             // .. und prüfe den Eintrag TotalChanges
             if (baseDataImageUpdateProgressItem != null && baseDataImageUpdateProgressItem.TotalChanges > 0)
-            {
                 updatesAvailable = true;
-            }
+            else
+                updatesAvailable = false;
         }
-
-        updatesAvailable = false;
 
         ProductImageUpdatesAvailable?.Invoke(this, updatesAvailable);
 
