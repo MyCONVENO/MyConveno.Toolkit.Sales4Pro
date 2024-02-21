@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+	<Version>2024.2.21.1</Version>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>10.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -13,7 +14,6 @@
 	<PackageTags>Sales4Pro, MyConveno</PackageTags>
 	<PackageReleaseNotes></PackageReleaseNotes>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<Version>2024.2.19.7</Version>
     <IncludeSymbols>True</IncludeSymbols>
 	<RepositoryUrl>https://github.com/MyCONVENO/MyConveno.Toolkit.Sales4Pro</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

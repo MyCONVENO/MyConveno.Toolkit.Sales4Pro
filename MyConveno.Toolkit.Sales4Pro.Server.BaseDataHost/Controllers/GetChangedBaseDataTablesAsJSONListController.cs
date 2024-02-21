@@ -26,10 +26,13 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost
 
             List<UpdateProgressItem> results = new();
 
-            foreach (string key in jsonTableDict.Keys)
+            foreach (string key in jsonTableDict!.Keys)
             {
                 long syncDateTimeTicks = jsonTableDict.ContainsKey(key) ? jsonTableDict[key] : initDatetimeTicks;
+
+                // Ermitteln der Anzahl der geänderten Datensätze
                 int changes = service.GetTableChangesCount(key, syncDateTimeTicks);
+
                 if (changes > 0)
                     results.Add(new UpdateProgressItem(key, changes));
             }

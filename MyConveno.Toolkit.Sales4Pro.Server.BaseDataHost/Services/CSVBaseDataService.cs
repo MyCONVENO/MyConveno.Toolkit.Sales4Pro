@@ -11,8 +11,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost
 {
     public class CSVBaseDataService : IDisposable
     {
-        private readonly IConfiguration _config;
-
         readonly long minDatetimeTicks = new DateTime(2000, 2, 1).Ticks;
         readonly AzureBlobStorageServices azureService;
         readonly SqlConnection connection;
@@ -33,10 +31,8 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost
             }
             // *****************************************************************
 
-            _config = config;
-
-            connection = new SqlConnection(_config.GetConnectionString("SQLAZURECONNSTR_ClientDB"));
-            azureService = new AzureBlobStorageServices(_config.GetValue<string>("AzureBLOBContainerName"));
+            connection = new SqlConnection(config.GetConnectionString("SQLAZURECONNSTR_ClientDB"));
+            azureService = new AzureBlobStorageServices(config.GetValue<string>("AzureBLOBContainerName"));
         }
 
         internal int GetTableChangesCount(string tableName, long SyncDateTimeTicks)
@@ -48,7 +44,6 @@ namespace MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost
                 if (SyncDateTimeTicks < minDatetimeTicks)
                 {
                     sbSelect.Append("SELECT COUNT(*) FROM [" + tableName + "] ");
-                    //sbSelect.Append("WHERE [" + tableName + "].SyncDateTimeTicks > " + SyncDateTimeTicks + " ");
                     sbSelect.Append("WHERE [" + tableName + "].IsDeleted = 0 ");
                 }
                 else
