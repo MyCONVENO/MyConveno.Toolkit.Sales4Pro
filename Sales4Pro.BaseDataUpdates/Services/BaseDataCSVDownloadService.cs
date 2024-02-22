@@ -199,9 +199,9 @@ public partial class BaseDataCSVDownloadService : IBaseDataCSVDownloadService
     /// Dieser Button führt diesen Task aus.
     /// </summary>
     /// <returns></returns>
-    public void ResetUpdate(bool raiseBaseDataDeleted)
+    public async Task ResetUpdateAsync()
     {
-        InjectedPlugIn.ResetUpdate();
+        await InjectedPlugIn.ResetUpdateAsync();
         FillInitialProgressItemVMs();
     }
 

@@ -2,7 +2,7 @@
 
 public interface IBaseDataDownloadPlugIn
 {
-    void ResetUpdate();
+    Task ResetUpdateAsync();
     Dictionary<string, long> GetAllUpdateDateTimeTicks();
     List<ProgressItem> GetAllProgressItemsWithLocalUpdateDateTime();
     long GetTableUpdateDateTimeTicks(string tableName);

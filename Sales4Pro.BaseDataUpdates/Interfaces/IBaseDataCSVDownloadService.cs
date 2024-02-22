@@ -4,7 +4,7 @@ public interface IBaseDataCSVDownloadService
 {
     IBaseDataDownloadPlugIn InjectedPlugIn { get; set; }
     void FillInitialProgressItemVMs();
-    void ResetUpdate(bool raiseBaseDataDeleted);
+    Task ResetUpdateAsync();
     Task<List<ProgressItem>> CheckForUpdateAsync();
     Task<bool> UpdateAsync(List<ProgressItem> syncTables);
 
