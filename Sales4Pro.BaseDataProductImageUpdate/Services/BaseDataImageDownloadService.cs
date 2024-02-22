@@ -167,7 +167,7 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
         if (string.IsNullOrEmpty(filename))
             return false;
 
-        DateTime updateDateTime = new(2000, 1, 1);
+        DateTime lastRecordUpdateDateTime = new(2000, 1, 1);
 
         // Ein Container für Results
         List<KeyValuePair<int, DateTime>> results = new();
@@ -181,14 +181,14 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
         KeyValuePair<int, DateTime> tempPair = new(results.Sum(r => r.Key), results.Max(r => r.Value));
         result += tempPair.Key;
 
-        if (updateDateTime < tempPair.Value)
-            updateDateTime = tempPair.Value;
+        if (lastRecordUpdateDateTime < tempPair.Value)
+            lastRecordUpdateDateTime = tempPair.Value;
 
         //********************************************************************
         // Schreibe den Tabellenname (ProductImage) und die zugehörige
         // Updatedatum (in Ticks) in die AppSettings (für die nächste Downloadanfrage)
         //********************************************************************
-        InjectedPlugIn.SetProductImageUpdateDateTimeTicks(updateDateTime.Ticks);
+        InjectedPlugIn.SetProductImageUpdateDateTimeTicks(lastRecordUpdateDateTime.Ticks);
 
         //*********************************************************************************
         // Houskeeping :-)
@@ -222,11 +222,11 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
 
     private KeyValuePair<int, DateTime> ProcessProductImageListsAsync(List<ProductImage> productImages, string imagefolderPath, BlobContainerClient container, CancellationToken ct)
     {
-        DateTime syncDateTime = new(2000, 1, 1);
+        DateTime lastRecordUpdateDateTime = new(2000, 1, 1);
         bool downloadOK = true;
 
         if (productImages == null)
-            return new KeyValuePair<int, DateTime>(0, syncDateTime);
+            return new KeyValuePair<int, DateTime>(0, lastRecordUpdateDateTime);
 
         foreach (ProductImage productImage in productImages)
         {
@@ -247,12 +247,12 @@ public partial class BaseDataImageDownloadService : ObservableObject, IBaseDataI
         if (downloadOK)
         {
             if (productImages.First().SyncDateTimeTicks > 0)
-                syncDateTime = new DateTime(productImages.Max(i => i.SyncDateTimeTicks));
+                lastRecordUpdateDateTime = new DateTime(productImages.Max(i => i.SyncDateTimeTicks));
             else
-                syncDateTime = productImages.Max(i => i.SyncDateTime);
+                lastRecordUpdateDateTime = productImages.Max(i => i.SyncDateTime);
         }
 
-        return new KeyValuePair<int, DateTime>(productImages.Count, syncDateTime);
+        return new KeyValuePair<int, DateTime>(productImages.Count, lastRecordUpdateDateTime);
     }
 
     #endregion
