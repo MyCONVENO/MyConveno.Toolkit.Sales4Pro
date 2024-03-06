@@ -76,7 +76,7 @@ public class AzureRemoteService : IAzureRemoteService
 
         if (userIsAdmin)
         {
-            syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10 &&
+            syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 1 &&
                                                                          w.OrderDate >= fromDate)
                                                              .IncludeTotalCount()
                                                              .ToAsyncEnumerable()
@@ -85,7 +85,7 @@ public class AzureRemoteService : IAzureRemoteService
         else
         {
 
-            syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10 &&
+            syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 1 &&
                                                                          w.User == userName &&
                                                                          w.OrderDate >= fromDate)
                                                              .IncludeTotalCount()
