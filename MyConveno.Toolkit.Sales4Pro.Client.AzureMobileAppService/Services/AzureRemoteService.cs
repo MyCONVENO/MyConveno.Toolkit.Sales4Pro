@@ -108,20 +108,34 @@ public class AzureRemoteService : IAzureRemoteService
         return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
     }
 
-    //public async Task<List<SyncShoppingCart>> GetAllPendingOrdersAsync()
-    //{
-    //    await InitializeAsync();
+    public async Task<List<SyncShoppingCart>> GetStagedOrdersAsync(bool userIsAdmin, string userName, DateTime fromDate)
+    {
+        await InitializeAsync();
 
-    //    if (remoteShoppingCartTable is null) return new List<SyncShoppingCart>();
+        List<SyncShoppingCart> syncShoppingCarts = new();
 
-    //    List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status == 1)
-    //                                                                            .OrderByDescending(o => o.OrderDate)
-    //                                                                            .IncludeTotalCount()
-    //                                                                            .ToAsyncEnumerable()
-    //                                                                            .ToListAsync();
+        if (remoteShoppingCartTable is null) return new List<SyncShoppingCart>();
 
-    //    return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
-    //}
+        if (userIsAdmin)
+        {
+           syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status <= -4)
+                                                            .OrderByDescending(o => o.OrderDate)
+                                                            .IncludeTotalCount()
+                                                            .ToAsyncEnumerable()
+                                                            .ToListAsync();
+        }
+        else
+        {
+            syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status <= -4 &&
+                                                                         w.User == userName)
+                                                             .OrderByDescending(o => o.OrderDate)
+                                                             .IncludeTotalCount()
+                                                             .ToAsyncEnumerable()
+                                                             .ToListAsync();
+
+        }
+        return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
+    }
 
     #endregion
 

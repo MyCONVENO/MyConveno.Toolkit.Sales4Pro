@@ -8,6 +8,7 @@
 
         Task<int> GetPendingOrdersCountAsync(string userName, DateTime fromDate);
         Task<List<SyncShoppingCart>> GetPendingOrdersAsync(bool userIsAdmin, string userName, DateTime fromDate);
+        Task<List<SyncShoppingCart>> GetStagedOrdersAsync(bool userIsAdmin, string userName, DateTime fromDate);
 
         Task<SyncShoppingCart> GetOrderAsync(string id);
         Task<string> SaveOrderAsync(SyncShoppingCart upsertItem);
