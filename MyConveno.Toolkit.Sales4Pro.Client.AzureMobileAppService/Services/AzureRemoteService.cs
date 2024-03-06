@@ -66,18 +66,32 @@ public class AzureRemoteService : IAzureRemoteService
 
     #region Orders
 
-    public async Task<List<SyncShoppingCart>> GetOrdersAsync(string userName, DateTime fromDate)
+    public async Task<List<SyncShoppingCart>> GetOrdersAsync(bool userIsAdmin, string userName, DateTime fromDate)
     {
         await InitializeAsync();
 
-        if (remoteShoppingCartTable is null) return new List<SyncShoppingCart>();
+        List<SyncShoppingCart> syncShoppingCarts = new();
 
-        List<SyncShoppingCart> syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10 &&
-                                                                                            w.User == userName &&
-                                                                                            w.OrderDate >= fromDate)
-                                                                                .IncludeTotalCount()
-                                                                                .ToAsyncEnumerable()
-                                                                                .ToListAsync();
+        if (remoteShoppingCartTable is null) return syncShoppingCarts;
+
+        if (userIsAdmin)
+        {
+            syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10 &&
+                                                                         w.OrderDate >= fromDate)
+                                                             .IncludeTotalCount()
+                                                             .ToAsyncEnumerable()
+                                                             .ToListAsync();
+        }
+        else
+        {
+
+            syncShoppingCarts = await remoteShoppingCartTable.Where(w => w.Status < 10 &&
+                                                                         w.User == userName &&
+                                                                         w.OrderDate >= fromDate)
+                                                             .IncludeTotalCount()
+                                                             .ToAsyncEnumerable()
+                                                             .ToListAsync();
+        }
 
         return syncShoppingCarts is not null ? syncShoppingCarts : new List<SyncShoppingCart>();
     }

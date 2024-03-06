@@ -5,7 +5,7 @@
         string AzureURL { get; init; }
 
         Task InitializeAsync();
-        Task<List<SyncShoppingCart>> GetOrdersAsync(string userName, DateTime fromDate);
+        Task<List<SyncShoppingCart>> GetOrdersAsync(bool userIsAdmin, string userName, DateTime fromDate);
         Task<List<SyncShoppingCart>> GetPendingOrdersAsync();
         Task<int> GetOrdersCountAsync(string userName, DateTime fromDate);
         Task<SyncShoppingCart> GetOrderAsync(string id);
