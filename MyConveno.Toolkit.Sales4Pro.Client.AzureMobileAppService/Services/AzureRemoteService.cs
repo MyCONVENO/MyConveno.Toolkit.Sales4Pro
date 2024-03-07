@@ -66,17 +66,27 @@ public class AzureRemoteService : IAzureRemoteService
 
     #region Pending Orders
 
-    public async Task<int> GetPendingOrdersCountAsync(string userName, DateTime fromDate)
+    public async Task<int> GetPendingOrdersCountAsync(bool userIsAdmin, string userName, DateTime fromDate)
     {
         await InitializeAsync();
 
         if (remoteShoppingCartTable is null) return 0;
 
-        return await remoteShoppingCartTable.Where(w => w.Status == 1 &&
-                                                        w.User == userName &&
-                                                        w.OrderDate >= fromDate)
-                                            .ToAsyncEnumerable()
-                                            .CountAsync();
+        if (userIsAdmin)
+        {
+            return await remoteShoppingCartTable.Where(w => w.Status == 1 &&
+                                                            w.OrderDate >= fromDate)
+                                                .ToAsyncEnumerable()
+                                                .CountAsync();
+        }
+        else
+        {
+            return await remoteShoppingCartTable.Where(w => w.Status == 1 &&
+                                                            w.User == userName &&
+                                                            w.OrderDate >= fromDate)
+                                                .ToAsyncEnumerable()
+                                                .CountAsync();
+        }
     }
 
     public async Task<List<SyncShoppingCart>> GetPendingOrdersAsync(bool userIsAdmin, string userName, DateTime fromDate)

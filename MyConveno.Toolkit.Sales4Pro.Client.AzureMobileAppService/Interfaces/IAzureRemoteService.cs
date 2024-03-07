@@ -6,7 +6,7 @@
 
         Task InitializeAsync();
 
-        Task<int> GetPendingOrdersCountAsync(string userName, DateTime fromDate);
+        Task<int> GetPendingOrdersCountAsync(bool userIsAdmin, string userName, DateTime fromDate);
         Task<List<SyncShoppingCart>> GetPendingOrdersAsync(bool userIsAdmin, string userName, DateTime fromDate);
         Task<List<SyncShoppingCart>> GetStagedOrdersAsync(bool userIsAdmin, string userName, DateTime fromDate);
 
