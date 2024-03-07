@@ -97,7 +97,7 @@
     </Style>
 
     <Style TargetType="local:PageSmallHeaderTextControl">
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="Background" Value="#EAEAEA" />
         <Setter Property="BorderBrush" Value="#19000000" />
@@ -113,11 +113,13 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock FontSize="14"
+                            <TextBlock Grid.Column="0"
+                                       FontSize="14"
                                        FontWeight="SemiBold"
                                        Text="{TemplateBinding Title}"
                                        TextWrapping="NoWrap" />
-                            <TextBlock FontSize="14"
+                            <TextBlock Grid.Column="1"
+                                       FontSize="14"
                                        FontWeight="SemiBold"
                                        Text="{TemplateBinding Text}"
                                        TextWrapping="NoWrap" />
