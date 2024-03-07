@@ -119,7 +119,7 @@
                                 TextWrapping="NoWrap" />
                             <TextBlock Grid.Column="1"
                                 FontSize="14"
-                                FontWeight="SemiBold"
+                                FontWeight="SemiLight"
                                 Text="{TemplateBinding Text}"
                                 TextWrapping="NoWrap" />
                         </Grid>
