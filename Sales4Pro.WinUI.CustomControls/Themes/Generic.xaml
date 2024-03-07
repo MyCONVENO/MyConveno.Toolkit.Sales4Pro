@@ -97,7 +97,6 @@
     </Style>
 
     <Style TargetType="local:PageSmallHeaderTextControl">
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="Background" Value="#EAEAEA" />
         <Setter Property="BorderBrush" Value="#19000000" />
@@ -106,23 +105,23 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:PageSmallHeaderTextControl">
                     <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid Margin="12,4,12,6">
+                     BorderBrush="{TemplateBinding BorderBrush}"
+                     BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Margin="12,4,12,6" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
-                                       FontSize="14"
-                                       FontWeight="SemiBold"
-                                       Text="{TemplateBinding Title}"
-                                       TextWrapping="NoWrap" />
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                Text="{TemplateBinding Title}"
+                                TextWrapping="NoWrap" />
                             <TextBlock Grid.Column="1"
-                                       FontSize="14"
-                                       FontWeight="SemiBold"
-                                       Text="{TemplateBinding Text}"
-                                       TextWrapping="NoWrap" />
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                Text="{TemplateBinding Text}"
+                                TextWrapping="NoWrap" />
                         </Grid>
                     </Border>
                 </ControlTemplate>
