@@ -1097,6 +1097,7 @@
            BasedOn="{StaticResource GridViewItemExpanded}"
            TargetType="GridViewItem">
         <Setter Property="Padding" Value="14" />
+        <Setter Property="Background" Value="#EAEAEA" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -1108,7 +1109,7 @@
                         <customcontrols:NeumorphCard x:Name="Card3"
                                                      Grid.RowSpan="2"
                                                      ui:VisualExtensions.NormalizedCenterPoint="0.8,0.5"
-                                                     Background="WhiteSmoke"
+                                                     Background="{TemplateBinding Background}"
                                                      IsHitTestVisible="False"
                                                      Opacity="0">
 
@@ -1134,7 +1135,7 @@
                         <customcontrols:NeumorphCard x:Name="Card2"
                                                      Grid.RowSpan="2"
                                                      ui:VisualExtensions.NormalizedCenterPoint="0.8,0.5"
-                                                     Background="WhiteSmoke"
+                                                     Background="{TemplateBinding Background}"
                                                      IsHitTestVisible="False"
                                                      Opacity="0">
 
@@ -1159,7 +1160,7 @@
 
                         <customcontrols:NeumorphCard x:Name="Card1"
                                                      Grid.RowSpan="2"
-                                                     Background="WhiteSmoke"
+                                                     Background="{TemplateBinding Background}"
                                                      IsHitTestVisible="False" />
 
                         <ContentPresenter x:Name="ContentPresenter"
