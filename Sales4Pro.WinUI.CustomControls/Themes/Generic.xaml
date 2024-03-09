@@ -239,6 +239,7 @@
                                 <ui:AttachedDropShadow x:Name="AttachedDropShadow1"
                                                        BlurRadius="8"
                                                        CornerRadius="{TemplateBinding BorderThickness}"
+                                                       Opacity="1"
                                                        Offset="1,1"
                                                        Color="#E6E6E6" />
                             </ui:Effects.Shadow>
