@@ -105,23 +105,23 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:PageSmallHeaderTextControl">
                     <Border Background="{TemplateBinding Background}"
-                     BorderBrush="{TemplateBinding BorderBrush}"
-                     BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid Margin="12,4,12,6" >
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Margin="12,4,12,6">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
-                                FontSize="14"
-                                FontWeight="SemiBold"
-                                Text="{TemplateBinding Title}"
-                                TextWrapping="NoWrap" />
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Text="{TemplateBinding Title}"
+                                       TextWrapping="NoWrap" />
                             <TextBlock Grid.Column="1"
-                                FontSize="14"
-                                FontWeight="SemiLight"
-                                Text="{TemplateBinding Text}"
-                                TextWrapping="NoWrap" />
+                                       FontSize="14"
+                                       FontWeight="SemiLight"
+                                       Text="{TemplateBinding Text}"
+                                       TextWrapping="NoWrap" />
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -228,39 +228,55 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:DashboardButton">
                     <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}">
-                        <Border x:Name="Border"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding CornerRadius}">
-                            <Grid Margin="4,8">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <ContentPresenter x:Name="ContentPresenter"
-                                                  Margin="{TemplateBinding Padding}"
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                  AutomationProperties.AccessibilityView="Raw"
-                                                  Content="{TemplateBinding Content}"
-                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
-                                                  FontWeight="{TemplateBinding FontWeight}" />
-                                <TextBlock Grid.Row="1"
-                                           Padding="0,4,0,0"
-                                           Text="{TemplateBinding Tag}"
-                                           TextAlignment="Center" />
-                            </Grid>
-                        </Border>
+                        <Border x:Name="ShadowTarget" Visibility="Visible" />
+                        <Rectangle x:Name="BorderRectangle"
+                                   RadiusX="4"
+                                   RadiusY="4"
+                                   Stroke="{ThemeResource SystemControlBackgroundAccentBrush}"
+                                   StrokeThickness="2"
+                                   Visibility="Collapsed">
+                            <ui:Effects.Shadow>
+                                <ui:AttachedDropShadow x:Name="AttachedDropShadow1"
+                                                       BlurRadius="8"
+                                                       CornerRadius="{TemplateBinding BorderThickness}"
+                                                       Offset="1,1"
+                                                       Color="#E6E6E6" />
+                            </ui:Effects.Shadow>
+                        </Rectangle>
+
+                        <Grid Margin="4,8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter x:Name="ContentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              AutomationProperties.AccessibilityView="Raw"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                                              FontWeight="{TemplateBinding FontWeight}" />
+                            <TextBlock Grid.Row="1"
+                                       Padding="0,4,0,0"
+                                       Text="{TemplateBinding Tag}"
+                                       TextAlignment="Center" />
+                        </Grid>
+
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="PointerOver">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#FFEAEAEA" />
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FFEAEAEA" />
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderRectangle" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
@@ -269,12 +285,15 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#99EAEAEA" />
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#99EAEAEA" />
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderRectangle" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
-                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>-->
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
                                         </ObjectAnimationUsingKeyFrames>

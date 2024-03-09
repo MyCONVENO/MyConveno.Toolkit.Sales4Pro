@@ -1,9 +1,13 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using CommunityToolkit.WinUI.UI;
+using Microsoft.UI.Xaml.Controls;
 
 namespace Sales4Pro.WinUI.CustomControls;
 
 public sealed class DashboardButton : Button
 {
+    private Border shadowTarget;
+    private AttachedDropShadow attachedDropShadow;
+
     public DashboardButton()
     {
         this.DefaultStyleKey = typeof(DashboardButton);
@@ -13,10 +17,13 @@ public sealed class DashboardButton : Button
     {
         base.OnApplyTemplate();
 
-        // ----- Exit initialisation here in DesignMode  ------------------------
-        if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
-            return;
-        // ----------------------------------------------------------------------
+        shadowTarget = (Border)GetTemplateChild("ShadowTarget");
+        attachedDropShadow = (AttachedDropShadow)GetTemplateChild("AttachedDropShadow1");
+
+        if (attachedDropShadow is not null)
+        {
+            attachedDropShadow.CastTo = shadowTarget;
+        }
     }
        
 }
