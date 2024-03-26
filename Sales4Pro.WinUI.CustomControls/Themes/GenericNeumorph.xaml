@@ -210,7 +210,7 @@
     </Style>
 
     <Style TargetType="local:NeumorphHeaderedMainContainer">
-        <Setter Property="Background" Value="{ThemeResource AcrylicInAppFillColorDefaultBrush}" />
+        <Setter Property="Background" Value="#DADADA" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="BorderThickness" Value="0,1.5,0,0" />
@@ -254,7 +254,7 @@
                             <Grid.RowDefinitions>
                                 <!--  Die erste Zeile für den Close-Button  -->
                                 <!--  Die zweite Zeile für den Content  -->
-                                <RowDefinition Height="48" />
+                                <RowDefinition Height="40" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
@@ -329,7 +329,7 @@
                                 <Button x:Name="PART_BackButton"
                                         Grid.Column="0"
                                         Width="48"
-                                        Height="48"
+                                        Height="40"
                                         Margin="0,0,-24,0"
                                         IsEnabled="{TemplateBinding BackButtonIsEnabled}"
                                         IsTabStop="False"
@@ -357,7 +357,7 @@
                                 <Button x:Name="PART_CloseButton"
                                         Grid.Column="2"
                                         Width="48"
-                                        Height="48"
+                                        Height="40"
                                         IsTabStop="False"
                                         Visibility="{TemplateBinding CloseButtonVisibility}">
                                     <FontIcon FontSize="16" Glyph="&#xE711;" />
