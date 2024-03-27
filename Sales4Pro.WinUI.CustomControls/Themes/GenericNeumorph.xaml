@@ -127,28 +127,31 @@
                                         FontSize="13"
                                         Glyph="&#xE00E;" />
                                 </Button>
-                                <Rectangle Grid.Column="0"
-                                           Width="1"
-                                           Margin="0,6"
-                                           HorizontalAlignment="Right"
-                                           Fill="{TemplateBinding BorderBrush}"
-                                           IsHitTestVisible="False"
-                                           Visibility="{TemplateBinding BackButtonVisibility}" />
-                                <TextBlock Grid.Column="1"
-                                           Grid.ColumnSpan="2"
-                                           Margin="24,0,0,0"
-                                           VerticalAlignment="Center"
-                                           FontSize="14"
-                                           FontWeight="SemiBold"
-                                           LineStackingStrategy="BaselineToBaseline"
-                                           Text="{TemplateBinding HeaderText}"
-                                           TextLineBounds="Tight" />
-                                <Button x:Name="PART_CloseButton"
-                                        Grid.Column="2"
-                                        Width="60"
-                                        Height="40"
-                                        IsTabStop="False"
-                                        Visibility="{TemplateBinding CloseButtonVisibility}">
+                                <Rectangle
+                                    Grid.Column="0"
+                                    Width="1"
+                                    Margin="0,6"
+                                    HorizontalAlignment="Right"
+                                    Fill="{TemplateBinding BorderBrush}"
+                                    IsHitTestVisible="False"
+                                    Visibility="{TemplateBinding BackButtonVisibility}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    FontWeight="SemiBold"
+                                    LineStackingStrategy="BaselineToBaseline"
+                                    Text="{TemplateBinding HeaderText}"
+                                    TextLineBounds="Tight" />
+                                <Button
+                                    x:Name="PART_CloseButton"
+                                    Grid.Column="2"
+                                    Width="60"
+                                    Height="40"
+                                    IsTabStop="False"
+                                    Visibility="{TemplateBinding CloseButtonVisibility}">
                                     <FontIcon FontSize="13" Glyph="&#xE711;" />
                                 </Button>
                                 <Rectangle
@@ -258,6 +261,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
+                            <!--  HeaderLabel  -->
                             <!--  Back Button TopLeft  -->
                             <!--  Close Button TopRight  -->
                             <Grid Grid.Row="0">
@@ -326,14 +330,15 @@
                                     </Style>
                                 </Grid.Resources>
 
-                                <Button x:Name="PART_BackButton"
-                                        Grid.Column="0"
-                                        Width="48"
-                                        Height="40"
-                                        Margin="0,0,-24,0"
-                                        IsEnabled="{TemplateBinding BackButtonIsEnabled}"
-                                        IsTabStop="False"
-                                        Visibility="{TemplateBinding BackButtonVisibility}">
+                                <Button
+                                    x:Name="PART_BackButton"
+                                    Grid.Column="0"
+                                    Width="48"
+                                    Height="40"
+                                    Margin="0,0,-24,0"
+                                    IsEnabled="{TemplateBinding BackButtonIsEnabled}"
+                                    IsTabStop="False"
+                                    Visibility="{TemplateBinding BackButtonVisibility}">
                                     <FontIcon FontSize="16" Glyph="&#xe72b;" />
                                     <Button.Resources>
                                         <ResourceDictionary>
@@ -354,18 +359,26 @@
                                     Text="{TemplateBinding HeaderLabel}"
                                     TextLineBounds="Tight" />
 
-                                <Button x:Name="PART_CloseButton"
-                                        Grid.Column="2"
-                                        Width="48"
-                                        Height="40"
-                                        IsTabStop="False"
-                                        Visibility="{TemplateBinding CloseButtonVisibility}">
+                                <Button
+                                    x:Name="PART_CloseButton"
+                                    Grid.Column="2"
+                                    Width="48"
+                                    Height="40"
+                                    IsTabStop="False"
+                                    Visibility="{TemplateBinding CloseButtonVisibility}">
                                     <FontIcon FontSize="16" Glyph="&#xE711;" />
 
                                 </Button>
 
                             </Grid>
 
+                            <!--  Background Grid  -->
+                            <!--  Content-->
+                            <Grid
+                                Background="#E6E6E6"
+                                Grid.Row="1"
+                                BorderBrush="#19000000"
+                                BorderThickness="0,1,0,0" />
                             <ContentPresenter
                                 x:Name="PART_MainContentPresenter"
                                 Grid.Row="1"
@@ -373,7 +386,6 @@
                                 Content="{TemplateBinding Content}"
                                 ContentTemplate="{TemplateBinding ContentTemplate}"
                                 ContentTransitions="{TemplateBinding ContentTransitions}" />
-
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -478,12 +490,13 @@
 
                     <Grid CornerRadius="{TemplateBinding CornerRadius}">
 
-                        <Border x:Name="ShadowTarget"
-                                BorderBrush="#C0C0C0"
-                                BorderThickness="12,12,12,0"
-                                CornerRadius="1,1,1,1"
-                                IsHitTestVisible="False"
-                                Visibility="{TemplateBinding ShadowVisibility}">
+                        <Border
+                            x:Name="ShadowTarget"
+                            BorderBrush="#C0C0C0"
+                            BorderThickness="12,12,12,0"
+                            CornerRadius="1,1,1,1"
+                            IsHitTestVisible="False"
+                            Visibility="{TemplateBinding ShadowVisibility}">
                             <Rectangle Margin="-8" Fill="#E6E6E6">
                                 <ui:Effects.Shadow>
                                     <ui:AttachedDropShadow
@@ -544,20 +557,21 @@
                     <Border x:Name="Container">
                         <Grid x:Name="LayoutRoot">
                             <Rectangle x:Name="SmokeLayerBackground" Fill="{ThemeResource ContentDialogSmokeFill}" />
-                            <Border x:Name="BackgroundElement"
-                                    MinWidth="{ThemeResource ContentDialogMinWidth}"
-                                    MinHeight="{ThemeResource ContentDialogMinHeight}"
-                                    MaxWidth="{ThemeResource ContentDialogMaxWidth}"
-                                    MaxHeight="{ThemeResource ContentDialogMaxHeight}"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Background="{TemplateBinding Background}"
-                                    BackgroundSizing="InnerBorderEdge"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{TemplateBinding CornerRadius}"
-                                    FlowDirection="{TemplateBinding FlowDirection}"
-                                    RenderTransformOrigin="0.5,0.5">
+                            <Border
+                                x:Name="BackgroundElement"
+                                MinWidth="{ThemeResource ContentDialogMinWidth}"
+                                MinHeight="{ThemeResource ContentDialogMinHeight}"
+                                MaxWidth="{ThemeResource ContentDialogMaxWidth}"
+                                MaxHeight="{ThemeResource ContentDialogMaxHeight}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="{TemplateBinding Background}"
+                                BackgroundSizing="InnerBorderEdge"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                FlowDirection="{TemplateBinding FlowDirection}"
+                                RenderTransformOrigin="0.5,0.5">
                                 <Border.RenderTransform>
                                     <ScaleTransform x:Name="ScaleTransform" />
                                 </Border.RenderTransform>
@@ -633,21 +647,23 @@
                                             </Style>
                                         </Grid.Resources>
 
-                                        <TextBlock Grid.Column="0"
-                                                   Margin="24,0,0,0"
-                                                   HorizontalAlignment="Left"
-                                                   VerticalAlignment="Center"
-                                                   FontWeight="SemiBold"
-                                                   IsHitTestVisible="False"
-                                                   LineStackingStrategy="BaselineToBaseline"
-                                                   Style="{StaticResource CaptionTextBlockStyle}"
-                                                   Text="{TemplateBinding Title}"
-                                                   TextLineBounds="Tight" />
-                                        <Button x:Name="PART_CloseButton"
-                                                Grid.Column="1"
-                                                Width="60"
-                                                Height="40"
-                                                IsTabStop="False">
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            Margin="24,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontWeight="SemiBold"
+                                            IsHitTestVisible="False"
+                                            LineStackingStrategy="BaselineToBaseline"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="{TemplateBinding Title}"
+                                            TextLineBounds="Tight" />
+                                        <Button
+                                            x:Name="PART_CloseButton"
+                                            Grid.Column="1"
+                                            Width="60"
+                                            Height="40"
+                                            IsTabStop="False">
                                             <FontIcon FontSize="13" Glyph="&#xE711;" />
                                         </Button>
 
@@ -757,15 +773,17 @@
                                             </ObjectAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX">
                                                 <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1.0" />
-                                                <SplineDoubleKeyFrame KeySpline="{StaticResource ControlFastOutSlowInKeySpline}"
-                                                                      KeyTime="{StaticResource ControlFastAnimationDuration}"
-                                                                      Value="1.05" />
+                                                <SplineDoubleKeyFrame
+                                                    KeySpline="{StaticResource ControlFastOutSlowInKeySpline}"
+                                                    KeyTime="{StaticResource ControlFastAnimationDuration}"
+                                                    Value="1.05" />
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY">
                                                 <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1.0" />
-                                                <SplineDoubleKeyFrame KeySpline="{StaticResource ControlFastOutSlowInKeySpline}"
-                                                                      KeyTime="{StaticResource ControlFastAnimationDuration}"
-                                                                      Value="1.05" />
+                                                <SplineDoubleKeyFrame
+                                                    KeySpline="{StaticResource ControlFastOutSlowInKeySpline}"
+                                                    KeyTime="{StaticResource ControlFastAnimationDuration}"
+                                                    Value="1.05" />
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="Opacity">
                                                 <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1.0" />
@@ -780,15 +798,17 @@
                                             </ObjectAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX">
                                                 <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1.05" />
-                                                <SplineDoubleKeyFrame KeySpline="{StaticResource ControlFastOutSlowInKeySpline}"
-                                                                      KeyTime="{StaticResource ControlNormalAnimationDuration}"
-                                                                      Value="1.0" />
+                                                <SplineDoubleKeyFrame
+                                                    KeySpline="{StaticResource ControlFastOutSlowInKeySpline}"
+                                                    KeyTime="{StaticResource ControlNormalAnimationDuration}"
+                                                    Value="1.0" />
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY">
                                                 <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1.05" />
-                                                <SplineDoubleKeyFrame KeySpline="{StaticResource ControlFastOutSlowInKeySpline}"
-                                                                      KeyTime="{StaticResource ControlNormalAnimationDuration}"
-                                                                      Value="1.0" />
+                                                <SplineDoubleKeyFrame
+                                                    KeySpline="{StaticResource ControlFastOutSlowInKeySpline}"
+                                                    KeyTime="{StaticResource ControlNormalAnimationDuration}"
+                                                    Value="1.0" />
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="Opacity">
                                                 <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="0.0" />
