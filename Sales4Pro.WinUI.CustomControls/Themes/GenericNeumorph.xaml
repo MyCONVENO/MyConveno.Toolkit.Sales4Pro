@@ -7,218 +7,6 @@
 
     <!--  Acrylic Background  -->
 
-    <Style TargetType="local:NeumorphCurtainControl">
-        <Setter Property="Background" Value="#DADADA" />
-        <Setter Property="HeaderHeight" Value="40" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="BorderThickness" Value="2,0,0,0" />
-        <Setter Property="CornerRadius" Value="0" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="MinHeight" Value="60" />
-        <Setter Property="MinWidth" Value="60" />
-        <Setter Property="Padding" Value="24,0,24,24" />
-        <Setter Property="ui:Effects.Shadow">
-            <Setter.Value>
-                <media:AttachedCardShadow
-                    BlurRadius="16"
-                    CornerRadius="0"
-                    Opacity="0.2"
-                    Offset="0,4"
-                    Color="Black" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:NeumorphCurtainControl">
-                    <Grid
-                        x:Name="MainContent"
-                        Background="{TemplateBinding Background}"
-                        BorderThickness="1,1,1,0"
-                        CornerRadius="{TemplateBinding CornerRadius}">
-                        <Grid.BorderBrush>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.5">
-                                <GradientStop Offset="0.0" Color="Gainsboro" />
-                                <GradientStop Offset="0.25" Color="Silver" />
-                                <GradientStop Offset="0.75" Color="Gainsboro" />
-                                <GradientStop Offset="1.0" Color="Silver" />
-                            </LinearGradientBrush>
-                        </Grid.BorderBrush>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Height="{TemplateBinding HeaderHeight}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.Resources>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
-                                        <Setter Property="FontSize" Value="12" />
-                                        <Setter Property="FontWeight" Value="SemiBold" />
-                                        <Setter Property="Foreground" Value="{ThemeResource SystemControlBackgroundBaseMediumHighBrush}" />
-                                        <Setter Property="HorizontalAlignment" Value="Stretch" />
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Grid x:Name="RootGrid" Background="Transparent">
-                                                        <Rectangle x:Name="AccentOverlayBackground" />
-                                                        <ContentPresenter
-                                                            x:Name="ContentPresenter"
-                                                            HorizontalContentAlignment="Center"
-                                                            VerticalContentAlignment="Center"
-                                                            AutomationProperties.AccessibilityView="Raw"
-                                                            Content="{TemplateBinding Content}" />
-                                                        <VisualStateManager.VisualStateGroups>
-                                                            <VisualStateGroup x:Name="CommonStates">
-                                                                <VisualState x:Name="Normal" />
-                                                                <VisualState x:Name="PointerOver">
-                                                                    <Storyboard>
-                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AccentOverlayBackground" Storyboard.TargetProperty="Fill">
-                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
-                                                                        </ObjectAnimationUsingKeyFrames>
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Pressed">
-                                                                    <Storyboard>
-                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AccentOverlayBackground" Storyboard.TargetProperty="Fill">
-                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundChromeHighBrush}" />
-                                                                        </ObjectAnimationUsingKeyFrames>
-                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White" />
-                                                                        </ObjectAnimationUsingKeyFrames>
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Disabled">
-                                                                    <Storyboard>
-                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AccentOverlayBackground" Storyboard.TargetProperty="Fill">
-                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}" />
-                                                                        </ObjectAnimationUsingKeyFrames>
-                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseLowBrush}" />
-                                                                        </ObjectAnimationUsingKeyFrames>
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                            </VisualStateGroup>
-                                                        </VisualStateManager.VisualStateGroups>
-                                                    </Grid>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                        <Setter Property="UseSystemFocusVisuals" Value="False" />
-                                        <Setter Property="VerticalAlignment" Value="Stretch" />
-                                    </Style>
-                                </Grid.Resources>
-                                <Button
-                                    x:Name="PART_BackButton"
-                                    Grid.Column="0"
-                                    Width="60"
-                                    Height="40"
-                                    IsTabStop="False"
-                                    Visibility="{TemplateBinding BackButtonVisibility}">
-                                    <FontIcon
-                                        Grid.Column="2"
-                                        FontSize="13"
-                                        Glyph="&#xE00E;" />
-                                </Button>
-                                <Rectangle
-                                    Grid.Column="0"
-                                    Width="1"
-                                    Margin="0,6"
-                                    HorizontalAlignment="Right"
-                                    Fill="{TemplateBinding BorderBrush}"
-                                    IsHitTestVisible="False"
-                                    Visibility="{TemplateBinding BackButtonVisibility}" />
-                                <TextBlock
-                                    Grid.Column="1"
-                                    Grid.ColumnSpan="2"
-                                    Margin="24,0,0,0"
-                                    VerticalAlignment="Center"
-                                    FontSize="14"
-                                    FontWeight="SemiBold"
-                                    LineStackingStrategy="BaselineToBaseline"
-                                    Text="{TemplateBinding HeaderText}"
-                                    TextLineBounds="Tight" />
-                                <Button
-                                    x:Name="PART_CloseButton"
-                                    Grid.Column="2"
-                                    Width="60"
-                                    Height="40"
-                                    IsTabStop="False"
-                                    Visibility="{TemplateBinding CloseButtonVisibility}">
-                                    <FontIcon FontSize="13" Glyph="&#xE711;" />
-                                </Button>
-                                <Rectangle
-                                    Grid.Column="2"
-                                    Width="1"
-                                    Margin="0,6"
-                                    HorizontalAlignment="Left"
-                                    Fill="{TemplateBinding BorderBrush}"
-                                    IsHitTestVisible="False"
-                                    Visibility="{TemplateBinding CloseButtonVisibility}" />
-                            </Grid>
-
-                            <Grid
-                                Grid.Row="1"
-                                Background="#E6E6E6"
-                                BorderBrush="#19000000"
-                                BorderThickness="0,1,0,0" />
-
-                            <ContentPresenter
-                                Grid.Row="1"
-                                Margin="{TemplateBinding Padding}"
-                                Content="{TemplateBinding Content}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                ContentTransitions="{TemplateBinding ContentTransitions}" />
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="local:NeumorphFilterSectionCard">
-        <Setter Property="Padding" Value="12,8" />
-        <Setter Property="MinHeight" Value="52" />
-        <Setter Property="MinWidth" Value="60" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:NeumorphFilterSectionCard">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            x:Name="PART_TitleTextBlock"
-                            Grid.Row="0"
-                            Margin="0,12"
-                            FontSize="13"
-                            FontWeight="SemiBold"
-                            Text="{TemplateBinding Title}" />
-                        <local:NeumorphCard Grid.Row="1">
-                            <ContentPresenter
-                                x:Name="PART_ContentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                Content="{TemplateBinding Content}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                ContentTransitions="{TemplateBinding ContentTransitions}" />
-                        </local:NeumorphCard>
-
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="local:NeumorphHeaderedMainContainer">
         <Setter Property="Background" Value="#DADADA" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -401,6 +189,182 @@
     </Style>
 
     <!--  Solid Background  -->
+    
+    <Style TargetType="local:NeumorphCurtainControl">
+        <Setter Property="Background" Value="#DADADA" />
+        <Setter Property="HeaderHeight" Value="40" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderThickness" Value="2,0,0,0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="MinHeight" Value="60" />
+        <Setter Property="MinWidth" Value="60" />
+        <Setter Property="Padding" Value="24,0,24,24" />
+        <Setter Property="ui:Effects.Shadow">
+            <Setter.Value>
+                <media:AttachedCardShadow
+                    BlurRadius="16"
+                    CornerRadius="0"
+                    Opacity="0.2"
+                    Offset="0,4"
+                    Color="Black" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NeumorphCurtainControl">
+                    <Grid
+                        x:Name="MainContent"
+                        Background="{TemplateBinding Background}"
+                        BorderThickness="1,1,1,0"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.5">
+                                <GradientStop Offset="0.0" Color="Gainsboro" />
+                                <GradientStop Offset="0.25" Color="Silver" />
+                                <GradientStop Offset="0.75" Color="Gainsboro" />
+                                <GradientStop Offset="1.0" Color="Silver" />
+                            </LinearGradientBrush>
+                        </Grid.BorderBrush>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Height="{TemplateBinding HeaderHeight}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+                                        <Setter Property="FontSize" Value="12" />
+                                        <Setter Property="FontWeight" Value="SemiBold" />
+                                        <Setter Property="Foreground" Value="{ThemeResource SystemControlBackgroundBaseMediumHighBrush}" />
+                                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Grid x:Name="RootGrid" Background="Transparent">
+                                                        <Rectangle x:Name="AccentOverlayBackground" />
+                                                        <ContentPresenter
+                                                            x:Name="ContentPresenter"
+                                                            HorizontalContentAlignment="Center"
+                                                            VerticalContentAlignment="Center"
+                                                            AutomationProperties.AccessibilityView="Raw"
+                                                            Content="{TemplateBinding Content}" />
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup x:Name="CommonStates">
+                                                                <VisualState x:Name="Normal" />
+                                                                <VisualState x:Name="PointerOver">
+                                                                    <Storyboard>
+                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AccentOverlayBackground" Storyboard.TargetProperty="Fill">
+                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
+                                                                        </ObjectAnimationUsingKeyFrames>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Pressed">
+                                                                    <Storyboard>
+                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AccentOverlayBackground" Storyboard.TargetProperty="Fill">
+                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlForegroundChromeHighBrush}" />
+                                                                        </ObjectAnimationUsingKeyFrames>
+                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White" />
+                                                                        </ObjectAnimationUsingKeyFrames>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Disabled">
+                                                                    <Storyboard>
+                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AccentOverlayBackground" Storyboard.TargetProperty="Fill">
+                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}" />
+                                                                        </ObjectAnimationUsingKeyFrames>
+                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseLowBrush}" />
+                                                                        </ObjectAnimationUsingKeyFrames>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="UseSystemFocusVisuals" Value="False" />
+                                        <Setter Property="VerticalAlignment" Value="Stretch" />
+                                    </Style>
+                                </Grid.Resources>
+                                <Button
+                                    x:Name="PART_BackButton"
+                                    Grid.Column="0"
+                                    Width="60"
+                                    Height="40"
+                                    IsTabStop="False"
+                                    Visibility="{TemplateBinding BackButtonVisibility}">
+                                    <FontIcon
+                                        Grid.Column="2"
+                                        FontSize="13"
+                                        Glyph="&#xE00E;" />
+                                </Button>
+                                <Rectangle
+                                    Grid.Column="0"
+                                    Width="1"
+                                    Margin="0,6"
+                                    HorizontalAlignment="Right"
+                                    Fill="{TemplateBinding BorderBrush}"
+                                    IsHitTestVisible="False"
+                                    Visibility="{TemplateBinding BackButtonVisibility}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    Margin="24,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    FontWeight="SemiBold"
+                                    LineStackingStrategy="BaselineToBaseline"
+                                    Text="{TemplateBinding HeaderText}"
+                                    TextLineBounds="Tight" />
+                                <Button
+                                    x:Name="PART_CloseButton"
+                                    Grid.Column="2"
+                                    Width="60"
+                                    Height="40"
+                                    IsTabStop="False"
+                                    Visibility="{TemplateBinding CloseButtonVisibility}">
+                                    <FontIcon FontSize="13" Glyph="&#xE711;" />
+                                </Button>
+                                <Rectangle
+                                    Grid.Column="2"
+                                    Width="1"
+                                    Margin="0,6"
+                                    HorizontalAlignment="Left"
+                                    Fill="{TemplateBinding BorderBrush}"
+                                    IsHitTestVisible="False"
+                                    Visibility="{TemplateBinding CloseButtonVisibility}" />
+                            </Grid>
+
+                            <Grid
+                                Grid.Row="1"
+                                Background="#E6E6E6"
+                                BorderBrush="#19000000"
+                                BorderThickness="0,1,0,0" />
+
+                            <ContentPresenter
+                                Grid.Row="1"
+                                Margin="{TemplateBinding Padding}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentTransitions="{TemplateBinding ContentTransitions}" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style TargetType="local:NeumorphCard">
         <Setter Property="Background" Value="WhiteSmoke" />
@@ -474,71 +438,6 @@
                             </Grid>
 
                         </Grid>
-
-                    </Grid>
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="local:NeumorphInnerShadowContentControl">
-        <Setter Property="Background" Value="#E6E6E6" />
-        <Setter Property="CornerRadius" Value="0" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="MinHeight" Value="48" />
-        <Setter Property="MinWidth" Value="60" />
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:NeumorphInnerShadowContentControl">
-
-                    <Grid CornerRadius="{TemplateBinding CornerRadius}">
-
-                        <Border
-                            x:Name="ShadowTarget"
-                            BorderBrush="#C0C0C0"
-                            BorderThickness="12,12,12,0"
-                            CornerRadius="1,1,1,1"
-                            IsHitTestVisible="False"
-                            Visibility="{TemplateBinding ShadowVisibility}">
-                            <Rectangle Margin="-8" Fill="#E6E6E6">
-                                <ui:Effects.Shadow>
-                                    <ui:AttachedDropShadow
-                                        x:Name="AttachedDropShadow1"
-                                        BlurRadius="4"
-                                        CornerRadius="0"
-                                        Opacity="1"
-                                        Color="#E6E6E6" />
-                                </ui:Effects.Shadow>
-                            </Rectangle>
-                        </Border>
-
-                        <Border
-                            BorderBrush="#BABABA"
-                            BorderThickness="1,1,0,0"
-                            CornerRadius="{TemplateBinding DarkCornerRadius}"
-                            IsHitTestVisible="False"
-                            Opacity="0.8" />
-
-                        <Border
-                            BorderBrush="White"
-                            BorderThickness="0,0,1,1"
-                            CornerRadius="{TemplateBinding LightCornerRadius}"
-                            IsHitTestVisible="False"
-                            Opacity="0.5" />
-
-                        <ContentPresenter
-                            x:Name="PART_ContentPresenter"
-                            Margin="1"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            ContentTransitions="{TemplateBinding ContentTransitions}"
-                            CornerRadius="{TemplateBinding CornerRadius}" />
 
                     </Grid>
 

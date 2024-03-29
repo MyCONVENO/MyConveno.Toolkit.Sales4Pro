@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>2024.3.28.4</Version>
+    <Version>2024.3.29.1</Version>
     <TargetFramework>net7.0-windows10.0.22621.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>Sales4Pro.WinUI.CustomControls</RootNamespace>
@@ -21,6 +21,7 @@
     <NeutralLanguage>de-DE</NeutralLanguage>
     <RepositoryType>git</RepositoryType>
     <Title>MyConveno Custom Controls</Title>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>embedded</DebugType>
@@ -47,5 +48,13 @@
       <PackageReference Include="Syncfusion.Core.WinUI" Version="23.1.44" />
       <PackageReference Include="Syncfusion.Grid.WinUI" Version="23.1.44" />
       <PackageReference Include="Syncfusion.GridCommon.WinUI" Version="23.1.44" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="docs\readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
