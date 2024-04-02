@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates", "Sales4Pro.BaseDataUpdates\MyConveno.Toolkit.Sales4Pro.Client.BaseDataUpdates.csproj", "{2E1594C6-9280-4450-865B-94D26F150940}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces", "Sales4Pro.Common.ClientData.Interfaces\MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces.csproj", "{6A4EEDBE-DD8D-42D0-BB37-8B4F2836E77A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "obsolete_MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces", "Sales4Pro.Common.ClientData.Interfaces\obsolete_MyConveno.Toolkit.Sales4Pro.Common.ClientData.Interfaces.csproj", "{6A4EEDBE-DD8D-42D0-BB37-8B4F2836E77A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Common.Metadata", "Sales4Pro.Common.Metadata\MyConveno.Toolkit.Sales4Pro.Common.Metadata.csproj", "{74DD96FB-FB38-43E6-A182-556CEE626DBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "obsolete_MyConveno.Toolkit.Sales4Pro.Common.Metadata", "Sales4Pro.Common.Metadata\obsolete_MyConveno.Toolkit.Sales4Pro.Common.Metadata.csproj", "{74DD96FB-FB38-43E6-A182-556CEE626DBB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost", "MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost\MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost.csproj", "{3929F4FC-3B82-451E-8B51-763281354334}"
 EndProject
@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales4Pro.WinUI.CustomControls", "Sales4Pro.WinUI.CustomControls\Sales4Pro.WinUI.CustomControls.csproj", "{D8EDA7EC-F294-4F3B-95D1-7F755405AEE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET", "MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET\MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET.csproj", "{3BC4D6E5-B0B7-4979-8C77-F81B377EFF1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET", "MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET\MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET.csproj", "{3BC4D6E5-B0B7-4979-8C77-F81B377EFF1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
