@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales4Pro.WinUI.CustomControls", "Sales4Pro.WinUI.CustomControls\Sales4Pro.WinUI.CustomControls.csproj", "{D8EDA7EC-F294-4F3B-95D1-7F755405AEE6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET", "MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET\MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET.csproj", "{3BC4D6E5-B0B7-4979-8C77-F81B377EFF1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "delete_MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET", "MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET\delete_MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET.csproj", "{3BC4D6E5-B0B7-4979-8C77-F81B377EFF1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
