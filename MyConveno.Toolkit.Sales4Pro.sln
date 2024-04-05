@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "obsolete_MyConveno.Toolkit.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "obsolete_MyConveno.Toolkit.Sales4Pro.Common.Metadata", "Sales4Pro.Common.Metadata\obsolete_MyConveno.Toolkit.Sales4Pro.Common.Metadata.csproj", "{74DD96FB-FB38-43E6-A182-556CEE626DBB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost", "MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost\MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost.csproj", "{3929F4FC-3B82-451E-8B51-763281354334}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "delete_MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost", "MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost\delete_MyConveno.Toolkit.Sales4Pro.Server.ClientDataHost.csproj", "{3929F4FC-3B82-451E-8B51-763281354334}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost", "MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost\MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost.csproj", "{69F03253-68B5-454F-9E01-8CB5C265082D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "delete_MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost", "MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost\delete_MyConveno.Toolkit.Sales4Pro.Server.BaseDataHost.csproj", "{69F03253-68B5-454F-9E01-8CB5C265082D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{EE71BCB9-44CD-4B95-84E3-1C6F5FD7DFB4}"
 EndProject
@@ -21,13 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5DA9F4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{A2720413-95AA-41F6-B4E7-75D02B51DBF1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost", "MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost\MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost.csproj", "{AEB823AA-EA85-40D7-B5B9-8085418573F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "delete_MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost", "MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost\delete_MyConveno.Toolkit.Sales4Pro.Server.SyncDataHost.csproj", "{AEB823AA-EA85-40D7-B5B9-8085418573F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService", "MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService\MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.csproj", "{916B6A56-80A0-4D87-950B-AA7A636A632D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "delete_MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService", "MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService\delete_MyConveno.Toolkit.Sales4Pro.Client.AzureMobileAppService.csproj", "{916B6A56-80A0-4D87-950B-AA7A636A632D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService", "MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService\MyConveno.Toolkit.Sales4Pro.Client.Offline.BaseDataService.csproj", "{21993EFA-1181-4BD3-8FD7-9BE531661CA1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales4Pro.WinUI.CustomControls", "Sales4Pro.WinUI.CustomControls\Sales4Pro.WinUI.CustomControls.csproj", "{D8EDA7EC-F294-4F3B-95D1-7F755405AEE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "delete_Sales4Pro.WinUI.CustomControls", "Sales4Pro.WinUI.CustomControls\delete_Sales4Pro.WinUI.CustomControls.csproj", "{D8EDA7EC-F294-4F3B-95D1-7F755405AEE6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "delete_MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET", "MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET\delete_MyConveno.Toolkit.Sales4Pro.Client.ClientDataNET.csproj", "{3BC4D6E5-B0B7-4979-8C77-F81B377EFF1F}"
 EndProject
